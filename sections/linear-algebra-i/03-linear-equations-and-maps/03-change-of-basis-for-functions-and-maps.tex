@@ -1,0 +1,130 @@
+% !TEX root = ../../../main.tex
+\section{Change of basis formula for functions and maps}
+\label{sec:linear-algebra-i:change-of-basis-for-functions-and-maps}
+
+% Sources: September 17 slides 22--33, September 24 slides 18--19,
+% and the author's earlier photographed notes.
+\subsection{Matrices in standard bases}
+
+Let \(L:\mathbb F^m\to\mathbb F^n\) be linear, and let
+\(e_1,\ldots,e_m\) be the standard basis of \(\mathbb F^m\).
+Write \(A_j=L(e_j)\), and form the matrix \(A\) whose columns are
+\(A_1,\ldots,A_m\). For \(v=\sum_{j=1}^m v^je_j\), linearity gives
+\[
+  L(v)=\sum_{j=1}^m v^jL(e_j)=\sum_{j=1}^m v^jA_j=Av.
+\]
+Thus a linear map is represented by the matrix of its values on the
+standard basis. Conversely, an \(n\)-by-\(m\) matrix \(A\) defines the
+linear map \(v\mapsto Av\).
+
+\begin{example}
+  If \(L:\mathbb F^2\to\mathbb F^3\) satisfies
+  \(L(e_1)=a=(a^1,a^2,a^3)^T\) and
+  \(L(e_2)=b=(b^1,b^2,b^3)^T\), then
+  \[
+    L(v)=v^1a+v^2b
+      =\begin{bmatrix}a^1&b^1\\a^2&b^2\\a^3&b^3\end{bmatrix}
+        \begin{bmatrix}v^1\\v^2\end{bmatrix}.
+  \]
+\end{example}
+
+The correspondence \(L\mapsto A\) is a bijective linear map
+\[
+  \mathcal L(\mathbb F^m,\mathbb F^n)
+    \longrightarrow \mathrm M_{n\times m}(\mathbb F).
+\]
+
+\subsection{Matrices in arbitrary bases}
+
+Choose ordered bases \(E=[e_1,\ldots,e_m]\) of \(V\) and
+\(F=[f_1,\ldots,f_n]\) of \(W\), and let \(L:V\to W\) be linear.
+Express each image in the basis \(F\):
+\[
+  L(e_j)=\sum_{i=1}^n f_iM^i_j.
+\]
+The matrix \(M=(M^i_j)\in\mathbb F^{n\times m}\) represents \(L\) in
+these bases. Its \(j\)-th column is the coordinate column of \(L(e_j)\).
+In compact notation,
+\[
+  L(E)=FM.
+\]
+If \(v=Ea\), then
+\[
+  L(v)=L(E)a=FMa.
+\]
+Thus \(M\) converts the \(E\)-coordinates of an input into the
+\(F\)-coordinates of its image.
+
+In Einstein notation, repeated upper and lower indices are summed over their
+ranges. With this convention, the expressions above become
+\[
+  L(e_j)=f_iM^i_j,\qquad v=e_ja^j,\qquad L(v)=f_iM^i_ja^j.
+\]
+The matrix depends on the map and on both ordered bases.
+
+\subsection{Composition}
+
+Suppose \(L_1:V_0\to V_1\) and \(L_2:V_1\to V_2\) have matrices
+\(M_1\) and \(M_2\) in compatible ordered bases:
+\[
+  L_1(E_0)=E_1M_1,\qquad L_2(E_1)=E_2M_2.
+\]
+Then
+\[
+  \begin{aligned}
+    (L_2\circ L_1)(E_0)
+      &=L_2(L_1(E_0))\\
+      &=L_2(E_1M_1)=L_2(E_1)M_1\\
+      &=E_2(M_2M_1).
+  \end{aligned}
+\]
+The matrix of the composite is \(M_2M_1\), in that order.
+For \(v=E_0a\), this gives \((L_2\circ L_1)(v)=E_2M_2M_1a\).
+
+\subsection{Invertible maps and inverse matrices}
+
+\begin{definition}
+  A linear map \(L:V\to W\) is invertible if every \(w\in W\) is the
+  image of exactly one \(v\in V\). Equivalently, it is both injective
+  and surjective. Its inverse \(L^{-1}:W\to V\) satisfies
+  \[
+    L^{-1}\circ L=I_V,\qquad L\circ L^{-1}=I_W.
+  \]
+\end{definition}
+
+If \(E\) is a basis of \(V\), then \(L(E)\) is a basis of \(W\).
+In particular, \(\dim V=\dim W\).
+
+\input{problems/lec03/01-inverse-is-linear/problem}
+
+Let \(E\) and \(F\) be bases of \(V\) and \(W\), and write
+\[
+  L(E)=FM,\qquad L^{-1}(F)=EN.
+\]
+Using the linearity of the inverse map, as requested in
+Exercise~\ref{ex:lec03:inverse-is-linear}, gives
+\[
+  \begin{aligned}
+    F&=L(L^{-1}(F))=L(EN)=L(E)N=FMN,\\
+    E&=L^{-1}(L(E))=L^{-1}(FM)=L^{-1}(F)M=ENM.
+  \end{aligned}
+\]
+Since \(E\) and \(F\) are bases, \(MN=NM=I\), hence \(N=M^{-1}\).
+The inverse map is represented by the inverse matrix.
+
+\subsection{Changing both bases}
+
+Let \(E'=EA\) and \(F'=FB\) be new ordered bases, with invertible
+change-of-basis matrices \(A\) and \(B\). If \(L(E)=FM\), then
+\[
+  \begin{aligned}
+    L(E')&=L(EA)=L(E)A\\
+      &=FMA=F'B^{-1}MA.
+  \end{aligned}
+\]
+Therefore, the matrix \(M'\) satisfying \(L(E')=F'M'\) is
+\begin{equation}
+  M'=B^{-1}MA.
+  \label{eq:linear-algebra-i:change-of-basis-for-maps}
+\end{equation}
+% September 17 slide 33 supplies the formula missing from the earlier photo.

@@ -1,0 +1,35 @@
+% !TEX program = pdflatex
+% Questions-only variant of Homework 4, using the original shared statements.
+% Build with make problem HW=hw04-questions.
+% Export with make export-problem HW=hw04-questions.
+\documentclass[nohyper,nobib,nofonts]{tufte-handout}
+\input{preamble}
+\input{macros}
+
+\counterwithout{theorem}{section}
+\renewcommand{\thetheorem}{\arabic{theorem}}
+\theoremstyle{definition}
+\newtheorem{homeworkproblem}[theorem]{Problem}
+\renewenvironment{exercise}{\begin{homeworkproblem}}{\end{homeworkproblem}}
+
+\title{MA-GY7033 Linear Algebra I\\Homework 4}
+\author{Lucas Barbosa, \texttt{lc6424}}
+\date{}
+
+\fancyhead{}
+\fancyhead[LE,RO]{\footnotesize MA-GY7033 Linear Algebra I, Homework 4\quad\thepage}
+
+\begin{document}
+\maketitle
+
+\input{problems/hw04/01-kernel-image-and-rank/problem}
+\input{problems/hw04/02-rank-nullity/problem}
+
+\newpage
+\input{problems/hw04/03-prescribed-kernel-and-image/problem}
+\input{problems/hw04/04-adapted-bases/problem}
+
+\newpage
+\input{problems/hw04/05-polynomial-differentiation/problem}
+
+\end{document}

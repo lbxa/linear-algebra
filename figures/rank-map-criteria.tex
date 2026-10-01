@@ -1,0 +1,90 @@
+% Original schematic summary requested by the author, September 30, 2026.
+% Numerical criteria assume finite-dimensional V and W.
+% Circles show set containment; their radii do not encode dimensions.
+\begin{tikzpicture}[
+  x=1mm,y=1mm,font=\footnotesize,line width=0.45pt,
+  every node/.style={inner sep=2pt},
+  map arrow/.style={line width=0.35pt,-{Latex[length=1.6mm,width=1.1mm]}},
+  criterion/.style={anchor=west,align=left}
+]
+  \node at (76,43) {Finite-dimensional \(L:V\to W\)};
+  \node at (76,35)
+    {\(\operatorname{rank}L+\operatorname{nullity}L=\dim V\)};
+
+  % Injective: only zero lies in the kernel; the image can be proper.
+  \begin{scope}
+    \draw (14,0) circle[radius=12mm];
+    \draw (56,0) circle[radius=12mm];
+    \filldraw[fill=black!15] (56,0) circle[radius=9mm];
+    \node at (14,16) {\(V\)};
+    \node at (56,16) {\(W\)};
+    \node at (14,-18) {\(\ker L=\{0_V\}\)};
+    \node at (56,-18) {\(\operatorname{im}L\subseteq W\)};
+    \draw[map arrow] (20,4)
+      .. controls (34,10) and (45,10) .. (60,4);
+    \draw[map arrow,dashed] (12,-3) -- (52,-3);
+    \foreach \point in {(20,4),(60,4),(12,-3),(52,-3)}
+      \fill \point circle[radius=1.6pt];
+    \node at (57,-3) {\(0_W\)};
+
+    \node[criterion] at (79,16) {\textbf{Injective}};
+    \node[criterion] at (79,3)
+      {\(\operatorname{rank}L=\dim V
+        \ \Longleftrightarrow\ \operatorname{nullity}L=0\)};
+    \node[criterion] at (79,-9)
+      {Necessarily \(\dim V\leq\dim W\)};
+  \end{scope}
+
+  \draw[black!30] (0,-25) -- (153,-25);
+
+  % Surjective: the entire codomain is the image; the kernel can be nonzero.
+  \begin{scope}[yshift=-47mm]
+    \draw (14,0) circle[radius=12mm];
+    \filldraw[fill=black!35] (11,-2) circle[radius=6mm];
+    \filldraw[fill=black!15] (56,0) circle[radius=12mm];
+    \node at (14,16) {\(V\)};
+    \node at (56,16) {\(W\)};
+    \node at (14,-18) {\(\ker L\)};
+    \node at (56,-18) {\(\operatorname{im}L=W\)};
+    \draw[map arrow] (20,4)
+      .. controls (34,10) and (45,10) .. (60,4);
+    \draw[map arrow,dashed] (11,1)
+      .. controls (28,1) and (40,-1) .. (52,-3);
+    \draw[map arrow,dashed] (11,-2)
+      .. controls (28,-7) and (40,-7) .. (52,-3);
+    \foreach \point in {(20,4),(60,4),(11,1),(11,-2),(52,-3)}
+      \fill \point circle[radius=1.6pt];
+    \node at (57,-3) {\(0_W\)};
+
+    \node[criterion] at (79,16) {\textbf{Surjective}};
+    \node[criterion] at (79,3) {\(\operatorname{rank}L=\dim W\)};
+    \node[criterion] at (79,-5)
+      {\(\operatorname{nullity}L=\dim V-\dim W\)};
+    \node[criterion] at (79,-15)
+      {Necessarily \(\dim V\geq\dim W\)};
+  \end{scope}
+
+  \draw[black!30] (0,-72) -- (153,-72);
+
+  % Bijective: zero kernel and image equal to the codomain.
+  \begin{scope}[yshift=-94mm]
+    \draw (14,0) circle[radius=12mm];
+    \filldraw[fill=black!15] (56,0) circle[radius=12mm];
+    \node at (14,16) {\(V\)};
+    \node at (56,16) {\(W\)};
+    \node at (14,-18) {\(\ker L=\{0_V\}\)};
+    \node at (56,-18) {\(\operatorname{im}L=W\)};
+    \draw[map arrow] (20,4)
+      .. controls (34,10) and (45,10) .. (60,4);
+    \draw[map arrow,dashed] (12,-3) -- (52,-3);
+    \foreach \point in {(20,4),(60,4),(12,-3),(52,-3)}
+      \fill \point circle[radius=1.6pt];
+    \node at (57,-3) {\(0_W\)};
+
+    \node[criterion] at (79,16) {\textbf{Bijective}};
+    \node[criterion] at (79,3)
+      {\(\operatorname{rank}L=\dim V=\dim W\)};
+    \node[criterion] at (79,-5) {\(\operatorname{nullity}L=0\)};
+    \node[criterion] at (79,-15) {Both injective and surjective};
+  \end{scope}
+\end{tikzpicture}

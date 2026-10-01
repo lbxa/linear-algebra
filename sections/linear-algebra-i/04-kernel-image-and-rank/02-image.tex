@@ -1,0 +1,43 @@
+% !TEX root = ../../../main.tex
+\section{Image}
+\label{sec:linear-algebra-i:image}
+
+% Sources: supplied lecture photos and September 24 slides 3 and 12.
+\begin{definition}
+  The image of \(L:V\to W\) is the set of its possible outputs:
+  \[
+    \operatorname{im}L=L(V)=\{L(v):v\in V\}\subseteq W.
+  \]
+  It is a subspace of the codomain \(W\).
+\end{definition}
+
+Figure~\ref{fig:linear-algebra-i:kernel-image} shows the kernel and image
+inside \(V\) and \(W\). The map sends every vector of \(V\)
+to a vector in \(\operatorname{im}L\subseteq W\), and sends every vector
+of \(\ker L\subseteq V\) to \(0_W\). The codomain specifies the target
+space; the image consists of the outputs actually attained.
+
+\begin{figure}[htbp]
+  \centering
+  \input{figures/kernel-image-linear-map}
+  \caption{Domain, kernel, image, and codomain of \(L:V\to W\).
+    The solid line sends \(v\) to \(L(v)\); the dashed line sends
+    \(k\in\ker L\) to \(0_W\). Circles show set containment
+    schematically, not bounded vector spaces. TikZ redrawing inspired by
+    Wikipedia's \emph{Kernel (linear algebra)} page
+    \cite{WikipediaKernel} and Pillsmarch's illustration
+    \cite{PillsmarchKernelImage},
+    licensed under \href{https://creativecommons.org/licenses/by/4.0/}{CC BY 4.0}.}
+  \label{fig:linear-algebra-i:kernel-image}
+\end{figure}
+
+Recall surjectivity from \S~\ref{sec:appendix:map-properties}.
+The codomain need not equal the image. For example, a map into \(\R\)
+need not take every real value. The map \(L\) is surjective exactly when
+\(\operatorname{im}L=W\). For finite-dimensional \(W\), the subspace
+dimension criterion gives
+\[
+  \dim\operatorname{im}L=\dim W
+    \quad\Longleftrightarrow\quad
+  \operatorname{im}L=W.
+\]

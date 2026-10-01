@@ -1,0 +1,39 @@
+% !TEX root = ../../../main.tex
+\section{Differentiation as a linear map}
+\label{sec:linear-algebra-i:differentiation}
+
+% Sources: supplied September 17 handout, slide 21, and Homework 4,
+% Problem 5. The September 24 handout contains no differentiation topic.
+% The author requested this Chapter 4 placement on October 1, 2026.
+The elements of a vector space can be functions. The space \(C^0(\R)\)
+consists of continuous real-valued functions on \(\R\), while \(C^1(\R)\)
+consists of differentiable real-valued functions \(f\) for which both
+\(f\) and \(f'\) are continuous. Both are vector spaces over \(\R\).
+In this example, no finite-dimensional assumption is imposed.
+
+Differentiation gives a map between these spaces,
+\[
+  D:C^1(\R)\longrightarrow C^0(\R),\qquad D(f)=f'.
+\]
+It is linear by the sum and constant factor rules of differentiation.
+For \(f_1,f_2,f\in C^1(\R)\) and \(r\in\R\),
+\[
+  \begin{aligned}
+    D(f_1+f_2)&=(f_1+f_2)'=f_1'+f_2'=D(f_1)+D(f_2),\\
+    D(rf)&=(rf)'=rf'=rD(f).
+  \end{aligned}
+\]
+Thus differentiation preserves addition and scalar multiplication.
+Its inputs and outputs are functions.
+Section~\ref{sec:linear-algebra-i:linear-combinations-and-bases}
+discusses bases beyond finite dimension, including function spaces.
+
+% Keep the complete shared polynomial exercise together in the book.
+\newpage
+\subsection{Polynomial differentiation}
+
+The following exercise applies differentiation to finite-dimensional
+polynomial spaces. It brings together the kernel, image, rank, nullity,
+and matrix construction in chosen bases.
+
+\input{problems/hw04/05-polynomial-differentiation/problem}

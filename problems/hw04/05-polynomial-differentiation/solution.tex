@@ -1,0 +1,71 @@
+% Author's solution, images/HW04/IMG_9194.HEIC--IMG_9197.HEIC.
+% The derivative's cubic coefficient is 3a, as in IMG_9196's final matrix;
+% IMG_9194--IMG_9195's 2a conflicts with that final result.
+% IMG_9195's edited conclusion says D is surjective.
+\noindent\textbf{Solution.}
+\begin{enumerate}[(a)][2]
+  \item Write
+    \[
+      p(x)=ax^3+bx^2+cx+d.
+    \]
+    Then \(D(p)=p'=3ax^2+2bx+c\), which is zero exactly when
+    \(a=b=c=0\). The constant coefficient \(d\) is unrestricted.
+    Therefore
+    \[
+      \ker D=\operatorname{span}\{1\},
+      \qquad
+      \operatorname{nullity}D=1.
+    \]
+
+    Every derivative belongs to \(\mathcal P_2(\mathbb{R})\). Conversely, given
+    \(q(x)=ux^2+vx+w\), choose
+    \[
+      p(x)=\frac{u}{3}x^3+\frac{v}{2}x^2+wx.
+    \]
+    Then \(D(p)=q\). Hence
+    \[
+      \operatorname{im}D=\mathcal P_2(\mathbb{R})
+        =\operatorname{span}\{1,x,x^2\},
+      \qquad
+      \operatorname{rank}D=3.
+    \]
+
+  \item The map \(D\) is not injective because its nullity is \(1\).
+    It is surjective because its image is all of \(\mathcal P_2(\mathbb{R})\).
+
+  \item Apply \(D\) to the given basis entries. We obtain
+    \[
+      D(E)=[\,D(1)\ \ D(x)\ \ D(x^2)\ \ D(x^3)\,]
+        =[\,0\ \ 1\ \ 2x\ \ 3x^2\,].
+    \]
+    Expressing these entries in \(F=[\,1\ \ x\ \ x^2\,]\) gives
+    \[
+      M=
+      \begin{pmatrix}
+        0&1&0&0\\
+        0&0&2&0\\
+        0&0&0&3
+      \end{pmatrix}.
+    \]
+    Thus \(D(E)=FM\).
+
+  \item We want the nonzero basis images to be \(1,x,x^2\), respectively.
+    Taking their antiderivatives gives
+    \[
+      E'=\left[\,1\ \ x\ \ \frac{x^2}{2}\ \ \frac{x^3}{3}\,\right].
+    \]
+    Its first vector is a basis of \(\ker D\). Since the remaining
+    entries are nonzero scalar multiples of the usual monomials,
+    \(E'\) is a basis of \(\mathcal P_3(\mathbb{R})\). Moreover,
+    \[
+      D(E')=[\,0\ \ 1\ \ x\ \ x^2\,]
+        =[\,1\ \ x\ \ x^2\,]
+          \begin{pmatrix}
+            0&1&0&0\\
+            0&0&1&0\\
+            0&0&0&1
+          \end{pmatrix}.
+    \]
+    Therefore the matrix of \(D\) with respect to \(E'\) and \(F\) has
+    the required form.
+\end{enumerate}

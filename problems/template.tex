@@ -1,0 +1,23 @@
+% !TEX program = pdflatex
+% Copy to problems/hwNN.tex only when an assignment is supplied.
+% Compile from the repository root with make problem HW=hwNN.
+\documentclass[nohyper,nobib,nofonts]{tufte-handout}
+\input{preamble}
+\input{macros}
+
+% Number assignment questions consecutively, independently of topic sections.
+\counterwithout{theorem}{section}
+\renewcommand{\thetheorem}{\arabic{theorem}}
+
+\title{Homework 01}
+\author{Lucas Barbosa, \texttt{lc6424}}
+\date{}
+
+\begin{document}
+\maketitle
+
+% Preserve the supplied assignment's question order and numbering.
+% Each shared problem.tex contains its exercise label and solutionlink.
+% Input each problem.tex, then its adjacent solution.tex.
+
+\end{document}

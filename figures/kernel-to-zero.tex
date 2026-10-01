@@ -1,0 +1,27 @@
+% Kernel-only adaptation of Pillsmarch's kernel/image illustration.
+% Source: https://commons.wikimedia.org/wiki/File:Kernel_and_image_of_linear_map.svg
+% Original: Pillsmarch, December 20, 2023. License: CC BY 4.0.
+% This schematic omits the image and the surrounding domain/codomain.
+% Diagram adaptation licensed under https://creativecommons.org/licenses/by/4.0/
+\begin{tikzpicture}[
+  x=1mm,
+  y=1mm,
+  font=\footnotesize,
+  line width=0.45pt,
+  every node/.style={inner sep=2pt},
+  map arrow/.style={line width=0.35pt,-{Latex[length=1.6mm,width=1.1mm]}}
+]
+  \filldraw[fill=black!15] (15,0) circle[radius=13mm];
+  \node at (15,0) {\(\ker L\)};
+  \node at (46,18) {\(L:V\to W\)};
+
+  \coordinate (codomain-zero) at (73,0);
+  \draw[map arrow] (21.5,11.2583)
+    .. controls (39,11) and (56,5) .. (codomain-zero);
+  \draw[map arrow] (28,0) -- (codomain-zero);
+  \draw[map arrow] (21.5,-11.2583)
+    .. controls (39,-11) and (56,-5) .. (codomain-zero);
+
+  \fill (codomain-zero) circle[radius=1.6pt];
+  \node at (78,3) {\(0_W\)};
+\end{tikzpicture}

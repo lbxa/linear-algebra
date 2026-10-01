@@ -1,0 +1,205 @@
+% !TEX root = ../../../main.tex
+\section{Systems of linear equations}
+\label{sec:linear-algebra-i:systems-of-linear-equations}
+
+% Sources: supplied lecture photos and September 17 handout, slides 3--17.
+\subsection{Matrix form}
+
+A system of \(n\) equations in \(m\) unknowns has the form
+\[
+  \sum_{j=1}^m a^i_jx^j=b^i,\qquad 1\leq i\leq n.
+\]
+Writing \(A=(a^i_j)\), \(x=(x^1,\ldots,x^m)^T\), and
+\(b=(b^1,\ldots,b^n)^T\) gives
+\[
+  Ax=b,\qquad
+  A\in\mathbb F^{n\times m},\quad x\in\mathbb F^m,\quad b\in\mathbb F^n.
+\]
+The number of equations and the number of unknowns need not agree.
+
+\begin{example}
+  The system
+  \[
+    2x-3y=5,\qquad x+y=-1,\qquad 3x+5y=0
+  \]
+  can be written as
+  \[
+    \begin{bmatrix}2&-3\\1&1\\3&5\end{bmatrix}
+    \begin{bmatrix}x\\y\end{bmatrix}
+    =\begin{bmatrix}5\\-1\\0\end{bmatrix}.
+  \]
+  Similarly, \(x+y+z=1\) and \(3y-5z=2\) become
+  \[
+    \begin{bmatrix}1&1&1\\0&3&-5\end{bmatrix}
+    \begin{bmatrix}x\\y\\z\end{bmatrix}
+    =\begin{bmatrix}1\\2\end{bmatrix}.
+  \]
+\end{example}
+
+Over \(\R\), the equation \(x=b\) has exactly one solution, whereas
+\[
+  \begin{bmatrix}1&0\end{bmatrix}
+  \begin{bmatrix}x\\y\end{bmatrix}=b
+\]
+has infinitely many, since \(y\) is arbitrary. The equations \(x=1\) and
+\(x=0\) are inconsistent:
+\[
+  \begin{bmatrix}1\\1\end{bmatrix}x=\begin{bmatrix}1\\0\end{bmatrix}.
+\]
+Two equations in two unknowns may have no solution, one solution, or
+infinitely many solutions. For example, \(I_2(x,y)^T=(a,b)^T\) has the
+unique solution \(x=a\), \(y=b\).
+% The earlier photo's claim that solvability requires equal equation and
+% unknown counts contradicts these supplied rectangular examples.
+
+\subsection{Augmented matrices and row operations}
+
+Appending the right-hand side produces the augmented matrix
+\([A\mid b]\). The equation \(Ax=b\) is equivalent to
+\[
+  [A\mid b]\begin{bmatrix}x\\-1\end{bmatrix}=0.
+\]
+The final coordinate here is fixed at \(-1\).
+
+The elementary row operations exchange two rows, multiply a row by a
+nonzero scalar, or add a multiple of one row to another. Apply an operation
+to the entire augmented row, including its right-hand side. Reordering
+variables corresponds to reordering the columns of \(A\).
+% The handout says "rescale"; nonzero is made explicit to distinguish a
+% reversible row operation from erasing an equation.
+
+\begin{example}
+  Consider
+  \[
+    2x-4y+6z=12,\qquad 3x+12y+24z=36.
+  \]
+  Dividing the first equation by \(2\) gives \(x-2y+3z=6\).
+  Subtracting three times this equation from the second gives
+  \(18y+15z=18\), or \(y+\frac56z=1\). Adding twice this last equation
+  to the first eliminates \(y\), leaving
+  \[
+    x+\frac{14}{3}z=8,\qquad y+\frac56z=1.
+  \]
+  Thus all solutions are
+  \[
+    x=8-\frac{14}{3}z,\qquad y=1-\frac56z,\qquad z\in\R.
+  \]
+\end{example}
+
+\begin{example}
+  The system
+  \[
+    \begin{aligned}
+      x^1+2x^2+3x^3+5x^4+x^5&=1,\\
+      x^3+5x^4&=2,\\
+      -3x^5&=9
+    \end{aligned}
+  \]
+  has augmented matrix
+  \[
+    \left[\begin{array}{rrrrr|r}
+      1&2&3&5&1&1\\
+      0&0&1&5&0&2\\
+      0&0&0&0&-3&9
+    \end{array}\right].
+  \]
+  Divide row \(3\) by \(-3\), subtract the new row \(3\) from row \(1\),
+  and then subtract three times row \(2\) from row \(1\). The successive
+  matrices are
+  \[
+    \left[\begin{array}{rrrrr|r}
+      1&2&3&5&1&1\\0&0&1&5&0&2\\0&0&0&0&1&-3
+    \end{array}\right],
+    \qquad
+    \left[\begin{array}{rrrrr|r}
+      1&2&3&5&0&4\\0&0&1&5&0&2\\0&0&0&0&1&-3
+    \end{array}\right],
+  \]
+  and finally
+  \[
+    \left[\begin{array}{rrrrr|r}
+      1&2&0&-10&0&-2\\0&0&1&5&0&2\\0&0&0&0&1&-3
+    \end{array}\right].
+  \]
+\end{example}
+
+\subsection{Triangular systems and factorization}
+
+\begin{example}
+  An upper triangular system can be solved from the last equation upward:
+  \[
+    2x+y+z=3,\qquad y-3z=4,\qquad -z=2.
+  \]
+  In augmented form, divide the last row by \(-1\), then eliminate \(z\)
+  from the first two rows:
+  \[
+    \left[\begin{array}{rrr|r}
+      2&1&1&3\\0&1&-3&4\\0&0&-1&2
+    \end{array}\right]
+    \longrightarrow
+    \left[\begin{array}{rrr|r}
+      2&1&1&3\\0&1&-3&4\\0&0&1&-2
+    \end{array}\right]
+    \longrightarrow
+    \left[\begin{array}{rrr|r}
+      2&1&0&5\\0&1&0&-2\\0&0&1&-2
+    \end{array}\right].
+  \]
+  Subtract row \(2\) from row \(1\), then divide row \(1\) by \(2\):
+  \[
+    \left[\begin{array}{rrr|r}
+      2&0&0&7\\0&1&0&-2\\0&0&1&-2
+    \end{array}\right]
+    \longrightarrow
+    \left[\begin{array}{rrr|r}
+      1&0&0&7/2\\0&1&0&-2\\0&0&1&-2
+    \end{array}\right].
+  \]
+  The solution is \(x=\frac72\), \(y=-2\), \(z=-2\).
+\end{example}
+
+For a square system \(Ax=b\), an available factorization \(A=LU\), with
+\(L\) lower triangular and \(U\) upper triangular, reduces the problem to
+\[
+  Ly=b,\qquad Ux=y.
+\]
+Indeed, \(Ax=LUx=Ly=b\). Sparse matrices have many zero entries.
+Their pattern of zeros can support more efficient solution strategies.
+Fast matrix multiplication is another topic in numerical linear algebra.
+
+\subsection{Normalized systems}
+
+After row operations and a possible reordering of variables, consider the
+following four forms.
+
+\begin{enumerate}
+  \item For \(I_mx=b'\), every variable is determined:
+    \(x^j=(b')^j\), \(1\leq j\leq m\).
+  \item For
+    \[
+      [I_k\mid C]x=b',\qquad C\in\mathbb F^{k\times(m-k)},\quad k<m,
+    \]
+    the last \(m-k\) variables are free. The first \(k\) satisfy
+    \[
+      x^j+\sum_{\ell=k+1}^m c^j_\ell x^\ell=(b')^j,\qquad 1\leq j\leq k.
+    \]
+  \item For
+    \[
+      \begin{bmatrix}I_k\\0_{(n-k)\times k}\end{bmatrix}x=b',
+    \]
+    the equations require \(x^j=(b')^j\) for \(1\leq j\leq k\) and
+    \((b')^{k+1}=\cdots=(b')^n=0\). A nonzero entry among these last
+    right-hand sides makes the system inconsistent.
+  \item In the combined case,
+    \[
+      \begin{bmatrix}
+        I_k&C\\
+        0_{(n-k)\times k}&0_{(n-k)\times(m-k)}
+      \end{bmatrix}x=b',
+    \]
+    there are free variables \(x^{k+1},\ldots,x^m\), while the last
+    \(n-k\) equations require \((b')^{k+1}=\cdots=(b')^n=0\).
+\end{enumerate}
+% September 17 slides 16--17 resolve the ambiguous indices in the earlier
+% photographed third normalization case. C denotes the remaining block,
+% rather than reusing A for both the original matrix and its reduced block.

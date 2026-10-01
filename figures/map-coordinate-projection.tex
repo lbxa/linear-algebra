@@ -1,0 +1,27 @@
+% Schematic coordinate projection R^3 -> R^2, (x,y,z) -> (y,z).
+\begin{tikzpicture}[
+  x=1mm,y=1mm,font=\footnotesize,line width=0.45pt,
+  every node/.style={inner sep=2pt},
+  axis/.style={-{Latex[length=1.6mm,width=1.1mm]}},
+  map arrow/.style={line width=0.35pt,-{Latex[length=1.6mm,width=1.1mm]}}
+]
+  \node at (44,39) {\(U(x,y,z)=(y,z)\)};
+  \node at (10,29) {\(\R^3\)};
+  \node at (68,29) {\(\R^2\)};
+  \begin{scope}[x={(8mm,-3mm)},y={(8mm,3mm)},z={(0mm,9mm)}]
+    \draw[axis] (0,0,0) -- (3,0,0) node[below] {\(x\)};
+    \draw[axis] (0,0,0) -- (0,2.6,0) node[below right] {\(y\)};
+    \draw[axis] (0,0,0) -- (0,0,2.4) node[above] {\(z\)};
+    \draw[gray,dashed] (0,0.8,1.8) -- (2.7,0.8,1.8);
+    \fill (1,0.8,1.8) circle[radius=1.6pt];
+    \fill (2,0.8,1.8) circle[radius=1.6pt];
+  \end{scope}
+  \draw[axis] (56,0) -- (80,0) node[right] {\(y\)};
+  \draw[axis] (56,0) -- (56,22) node[above] {\(z\)};
+  \fill (64,18) circle[radius=1.6pt];
+  \draw[gray] (56,0) -- (64,18);
+  \draw[map arrow] (14.4,13.8)
+    .. controls (32,22) and (46,22) .. (64,18);
+  \draw[map arrow] (22.4,10.8)
+    .. controls (38,13) and (48,15) .. (64,18);
+\end{tikzpicture}

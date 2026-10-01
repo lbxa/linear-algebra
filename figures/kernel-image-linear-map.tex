@@ -1,0 +1,42 @@
+% TikZ adaptation of Pillsmarch's "Kernel and image of linear map.svg".
+% Source: https://commons.wikimedia.org/wiki/File:Kernel_and_image_of_linear_map.svg
+% Original: Pillsmarch, December 20, 2023. License: CC BY 4.0.
+% This redrawing uses grayscale, nested set regions, and two mapping paths.
+% Diagram adaptation licensed under https://creativecommons.org/licenses/by/4.0/
+\begin{tikzpicture}[
+  x=1mm,
+  y=1mm,
+  font=\footnotesize,
+  line width=0.45pt,
+  every node/.style={inner sep=2pt},
+  map arrow/.style={line width=0.35pt,-{Latex[length=1.6mm,width=1.1mm]}}
+]
+  % The circles show set containment, not geometric boundaries.
+  \draw (19,0) circle[radius=19mm];
+  \draw (86,0) circle[radius=20mm];
+  \filldraw[fill=black!15] (15,-5) circle[radius=10.5mm];
+  \filldraw[fill=black!10] (86,-1) circle[radius=15.5mm];
+
+  \node at (19,26) {Domain \(V\)};
+  \node at (86,26) {Codomain \(W\)};
+  \node at (52,33) {\(L:V\to W\)};
+  \node at (15,-10) {\(\ker L\)};
+  \node at (86,-11.5) {\(\operatorname{im}L\)};
+
+  \coordinate (input-vector) at (25,10);
+  \coordinate (output-vector) at (83,7);
+  \coordinate (kernel-vector) at (15,-2);
+  \coordinate (codomain-zero) at (82,-4);
+
+  \draw[map arrow] (input-vector)
+    .. controls (43,17) and (66,14) .. (output-vector);
+  \draw[map arrow,dashed] (kernel-vector)
+    .. controls (43,-6) and (64,-7) .. (codomain-zero);
+
+  \foreach \point in {input-vector,output-vector,kernel-vector,codomain-zero}
+    \fill (\point) circle[radius=1.6pt];
+  \node at (22,13) {\(v\)};
+  \node at (90,6) {\(L(v)\)};
+  \node at (15,1) {\(k\)};
+  \node at (89,-3) {\(0_W\)};
+\end{tikzpicture}

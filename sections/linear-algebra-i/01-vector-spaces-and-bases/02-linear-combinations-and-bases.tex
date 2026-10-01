@@ -1,0 +1,104 @@
+% !TEX root = ../../../main.tex
+\section{Linear combinations and bases}
+\label{sec:linear-algebra-i:linear-combinations-and-bases}
+
+% Sources: supplied lecture photos, quiz-prep pp. 3--5, and September 24
+% handout, slide 20.
+\subsection{Linear combinations and span}
+
+\begin{definition}
+  A linear combination of \(v_1,\ldots,v_n\in V\) is a vector of the form
+  \[
+    a_1v_1+\cdots+a_nv_n,\qquad a_1,\ldots,a_n\in\mathbb F.
+  \]
+  For \(S\subseteq V\), its span, denoted \(\operatorname{span}(S)\), is the
+  set of all finite linear combinations of elements of \(S\).
+\end{definition}
+
+The empty linear combination is the zero vector, so
+\(\operatorname{span}(\varnothing)=\{0\}\). A vector space is
+\emph{finite-dimensional} when it has a finite spanning set. Unless explicitly
+stated otherwise, the vector spaces in these notes are finite-dimensional.
+
+\subsection{Linear independence}
+
+\begin{definition}
+  A subset \(S\subseteq V\) is linearly independent if, for every finite
+  selection of distinct vectors \(v_1,\ldots,v_n\in S\),
+  \[
+    a_1v_1+\cdots+a_nv_n=0
+    \quad\Longrightarrow\quad
+    a_1=\cdots=a_n=0.
+  \]
+  The empty set is linearly independent.
+\end{definition}
+
+Equivalently, coefficients in a linear combination of distinct vectors from
+an independent set are unique. If
+\[
+  a_1v_1+\cdots+a_nv_n=b_1v_1+\cdots+b_nv_n,
+\]
+then \(a_j=b_j\) for each \(j\).
+
+\begin{definition}
+  A subset is linearly dependent if some finite selection of distinct
+  vectors from it satisfies
+  \[
+    a_1v_1+\cdots+a_nv_n=0
+  \]
+  with at least one coefficient nonzero.
+\end{definition}
+% Author review: the quiz-prep gloss about "maximal access" to the span and
+% generating any vector in R^n from n vectors does not state a spanning
+% hypothesis. The gloss about dependent vectors lying on the same line is
+% also too restrictive. The precise supplied definitions are retained above.
+
+\subsection{Bases and dimension}
+
+\begin{definition}
+  A basis of \(V\) is a linearly independent subset that spans \(V\).
+  The dimension of a finite-dimensional vector space is the number of
+  vectors in a basis.
+\end{definition}
+
+Every vector space has a basis. The zero vector space has the empty basis,
+and a basis of \(\R^3\) has three vectors, so \(\dim\R^3=3\).
+
+\subsection{Subspaces}
+
+\begin{definition}
+  A nonempty subset \(T\subseteq V\) is a subspace if it is closed under
+  linear combinations. That is, for \(v,w\in T\) and \(a,b\in\mathbb F\),
+  \[
+    av+bw\in T.
+  \]
+  A subspace inherits addition and scalar multiplication from \(V\).
+\end{definition}
+
+Equivalently, every finite linear combination of elements of \(T\) lies in
+\(T\). For finite-dimensional \(V\),
+\[
+  \dim T\leq\dim V,
+  \qquad
+  \dim T=\dim V\quad\Longleftrightarrow\quad T=V.
+\]
+
+\subsection{Bases beyond finite dimension}
+
+In infinite-dimensional spaces, a basis \(S\) is still linearly independent, and
+each vector is a \emph{finite} linear combination of elements of \(S\).
+
+\begin{example}
+  The vector space \(\mathcal P\) of polynomials in \(x\) with real
+  coefficients has the basis
+  \[
+    \{1,x,x^2,\ldots\}.
+  \]
+\end{example}
+
+For the vector space \(C(\R)\) of continuous functions \(\R\to\R\),
+the existence of a basis follows from Zorn's lemma. No explicit basis is
+constructed here. This example motivates the study of topological vector
+spaces.
+% The handout's stronger wording, "no explicit one can be written down",
+% is not developed here into a separate impossibility claim or proof.

@@ -1,0 +1,134 @@
+% !TEX root = ../../../main.tex
+\section{Kernel}
+\label{sec:linear-algebra-i:kernel}
+
+% Sources: supplied lecture photos and September 24 slides 3 and 12.
+\begin{definition}
+  Let \(V\) and \(W\) be vector spaces and \(L:V\to W\) a linear map.
+  Its kernel is\marginnote{%
+    \emph{Kernel} comes from Old English \emph{cyrnel}, meaning a seed or
+    pip, related to \emph{corn} with a diminutive ending. The word later
+    acquired the figurative sense of a central core \cite{EtymologyKernel}.
+    Its technical meaning depends on the context.}
+  \[
+    \ker L=\{v\in V:L(v)=0_W\} \subseteq V.
+  \]
+  The kernel is a subspace of the domain \(V\), consisting of the inputs
+  mapped to the zero vector.
+\end{definition}
+
+Figure~\ref{fig:linear-algebra-i:kernel-to-zero} emphasizes the defining
+property of the kernel. Every input in this subspace has the same output,
+the zero vector \(0_W\).
+
+\begin{figure}[htbp]
+  \centering
+  \input{figures/kernel-to-zero}
+  \caption{The kernel of \(L:V\to W\), shown schematically.
+    All vectors in the shaded region map to \(0_W\).
+    The circle indicates a set, not a bounded vector space.
+    TikZ redrawing inspired by
+    Wikipedia's \emph{Kernel (linear algebra)} page
+    \cite{WikipediaKernel} and Pillsmarch's illustration
+    \cite{PillsmarchKernelImage},
+    licensed under \href{https://creativecommons.org/licenses/by/4.0/}{CC BY 4.0}.}
+  \label{fig:linear-algebra-i:kernel-to-zero}
+\end{figure}
+
+\subsection{Null space, nullity, and homogeneous equations}
+
+The kernel is also called the \emph{null space}. Here ``null'' refers to
+the zero output, while ``space'' refers to the subspace of inputs that
+produce it. A vector in the null space need not itself be zero.
+
+The \emph{nullity} of \(L\) is the dimension of its null space,
+\[
+  \operatorname{nullity}L=\dim\ker L.
+\]
+When the kernel is finite-dimensional, its nullity is the number of vectors
+in any basis of \(\ker L\). The null space is a subspace of inputs;
+nullity counts its independent directions.
+
+% The author requested explicit rank/nullity bounds on October 1, 2026.
+In finite dimensions, nullity is therefore a nonnegative integer.
+If \(\ker L=\{0_V\}\), its basis is empty, so its nullity is \(0\).
+The zero vector is still in the kernel, but it contributes no independent
+direction. Since the kernel is a subspace of \(V\), for finite-dimensional
+\(V\) we have
+\[
+  0\leq\operatorname{nullity}L\leq\dim V.
+\]
+
+For a matrix \(A\in\mathbb F^{n\times m}\), the same definition becomes
+\[
+  \operatorname{Null}(A)=\ker A
+    =\{x\in\mathbb F^m:Ax=0\}.
+\]
+Thus finding the null space means solving a homogeneous system of linear
+equations \cite{MargalitRabinoffSubspaces}, using the row operations of
+Section~\ref{sec:linear-algebra-i:systems-of-linear-equations}.
+The dimension of this solution space is \(\operatorname{nullity}A\).
+
+\subsection{Information lost by the map}
+
+The kernel records changes to an input that leave its output unchanged.
+If \(k\in\ker L\), then
+\[
+  L(v+k)=L(v)+L(k)=L(v).
+\]
+Conversely, if \(L(v_1)=L(v_2)\), linearity gives
+\[
+  L(v_1-v_2)=L(v_1)-L(v_2)=0_W,
+\]
+so \(v_1-v_2\in\ker L\). Two inputs are indistinguishable under \(L\)
+exactly when their difference lies in its kernel.
+
+This matters whenever a linear map models measurements. An input can change
+by any vector in the kernel without changing the observed data.
+\marginnote{%
+  In computer vision, a \emph{kernel} usually means an array of weights
+  used for convolution or correlation \cite{OpenCVLinearFilters}.
+  The array defines a filter. For a linear filter, its linear-algebra
+  kernel would instead be the subspace of images it maps to zero.}
+Nullity therefore counts the independent directions of this ambiguity.
+Section~\ref{sec:linear-algebra-i:rank} defines rank as the dimension of
+the image. For finite-dimensional \(V\), the rank--nullity theorem
+(Theorem~\ref{thm:linear-algebra-i:rank-nullity}) gives
+\[
+  \operatorname{rank}L+\operatorname{nullity}L=\dim V.
+\]
+The independent output directions, counted by rank, and the input
+directions lost in the kernel, counted by nullity, together account for
+the dimension of the domain.
+
+More generally, suppose \(v_0\) is one solution of \(L(v)=w\). Then all
+solutions are precisely
+\[
+  v_0+\ker L=\{v_0+k:k\in\ker L\}.
+\]
+Indeed, adding \(k\in\ker L\) preserves the output, and any other solution
+differs from \(v_0\) by a kernel vector. For a matrix equation \(Ax=b\),
+this says that every solution is a particular solution plus a solution
+of \(Ax=0\) \cite{MargalitRabinoffSolutionSets}. The image determines
+whether a solution exists; the kernel determines whether an existing
+solution is unique.
+
+\subsection{Injectivity}
+
+The general definition of injectivity is recalled in
+\S~\ref{sec:appendix:map-properties}.
+The map \(L\) is injective exactly when \(\ker L=\{0_V\}\), or,
+in finite dimensions, when \(\dim\ker L=0\). If \(L\) is injective,
+\(L(k)=0_W=L(0_V)\) forces \(k=0_V\) for every \(k\in\ker L\).
+Conversely, for a zero kernel, injectivity follows from the equivalences
+\[
+  \begin{aligned}
+    L(v_1)=L(v_2)
+      &\iff L(v_2)-L(v_1)=0_W\\
+      &\iff L(v_2-v_1)=0_W\\
+      &\iff v_2-v_1\in\ker L=\{0_V\}\\
+      &\iff v_2=v_1.
+  \end{aligned}
+\]
+% The zero-kernel chain follows the supplied material. The converse and
+% null-space context were added at the author's request on September 30, 2026.

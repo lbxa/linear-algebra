@@ -1,0 +1,411 @@
+% !TEX root = ../../../main.tex
+\begin{samepage}
+\section{Rank}
+\label{sec:linear-algebra-i:rank}
+
+% Sources: supplied lecture photos and September 24 slides 3--17.
+\begin{definition}
+  The rank of a linear map is the dimension of its image:
+  \[
+    \operatorname{rank}L=\dim\operatorname{im}L.
+  \]
+  Its nullity, introduced in Section~\ref{sec:linear-algebra-i:kernel},
+  is \(\operatorname{nullity}L=\dim\ker L\).
+\end{definition}
+\end{samepage}
+
+% Source: the author's additional rank notes, September 30, 2026.
+\subsection{Rank of a matrix}
+
+Let \(M\in\mathbb F^{m\times n}\), with \(m\) rows and \(n\) columns.
+It represents the linear map \(x\mapsto Mx\) from \(\mathbb F^n\)
+to \(\mathbb F^m\). If its columns are \(c_1,\ldots,c_n\), then
+\[
+  \operatorname{im}M=\operatorname{span}\{c_1,\ldots,c_n\}.
+\]
+Thus \(\operatorname{rank}M\) is the maximum number of linearly
+independent columns of \(M\). Since there are \(n\) columns and each
+belongs to \(\mathbb F^m\),
+\[
+  0\leq\operatorname{rank}M\leq\min(m,n).
+\]
+
+% The author requested explicit rank/nullity bounds on October 1, 2026.
+Both rank and nullity are nonnegative integers because they are dimensions.
+The kernel of \(M\) is a subspace of \(\mathbb F^n\), so
+\[
+  0\leq\operatorname{nullity}M\leq n.
+\]
+Here \(n\) is the number of columns, the dimension of the domain.
+The rank--nullity theorem (Theorem~\ref{thm:linear-algebra-i:rank-nullity})
+gives
+\[
+  \operatorname{nullity}M=n-\operatorname{rank}M.
+\]
+Combining this identity with the rank bound yields the sharper range
+\[
+  \max(0,n-m)\leq\operatorname{nullity}M\leq n.
+\]
+Thus rank and nullity cannot be chosen independently; their sum is \(n\).
+
+Rank measures the non-degeneracy of a system of linear equations
+\(Mx=b\) by counting its independent output directions. The matrix
+has \emph{full rank} when its rank equals \(\min(m,n)\); a smaller
+rank reflects additional linear dependencies. The value of \(b\)
+still determines whether the system is consistent, through the
+condition \(b\in\operatorname{im}M\).
+
+\subsection{Examples in Euclidean spaces}
+
+\begin{example}
+  The inclusion \(Z:\R^2\to\R^3\), \(Z(x,y)=(x,y,0)\), has matrix
+  \[
+    \begin{bmatrix}1&0\\0&1\\0&0\end{bmatrix}.
+  \]
+  Its kernel is \(\{0\}\), and its image is the plane
+  \(\{(x,y,0):x,y\in\R\}\), with basis
+  \(\{(1,0,0),(0,1,0)\}\). Thus its nullity is \(0\) since the zero vector is not linearly independent and therefore cannot be a basis and its rank is \(2\).
+\end{example}
+
+\begin{example}
+  For \(W:\R^2\to\R^3\), \(W(x,y)=(y,0,0)\), the matrix is
+  \[
+    \begin{bmatrix}0&1\\0&0\\0&0\end{bmatrix}.
+  \]
+  The kernel is \(\{(x,0):x\in\R\}\), with basis \(\{(1,0)\}\).
+  The image is \(\{(y,0,0):y\in\R\}\), with basis \(\{(1,0,0)\}\).
+  Hence its nullity is \(1\) and its rank is \(1\).
+\end{example}
+
+\begin{example}
+  The zero map \(U:\R^2\to\R^3\) has matrix
+  \[
+    \begin{bmatrix}0&0\\0&0\\0&0\end{bmatrix},
+  \]
+  kernel \(\R^2\), and image \(\{(0,0,0)\}\). Its nullity is \(2\)
+  and its rank is \(0\).
+\end{example}
+
+\begin{example}
+  For \(U:\R^3\to\R^2\), \(U(x,y,z)=(y,z)\), the matrix is
+  \[
+    \begin{bmatrix}0&1&0\\0&0&1\end{bmatrix}.
+  \]
+  The kernel is \(\{(x,0,0):x\in\R\}\), with basis \(\{(1,0,0)\}\),
+  and the image is \(\R^2\). Its nullity is \(1\) and its rank is \(2\).
+\end{example}
+
+\begin{example}
+  For \(U:\R^3\to\R^2\), \(U(x,y,z)=(z,0)\), the matrix is
+  \[
+    \begin{bmatrix}0&0&1\\0&0&0\end{bmatrix}.
+  \]
+  The kernel is \(\{(x,y,0):x,y\in\R\}\), with basis
+  \(\{(1,0,0),(0,1,0)\}\). The image is \(\{(z,0):z\in\R\}\),
+  with basis \(\{(1,0)\}\). Its nullity is \(2\) and its rank is \(1\).
+\end{example}
+
+\begin{example}
+  The zero map \(U:\R^3\to\R^2\) has matrix
+  \[
+    \begin{bmatrix}0&0&0\\0&0&0\end{bmatrix},
+  \]
+  kernel \(\R^3\), and image \(\{(0,0)\}\). Its nullity is \(3\)
+  and its rank is \(0\).
+\end{example}
+
+\subsection{Adapted bases and rank--nullity}
+
+The following lemma supplies a basis adapted to the kernel and image.
+
+\begin{lemma}
+  \label{thm:linear-algebra-i:adapted-basis}
+  Let \(L:V\to W\) be a linear map between finite-dimensional vector
+  spaces, with \(\dim V=m\) and \(\dim\ker L=k\). There is a basis
+  \[
+    (e_1,\ldots,e_k,e_{k+1},\ldots,e_m)
+  \]
+  of \(V\) such that \((e_1,\ldots,e_k)\) is a basis of \(\ker L\) and
+  \((L(e_{k+1}),\ldots,L(e_m))\) is a basis of \(\operatorname{im}L\).
+  If \(k=0\), the images of any basis of \(V\) form a basis of the image.
+\end{lemma}
+% Author review: September 24 slide 11 asserts this fact but does not prove
+% basis extension or the spanning and independence of the remaining images.
+% The earlier author notes also leave that verification open. The lemma
+% remains a stated result; its missing proof has not been manufactured.
+
+\begin{theorem}[Rank--nullity]
+  \label{thm:linear-algebra-i:rank-nullity}
+  For a linear map \(L:V\to W\) between finite-dimensional vector spaces,
+  \[
+    \operatorname{rank}L+\operatorname{nullity}L=\dim V.
+  \]
+\end{theorem}
+
+\begin{proof}
+  Set \(m=\dim V\) and \(k=\dim\ker L\). By
+  Lemma~\ref{thm:linear-algebra-i:adapted-basis}, the image has a basis
+  consisting of \(m-k\) vectors. Consequently,
+  \[
+    \dim\ker L+\operatorname{rank}L=k+(m-k)=m=\dim V.
+  \]
+\end{proof}
+
+The following exercises apply these ideas \cite{Yang2026Homework04}.
+
+\input{problems/hw04/01-kernel-image-and-rank/problem}
+
+\subsection{Isomorphisms}
+
+Recall the distinction between injectivity, surjectivity, and bijectivity
+in \S~\ref{sec:appendix:map-properties}.
+A linear map is an \emph{isomorphism} if it is injective and surjective.
+The kernel and image criteria give
+\[
+  L\text{ is an isomorphism}
+    \quad\Longleftrightarrow\quad
+  \dim\ker L=0\text{ and }\operatorname{rank}L=\dim W.
+\]
+Rank--nullity then implies \(\dim V=\dim W\). Equivalently, \(L\) is an
+isomorphism precisely when
+\[
+  \dim V=\dim W=\operatorname{rank}L,\qquad \dim\ker L=0.
+\]
+Another equivalent criterion is
+\[
+  L\text{ is bijective}
+    \quad\Longleftrightarrow\quad
+  \dim V=\dim W\text{ and }\dim\ker L=0.
+\]
+
+\input{problems/hw04/02-rank-nullity/problem}
+
+Figure~\ref{fig:linear-algebra-i:rank-map-criteria} summarizes the
+rank and nullity tests for a linear map between finite-dimensional spaces.
+The dimension inequalities are necessary consequences of these tests;
+the sizes of the domain and codomain alone do not decide injectivity
+or surjectivity. A bijective map satisfies both sets of criteria.
+
+\begin{figure*}[htbp]
+  \centering
+  \input{figures/rank-map-criteria}
+  \caption{Finite-dimensional map criteria. Light gray shows the image;
+    dark gray shows a nonzero kernel. Dashed paths map to zero.
+    The first two sketches illustrate non-bijective possibilities.
+    Circle sizes do not encode dimensions.}
+  \label{fig:linear-algebra-i:rank-map-criteria}
+\end{figure*}
+
+\subsection{A matrix adapted to the kernel and image}
+
+% The author requested motivation, margin context, and a visual aid on
+% October 1, 2026. These explain the existing adapted-basis construction.
+The aim is to choose coordinates that make the kernel and image visible
+in the matrix.\marginnote{%
+  \emph{Adapted} means that the bases are chosen to fit the map.
+  Changing coordinates does not change \(L\), its kernel, or its image;
+  it makes the lost input directions and the independent output
+  directions easier to identify.}
+As in Section~\ref{sec:linear-algebra-i:change-of-basis-for-functions-and-maps},
+each column records the image of one domain basis vector in the chosen
+codomain basis.
+
+For finite-dimensional \(V\) and \(W\), write
+\(m=\dim V\), \(n=\dim W\), \(k=\dim\ker L\), and
+\(r=m-k=\operatorname{rank}L\). Choose the basis \(E\) of
+Lemma~\ref{thm:linear-algebra-i:adapted-basis}, with the \(k\) kernel
+vectors first. The images of the remaining \(r\) vectors form a basis
+of \(\operatorname{im}L\). Choose a basis
+\(F=[f_1,\ldots,f_n]\) of \(W\) whose first \(r\) vectors are
+\[
+  f_j=L(e_{k+j}),\qquad 1\leq j\leq r.
+\]
+The remaining \(n-r\) vectors complete the basis of \(W\).
+\marginnote{%
+  Here \(m\) counts input coordinates and \(n\) counts output coordinates,
+  so \(D\) has \(n\) rows and \(m\) columns. The domain basis begins with
+  the kernel; the codomain basis begins with the image.}
+
+Now \(L(E)=[0,\ldots,0,f_1,\ldots,f_r]\). The first \(k\) columns
+are zero because their basis vectors lie in the kernel. For the next
+\(r\) columns, \(L(e_{k+j})=f_j\) has coefficient \(1\) in position
+\(j\) and \(0\) elsewhere, giving an identity block. Every output lies
+in the span of \(f_1,\ldots,f_r\), so the last \(n-r\) rows are zero.
+Thus the matrix in these bases is
+\begin{equation}
+  D=
+  \begin{bmatrix}
+    0_{r\times k}&I_r\\
+    0_{(n-r)\times k}&0_{(n-r)\times r}
+  \end{bmatrix}.
+  \label{eq:linear-algebra-i:kernel-first-normal-form}
+\end{equation}
+% September 24 slides 14--15 also assume extension of an image basis to
+% a codomain basis; no proof of basis extension is supplied.
+
+Figure~\ref{fig:linear-algebra-i:adapted-basis-blocks} shows how the
+ordering of the two bases produces these four blocks.
+
+\begin{figure}[ht]
+  \centering
+  \input{figures/adapted-basis-block-matrix}
+  \caption{Schematic of the adapted matrix \(D\).
+    The identity block carries the \(r\) surviving coordinates.
+    Block sizes are indicated by the labels, not drawn to scale.
+    A coordinate group disappears from \(D\) when its dimension is zero.}
+  \label{fig:linear-algebra-i:adapted-basis-blocks}
+\end{figure}
+
+\begin{samepage}
+To see its action, split an input coordinate column into
+\(u\in\mathbb F^k\) and \(t\in\mathbb F^r\). Then
+\[
+  a=\begin{bmatrix}u\\t\end{bmatrix},
+  \qquad
+  Da=\begin{bmatrix}t\\0\end{bmatrix},
+  \qquad 0\in\mathbb F^{n-r}.
+\]
+In other words, if \(v=Ea\), then
+\(L(v)=\sum_{j=1}^r t^j f_j\).
+\marginnote{%
+  The identity block copies the surviving coefficients because
+  \(f_j\) was chosen to equal \(L(e_{k+j})\).
+  It does not assert that \(L\) is the identity map on \(V\).}
+The \(k\) kernel coordinates \(u\) have no effect on the output.
+This makes nullity \(k\) and rank \(r\) directly visible.
+\par
+\end{samepage}
+
+\begin{example}
+  For the standard bases of \(\R^m\) and \(\R^n\), the prescription
+  \[
+    L(e_1)=\cdots=L(e_k)=0,\qquad L(e_{k+j})=f_j\quad(1\leq j\leq r)
+  \]
+  gives the matrix \(D\) in
+  Equation~\ref{eq:linear-algebra-i:kernel-first-normal-form}.
+  Here \(r=m-k\leq n\). Its nullity is \(k\) and its rank is \(r\).
+  It is injective when \(k=0\), and surjective when \(n-r=0\).
+\end{example}
+
+\input{problems/hw04/03-prescribed-kernel-and-image/problem}
+
+\subsection{Using the identity \(L(E)=FM\)}
+
+% Source: September 24 slides 16--19. The author requested an explicit
+% computational walkthrough of this identity on October 1, 2026.
+The identity \(L(E)=FM\) is a recipe for finding the matrix of \(L\)
+in the ordered bases \(E=[e_1,\ldots,e_m]\) and \(F=[f_1,\ldots,f_n]\).
+Here
+\[
+  L(E)=[L(e_1),\ldots,L(e_m)]
+\]
+means applying \(L\) to each basis vector and placing the images in
+columns. If \(M_j\) is the \(j\)-th column of \(M\), the corresponding
+column of \(FM\) is
+\[
+  FM_j=f_1M^1_j+\cdots+f_nM^n_j.
+\]
+Thus \(L(E)=FM\) says that each column of \(M\) contains the
+coefficients of \(L(e_j)\) in the basis \(F\).
+
+To construct \(M\), proceed one column at a time.
+\begin{enumerate}[(1)][1]
+  \item Compute \(L(e_j)\), using the given formula for \(L\).
+  \item Express this output as a linear combination of
+    \(f_1,\ldots,f_n\). Equivalently, solve
+    \(FM_j=L(e_j)\) for its coefficient column \(M_j\).
+    The coefficients are unique because \(F\) is a basis.
+  \item Place that coefficient column in position \(j\).
+    Repeat in the order of \(E\), giving \(M=[M_1,\ldots,M_m]\).
+\end{enumerate}
+The resulting matrix has \(n\) rows and \(m\) columns.
+Multiplying \(FM\) should reproduce all the computed images in \(L(E)\);
+this is a direct check of the construction.
+
+For a map between coordinate spaces, let \(C\) be its standard-basis
+matrix, and write \(E\) and \(F\) as matrices whose columns are the
+basis vectors in standard coordinates. Then \(L(E)=CE\), so
+\[
+  CE=FM,\qquad M=F^{-1}CE.
+\]
+The matrix \(F\) is invertible because its columns form a basis.
+In practice, one can compute \(CE\) and solve \(FM=CE\) column by
+column. The next example carries out the coefficient method directly.
+
+\begin{example}
+  \label{ex:linear-algebra-i:adapted-basis-matrix}
+  Consider \(L:\R^3\to\R^2\) with standard-basis matrix
+  \[
+    C=\begin{bmatrix}1&2&3\\0&0&4\end{bmatrix}.
+  \]
+  Its kernel is
+  \[
+    \{(v^1,v^2,0):v^1+2v^2=0\},
+  \]
+  with basis \(\{(-2,1,0)\}\). Choose the domain and codomain bases
+  \[
+    E=[(-2,1,0),(0,1,0),(0,0,1)],
+    \qquad F=[(2,0),(3,4)].
+  \]
+  As matrices of standard coordinates, these are
+  \[
+    E=\begin{bmatrix}-2&0&0\\1&1&0\\0&0&1\end{bmatrix},
+    \qquad F=\begin{bmatrix}2&3\\0&4\end{bmatrix}.
+  \]
+  Applying \(C\) to the columns of \(E\) gives\marginnote{%
+    Although \(L(e_2)=(2,0)\) in standard coordinates, it equals \(f_1\).
+    Its column in \(M\) is therefore \((1,0)^T\), recording one copy
+    of \(f_1\) and zero copies of \(f_2\).}
+  \[
+    \begin{aligned}
+      L(e_1)&=(-2+2,0)=(0,0)=0f_1+0f_2,\\
+      L(e_2)&=(2,0)=1f_1+0f_2,\\
+      L(e_3)&=(3,4)=0f_1+1f_2.
+    \end{aligned}
+  \]
+  The three coefficient columns are therefore
+  \[
+    M_1=\begin{bmatrix}0\\0\end{bmatrix},\qquad
+    M_2=\begin{bmatrix}1\\0\end{bmatrix},\qquad
+    M_3=\begin{bmatrix}0\\1\end{bmatrix}.
+  \]
+  Placing these columns in order gives\marginnote{%
+    Here \(k=1\) and \(r=2\), so the adapted matrix has one zero column
+    followed by \(I_2\). Since \(n=r=2\), there are no unused output
+    coordinates and no lower block of zero rows.}
+  \[
+    M=[M_1,M_2,M_3]=\begin{bmatrix}0&1&0\\0&0&1\end{bmatrix}.
+  \]
+  To check \(L(E)=FM\), multiply
+  \[
+    \begin{aligned}
+      FM
+        &=\begin{bmatrix}2&3\\0&4\end{bmatrix}
+          \begin{bmatrix}0&1&0\\0&0&1\end{bmatrix}\\
+        &=\begin{bmatrix}0&2&3\\0&0&4\end{bmatrix}
+          =[L(e_1),L(e_2),L(e_3)]=L(E).
+    \end{aligned}
+  \]
+  Thus, for \(v=e_1a^1+e_2a^2+e_3a^3=Ea\),
+  \[
+    L(v)=f_1a^2+f_2a^3=FMa.
+  \]
+\end{example}
+
+\input{problems/hw04/04-adapted-bases/problem}
+
+An alternative normal form places the identity block first.
+If \(C\) represents a map \(\mathbb F^m\to\mathbb F^n\)
+of rank \(r\), there are invertible matrices \(A\) and \(B\) such that
+\[
+  C=A
+  \begin{bmatrix}
+    I_r&0_{r\times(m-r)}\\
+    0_{(n-r)\times r}&0_{(n-r)\times(m-r)}
+  \end{bmatrix}
+  B^{-1}.
+\]
+The displayed block order differs from the kernel-first form in
+Equation~\ref{eq:linear-algebra-i:kernel-first-normal-form}.
+% The author's source states this factorization without its proof. Block
+% sizes have been made explicit from the supplied domain, codomain, and rank.

@@ -1,0 +1,57 @@
+# Generated build directories at any depth.
+build/
+
+# Local lecture images and converted copies.
+/images/
+
+# Compiled documents at any depth; retain source figures.
+*.pdf
+*.dvi
+*.xdv
+*.ps
+!/figures/**/*.pdf
+!/figures/**/*.ps
+
+# LaTeX, bibliography, index, and glossary output at any depth.
+*.aux
+*.bbl
+*.bcf
+*.bbl-SAVE-ERROR
+*.bcf-SAVE-ERROR
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lol
+*.lot
+*.loa
+*.loe
+*.out
+*.run.xml
+*.toc
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.nlg
+*.nlo
+*.nls
+*.nav
+*.snm
+*.vrb
+
+# SyncTeX output, including files written during compilation.
+*.synctex
+*.synctex.gz
+*.synctex(busy)
+*.synctex.gz(busy)
+
+# macOS metadata.
+.DS_Store

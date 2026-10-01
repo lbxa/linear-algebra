@@ -1,0 +1,25 @@
+% !TEX root = ../../../main.tex
+\section{Change of basis formula for vectors}
+\label{sec:linear-algebra-i:change-of-basis-for-vectors}
+
+Let \(E=[e_1,\ldots,e_n]\) and \(F=[f_1,\ldots,f_n]\) be two ordered
+bases of \(V\). Each vector \(f_j\) has coordinates in the basis \(E\),
+so there is a matrix \(M\in\mathbb F^{n\times n}\) whose \(j\)-th column
+contains those coordinates. In matrix notation,
+\[
+  F=EM.
+\]
+Because \(F\) is also a basis, there is a matrix \(N\) with \(E=FN\).
+Substituting \(F=EM\) gives \(E=EMN\). Since the columns of \(E\) are
+linearly independent, \(MN=I_n\); thus \(N=M^{-1}\). The change-of-basis
+matrix is invertible, and it converts coordinates in either direction.
+
+If \(v\in V\) has coordinate columns \(a\) in basis \(E\) and \(b\) in
+basis \(F\), then \(v=Ea=Fb\). Using \(F=EM\),
+\[
+  v=Fb=EMb,
+  \qquad a=Mb,
+  \qquad b=M^{-1}a.
+\]
+Thus \(M\) converts \(F\)-coordinates to \(E\)-coordinates, and
+\(M^{-1}\) converts \(E\)-coordinates to \(F\)-coordinates.

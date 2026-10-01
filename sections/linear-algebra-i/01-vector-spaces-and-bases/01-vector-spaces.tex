@@ -1,0 +1,32 @@
+% !TEX root = ../../../main.tex
+\section{Vector spaces}
+\label{sec:linear-algebra-i:vector-spaces}
+
+% Source: Lucas's supplied MA-GY 7033 Quiz Prep.pdf, pp. 2--3.
+Let \(V\) be a vector space over a field \(\mathbb F\). Vector addition and
+scalar multiplication are operations
+\[
+  V\times V\longrightarrow V,\qquad (v,w)\longmapsto v+w,
+\]
+and
+\[
+  \mathbb F\times V\longrightarrow V,\qquad (a,v)\longmapsto av.
+\]
+The elements of \(V\) are vectors, and the elements of \(\mathbb F\) are
+scalars.
+
+These operations satisfy the following properties.
+For \(v,w\in V\), addition is commutative, there is a zero vector, and each
+vector has an additive inverse:
+\[
+  v+w=w+v,\qquad v+0=v,\qquad v+(-v)=0.
+\]
+For \(a,b\in\mathbb F\) and \(v\in V\), scalar multiplication satisfies
+\[
+  (ab)v=a(bv),\qquad (a+b)v=av+bv.
+\]
+% Author review: this is not an exhaustive axiom list. The quiz-prep source
+% labels (v_1+v_2)+v_3=(v_1+v_3)+v_2 as "Associative", writes F=R union C,
+% and gives "av=v" under "Identity" without the hypothesis a=1.
+% It also omits a(v+w)=av+aw. Confirm the intended axiom list before
+% presenting a complete definition of a vector space.

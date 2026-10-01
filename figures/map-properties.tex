@@ -1,0 +1,58 @@
+% Original finite-set schematics for the author's requested map recall.
+\begin{tikzpicture}[
+  x=1mm,y=1mm,font=\footnotesize,line width=0.45pt,
+  every node/.style={inner sep=2pt},
+  map arrow/.style={line width=0.35pt,-{Latex[length=1.6mm,width=1.1mm]}}
+]
+  \begin{scope}
+    \node at (44,28) {Injective, not surjective};
+    \draw[fill=black!5] (15,0) ellipse[x radius=11mm,y radius=18mm];
+    \draw[fill=black!5] (73,0) ellipse[x radius=11mm,y radius=18mm];
+    \node at (15,22) {\(A\)};
+    \node at (73,22) {\(B\)};
+    \foreach \y/\i in {9/1,0/2,-9/3} {
+      \fill (15,\y) circle[radius=1.6pt];
+      \node at (9,\y) {\(a_{\i}\)};
+    }
+    \foreach \y/\i in {9/1,3/2,-3/3,-9/4} {
+      \fill (73,\y) circle[radius=1.6pt];
+      \node at (79,\y) {\(b_{\i}\)};
+    }
+    \draw[map arrow] (15,9) -- (73,9);
+    \draw[map arrow] (15,0) -- (73,3);
+    \draw[map arrow] (15,-9) -- (73,-3);
+  \end{scope}
+  \begin{scope}[yshift=-52mm]
+    \node at (44,28) {Surjective, not injective};
+    \draw[fill=black!5] (15,0) ellipse[x radius=11mm,y radius=18mm];
+    \draw[fill=black!5] (73,0) ellipse[x radius=11mm,y radius=18mm];
+    \node at (15,22) {\(A\)};
+    \node at (73,22) {\(B\)};
+    \foreach \y/\i in {9/1,3/2,-3/3,-9/4} {
+      \fill (15,\y) circle[radius=1.6pt];
+      \node at (9,\y) {\(a_{\i}\)};
+    }
+    \foreach \y/\i in {9/1,0/2,-9/3} {
+      \fill (73,\y) circle[radius=1.6pt];
+      \node at (79,\y) {\(b_{\i}\)};
+    }
+    \draw[map arrow] (15,9) -- (73,9);
+    \draw[map arrow] (15,3) -- (73,0);
+    \draw[map arrow] (15,-3) -- (73,0);
+    \draw[map arrow] (15,-9) -- (73,-9);
+  \end{scope}
+  \begin{scope}[yshift=-104mm]
+    \node at (44,28) {Bijective};
+    \draw[fill=black!5] (15,0) ellipse[x radius=11mm,y radius=18mm];
+    \draw[fill=black!5] (73,0) ellipse[x radius=11mm,y radius=18mm];
+    \node at (15,22) {\(A\)};
+    \node at (73,22) {\(B\)};
+    \foreach \y/\i in {9/1,0/2,-9/3} {
+      \fill (15,\y) circle[radius=1.6pt];
+      \fill (73,\y) circle[radius=1.6pt];
+      \node at (9,\y) {\(a_{\i}\)};
+      \node at (79,\y) {\(b_{\i}\)};
+      \draw[map arrow] (15,\y) -- (73,\y);
+    }
+  \end{scope}
+\end{tikzpicture}
