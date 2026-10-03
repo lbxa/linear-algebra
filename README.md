@@ -62,7 +62,7 @@ Its input in `main.tex` remains commented out until course material is supplied.
 ### Appendices
 
 - [Notation](sections/appendices/notation.tex)
-- [Assumed knowledge](sections/appendices/prerequisite-results.tex)
+- [Assumed knowledge](sections/appendices/assumed-knowledge.tex)
 - [Solutions to exercises](sections/appendices/exercise-solutions.tex)
 
 Notation contains a heading only. Assumed knowledge includes a recall of
