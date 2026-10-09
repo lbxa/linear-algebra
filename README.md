@@ -688,6 +688,14 @@ removed.
 
 ## Changelog
 
+### 2026-10-09
+
+- Put every supplied or explicitly authorized exercise solution in one
+  `\begin{proof}[Solution]` / `\end{proof}` block, shared by the appendix and
+  handout. The proof environment supplies the heading, spacing, and one final
+  end marker, so multipart solutions share one proof block without manual `\qed`
+  commands; pending notices remain outside proof environments.
+
 ### 2026-10-06
 
 - Standardize book and handout captions with the `caption` package at Lucas's

@@ -1,6 +1,6 @@
 % Author's solution, supplied in this file and reviewed on October 7, 2026.
 % Keep j != k; the argument does not require either ordering of the columns.
-\noindent\textbf{Solution.}
+\begin{proof}[Solution]
 Let \(D\) be the determinant function on columns. Only column \(j\)
 changes, and \(c'_j=c_j+ac_k\). By linearity in the \(j\)-th input,
 \begin{align*}
@@ -11,4 +11,5 @@ changes, and \(c'_j=c_j+ac_k\). By linearity in the \(j\)-th input,
 \end{align*}
 Since \(j\ne k\), the second determinant-function value contains
 \(c_k\) in both positions \(j\) and \(k\). It vanishes because its
-inputs repeat. Hence \(\det M'=D(c_1,\ldots,c_n)=\det M\). \qed
+inputs repeat. Hence \(\det M'=D(c_1,\ldots,c_n)=\det M\).
+\end{proof}

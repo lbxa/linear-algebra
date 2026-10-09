@@ -213,6 +213,11 @@ names topic-specific. Add notation only as needed by supplied material.
 
 Use the shared mathematical environments and styles. Reusing an exercise in
 the appendix must preserve its identity and presentation as an exercise.
+Wrap each supplied or explicitly authorized shared solution in one
+`\begin{proof}[Solution]` / `\end{proof}` environment, including all its
+subparts. Let the environment supply the heading, spacing, and final end
+marker rather than adding a manual solution heading or `\qed`. Keep pending
+solution notices outside proof environments.
 
 Box outlines are strictly prohibited throughout the book and handouts,
 including equations, statements, examples, exercises, prose, tables, and

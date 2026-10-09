@@ -52,6 +52,10 @@ When neither existing nor newly supplied material contains a solution, put
 accordingly. Preserve existing supplied solutions during statement updates.
 Add supplied solutions only within the authorized scope; no empty proof
 environment or fabricated argument.
+Wrap each completed shared solution in one `\begin{proof}[Solution]` /
+`\end{proof}` environment, keeping all subparts inside it. Let the environment
+supply the heading, spacing, and final end marker instead of adding a manual
+solution heading or `\qed`; leave pending notices outside proof environments.
 
 - **Main text:** input only the shared statement, once, in the smallest existing
   topic where the assessed content and prerequisites are available. Assess the

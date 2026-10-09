@@ -2,7 +2,8 @@
 % Red marks revised prose, mathematical corrections, and added justifications.
 % Purely typographical changes to math delimiters are not marked.
 % All five supplied parts have now been reviewed; retain the red review marks.
-\noindent\textbf{Solution.} For part (a), \textcolor{red}{suppose} a matrix
+\begin{proof}[Solution]
+For part (a), \textcolor{red}{suppose} a matrix
 \(P_\sigma\) is a permutation matrix where \(c_k=e_{\sigma(k)}\).
 Since \(\sigma:\{1,\ldots,n\}\to\{1,\ldots,n\}\) is bijective,
 \(\sigma(1),\ldots,\sigma(n)\) will be distinct and
@@ -30,7 +31,7 @@ and
     =P_\sigma.
 \]
 Therefore \(P\) is a permutation matrix if and only if every entry is
-\(0\) or \(1\) with exactly one \(1\) in each row and column. \qed
+\(0\) or \(1\) with exactly one \(1\) in each row and column.
 
 For part (b), we know that when we multiply a matrix \(M\) by a basis
 vector it produces \textcolor{red}{the corresponding column},
@@ -54,7 +55,6 @@ e_{\sigma(n)}\end{bmatrix}\),
   MP_\sigma=\begin{bmatrix}c_{\sigma(1)}\mid\ldots\mid
     c_{\sigma(n)}\end{bmatrix}.
 \]
-\qed
 
 For part (c), we first express \(v\in\R^n\) as a linear combination
 of \textcolor{red}{the standard basis vectors},
@@ -86,7 +86,6 @@ the input index \(k\) satisfying \(\sigma(k)=i\), so}
 \[
   \textcolor{red}{(P_\sigma v)^i=v^{\sigma^{-1}(i)}.}
 \]
-\qed
 
 For part (d), \textcolor{red}{fix any \(k\in\{1,\ldots,n\}\).}
 It was proven in part (c) that
@@ -113,7 +112,6 @@ on every vector. Therefore,}
 \[
   P_{\sigma\circ\tau}=P_\sigma P_\tau.
 \]
-\qed
 
 % Keep the final determinant argument together in the handout and appendix.
 \newpage
@@ -143,4 +141,5 @@ the definition of the sign gives \(\epsilon(\sigma)=(-1)^r\). Hence,}
     &=\textcolor{red}{(-1)^r\cdot1}\\
     &=\epsilon(\sigma).
 \end{align*}
-\textcolor{red}{Therefore, \(\det(P_\sigma)=\epsilon(\sigma)\).} \qed
+\textcolor{red}{Therefore, \(\det(P_\sigma)=\epsilon(\sigma)\).}
+\end{proof}

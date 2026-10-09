@@ -33,9 +33,13 @@ and stay stable when file numbers change, for example
 `sec:linear-algebra-i:vector-spaces`.
 
 Use the existing `definition`, `theorem`, `lemma`, `proposition`, `corollary`,
-`example`, `exercise`, `remark`, and `proof` environments. Cross-reference labels
-with `\ref` and `\eqref`. Review supplied proofs for correctness separately from
-grammar and compilation; report any changes that require new mathematics.
+`example`, `exercise`, `remark`, and `proof` environments. Wrap each completed
+shared solution, including all its subparts, in `\begin{proof}[Solution]` and
+`\end{proof}` so the heading, spacing, and final end marker are automatic.
+Keep pending notices outside proof environments and omit manual `\qed`
+commands. Cross-reference labels with `\autoref`. Review supplied proofs for
+correctness separately from grammar and compilation; report any changes that
+require new mathematics.
 
 ## Import homework once
 
