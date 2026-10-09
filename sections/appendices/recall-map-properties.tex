@@ -20,7 +20,7 @@ of the codomain is the output of at least one input. Equivalently,
   \text{ such that }f(a)=b.
 \]
 Different inputs may have the same output. In the middle panel of
-Figure~\ref{fig:recall:map-properties}, every codomain element receives
+\autoref{fig:recall:map-properties}, every codomain element receives
 an arrow, and two inputs share an output.
 
 \subsection{Injectivity}
@@ -35,7 +35,7 @@ inputs have distinct outputs. Equivalently,
   remain distinguishable through their outputs.}
 Each codomain element has at most one input mapping to it. Some
 codomain elements may have no such input, as the top panel of
-Figure~\ref{fig:recall:map-properties} shows.
+\autoref{fig:recall:map-properties} shows.
 
 \subsection{Bijectivity}
 
@@ -43,13 +43,13 @@ The map \(f\) is \emph{bijective} if it is both injective and surjective.
 Every codomain element then has exactly one input mapping to it.
 This gives a one-to-one correspondence between the entire domain
 and codomain, as in the bottom panel of
-Figure~\ref{fig:recall:map-properties}. Bijectivity imposes both
+\autoref{fig:recall:map-properties}. Bijectivity imposes both
 conditions, so it is stronger than either condition alone.
 
 \begin{figure}[htbp]
   \centering
   \input{figures/map-properties}
-  \caption{Three maps between finite sets. Each dot is an element.
+  \caption[Injective, surjective, and bijective maps.]{Three maps between finite sets. Each dot is an element.
     Top: an injective map leaves an output unused.
     Middle: a surjective map reaches every output, but two inputs share
     an output. Bottom: a bijective map reaches every output exactly once.
@@ -71,13 +71,13 @@ Consider
 Different pairs retain their distinct first two coordinates, so \(Z\)
 is injective. Its image is the \(xy\)-plane. It is not surjective onto
 \(\R^3\), since an output with a nonzero third coordinate is never reached.
-Figure~\ref{fig:recall:plane-inclusion} shows a pair and its image in that
+\autoref{fig:recall:plane-inclusion} shows a pair and its image in that
 plane.
 
 \begin{figure}[htbp]
   \centering
   \input{figures/map-plane-inclusion}
-  \caption{Schematic inclusion \(Z:\R^2\to\R^3\). The shaded region
+  \caption[Plane inclusion into three-dimensional space.]{Schematic inclusion \(Z:\R^2\to\R^3\). The shaded region
     depicts part of the \(xy\)-plane, which continues beyond the drawing.
     The marked input maps to a point in this plane. Distinct input
     coordinates remain distinct after inclusion.}
@@ -91,13 +91,13 @@ Consider
 \]
 Every pair \((y,z)\) is attained, for instance from \((0,y,z)\), so
 \(U\) is surjective. It is not injective, since changing \(x\) leaves
-the output unchanged. Figure~\ref{fig:recall:coordinate-projection}
+the output unchanged. \autoref{fig:recall:coordinate-projection}
 shows inputs differing in the \(x\)-direction sharing an output.
 
 \begin{figure}[htbp]
   \centering
   \input{figures/map-coordinate-projection}
-  \caption{Schematic projection \(U:\R^3\to\R^2\). The marked inputs
+  \caption[Projection onto two coordinates.]{Schematic projection \(U:\R^3\to\R^2\). The marked inputs
     lie on a line parallel to the \(x\)-axis and have the same \(y,z\)
     coordinates. They map to the same pair. Every pair in the codomain
     is attained.}
@@ -111,13 +111,13 @@ Consider
 \]
 Each output \((a,b)\) has exactly one preimage, namely \((b,a)\).
 Thus \(B\) is bijective. Swapping coordinates again recovers the
-original input. Figure~\ref{fig:recall:coordinate-swap} shows the
+original input. \autoref{fig:recall:coordinate-swap} shows the
 reflection across the line \(x=y\).
 
 \begin{figure}[htbp]
   \centering
   \input{figures/map-coordinate-swap}
-  \caption{Schematic coordinate swap in \(\R^2\). The dashed diagonal
+  \caption[Swapping two coordinates.]{Schematic coordinate swap in \(\R^2\). The dashed diagonal
     in each coordinate system is \(x=y\). The marked point and its
     image have exchanged coordinates. Each output has exactly one input.}
   \label{fig:recall:coordinate-swap}

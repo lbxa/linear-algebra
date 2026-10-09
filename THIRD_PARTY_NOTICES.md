@@ -34,6 +34,15 @@ with chapter/topic files, shared homework sources, margin solution links, and
 appendix restatements. Retain source credits and license notices with adapted
 layout material.
 
+## Formula-sheet layout
+
+The portrait, two-column layout in
+[sections/appendices/formula-sheet.tex](sections/appendices/formula-sheet.tex)
+is adapted from Lucas Barbosa's Maths Analysis project. That sheet credits
+Dave Richeson's LaTeX cheat sheet at divisbyzero.com, Dickinson College, as
+its layout inspiration. The Linear Algebra formulas summarize this book's
+existing supplied content.
+
 ## Kernel and image diagrams
 
 The TikZ diagrams in [figures/kernel-to-zero.tex](figures/kernel-to-zero.tex)

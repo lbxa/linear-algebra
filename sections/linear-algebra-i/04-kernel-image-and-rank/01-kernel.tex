@@ -17,14 +17,14 @@
   mapped to the zero vector.
 \end{definition}
 
-Figure~\ref{fig:linear-algebra-i:kernel-to-zero} emphasizes the defining
+\autoref{fig:linear-algebra-i:kernel-to-zero} emphasizes the defining
 property of the kernel. Every input in this subspace has the same output,
 the zero vector \(0_W\).
 
 \begin{figure}[htbp]
   \centering
   \input{figures/kernel-to-zero}
-  \caption{The kernel of \(L:V\to W\), shown schematically.
+  \caption[Kernel of a linear map.]{The kernel of \(L:V\to W\), shown schematically.
     All vectors in the shaded region map to \(0_W\).
     The circle indicates a set, not a bounded vector space.
     TikZ redrawing inspired by
@@ -66,7 +66,7 @@ For a matrix \(A\in\mathbb F^{n\times m}\), the same definition becomes
 \]
 Thus finding the null space means solving a homogeneous system of linear
 equations \cite{MargalitRabinoffSubspaces}, using the row operations of
-Section~\ref{sec:linear-algebra-i:systems-of-linear-equations}.
+\autoref{sec:linear-algebra-i:systems-of-linear-equations}.
 The dimension of this solution space is \(\operatorname{nullity}A\).
 
 \subsection{Information lost by the map}
@@ -91,9 +91,9 @@ by any vector in the kernel without changing the observed data.
   The array defines a filter. For a linear filter, its linear-algebra
   kernel would instead be the subspace of images it maps to zero.}
 Nullity therefore counts the independent directions of this ambiguity.
-Section~\ref{sec:linear-algebra-i:rank} defines rank as the dimension of
+\autoref{sec:linear-algebra-i:rank} defines rank as the dimension of
 the image. For finite-dimensional \(V\), the rank--nullity theorem
-(Theorem~\ref{thm:linear-algebra-i:rank-nullity}) gives
+(\autoref{thm:linear-algebra-i:rank-nullity}) gives
 \[
   \operatorname{rank}L+\operatorname{nullity}L=\dim V.
 \]
@@ -116,7 +116,7 @@ solution is unique.
 \subsection{Injectivity}
 
 The general definition of injectivity is recalled in
-\S~\ref{sec:appendix:map-properties}.
+\autoref{sec:appendix:map-properties}.
 The map \(L\) is injective exactly when \(\ker L=\{0_V\}\), or,
 in finite dimensions, when \(\dim\ker L=0\). If \(L\) is injective,
 \(L(k)=0_W=L(0_V)\) forces \(k=0_V\) for every \(k\in\ker L\).

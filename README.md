@@ -7,10 +7,16 @@ and shared exercise statements and solutions.
 **Current state:** the copied Mathematical Analysis notes, homework sets,
 lecture images, and specimen content have been removed. Part I now incorporates
 Lucas's supplied lecture photos and quiz-prep notes, plus Deane Yang's supplied
-September 17 and September 24 handouts. One lecture exercise is embedded and
+September 17, September 24, and October 1 handouts. Week 5's seven photos
+and the October 1 PDF supply the Multilinear algebra and determinants chapter.
+One lecture exercise is embedded and
 restated in the appendix, awaiting a supplied solution. Homework 4's five
 problems are included in §§4.3–4.4 and the appendix, with Lucas's supplied
 solutions and standalone handouts with and without solutions.
+Homework 5's eight questions are included in §§5.1 and 5.4, the appendix,
+and `problems/hw05.tex`; Problems 1–6 have Lucas's supplied solutions,
+Problem 7 has a solution written at his request, and Problem 8 has Lucas's
+complete supplied solution, with all five parts reviewed in red.
 Mathematical content is added only from material supplied
 or dictated by Lucas; the calendar supplies organizational headings only.
 
@@ -26,6 +32,7 @@ or dictated by Lucas; the calendar supplies organizational headings only.
 - [Local customisation](#local-customisation)
 - [Contributing](#contributing)
 - [License and attribution](#license-and-attribution)
+- [Changelog](#changelog)
 
 ## Book outline
 
@@ -43,9 +50,11 @@ individual definitions, examples, and arguments.
 | September 10, 2026 | [2. Matrices and vector coordinates](sections/linear-algebra-i/02-matrices-and-vector-coordinates/chapter.tex) | Matrix multiplication; change of basis formula for vectors |
 | September 17, 2026 | [3. Linear equations and maps](sections/linear-algebra-i/03-linear-equations-and-maps/chapter.tex) | Systems of linear equations; linear functions and maps; change of basis formula for functions and maps |
 | September 24, 2026 | [4. Kernel, image, and rank](sections/linear-algebra-i/04-kernel-image-and-rank/chapter.tex) | Kernel; image; rank; differentiation as an application |
+| October 1, 2026 (Week 5 supplied sources) | [5. Multilinear algebra and determinants](sections/linear-algebra-i/05-multilinear-algebra-and-determinants/chapter.tex) | Oriented area and volume; permutations; antisymmetric multilinear functions; determinant |
 
-The first four chapters contain supplied notes for these sessions. The tentative
-October 1 topics and all later sessions are excluded. Do not infer future
+The first five chapters contain supplied notes for these sessions. Chapter 5
+was added at Lucas's request from the Week 5 photos and supplied October 1 PDF;
+its headings follow that material. Later sessions remain excluded. Do not infer future
 chapters or fetch linked lectures and assignments as book content unless Lucas
 asks for their import.
 
@@ -64,14 +73,26 @@ Its input in `main.tex` remains commented out until course material is supplied.
 - [Notation](sections/appendices/notation.tex)
 - [Assumed knowledge](sections/appendices/assumed-knowledge.tex)
 - [Solutions to exercises](sections/appendices/exercise-solutions.tex)
+- [Formula sheet](sections/appendices/formula-sheet.tex)
 
-Notation contains a heading only. Assumed knowledge includes a recall of
+Notation explains the current symbols, matrix indices, coordinate conventions,
+composition order, and context-dependent uses of letters. Assumed knowledge
+includes a recall of
 injectivity, surjectivity, and bijectivity with finite-set TikZ diagrams
 and visual examples in real two- and three-dimensional spaces.
 The exercise appendix
-contains the complete shared lecture exercise and Homework 4 statements.
+contains the complete shared lecture exercise and Homework 4 and 5 statements.
 Homework 4 statements are followed by Lucas's transcribed solutions; the
-lecture exercise still has a pending-solution notice.
+lecture exercise has a pending-solution notice. Homework 5 Problem 8 has
+Lucas's complete solution to parts (a)–(e), reviewed in red.
+Homework 5 Problems 1–6 have Lucas's supplied solutions; Problem 7 has the
+explicitly requested arithmetic solution, using column expansion to obtain 65.
+The formula sheet summarizes the existing bases, coordinates, maps, kernel,
+image, rank, and differentiation material, with section links and hypotheses.
+Its second page summarizes the supplied oriented-area, permutation, and
+determinant formulas from Chapter 5.
+The [appendix changelog](sections/appendices/README.md#changelog) records
+its scope and layout decisions.
 
 ## Repository structure
 
@@ -96,8 +117,14 @@ sections/
       02-image.tex
       03-rank.tex
       04-differentiation.tex
+    05-multilinear-algebra-and-determinants/
+      chapter.tex
+      01-oriented-area-and-volume.tex
+      02-permutations.tex
+      03-antisymmetric-multilinear-functions.tex
+      04-determinant.tex
   linear-algebra-ii/part.tex    Reserved second course
-  appendices/                  Notation, prerequisites, and solutions
+  appendices/                  Notation, assumed knowledge, solutions, formula sheet
 problems/template.tex          Empty standalone handout template
 problems/hwNN.tex               Handout created when an assignment is supplied
 problems/hwNN/NN-topic/
@@ -106,6 +133,9 @@ problems/hwNN/NN-topic/
 problems/lecNN/NN-topic/        Shared lecture exercises with the same file pair
 figures/                       Editable diagrams for supplied content
 scripts/jpeg.sh                Optional local lecture-image conversion helper
+scripts/codex-stop-check.sh     Build check used by the Codex Stop hook
+.codex/hooks.json              Project-local hook configuration
+.agents/skills/                Lecture, homework, and tacit-knowledge workflows
 images/                        Local supplied lecture images (ignored by Git)
 build/                         Generated output and review artifacts (ignored)
 Makefile                       Build, watch, and cleanup commands
@@ -121,6 +151,10 @@ under `problems/hw04/`. Its questions-only variant is
 `problems/hw04-questions.tex`, which inputs the same statements without
 solutions. It is an export variant of the same assignment, not a new assignment
 identity. The other numbered homework paths describe the convention.
+Homework 5 uses `problems/hw05.tex` and eight adjacent statement/solution
+pairs under `problems/hw05/`. Its original determinant introduction is kept
+in the handout; the column-expansion passage is shared with the book and
+appendix because Problem 7 refers to that procedure.
 Explicit `\input` lists determine reading order. Topic files remain small so
 transcription and revisions can be made without editing the whole book.
 
@@ -131,7 +165,12 @@ is imported from the supplied two-page PDF.** All 21 subparts are preserved in
 their original order, including the missing final punctuation in Problem 3(b).
 Statements are transcribed verbatim; exercise labels and line wrapping follow
 the book's layout. The original PDF is preserved locally as
-`images/supplied/homework-04.pdf`. Other assignments linked on the calendar
+`images/supplied/homework-04.pdf`. **Homework 5, Problems 1–8, is imported
+from its supplied two-page PDF**, including all five subparts of Problem 8.
+Its source is preserved as `images/supplied/homework-05.pdf`; Problems 1–6 have
+Lucas's supplied solutions, Problem 7 has an explicitly authorized solution,
+and Problem 8 has a complete supplied solution, reviewed in red.
+Other assignments linked on the calendar
 are not imported; their question counts, statements, and solutions are not assumed.
 
 Keep one row for every supplied question, including unused and deferred ones.
@@ -146,6 +185,14 @@ status. Do not add guessed questions or invented source paths as data rows.
 | Linear Algebra I / HW4, Problem 3(a–d) | [problem.tex](problems/hw04/03-prescribed-kernel-and-image/problem.tex) | Constructing a map with prescribed kernel and image | 4, §4.3, A matrix adapted to the kernel and image, after the fundamental example | 4 (HW4 #3) | [solution.tex](problems/hw04/03-prescribed-kernel-and-image/solution.tex) | `hw04:prescribed-kernel-and-image` | **Included**; supplied solution (a–d) |
 | Linear Algebra I / HW4, Problem 4(a–e) | [problem.tex](problems/hw04/04-adapted-bases/problem.tex) | Adapted bases and the identity L(E) = FM | 4, §4.3, Using the identity L(E) = FM, after the worked example | 5 (HW4 #4) | [solution.tex](problems/hw04/04-adapted-bases/solution.tex) | `hw04:adapted-bases` | **Included**; supplied solution (a–e) |
 | Linear Algebra I / HW4, Problem 5(a–d) | [problem.tex](problems/hw04/05-polynomial-differentiation/problem.tex) | Polynomial differentiation, kernel/image, matrices, and adapted bases | 4, §4.4, Differentiation as a linear map → Polynomial differentiation | 6 (HW4 #5) | [solution.tex](problems/hw04/05-polynomial-differentiation/solution.tex) | `hw04:polynomial-differentiation` | **Included**; supplied solution (a–d) |
+| Linear Algebra I / HW5, Problem 1 | [problem.tex](problems/hw05/01-bilinear-antisymmetry/problem.tex) | Equal-input vanishing implies bilinear antisymmetry over R | 5, §5.1, Oriented area and bilinearity, after the stated antisymmetry property | 7 (HW5 #1) | [solution.tex](problems/hw05/01-bilinear-antisymmetry/solution.tex) | `hw05:bilinear-antisymmetry` | **Included**; Lucas's supplied solution |
+| Linear Algebra I / HW5, Problem 2 | [problem.tex](problems/hw05/02-two-by-two-determinant/problem.tex) | Two-by-two determinant from multilinearity | 5, §5.4, Computation of determinant | 8 (HW5 #2) | [solution.tex](problems/hw05/02-two-by-two-determinant/solution.tex) | `hw05:two-by-two-determinant` | **Included**; Lucas's supplied solution with the requested geometric interpretation; related calculation appears in §5.1 |
+| Linear Algebra I / HW5, Problem 3 | [problem.tex](problems/hw05/03-negating-a-matrix/problem.tex) | Determinant under negation of all columns | 5, §5.4, Determinant properties | 12 (HW5 #3) | [solution.tex](problems/hw05/03-negating-a-matrix/solution.tex) | `hw05:negating-a-matrix` | **Included**; Lucas's supplied solution, reviewed October 7 |
+| Linear Algebra I / HW5, Problem 4 | [problem.tex](problems/hw05/04-three-by-three-triangular-determinant/problem.tex) | Three-by-three upper triangular determinant | 5, §5.4, Computation of determinant | 9 (HW5 #4) | [solution.tex](problems/hw05/04-three-by-three-triangular-determinant/solution.tex) | `hw05:three-by-three-triangular-determinant` | **Included**; Lucas's supplied solution, reviewed October 7 |
+| Linear Algebra I / HW5, Problem 5 | [problem.tex](problems/hw05/05-upper-triangular-determinant/problem.tex) | General upper triangular determinant and column-expansion process | 5, §5.4, Computation of determinant | 10 (HW5 #5) | [solution.tex](problems/hw05/05-upper-triangular-determinant/solution.tex) | `hw05:upper-triangular-determinant` | **Included**; Lucas's supplied solution with the diagonal-selection argument made explicit in the authorized review |
+| Linear Algebra I / HW5, Problem 6 | [problem.tex](problems/hw05/06-column-addition/problem.tex) | Adding a multiple of another column preserves the determinant | 5, §5.4, Determinant properties | 13 (HW5 #6) | [solution.tex](problems/hw05/06-column-addition/solution.tex) | `hw05:column-addition` | **Included**; Lucas's supplied solution, corrected to cover all j ≠ k; original field F retained |
+| Linear Algebra I / HW5, Problem 7 | [problem.tex](problems/hw05/07-four-by-four-determinant/problem.tex) | Four-by-four determinant using the supplied computation procedure | 5, §5.4, Computation of determinant | 11 (HW5 #7) | [solution.tex](problems/hw05/07-four-by-four-determinant/solution.tex) | `hw05:four-by-four-determinant` | **Included**; adapted from Lucas's two supplied photos at his request, using successive column additions and the triangular diagonal product; arithmetic corrected and value 65 verified |
+| Linear Algebra I / HW5, Problem 8(a–e) | [problem.tex](problems/hw05/08-permutation-matrices/problem.tex) | Permutation matrices, column reordering, linear action, composition, and determinant sign | 5, §5.4, Permutation matrices, after the determinant definition and §5.2 permutation prerequisites | 14 (HW5 #8) | [solution.tex](problems/hw05/08-permutation-matrices/solution.tex) | `hw05:permutation-matrices` | **Included**; Lucas's complete supplied solution (a–e), reviewed with corrections and added justifications in red on October 8; all five question subparts remain together |
 
 Use **Included**, **Not yet included**, **Deferred**, or **Awaiting solution**.
 Record the reason and intended destination for a deferred question when known.
@@ -223,6 +270,84 @@ Downloads files remain unchanged.
 | `MA-GY7033 Lecture Sept 24 2026.pdf`, 20 slides, Deane Yang | §§4.1–4.3 kernel, image, six examples, rank–nullity, isomorphisms, and adapted matrices; repeated matrix notation merged into §3.3; infinite-dimensional basis aside in §1.2 |
 | `MA-GY7033 Fall 2026 Homework 4.pdf`, 2 pages, Problems 1–5 | §§4.3–4.4 exercises in original assignment order, complete appendix restatements, and both Homework 4 handouts; original statements unchanged |
 | Lucas's 24 Homework 4 photos, `images/HW04/IMG_9174.HEIC`–`IMG_9197.HEIC`, converted with `scripts/jpeg.sh` | All 21 solution subparts in the five shared solution files, reused in the appendix and the combined handout; review pages merged with existing notes rather than repeated |
+| Lucas's seven Week 5 photos, `images/LEC05/IMG_9207.HEIC`–`IMG_9213.HEIC` | §§5.1–5.4 geometric motivation, permutations and group properties, multilinearity, antisymmetry, coordinate expansion, and determinant |
+| `MA-GY7033 Lecture Oct 1 2026.pdf`, 30 pages, Deane Yang | §§5.1–5.4; every page mapped below. Preserved as `images/supplied/lecture-2026-10-01.pdf`; title page prints September 10, 2026 |
+| `MA-GY7033 Fall 2026 Homework 5.pdf`, 2 pages, Problems 1–8 | §5.1 bilinear antisymmetry and §5.4 determinant exercises; complete appendix restatements and the `hw05.tex` handout. Problems 1–6 and 8 have complete supplied solutions; Problem 7 has an authorized solution |
+
+### Homework 5 source coverage
+
+Reviewed both PDF pages visually and against their extracted text on October 5,
+2026. The original is preserved locally as `images/supplied/homework-05.pdf`.
+The rendered PDF supplies the questions; the TeX is a faithful reconstruction,
+not recovered original source. No solutions accompanied the homework PDF.
+
+On October 6, Lucas supplied the solution to Problem 1 directly in
+`problems/hw05/01-bilinear-antisymmetry/solution.tex`. Its bilinear expansion
+of A(v+w,v+w), cancellation of the diagonal terms, and antisymmetry conclusion
+are reused in the appendix and standalone handout.
+
+Lucas also supplied the solution to Problem 2 directly in
+`problems/hw05/02-two-by-two-determinant/solution.tex`, requesting the geometric
+interpretation in its main body. The proof uses the assignment's actual
+columns v = ae_1 + be_2 and w = ce_1 + de_2, and factors the final basis value
+as (ad−bc)A(e_1,e_2). The parallelogram and normalized oriented-area explanation
+come from the supplied §5.1 material.
+
+On October 7, Lucas supplied solutions to Problems 3–6 in their shared files
+and requested an audit of his written solutions. The review preserves the
+column-expansion arguments, corrects the determinant function's domain in
+Problem 3, explains why triangular columns force the diagonal selection in
+Problem 5, and covers both index orders in Problem 6. Problems 1–2 were
+reviewed and retained unchanged.
+
+For Problem 7, Lucas supplied the expected value 65 and then the handwritten
+calculation in IMG_9218.heic and IMG_9219.heic, requesting its successive
+column-operation style. Both photos are preserved in
+`images/supplied/hw05-solutions/` and transcribed into the shared solution.
+IMG_9218 supplies the operations on columns 3 and 2; IMG_9219 continues with
+column 1 and the diagonal product. The review corrects 4 − 3/5 to 17/5,
+retains the second entry 2 of the updated third column, and carries those
+corrections through the remaining arithmetic. The final diagonal entries
+are 65/41, 41/17, 17/5, and 5, whose product is 65. Each operation and its
+resulting matrix are shown explicitly, following Lucas's presentation preference.
+
+On October 8, Lucas supplied the solution to Problem 8 directly in
+`problems/hw05/08-permutation-matrices/solution.tex` and requested visible
+red corrections. The review covers all five parts, preserving the row/column
+count, column-multiplication, and basis-expansion arguments. It corrects
+the multiplication order to P_sigma v and the final basis index to sigma(n),
+makes the finite-set bijectivity and product-column justifications explicit,
+and clarifies the inverse index used to read an output coordinate.
+After Lucas completed (d) and (e), he requested the same review for those
+parts. The composition proof distinguishes (sigma composed with tau)(k)
+from the permutation itself and uses agreement on the standard basis to
+justify matrix equality. The determinant-sign proof retains his transposition
+argument, corrects the matrix name to P_sigma, and explicitly uses
+D(e_1,...,e_n) = 1. The supplied solution is complete; the red marks remain
+visible for the author's comparison.
+
+| PDF page | Supplied content | Destination and status |
+| --- | --- | --- |
+| 1 | Assignment title, determinant definition over F, normalized function D, and standard-basis column-expansion instructions | Original introduction in `problems/hw05.tex`; computation passage in `problems/hw05/column-expansion.tex`, reused in §5.4 and the solutions appendix. Existing real determinant definition remains in §5.4 |
+| 1 | Problems 1–5 | Shared statements mapped above: Problem 1 in §5.1; Problems 2–5 in §5.4. Appendix positions are 7, 8, 12, 9, and 10 respectively; the handout retains assignment order |
+| 2 | Problems 6–7 | Shared statements in §5.4, appendix positions 13 and 11 respectively, and the handout; column entries and the four-by-four matrix are preserved |
+| 2 | Problem 8 and its five subparts (a–e) | Complete shared definition, example, and subparts in §5.4, appendix order 14, and the handout. The whole question is placed after the determinant definition because part (e) needs it |
+
+Preserve Problem 2's matrix `[a c; b d]`, Problem 8(c)'s superscript
+coordinates, the column convention `c_k = e_{σ(k)}`, and the punctuation
+after part (b). Problem 4's source equation tag `(1)` is local to the handout;
+it does not override the book's equation sequence. Problem 7's phrase
+“described above” refers to the shared column-expansion passage in all three
+outputs. Problem 8 now contains the author's complete solution, with red review
+edits throughout (a)–(e); the related
+two-by-two calculation already in §5.1 is retained in the main text.
+
+The assignment uses a general field F in its introduction and Problem 6,
+whereas Chapter 5's supplied lecture development currently uses R. The
+handout retains the original F notation; it does not silently generalize the
+book's normalized antisymmetric-function theorem. The characteristic-2
+ambiguity recorded for Week 5 remains unresolved. The field hypotheses and
+unresolved lecture proof gaps are unchanged by the authorized homework review.
 
 ### Homework 4 solution-photo coverage
 
@@ -309,6 +434,89 @@ solving for coefficients in the codomain basis, the coordinate-matrix
 identity CE = FM, and the check obtained by multiplying FM. The original
 example is expanded with its three basis images and coefficient columns;
 no homework solution is supplied.
+
+### October 1 Week 5 source coverage
+
+Reviewed every PDF page and all seven photos visually on October 5, 2026.
+The PDF's filename and the author's Week 5 identification place the content
+on October 1, although its title page prints **September 10, 2026**. No later
+course content or linked proof was fetched. The supplied material contains no
+new proof-request exercise, so the lecture exercise placement map is unchanged.
+
+Original HEIC photos remain in `images/LEC05/`; readable JPEG copies are in
+`images/LEC05/jpeg/`. For these files, `scripts/jpeg.sh`/`sips` returned JPEG
+headers without pixel data despite reporting success. The images were
+reconverted with the bundled `heif-convert` utility, preserving originals.
+
+| Photo | Supplied content | Book destination and status |
+| --- | --- | --- |
+| IMG_9207 | Parallelogram sketch, ordinary and oriented area, bilinearity, A(v,v) = 0, doubling both inputs, antisymmetry, tensor terminology | §5.1, Parallelograms and their area; Oriented area and bilinearity. Formal bilinear-function definition lists both additivity identities and the combined scalar identity; the two-input doubling warning and a proposition collecting equal-input vanishing and antisymmetry follow. Absolute-value scaling is assigned to ordinary area; signed scaling follows the later photo formulas and PDF |
+| IMG_9208 | Parallelepiped sketch, unit-volume normalization, n-input function, permutations, identity, closure, inverses, associativity | §5.1, Oriented volume; §5.2, Permutations and composition; §5.3, Multilinearity and antisymmetry. General-field notation remains a source-scope issue below |
+| IMG_9209 | Transpositions, decomposition, parity independence, sign definition and properties | §5.2, all three subsections; decomposition and parity independence remain stated results without supplied proofs |
+| IMG_9210 | All maps T_n, sign extension by zero, multilinearity, antisymmetry/alternation | §5.2, Extending the sign to all maps; §5.3, Multilinearity and antisymmetry, in the PDF's real scope |
+| IMG_9211 | Repeated-input vanishing, nonbijective selections, alternating converse, oriented-volume terminology, iterated coordinate expansion | §5.3, Multilinearity and antisymmetry; Expansion in a basis. Converse is stated without an invented proof |
+| IMG_9212 | Expansion over T_n and S_n, factoring out the basis value, determination by normalization | §5.3, Expansion in a basis; Normalization and uniqueness. Crossed-out draft line omitted; surviving formulas retained |
+| IMG_9213 | Standard coordinate basis, matrix columns, normalized determinant and permutation formula | §5.4, Determinant, using upper row indices and lower column indices |
+
+| PDF page | Supplied content | Book destination and status |
+| --- | --- | --- |
+| 1 | Title, lecturer, institution, September 10 date | Source metadata; date discrepancy recorded above |
+| 2 | Outline: oriented area/volume, antisymmetric multilinear functions, determinant | Chapter 5 outline; permutations retained as a separate prerequisite section |
+| 3 | Parallelogram definition and linear-combination diagram | §5.1, Parallelograms and their area; Figure 5.1 |
+| 4 | Basis coordinates, positive height, width, and unit-area normalization | §5.1, Parallelograms and their area; positive-height panel of Figure 5.2 |
+| 5 | Negative height and ordinary-area absolute value | §5.1, same subsection; negative-height panel of Figure 5.2 |
+| 6 | Oriented area −hw and counterclockwise/clockwise signs | §5.1, Oriented area and bilinearity; signs in Figure 5.2 |
+| 7 | Common-base area addition, vectors on the same side | §5.1, addition identity and left panel of Figure 5.3 |
+| 8 | Common-base addition with vectors on opposite sides | §5.1, rearranged addition identity and right panel of Figure 5.3. Conflicting sign inequality omitted and recorded below |
+| 9 | Scalar rescaling of oriented area | §5.1, bilinearity and rescaling; first two panels of Figure 5.4 |
+| 10 | Reflection changes the sign | §5.1, reflection identity; final panel of Figure 5.4 |
+| 11 | Basis/orientation dependence, unit normalization, piecewise signed-area definition, zero for dependent inputs | §5.1, Oriented area and bilinearity |
+| 12 | Linearity in each slot, bilinear terminology, equal-input vanishing, antisymmetry | §5.1, same subsection; formal bilinear-function definition and proposition collecting the further oriented-area properties. Equal-input vanishing is explained beside the area definition at Lucas's request. The source supplies no proof of the implication to antisymmetry; Lucas's subsequently supplied proof appears in the solution to Exercise 5.1.3 |
+| 13 | Bilinear expansion, ad−bc, two-by-two determinant | §5.1, The determinant of a two-by-two matrix, complete supplied calculation with explicit repeated-input cancellation; author-requested basis-coordinate margin diagram in Figure 5.5 |
+| 14 | Matrix columns, basis-coordinate identity, determinant as normalized oriented area | §5.1, same subsection and Figure 5.5; repeated calculation merged |
+| 15 | Parallelepiped definition and three-vector sketch | §5.1, Oriented volume; Figure 5.6 |
+| 16 | Unit-volume basis, base plane, height coefficient, absolute volume | §5.1, same subsection and Figure 5.6; height is relative to basis coordinates |
+| 17 | Normalized oriented volume, absolute volume, multilinearity, antisymmetry, hA(a,b) | §5.1, same subsection; these volume properties are supplied statements without a geometric proof |
+| 18 | Three-dimensional column-coordinate matrix and volume/determinant identity | §5.1, concluding matrix identity |
+| 19 | General multilinearity definition, one slot at a time, real coordinate space | §5.3, Multilinearity and antisymmetry; positioned after permutation prerequisites from the photos |
+| 20 | Permutations, transpositions, four-element example, decomposition, three-element composition example | §5.2, Permutations and composition; both examples included |
+| 21 | Transposition formula, decomposition, identity as zero transpositions | §5.2, same subsection; repeated decomposition merged, proof not supplied |
+| 22 | Parity/sign, identity and transposition signs, composition, inverse sign and reversed order | §5.2, Parity and the sign function |
+| 23 | Sign-function existence/uniqueness and parity independence | §5.2, stated parity proposition and dependence of sign existence on it; no proof imported from the external link |
+| 24 | T_n, inclusion of S_n, zero extension of the sign function | §5.2, Extending the sign to all maps |
+| 25 | Swap antisymmetry and repeated-input argument | §5.3, Multilinearity and antisymmetry, with the supplied vanishing argument in the body |
+| 26 | Permutation sign rule, nonbijective selections, all-map identity | §5.3, same subsection and labelled reindexing identity |
+| 27 | Basis coordinates and full multilinear expansion | §5.3, Expansion in a basis; first-slot and iterated sums |
+| 28 | Repeated-index terms vanish; remaining tuples are permutations; antisymmetric expansion | §5.3, same subsection, sums over both T_n and S_n |
+| 29 | Existence/uniqueness for a chosen basis value, normalized function, proportionality | §5.3, Normalization and uniqueness. Coordinate expansion gives determination; existence verification is not supplied |
+| 30 | Normalized determinant function, all-map/permutation sums, definition on columns | §5.4, Determinant. Column-index convention follows the photos and pages 27–28; equivalent row-indexed form from this page is also included |
+
+Week 5 source issues and proof gaps:
+
+- The first photo uses absolute scalar values for ordinary area before using
+  signed scalars for oriented area. The text distinguishes the two functions.
+  On PDF page 8, the downward vector is labelled as giving A(v₂,w) < 0 while
+  w points right, contrary to pages 6 and 11. The valid addition identity is
+  retained; that inconsistent inequality is not presented as a fact.
+- The photos use a general field F, while the PDF uses real vector spaces.
+  Chapter 5 currently follows the real case. In characteristic 2, swap-sign
+  antisymmetry alone does not force equal-input vanishing; the photos' broader
+  field scope requires the author's direction before generalizing these claims.
+- The last factor in IMG_9213's determinant product appears to repeat lower
+  index 1. The book uses lower index n, consistently with the preceding
+  coordinate expansion and PDF pages 27–30.
+- Transposition decomposition and parity independence are stated without proofs.
+  The sign-function discussion explicitly depends on the stated parity result.
+- The lecture sources assert the implication from equal-input vanishing to
+  antisymmetry for bilinear functions in §5.1 and multilinear functions in §5.3
+  without proofs. Lucas's October 6 solution to Homework 5 Problem 1 now proves
+  the bilinear implication in the appendix. The general multilinear converse
+  remains without a supplied proof. The lecture's repeated-input argument
+  proves the other direction in the real case.
+- The normalized-volume theorem includes the supplied existence claim. The
+  coordinate expansion establishes determination by the basis value, but the
+  sources do not verify that the constructed formula is multilinear and
+  antisymmetric. That existence proof remains unsupplied.
 
 ### September 24 handout coverage audit
 
@@ -408,16 +616,20 @@ make check
 ```
 
 The book is written to `build/main.pdf`; latexmk manages bibliography and
-reference passes. The bibliography cites the calendar, Homework 4, and
-the references used for the authorized kernel context and diagram.
-Figure/table lists and the index are reserved in `main.tex` and can be enabled
-when the corresponding content exists.
+reference passes. The bibliography cites the calendar and the references used
+for the authorized kernel context and diagram. Supplied homework provenance
+is recorded in this README and source comments, without book citations.
+The list of figures and list of tables follow the contents using Tufte's native
+headings and entry layout. Concise figure titles keep the list readable; full
+captions and attribution remain beside the figures. The index is reserved in
+`main.tex` until supplied content contains index entries.
 
 | Command | Purpose |
 | --- | --- |
 | `make` or `make book` | Build the book. |
 | `make problem HW=hw01` | Build an existing `problems/hw01.tex` into `build/problems/hw01.pdf`. |
 | `make problem HW=hw04` | Build the supplied Homework 4 statements and solutions as `build/problems/hw04.pdf`. |
+| `make problem HW=hw05` | Build all eight Homework 5 questions and complete solutions, with Problem 8 review edits in red, as `build/problems/hw05.pdf`. |
 | `make export-problem HW=hw04` | Assemble the existing shared files into the portable single-file source `build/export/hw04.tex` using latexpand. |
 | `make problem HW=hw04-questions` | Build just the original questions as `build/problems/hw04-questions.pdf`. |
 | `make export-problem HW=hw04-questions` | Assemble the questions-only portable source `build/export/hw04-questions.tex`. |
@@ -445,13 +657,18 @@ For questions without solutions, use `problems/hw04-questions.tex` with
 `make export-problem HW=hw04-questions`. Its portable export compiles
 independently under the same conditions and contains no solution text.
 
+For Homework 5, `problems/hw05.tex` is the editable standalone entry point.
+Run `make problem HW=hw05` to build `build/problems/hw05.pdf`; it preserves
+the original problem order and includes all five subparts of Problem 8.
+
 On Overleaf, select `main.tex` and pdfLaTeX. This is a modular project, so build
 the entire repository rather than sending `main.tex` alone to a standalone
 document compiler.
 
 ## Local customisation
 
-See [CUSTOMISATION.md](CUSTOMISATION.md) for LaTeX Workshop setup. Keep portable
+See [CUSTOMISATION.md](CUSTOMISATION.md) for LaTeX Workshop setup and the
+[Codex Stop hook](CUSTOMISATION.md#codex-stop-hook). Keep portable
 team settings in `.vscode/settings.json` and machine-specific paths and personal
 preferences in the editor's User `settings.json`, outside this repository.
 
@@ -468,3 +685,51 @@ This project retains the [Apache License, Version 2.0](LICENSE).
 [Third-party notices](THIRD_PARTY_NOTICES.md) identify the retained Tufte-LaTeX
 layout and source credits. The imported specimen prose and graphics have been
 removed.
+
+## Changelog
+
+### 2026-10-06
+
+- Standardize book and handout captions with the `caption` package at Lucas's
+  direction: bold labels followed by a full stop, with regular serif text at
+  Tufte's margin-note size and native figure placement. Use `\autoref` for
+  numbered references and `\autopageref` for page references; retain shared
+  numbering with alias counters so each result and exercise has its correct name.
+- Add the list of figures and list of tables immediately after the contents at
+  Lucas's request. Keep Tufte's native list structure and typography, with
+  concise figure titles and linked figure/table numbers and page references.
+- Require every table to have a numbered caption, a stable label, and a nearby
+  in-text reference. At Lucas's direction, use native Tufte margin captions and
+  the same caption process as figures. Use `table`, `margintable`, or `table*`
+  according to the required width; record the rule in `AGENTS.md`.
+- Keep every multipart question intact when reorganizing the book, at Lucas's
+  direction. Move complete questions by assessed topic and preserve their
+  subpart order and the standalone handout's original assignment order.
+- Prohibit box outlines throughout the book and handouts at Lucas's request.
+  Record the strict rule in `AGENTS.md` and use ordinary display mathematics,
+  headings, bold labels, and spacing for emphasis.
+- Remove supplied homework PDF citations and bibliography entries at Lucas's
+  request. Keep assignment provenance in repository records and source comments
+  so the book presents the exercises without referring readers to the PDFs.
+
+### 2026-10-05
+
+- Import all eight Homework 5 questions as shared statements, with complete
+  appendix restatements, pending solutions, and a standalone `hw05.tex` handout.
+  Reuse the supplied column-expansion instructions so Problem 7's reference
+  remains meaningful in the book, appendix, and handout.
+- Import Week 5 as Chapter 5, Multilinear algebra and determinants, preserving
+  the supplied progression from geometry through permutations and multilinearity
+  to the determinant. The title reflects Lucas's emphasis on multilinear algebra.
+  Record all seven photos and all 30 PDF pages, source conflicts, and unproved
+  claims; extend the formula sheet with this supplied material.
+- Clear the pending list-end state after full-width chapter titles in
+  `preamble.tex`, preserving the shared section spacing after introductory
+  paragraphs. The title's internal list must not overwrite the chapter's
+  paragraph hook and suppress the gap before its first section.
+- Adapt the Maths Analysis project's tacit-knowledge skill and Codex Stop hook
+  for Linear Algebra. Preserve this project's lecture and homework skills,
+  supplied-content policy, placement maps, and source coverage records.
+- Keep durable decisions and their reasons in the relevant chapter or appendix
+  README, using this root changelog for book-wide decisions. These records
+  supplement the authoritative placement maps and repository instructions.

@@ -9,11 +9,13 @@
 \counterwithout{theorem}{section}
 \renewcommand{\thetheorem}{\arabic{theorem}}
 \theoremstyle{definition}
-\newtheorem{homeworkproblem}[theorem]{Problem}
+\newaliascnt{homeworkproblem}{theorem}
+\newtheorem{homeworkproblem}[homeworkproblem]{Problem}
+\aliascntresetthe{homeworkproblem}
 \renewenvironment{exercise}{\begin{homeworkproblem}}{\end{homeworkproblem}}
 
-\title{MA-GY7033 Linear Algebra I\\Homework 4}
-\author{Lucas Barbosa, \texttt{lc6424}}
+\title[MA-GY7033 Linear Algebra I, Homework 4]{MA-GY7033 Linear Algebra I\\Homework 4}
+\author[Lucas Barbosa, lc6424]{Lucas Barbosa, \texttt{lc6424}}
 \date{}
 
 % Keep the two-line title out of running heads, including under XeTeX.

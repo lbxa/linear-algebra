@@ -1,0 +1,142 @@
+% !TEX root = ../../../main.tex
+\section{Antisymmetric multilinear functions}
+\label{sec:linear-algebra-i:antisymmetric-multilinear-functions}
+
+% Sources: October 1 PDF, p. 19 and pp. 25--29; IMG_9210--IMG_9212.
+% The PDF uses real vector spaces. The photos use F without a
+% characteristic restriction; that broader scope requires author review.
+Let \(V\) be an \(n\)-dimensional real vector space.
+
+\subsection{Multilinearity and antisymmetry}
+
+\begin{definition}
+  A function \(A:V^n\to\R\) is multilinear if it is linear in each input
+  while all other inputs are fixed. Thus, for each position \(i\),
+  vectors \(t_1,\ldots,t_{i-1},t_{i+1},\ldots,t_n,v,w\in V\), and
+  scalars \(a,b\in\R\),
+  \[
+    \begin{aligned}
+      &A(t_1,\ldots,t_{i-1},av+bw,t_{i+1},\ldots,t_n)\\
+      &\quad=aA(t_1,\ldots,t_{i-1},v,t_{i+1},\ldots,t_n)\\
+      &\qquad+bA(t_1,\ldots,t_{i-1},w,t_{i+1},\ldots,t_n).
+    \end{aligned}
+  \]
+\end{definition}
+
+\begin{definition}
+  A function \(A:V^n\to\R\) is antisymmetric if interchanging any two
+  inputs changes its sign. For the transposition \(\tau_{ij}\),
+  \[
+    A(v_{\tau_{ij}(1)},\ldots,v_{\tau_{ij}(n)})
+      =-A(v_1,\ldots,v_n).
+  \]
+\end{definition}
+
+If two inputs are equal, interchanging them leaves the input unchanged.
+Antisymmetry therefore gives
+\[
+  A(v_1,\ldots,v_n)=-A(v_1,\ldots,v_n),
+\]
+so \(A(v_1,\ldots,v_n)=0\).
+
+For \(\sigma=\tau_k\circ\cdots\circ\tau_1\), repeated antisymmetry
+gives
+\[
+  \begin{aligned}
+    A(v_{\sigma(1)},\ldots,v_{\sigma(n)})
+      &=(-1)^kA(v_1,\ldots,v_n)\\
+      &=\varepsilon(\sigma)A(v_1,\ldots,v_n).
+  \end{aligned}
+\]
+If \(\phi\in T_n\setminus S_n\), two of the indices
+\(\phi(1),\ldots,\phi(n)\) agree, so the corresponding value of \(A\)
+is zero. With the extended sign function, both cases are expressed by
+\begin{equation}
+  A(v_{\phi(1)},\ldots,v_{\phi(n)})
+    =\varepsilon(\phi)A(v_1,\ldots,v_n),\qquad \phi\in T_n.
+  \label{eq:linear-algebra-i:antisymmetric-reindexing}
+\end{equation}
+
+\begin{proposition}
+  A multilinear function on a real vector space is antisymmetric if and
+  only if it vanishes whenever two inputs are equal. Such a multilinear
+  function is also called alternating.
+\end{proposition}
+% IMG_9211, fact 4, asserts the converse without supplying its proof.
+% No polarization argument has been added to complete that proof.
+
+An antisymmetric multilinear function with \(n\) inputs on an
+\(n\)-dimensional space is an oriented volume function.
+
+\subsection{Expansion in a basis}
+
+Let \(E=(e_1,\ldots,e_n)\) be a basis of \(V\). Write
+\[
+  v_j=\sum_{i=1}^n b^i_j e_i,\qquad 1\leq j\leq n.
+\]
+Expanding the first input by linearity gives
+\[
+  A(v_1,\ldots,v_n)=\sum_{k_1=1}^n b^{k_1}_1 A(e_{k_1},v_2,\ldots,v_n).
+\]
+Expanding each remaining input in turn yields
+\begin{equation}
+  A(v_1,\ldots,v_n)
+    =\sum_{k_1=1}^n\cdots\sum_{k_n=1}^n
+      b^{k_1}_1\cdots b^{k_n}_n A(e_{k_1},\ldots,e_{k_n}).
+  \label{eq:linear-algebra-i:multilinear-basis-expansion}
+\end{equation}
+Each tuple \((k_1,\ldots,k_n)\) determines a map \(\phi\in T_n\) by
+\(\phi(j)=k_j\). The same sum can therefore be written as
+\[
+  A(v_1,\ldots,v_n)
+    =\sum_{\phi\in T_n}b^{\phi(1)}_1\cdots b^{\phi(n)}_n
+      A(e_{\phi(1)},\ldots,e_{\phi(n)}).
+\]
+
+Now assume \(A\) is also antisymmetric. Terms with repeated indices
+vanish, and every remaining index tuple is a permutation of
+\((1,\ldots,n)\). Using
+\autoref{eq:linear-algebra-i:antisymmetric-reindexing},
+\[
+  A(e_{\phi(1)},\ldots,e_{\phi(n)})
+    =\varepsilon(\phi)A(e_1,\ldots,e_n).
+\]
+Consequently,
+\begin{equation}
+  \begin{aligned}
+    A(v_1,\ldots,v_n)
+      &=A(e_1,\ldots,e_n)
+        \sum_{\phi\in T_n}\varepsilon(\phi)
+          b^{\phi(1)}_1\cdots b^{\phi(n)}_n\\
+      &=A(e_1,\ldots,e_n)
+        \sum_{\sigma\in S_n}\varepsilon(\sigma)
+          b^{\sigma(1)}_1\cdots b^{\sigma(n)}_n.
+  \end{aligned}
+  \label{eq:linear-algebra-i:antisymmetric-basis-expansion}
+\end{equation}
+The second equality uses \(\varepsilon(\phi)=0\) outside \(S_n\).
+Thus \(A\) is determined by its value on the ordered basis.
+
+\subsection{Normalization and uniqueness}
+
+\begin{theorem}
+  \label{thm:linear-algebra-i:normalized-volume-function}
+  For every \(c\in\R\), there is a unique antisymmetric multilinear
+  function \(A:V^n\to\R\) satisfying
+  \[
+    A(e_1,\ldots,e_n)=c.
+  \]
+\end{theorem}
+% PDF p. 29 states existence and uniqueness. The supplied coordinate
+% expansion establishes determination by c, but the sources do not verify
+% multilinearity and antisymmetry of the formula to prove existence.
+
+In particular, there is a unique such function normalized by
+\[
+  A(e_1,\ldots,e_n)=1.
+\]
+If \(B\) is any other antisymmetric multilinear
+function with \(n\) inputs, then
+\[
+  B=cA,\qquad c=B(e_1,\ldots,e_n).
+\]

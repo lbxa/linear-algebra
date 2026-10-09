@@ -1,0 +1,146 @@
+% Lucas's completed solution, reviewed on October 8, 2026, at his request.
+% Red marks revised prose, mathematical corrections, and added justifications.
+% Purely typographical changes to math delimiters are not marked.
+% All five supplied parts have now been reviewed; retain the red review marks.
+\noindent\textbf{Solution.} For part (a), \textcolor{red}{suppose} a matrix
+\(P_\sigma\) is a permutation matrix where \(c_k=e_{\sigma(k)}\).
+Since \(\sigma:\{1,\ldots,n\}\to\{1,\ldots,n\}\) is bijective,
+\(\sigma(1),\ldots,\sigma(n)\) will be distinct and
+\textcolor{red}{exhaust} \(\{1,\ldots,n\}\).
+\textcolor{red}{Each column is a standard basis vector, so it contains a
+single \(1\) in row \(\sigma(k)\) and zeros elsewhere. Thus every column
+contains exactly one \(1\). Since each row index occurs exactly once among
+\(\sigma(1),\ldots,\sigma(n)\), every row also contains exactly one \(1\).}
+
+Conversely, consider \textcolor{red}{an \(n\times n\) matrix} \(P\)
+where every entry is \(1\) or \(0\) and there is exactly one \(1\)
+in each row and column. For each column \(k\), there exists
+\textcolor{red}{a unique index} \(\sigma(k)\)
+\textcolor{red}{giving the row containing its \(1\). Hence}
+\[
+  c_k=e_{\sigma(k)}.
+\]
+
+No two columns can have their \(1\) in the same row, so \(\sigma\) is
+injective. \textcolor{red}{An injective map from a finite set to itself
+is also surjective, so \(\sigma\) is bijective.} Thus \(\sigma\in S_n\)
+and
+\[
+  P=\begin{bmatrix}e_{\sigma(1)}&\ldots&e_{\sigma(n)}\end{bmatrix}
+    =P_\sigma.
+\]
+Therefore \(P\) is a permutation matrix if and only if every entry is
+\(0\) or \(1\) with exactly one \(1\) in each row and column. \qed
+
+For part (b), we know that when we multiply a matrix \(M\) by a basis
+vector it produces \textcolor{red}{the corresponding column},
+\(Me_i=c_i\). \textcolor{red}{Matrix multiplication acts separately on
+each column of the matrix on the right.} So when multiplying \(M\) by
+the matrix of basis vector columns,
+\[
+  M\begin{bmatrix}e_1\mid\ldots\mid e_n\end{bmatrix}
+    =\begin{bmatrix}c_1\mid\ldots\mid c_n\end{bmatrix}.
+\]
+\textcolor{red}{Applying the same rule to the permuted basis columns gives}
+\begin{align*}
+  M\begin{bmatrix}e_{\sigma(1)}\mid\ldots\mid e_{\sigma(n)}\end{bmatrix}
+    &=\textcolor{red}{\begin{bmatrix}Me_{\sigma(1)}\mid\ldots\mid
+      Me_{\sigma(n)}\end{bmatrix}}\\
+    &=\begin{bmatrix}c_{\sigma(1)}\mid\ldots\mid c_{\sigma(n)}\end{bmatrix}.
+\end{align*}
+Since \(P_\sigma=\begin{bmatrix}e_{\sigma(1)}\mid\ldots\mid
+e_{\sigma(n)}\end{bmatrix}\),
+\[
+  MP_\sigma=\begin{bmatrix}c_{\sigma(1)}\mid\ldots\mid
+    c_{\sigma(n)}\end{bmatrix}.
+\]
+\qed
+
+For part (c), we first express \(v\in\R^n\) as a linear combination
+of \textcolor{red}{the standard basis vectors},
+\[
+  v=v^1e_1+\ldots+v^ne_n.
+\]
+Now applying \(P_\sigma\) to both sides and using linearity,
+\begin{align*}
+  P_\sigma v&=P_\sigma(v^1e_1+\ldots+v^ne_n)\\
+    &=v^1P_\sigma e_1+\ldots+v^nP_\sigma e_n.
+\end{align*}
+Focusing on each \(k\)-th term \(P_\sigma e_k\), we know that
+right-multiplying by the \(k\)-th basis vector produces the \(k\)-th
+column. \textcolor{red}{By the definition of \(P_\sigma\), this gives}
+\[
+  P_\sigma e_k=\textcolor{red}{e_{\sigma(k)}}.
+\]
+\textcolor{red}{Substituting this identity into the linear combination gives}
+\begin{align*}
+  \textcolor{red}{P_\sigma v}
+    &=v^1e_{\sigma(1)}+\ldots+v^n\textcolor{red}{e_{\sigma(n)}}\\
+    &=\sum_{k=1}^n v^ke_{\sigma(k)}.
+\end{align*}
+Thus, \(P_\sigma\) defines the linear map that permutes the coordinates
+of \(v\) according to \(\sigma\), \textcolor{red}{moving} the coefficient
+\(v^k\) from the \(k\)-th coordinate to the \(\sigma(k)\)-th coordinate.
+\textcolor{red}{Equivalently, the \(i\)-th output coordinate comes from
+the input index \(k\) satisfying \(\sigma(k)=i\), so}
+\[
+  \textcolor{red}{(P_\sigma v)^i=v^{\sigma^{-1}(i)}.}
+\]
+\qed
+
+For part (d), \textcolor{red}{fix any \(k\in\{1,\ldots,n\}\).}
+It was proven in part (c) that
+\[
+  P_\tau e_k=e_{\tau(k)}.
+\]
+\textcolor{red}{Applying \(P_\sigma\) and using its action on standard
+basis vectors gives}
+\begin{align*}
+  P_\sigma P_\tau e_k&=P_\sigma e_{\tau(k)}\\
+    &=e_{\sigma(\tau(k))}.
+\end{align*}
+\textcolor{red}{On the other hand, the composition satisfies
+\((\sigma\circ\tau)(k)=\sigma(\tau(k))\), so}
+\begin{align*}
+  P_{\sigma\circ\tau}e_k
+    &=\textcolor{red}{e_{(\sigma\circ\tau)(k)}}\\
+    &=e_{\sigma(\tau(k))}.
+\end{align*}
+\textcolor{red}{Thus \(P_{\sigma\circ\tau}e_k=P_\sigma P_\tau e_k\)
+for every \(k\). Every vector is a linear combination of the standard
+basis vectors, so linearity implies that the two matrices act identically
+on every vector. Therefore,}
+\[
+  P_{\sigma\circ\tau}=P_\sigma P_\tau.
+\]
+\qed
+
+% Keep the final determinant argument together in the handout and appendix.
+\newpage
+For part (e), the determinant of \textcolor{red}{\(P_\sigma\)} is
+\textcolor{red}{the value of the normalized antisymmetric multilinear
+function \(D\) on its columns. Here \(c_k=e_{\sigma(k)}\), so}
+\begin{align*}
+  \textcolor{red}{\det(P_\sigma)}&=D(c_1,\ldots,c_n)\\
+    &=D(e_{\sigma(1)},\ldots,e_{\sigma(n)}).
+\end{align*}
+\textcolor{red}{Each column is already a standard basis vector, so there
+is just one basis-vector value to evaluate. Since \(\sigma\) is bijective,
+these inputs are distinct.}
+
+\textcolor{red}{Choose a decomposition
+\(\sigma=\tau_1\circ\cdots\circ\tau_r\) into \(r\) transpositions.}
+Whenever two \textcolor{red}{inputs are interchanged in an antisymmetric
+multilinear function}, a factor of \(-1\) is produced.
+\textcolor{red}{Applying the transpositions in this decomposition
+rearranges \((e_1,\ldots,e_n)\) into
+\((e_{\sigma(1)},\ldots,e_{\sigma(n)})\), contributing a factor
+of \((-1)^r\). Normalization gives \(D(e_1,\ldots,e_n)=1\), and
+the definition of the sign gives \(\epsilon(\sigma)=(-1)^r\). Hence,}
+\begin{align*}
+  D(e_{\sigma(1)},\ldots,e_{\sigma(n)})
+    &=\textcolor{red}{(-1)^r}D(e_1,\ldots,e_n)\\
+    &=\textcolor{red}{(-1)^r\cdot1}\\
+    &=\epsilon(\sigma).
+\end{align*}
+\textcolor{red}{Therefore, \(\det(P_\sigma)=\epsilon(\sigma)\).} \qed

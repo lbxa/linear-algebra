@@ -1,0 +1,40 @@
+% Author-requested visualization of the existing two-by-two calculation,
+% October 6, 2026. Coordinates illustrate one positive orientation only.
+\begin{tikzpicture}[
+  x=0.85cm,y=0.85cm,font=\footnotesize,line width=0.5pt,
+  line cap=round,line join=round,
+  vector/.style={-{Latex[length=1.6mm,width=1.1mm]}},
+  axis/.style={vector,black!55,line width=0.4pt},
+  guide/.style={black!50,line width=0.35pt,dashed}
+]
+  \coordinate (O) at (0,0);
+  \coordinate (V) at (2.25,0.6);
+  \coordinate (W) at (0.8,2.1);
+  \coordinate (S) at ($(V)+(W)$);
+  \coordinate (VX) at (V |- O);
+  \coordinate (VY) at (V -| O);
+  \coordinate (WX) at (W |- O);
+  \coordinate (WY) at (W -| O);
+
+  \fill[black!8] (O) -- (V) -- (S) -- (W) -- cycle;
+  \draw[axis] (-0.15,0) -- (3.55,0) node[right=4pt] {\(e_1\)};
+  \draw[axis] (0,-0.15) -- (0,3.2) node[above=4pt] {\(e_2\)};
+  \draw[guide] (VX) -- (V) -- (VY);
+  \draw[guide] (WX) -- (W) -- (WY);
+  \draw (V) -- (S) -- (W);
+  \draw[vector] (O) -- (V);
+  \draw[vector] (O) -- (W);
+
+  \draw (VX) ++(0,-0.045) -- ++(0,0.09);
+  \draw (WX) ++(0,-0.045) -- ++(0,0.09);
+  \draw (VY) ++(-0.045,0) -- ++(0.09,0);
+  \draw (WY) ++(-0.045,0) -- ++(0.09,0);
+  \node[below=5pt] at (VX) {\(a\)};
+  \node[below=5pt] at (WX) {\(b\)};
+  \node[left=5pt] at (VY) {\(c\)};
+  \node[left=5pt] at (WY) {\(d\)};
+  \node[right=4pt] at (V) {\(v\)};
+  \node[above left=3pt] at (W) {\(w\)};
+  \node[above=5pt] at (S) {\(v+w\)};
+  \node[below left=3pt] at (O) {\(0\)};
+\end{tikzpicture}

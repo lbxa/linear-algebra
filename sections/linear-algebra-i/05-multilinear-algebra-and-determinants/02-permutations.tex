@@ -1,0 +1,145 @@
+% !TEX root = ../../../main.tex
+\section{Permutations}
+\label{sec:linear-algebra-i:permutations}
+
+% Sources: October 1 PDF, pp. 20--24; IMG_9208--IMG_9210.
+\subsection{Permutations and composition}
+
+\begin{definition}
+  A permutation of \(\{1,\ldots,n\}\) is a bijective map
+  % Author-requested combinatorial context, October 6, 2026.
+  \marginnote{%
+    \textbf{Permutations in combinatorics.}
+    A permutation is an ordered arrangement of distinct objects, without
+    repetition. The list \((\sigma(1),\ldots,\sigma(n))\) identifies a full
+    arrangement with a bijection in \(S_n\). There are \(n\) choices for the
+    first entry, \(n-1\) for the next, and so on, giving \(n!\) arrangements.
+    \par
+    For \(0\le k\le n\), the binomial coefficient
+    \[
+      \binom{n}{k}=\frac{n!}{k!(n-k)!}
+    \]
+    counts unordered \(k\)-element subsets. Each subset has \(k!\) orderings,
+    so the number of ordered selections of \(k\) distinct objects is
+    \[
+      k!\binom{n}{k}=\frac{n!}{(n-k)!},
+    \]
+    with \(0!=1\). These same binomial coefficients appear in \((x+y)^n\).
+    Choosing \(k\) of the \(n\) factors to contribute \(y\) gives the term
+    \(\binom{n}{k}x^{n-k}y^k\).
+  }
+  \[
+    \sigma:\{1,\ldots,n\}\longrightarrow\{1,\ldots,n\}.
+  \]
+  Write \(S_n\) for the set of all such permutations.
+\end{definition}
+
+Permutations reorder \(n\) objects. Under composition, \(S_n\) is a group.
+The identity permutation \(\iota\) belongs to \(S_n\); the composition
+of two permutations is a permutation; and every \(\sigma\in S_n\) has
+an inverse satisfying
+\[
+  \sigma\circ\sigma^{-1}=\sigma^{-1}\circ\sigma=\iota.
+\]
+Composition is associative.
+
+\begin{definition}
+  A transposition switches two elements and leaves all the others unchanged.
+  For \(i\ne j\), the transposition \(\tau_{ij}\in S_n\) is
+  \[
+    \tau_{ij}(k)=
+    \begin{cases}
+      j & \text{if \(k=i\)},\\
+      i & \text{if \(k=j\)},\\
+      k & \text{otherwise}.
+    \end{cases}
+  \]
+\end{definition}
+
+\begin{example}
+  The transposition \(\tau_{24}\in S_4\) satisfies
+  \[
+    \tau_{24}(1)=1,\quad \tau_{24}(2)=4,\quad
+    \tau_{24}(3)=3,\quad \tau_{24}(4)=2.
+  \]
+\end{example}
+
+Every permutation can be written as a composition of transpositions,
+\[
+  \sigma=\tau_k\circ\cdots\circ\tau_1.
+\]
+The identity is the composition of zero transpositions.
+% PDF pp. 20--21 and IMG_9209 assert decomposition without a proof.
+
+\begin{example}
+  The permutation \(\sigma\in S_3\) given by
+  \[
+    \sigma(1)=2,\qquad \sigma(2)=3,\qquad \sigma(3)=1
+  \]
+  is \(\sigma=\tau_{13}\circ\tau_{12}\). Here
+  \[
+    \begin{aligned}
+      \tau_{12}(1)&=2,& \tau_{12}(2)&=1,& \tau_{12}(3)&=3,\\
+      \tau_{13}(1)&=3,& \tau_{13}(2)&=2,& \tau_{13}(3)&=1.
+    \end{aligned}
+  \]
+\end{example}
+
+\subsection{Parity and the sign function}
+
+\begin{proposition}
+  \label{thm:linear-algebra-i:permutation-parity}
+  A permutation cannot be both a composition of an even number of
+  transpositions and a composition of an odd number of transpositions.
+\end{proposition}
+% PDF p. 23 and IMG_9209 state this result without supplying a proof.
+
+Consequently, the following definition does not depend on the chosen
+transposition decomposition.
+
+\begin{definition}
+  The sign, or parity, of a permutation is the function
+  \(\varepsilon:S_n\to\{-1,1\}\). For a decomposition
+  \(\sigma=\tau_k\circ\cdots\circ\tau_1\) into transpositions,
+  \[
+    \varepsilon(\sigma)=
+    \begin{cases}
+      1 & \text{if \(k\) is even},\\
+      -1 & \text{if \(k\) is odd}.
+    \end{cases}
+  \]
+\end{definition}
+
+The sign function has the properties
+\[
+  \begin{aligned}
+    \varepsilon(\iota)&=1,\\
+    \varepsilon(\tau)&=-1 &&\text{for every transposition \(\tau\)},\\
+    \varepsilon(\sigma_2\circ\sigma_1)
+      &=\varepsilon(\sigma_2)\varepsilon(\sigma_1),\\
+    \varepsilon(\sigma^{-1})&=\varepsilon(\sigma).
+  \end{aligned}
+\]
+For the last property, reversing the order of the same transpositions gives
+the inverse,
+\[
+  \sigma=\tau_1\circ\cdots\circ\tau_N
+  \quad\Longrightarrow\quad
+  \sigma^{-1}=\tau_N\circ\cdots\circ\tau_1.
+\]
+The sign function is uniquely determined by assigning sign \(-1\) to
+every transposition and requiring multiplicativity under composition.
+Its existence depends on \autoref{thm:linear-algebra-i:permutation-parity}.
+
+\subsection{Extending the sign to all maps}
+
+Let \(T_n\) be the set of all maps
+\[
+  \phi:\{1,\ldots,n\}\longrightarrow\{1,\ldots,n\}.
+\]
+Then \(S_n\subseteq T_n\). Extend the sign function to
+\(\varepsilon:T_n\to\{-1,0,1\}\) by keeping its existing values on
+\(S_n\) and setting
+\[
+  \varepsilon(\phi)=0\qquad\text{if \(\phi\notin S_n\)}.
+\]

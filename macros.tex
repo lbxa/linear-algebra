@@ -11,7 +11,7 @@
 % The handouts print solutions immediately; only the book needs these links.
 \newcommand{\solutionlink}[1]{%
   \@ifclassloaded{tufte-book}{%
-    \leavevmode\marginnote{\hyperref[sol:#1]{Solution on page~\pageref*{sol:#1}.}}%
+    \leavevmode\marginnote{\hyperref[sol:#1]{Solution on \autopageref*{sol:#1}.}}%
   }{}%
 }
 \makeatother
@@ -43,15 +43,38 @@
 }
 
 % One shared counter makes results unambiguous within each section.
+% Alias counters let autoref identify each environment without renumbering it.
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
+\newaliascnt{lemma}{theorem}
+\newtheorem{lemma}[lemma]{Lemma}
+\aliascntresetthe{lemma}
+\newaliascnt{proposition}{theorem}
+\newtheorem{proposition}[proposition]{Proposition}
+\aliascntresetthe{proposition}
+\newaliascnt{corollary}{theorem}
+\newtheorem{corollary}[corollary]{Corollary}
+\aliascntresetthe{corollary}
 \theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{exercise}[theorem]{Exercise}
-\newtheorem*{restatedexercise}{Exercise~\ref{ex:\restatedexercisekey}}
+\newaliascnt{definition}{theorem}
+\newtheorem{definition}[definition]{Definition}
+\aliascntresetthe{definition}
+\newaliascnt{example}{theorem}
+\newtheorem{example}[example]{Example}
+\aliascntresetthe{example}
+\newaliascnt{exercise}{theorem}
+\newtheorem{exercise}[exercise]{Exercise}
+\aliascntresetthe{exercise}
+\newtheorem*{restatedexercise}{\autoref{ex:\restatedexercisekey}}
 \theoremstyle{remark}
-\newtheorem{remark}[theorem]{Remark}
+\newaliascnt{remark}{theorem}
+\newtheorem{remark}[remark]{Remark}
+\aliascntresetthe{remark}
+\providecommand*{\lemmaautorefname}{Lemma}
+\providecommand*{\propositionautorefname}{Proposition}
+\providecommand*{\corollaryautorefname}{Corollary}
+\providecommand*{\definitionautorefname}{Definition}
+\providecommand*{\exampleautorefname}{Example}
+\providecommand*{\exerciseautorefname}{Exercise}
+\providecommand*{\remarkautorefname}{Remark}
+\providecommand*{\homeworkproblemautorefname}{Problem}

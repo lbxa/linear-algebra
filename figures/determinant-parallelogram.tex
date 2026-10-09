@@ -1,0 +1,20 @@
+% Supplied October 1 PDF, p. 3, and IMG_9207; schematic reconstruction.
+\begin{tikzpicture}[
+  x=1cm,y=1cm,font=\footnotesize,line width=0.5pt,
+  line cap=round,line join=round,
+  vector/.style={-{Latex[length=1.6mm,width=1.1mm]}}
+]
+  \coordinate (O) at (0,0);
+  \coordinate (V1) at (0.8,1.8);
+  \coordinate (V2) at (2.6,0);
+  \coordinate (S) at ($(V1)+(V2)$);
+  \coordinate (P) at ($0.45*(V1)+0.45*(V2)$);
+  \fill[black!8] (O) -- (V2) -- (S) -- (V1) -- cycle;
+  \draw (V1) -- (S) -- (V2);
+  \draw[vector] (O) -- (V1) node[pos=0.65,left=5pt] {\(v_1\)};
+  \draw[vector] (O) -- (V2) node[midway,below=5pt] {\(v_2\)};
+  \draw[vector,black!60,shorten >=1.6pt] (O) -- (P);
+  \fill (P) circle[radius=1.4pt];
+  \node[above=5pt] at (P) {\(av_1+bv_2\)};
+  \node[below left=4pt] at (O) {\(0\)};
+\end{tikzpicture}

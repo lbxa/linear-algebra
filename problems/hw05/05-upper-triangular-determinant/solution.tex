@@ -1,0 +1,22 @@
+% Author's solution, supplied in this file and reviewed on October 7, 2026.
+% The review request authorizes making the diagonal-selection argument explicit.
+\noindent\textbf{Solution.}
+Let \(M=(A^i_j)\) be the upper triangular \(m\times m\) matrix, with
+columns \(c_1,\ldots,c_m\). Since entries below the diagonal are zero,
+\[
+  c_j=\sum_{i=1}^j A^i_j e_i,\qquad 1\le j\le m.
+\]
+Expand \(\det M=D(c_1,\ldots,c_m)\) by multilinearity, choosing one
+basis vector from each column. A term with repeated basis vectors vanishes.
+
+The first column can contribute only \(e_1\). The second can contribute
+\(e_1\) or \(e_2\), but choosing \(e_1\) repeats the first input, so
+only \(e_2\) can remain. Continuing in this way, column \(j\) must
+contribute \(e_j\), since its other choices have already appeared in
+earlier inputs. Thus the only term that can remain selects the diagonal
+entry from every column. Using \(D(e_1,\ldots,e_m)=1\), we obtain
+\begin{align*}
+  \det M&=A^1_1\cdots A^m_mD(e_1,\ldots,e_m)\\
+    &=A^1_1\cdots A^m_m.
+\end{align*}
+\qed

@@ -1,0 +1,78 @@
+% !TEX program = pdflatex
+% Derived from problems/template.tex; compile from the repository root.
+% Build with make problem HW=hw05.
+\documentclass[nohyper,nobib,nofonts]{tufte-handout}
+\input{preamble}
+\input{macros}
+
+% Preserve the original assignment's Problem 1--8 numbering.
+\counterwithout{theorem}{section}
+\renewcommand{\thetheorem}{\arabic{theorem}}
+\theoremstyle{definition}
+\newaliascnt{homeworkproblem}{theorem}
+\newtheorem{homeworkproblem}[homeworkproblem]{Problem}
+\aliascntresetthe{homeworkproblem}
+\renewenvironment{exercise}{\begin{homeworkproblem}}{\end{homeworkproblem}}
+
+\title[MA-GY7033 Linear Algebra I, Homework 5]{MA-GY7033 Linear Algebra I\\Homework 5}
+\author[Lucas Barbosa, lc6424]{Lucas Barbosa, \texttt{lc6424}}
+\date{}
+
+\fancyhead{}
+\fancyhead[LE,RO]{\footnotesize MA-GY7033 Linear Algebra I, Homework 5\quad\thepage}
+
+\begin{document}
+\maketitle
+
+% Source: supplied Homework 5 PDF, p. 1, "Determinant of a matrix".
+% Retain F from the assignment; its characteristic-2 ambiguity is recorded
+% in README.md rather than silently changing the supplied hypotheses.
+\noindent\textbf{Determinant of a matrix}\quad
+Let \((e_1,\ldots,e_n)\) be the standard basis of \(\mathbb F^n\).
+Let \(D\) be the antisymmetric multilinear function on \(\mathbb F^n\)
+such that
+\[
+  D(e_1,\ldots,e_n)=1.
+\]
+Recall that if \(c_1,\ldots,c_n\in\mathbb F^n\) are the columns of
+a matrix \(M\), then the determinant of \(M\) is
+\[
+  \det(M)=D(c_1,\ldots,c_n).
+\]
+
+\noindent\textbf{Computation of determinant}\quad
+\input{problems/hw05/column-expansion}
+
+\input{problems/hw05/01-bilinear-antisymmetry/problem}
+\input{problems/hw05/01-bilinear-antisymmetry/solution}
+
+% Keep Problem 2 and its geometric derivation together.
+\newpage
+\input{problems/hw05/02-two-by-two-determinant/problem}
+\input{problems/hw05/02-two-by-two-determinant/solution}
+
+\newpage
+\input{problems/hw05/03-negating-a-matrix/problem}
+\input{problems/hw05/03-negating-a-matrix/solution}
+
+\input{problems/hw05/04-three-by-three-triangular-determinant/problem}
+\input{problems/hw05/04-three-by-three-triangular-determinant/solution}
+
+\newpage
+\input{problems/hw05/05-upper-triangular-determinant/problem}
+\input{problems/hw05/05-upper-triangular-determinant/solution}
+
+\input{problems/hw05/06-column-addition/problem}
+\input{problems/hw05/06-column-addition/solution}
+
+\newpage
+\input{problems/hw05/07-four-by-four-determinant/problem}
+\input{problems/hw05/07-four-by-four-determinant/solution}
+
+\newpage
+\input{problems/hw05/08-permutation-matrices/problem}
+% Begin the reviewed draft after the complete multipart question.
+\newpage
+\input{problems/hw05/08-permutation-matrices/solution}
+
+\end{document}

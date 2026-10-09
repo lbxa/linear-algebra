@@ -1,0 +1,241 @@
+% !TEX root = ../../main.tex
+% Portrait two-column layout adapted from the maths-analysis formula sheet.
+% Its layout credits Dave Richeson's LaTeX cheat sheet, divisbyzero.com.
+% Content is condensed only from this book's existing supplied material.
+\begingroup
+\titlespacing*{\chapter}{0pt}{0pt}{14pt}
+\chapter{Formula sheet}
+\label{ch:appendix:formula-sheet}
+
+\small
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{24pt}
+\setlength{\multicolsep}{8pt}
+\setlength{\abovedisplayskip}{5pt plus 2pt minus 1pt}
+\setlength{\belowdisplayskip}{5pt plus 2pt minus 1pt}
+\setlength{\abovedisplayshortskip}{3pt plus 1pt}
+\setlength{\belowdisplayshortskip}{5pt plus 2pt minus 1pt}
+\titlespacing*{\section}{0pt}{0pt}{9pt}
+\newcommand{\formulagroup}[2]{%
+  \par\addvspace{6pt}\noindent\textbf{#1}%
+  \hfill\autoref{#2}\par\nobreak\smallskip
+}
+
+\begin{fullwidth}
+  Let \(V,W\) be vector spaces over the same field \(\mathbb F\).
+  Unless stated otherwise, \(\dim V=m\), \(\dim W=n\) are finite,
+  and \(L:V\to W\) is linear.
+
+  \begin{multicols}{2}
+    \raggedcolumns
+    \section{Coordinates and maps}
+    \label{sec:appendix:formula-sheet-coordinates-and-maps}
+
+    \formulagroup{Span and independence}{sec:linear-algebra-i:linear-combinations-and-bases}
+    \[
+      \operatorname{span}\{v_1,\ldots,v_m\}
+      =\left\{\sum_{j=1}^m a_jv_j\mid a_j\in\mathbb F\right\}.
+    \]
+    The vectors \(v_1,\ldots,v_m\) are independent if
+    \[
+      \sum_{j=1}^m a_jv_j=0
+      \quad\Longrightarrow\quad a_1=\cdots=a_m=0.
+    \]
+    A basis is an independent spanning set; its size is \(\dim V\).
+
+    \formulagroup{Vector coordinates}{sec:linear-algebra-i:change-of-basis-for-vectors}
+    For ordered bases \(E,F\) of \(V\), with \(F=EM\),
+    \[
+      v=Ea=Fb,\qquad a=Mb,\qquad b=M^{-1}a.
+    \]
+    Column \(j\) of \(M\) gives the \(E\)-coordinates of \(f_j\).
+
+    \formulagroup{Linearity}{sec:linear-algebra-i:linear-functions-and-maps}
+    For \(a,b\in\mathbb F\) and \(v,w\in V\),
+    \[
+      L(av+bw)=aL(v)+bL(w),\qquad L(0_V)=0_W.
+    \]
+    Values on a basis determine the map. If \(L(e_j)=w_j\),
+    \[
+      L\left(\sum_{j=1}^m a_je_j\right)=\sum_{j=1}^m a_jw_j.
+    \]
+
+    \formulagroup{Matrix of a map}{sec:linear-algebra-i:change-of-basis-for-functions-and-maps}
+    Let \(E\) be an ordered basis of \(V\), and \(F\) of \(W\).
+    The representing matrix \(M\in\mathbb F^{n\times m}\) satisfies
+    \[
+      L(E)=FM,\qquad v=Ea\ \Longrightarrow\ L(v)=FMa.
+    \]
+    Column \(j\) of \(M\) gives the \(F\)-coordinates of \(L(e_j)\).
+    In coordinate spaces, with standard-basis matrix \(C\),
+    \[
+      CE=FM,\qquad M=F^{-1}CE.
+    \]
+
+    \formulagroup{Changing both bases}{sec:linear-algebra-i:change-of-basis-for-functions-and-maps}
+    For \(E'=EA\), \(F'=FB\), with \(A,B\) invertible,
+    \[
+      L(E')=F'M',\qquad M'=B^{-1}MA.
+    \]
+    If \(L\) is an isomorphism, \(L^{-1}\) has matrix \(M^{-1}\)
+    in the reversed bases.
+
+    \columnbreak
+    \section{Kernel and image}
+    \label{sec:appendix:formula-sheet-kernel-and-image}
+
+    \formulagroup{Kernel and nullity}{sec:linear-algebra-i:kernel}
+    \[
+      \ker L=\{v\in V\mid L(v)=0_W\}.
+    \]
+    Its dimension is \(k=\operatorname{nullity}L\).
+    If \(v_0\) solves \(L(v)=w\), the solution set is
+    \[
+      v_0+\ker L=\{v_0+u\mid u\in\ker L\}.
+    \]
+
+    \formulagroup{Image and rank}{sec:linear-algebra-i:rank}
+    \[
+      \operatorname{im}L=\{L(v)\mid v\in V\},\qquad
+      r=\operatorname{rank}L=\dim\operatorname{im}L.
+    \]
+    For a matrix with columns \(c_1,\ldots,c_m\),
+    \[
+      \operatorname{im}M=\operatorname{span}\{c_1,\ldots,c_m\}.
+    \]
+    The equation \(L(v)=w\) is solvable exactly when
+    \(w\in\operatorname{im}L\).
+
+    \formulagroup{Rank--nullity and bounds}{sec:linear-algebra-i:rank}
+    \[
+      \begin{aligned}
+        r+k&=m,\\
+        0\leq r&\leq\min(m,n),\\
+        \max(0,m-n)\leq k&\leq m.
+      \end{aligned}
+    \]
+
+    \formulagroup{Injectivity and surjectivity}{sec:linear-algebra-i:rank}
+    \[
+      \begin{aligned}
+        L\text{ injective}&\ \Longleftrightarrow\ \ker L=\{0_V\}\\
+                         &\ \Longleftrightarrow\ k=0
+                           \ \Longleftrightarrow\ r=m,\\
+        L\text{ surjective}&\ \Longleftrightarrow\ \operatorname{im}L=W\\
+                           &\ \Longleftrightarrow\ r=n.
+      \end{aligned}
+    \]
+    \(L\) is an isomorphism exactly when \(m=n=r\) and \(k=0\).
+
+    \formulagroup{Differentiation}{sec:linear-algebra-i:differentiation}
+    Without a finite-dimensional assumption,
+    \[
+      D:C^1(\R)\to C^0(\R),\qquad D(f)=f',
+    \]
+    Differentiation is linear. For
+    \(D:\mathcal P_3(\R)\to\mathcal P_2(\R)\),
+    \[
+      \begin{aligned}
+        D(ax^3+bx^2+cx+d)&=3ax^2+2bx+c,\\
+        \ker D&=\operatorname{span}\{1\},\quad k=1,\\
+        \operatorname{im}D&=\mathcal P_2(\R),\quad r=3.
+      \end{aligned}
+    \]
+  \end{multicols}
+\end{fullwidth}
+\clearpage
+\begin{fullwidth}
+  The following formulas concern real vector spaces. Write \(E=(e_1,\ldots,e_n)\)
+  for an ordered basis and \(M=(b^i_j)\) for a square matrix, with row index
+  \(i\) and column index \(j\).
+
+  \begin{multicols}{2}
+    \raggedcolumns
+    \section{Area and signs}
+    \label{sec:appendix:formula-sheet-area-and-signs}
+
+    \formulagroup{Oriented area}{sec:linear-algebra-i:oriented-area-and-volume}
+    With \(A(e_1,e_2)=1\),
+    \[
+      \begin{aligned}
+        A(av+bw,z)&=aA(v,z)+bA(w,z),\\
+        A(v,aw+bz)&=aA(v,w)+bA(v,z),\\
+        A(w,v)&=-A(v,w),\qquad A(v,v)=0.
+      \end{aligned}
+    \]
+    The ordinary area is \(|A(v,w)|\). If
+    \(v=ae_1+ce_2\), \(w=be_1+de_2\), then
+    \[
+      A(v,w)=ad-bc=\det\begin{bmatrix}a&b\\c&d\end{bmatrix}.
+    \]
+
+    \formulagroup{Oriented volume}{sec:linear-algebra-i:oriented-area-and-volume}
+    Normalize \(\mathcal V(e_1,e_2,e_3)=1\). If \(a,b\) lie in the
+    \((e_1,e_2)\)-plane and \(c=ue_1+ve_2+he_3\), then
+    \[
+      \mathcal V(a,b,c)=hA(a,b).
+    \]
+    The ordinary volume is \(|h|\,|A(a,b)|\). If
+    \([v_1\ v_2\ v_3]=EM\), then
+    \[
+      \mathcal V(v_1,v_2,v_3)=\det M.
+    \]
+
+    \formulagroup{Permutation signs}{sec:linear-algebra-i:permutations}
+    For \(\sigma,\sigma_1,\sigma_2\in S_n\),
+    \[
+      \begin{aligned}
+        \varepsilon(\iota)&=1,\\
+        \varepsilon(\tau)&=-1\quad\text{for a transposition},\\
+        \varepsilon(\sigma_2\circ\sigma_1)
+          &=\varepsilon(\sigma_2)\varepsilon(\sigma_1),\\
+        \varepsilon(\sigma^{-1})&=\varepsilon(\sigma).
+      \end{aligned}
+    \]
+    For an arbitrary map \(\phi\in T_n\), set
+    \(\varepsilon(\phi)=0\) when \(\phi\notin S_n\).
+
+    \columnbreak
+    \section{Determinant formulas}
+    \label{sec:appendix:formula-sheet-determinants}
+
+    \formulagroup{Antisymmetry}{sec:linear-algebra-i:antisymmetric-multilinear-functions}
+    For antisymmetric \(A:V^n\to\R\) and \(\phi\in T_n\),
+    \[
+      A(v_{\phi(1)},\ldots,v_{\phi(n)})
+        =\varepsilon(\phi)A(v_1,\ldots,v_n).
+    \]
+    Equal inputs give zero. For multilinear functions on real vector
+    spaces, this vanishing property is equivalent to antisymmetry.
+
+    \formulagroup{Expansion in a basis}{sec:linear-algebra-i:antisymmetric-multilinear-functions}
+    Let \(\dim V=n\) and \(v_j=\sum_{i=1}^n b^i_j e_i\). For
+    antisymmetric multilinear \(A\),
+    \[
+      \begin{aligned}
+        A(v_1,\ldots,v_n)
+          &=A(e_1,\ldots,e_n)\\
+          &\quad\cdot\sum_{\sigma\in S_n}\varepsilon(\sigma)
+            b^{\sigma(1)}_1\cdots b^{\sigma(n)}_n.
+      \end{aligned}
+    \]
+
+    \formulagroup{Normalized determinant}{sec:linear-algebra-i:determinant}
+    For the standard basis of \(\R^n\), the antisymmetric multilinear
+    function \(D\) is normalized by
+    \[
+      D(e_1,\ldots,e_n)=1.
+    \]
+    If \(M=[C_1\ \cdots\ C_n]\), then
+    \[
+      \begin{aligned}
+        \det M&=D(C_1,\ldots,C_n)\\
+          &=\sum_{\sigma\in S_n}\varepsilon(\sigma)
+            b^{\sigma(1)}_1\cdots b^{\sigma(n)}_n\\
+          &=\sum_{\sigma\in S_n}\varepsilon(\sigma)
+            b^1_{\sigma(1)}\cdots b^n_{\sigma(n)}.
+      \end{aligned}
+    \]
+  \end{multicols}
+\end{fullwidth}
+\endgroup

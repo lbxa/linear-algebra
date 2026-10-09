@@ -15,10 +15,13 @@
 
 \usepackage{nameref}
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage{aliascnt} % Shared theorem numbering with distinct autoref names.
 \usepackage{graphicx}
+\usepackage{cancel}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta}
+\usetikzlibrary{arrows.meta,calc}
 \usepackage{booktabs}
+\usepackage{multicol} % Two-column appendix formula sheet.
 \usepackage{makeidx}
 \usepackage{url}
 % Bracketed book citations; bibliography numbered by first citation.
@@ -33,16 +36,6 @@
 \graphicspath{{figures/}}
 \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
 \setcounter{secnumdepth}{1}
-
-% Use a full stop after caption numbers in homework handouts.
-\makeatletter
-\@ifclassloaded{tufte-handout}{%
-  \patchcmd{\@caption}{\endcsname:}{\endcsname.}
-    {}
-    {\PackageError{linear-algebra-notes}{Could not format caption punctuation}
-      {Check the Tufte caption definition.}}
-}{}
-\makeatother
 
 % Retain the borrowed title/contents design only for the book.
 % Adapted from Kevin Godby's Tufte-LaTeX title/contents example:
@@ -62,7 +55,10 @@
     {}
     {0pt}
     {\huge\rmfamily\itshape}
-    [\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\end{fullwidth}}{}]
+    [\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\end{fullwidth}}{}%
+      % Clear the fullwidth list's pending paragraph cleanup so it cannot
+      % overwrite the chapter hook and suppress the next section's spacing.
+      \@endpefalse]
   \renewcommand{\maketitlepage}{%
     \begingroup
     \setlength{\parindent}{0pt}
@@ -97,19 +93,30 @@
 }{}
 \makeatother
 
-% Enable book links after the Tufte contents customizations. The class's
-% nohyper option prevents earlier loading; keep sidenotes unlinked.
-\makeatletter
-\@ifclassloaded{tufte-book}{%
-  \usepackage[hidelinks,hyperfootnotes=false,bookmarksdepth=0]{hyperref}
-  % Hyperref resets captions to normalsize; restore the Tufte margin font
-  % while retaining its caption anchors and links. Caption paragraphs
-  % must not inherit the first-line indent from the margin justification.
-  \patchcmd{\@caption}{\normalsize}
-    {\@tufte@caption@font\@tufte@caption@justification
-      \setlength{\parindent}{0pt}}
-    {}
-    {\PackageError{linear-algebra-notes}{Could not restore the caption font}
-      {Check the hyperref caption definition.}}
-}{}
-\makeatother
+% Enable links after the Tufte contents customizations in both the book and
+% handouts. Their nohyper option defers loading; keep sidenotes unlinked.
+\usepackage[hidelinks,hyperfootnotes=false,bookmarksdepth=0]{hyperref}
+\renewcommand*{\chapterautorefname}{Chapter}
+\renewcommand*{\appendixautorefname}{Appendix}
+\renewcommand*{\sectionautorefname}{Section}
+\renewcommand*{\subsectionautorefname}{Section}
+\renewcommand*{\subsubsectionautorefname}{Section}
+\renewcommand*{\equationautorefname}{Equation}
+
+% Match the ordinary Tufte margin text. Only the label is bold; the full
+% stop separates it from regular serif text, with no first-line indent.
+% Tufte continues to place figures and their captions in its native layout.
+\usepackage{caption}
+\captionsetup{
+  format=plain,
+  font={normalfont,footnotesize},
+  labelfont=bf,
+  textfont=normalfont,
+  labelsep=period,
+  justification=RaggedRight,
+  singlelinecheck=false,
+  parindent=0pt,
+  skip=0pt
+}
+% Margin figures have no ordinary float-start anchor; link to their caption.
+\AtBeginEnvironment{marginfigure}{\captionsetup{hypcap=false}}

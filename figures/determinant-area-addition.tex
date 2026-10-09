@@ -1,0 +1,48 @@
+% Supplied October 1 PDF, pp. 7--8; schematic common-base decomposition.
+\begin{tikzpicture}[
+  x=1cm,y=1cm,font=\footnotesize,line width=0.5pt,
+  line cap=round,line join=round,
+  vector/.style={-{Latex[length=1.6mm,width=1.1mm]}}
+]
+  \begin{scope}
+    \coordinate (O) at (0,0);
+    \coordinate (W) at (2.4,0);
+    \coordinate (V1) at (-0.65,1.05);
+    \coordinate (V2) at (0.8,1.05);
+    \coordinate (S) at ($(V1)+(V2)$);
+    \coordinate (V1W) at ($(V1)+(W)$);
+    \coordinate (SW) at ($(S)+(W)$);
+    \fill[black!8] (O) -- (W) -- (V1W) -- (V1) -- cycle;
+    \fill[black!20] (V1) -- (V1W) -- (SW) -- (S) -- cycle;
+    \draw (V1) -- (V1W);
+    \draw (S) -- (SW) node[midway,above=5pt] {\(w\)};
+    \draw (W) -- (V1W) -- (SW);
+    \draw[vector] (O) -- (W) node[midway,below=5pt] {\(w\)};
+    \draw[vector] (O) -- (V1) node[midway,left=5pt] {\(v_1\)};
+    \draw[vector] (V1) -- (S) node[midway,left=5pt] {\(v_2\)};
+    \draw[vector,dashed] (O) -- (S);
+    \draw[vector,dashed] (W) -- (SW)
+      node[midway,right=5pt] {\(v_1+v_2\)};
+  \end{scope}
+  \begin{scope}[xshift=6.1cm]
+    % Head-to-tail construction from PDF p. 8. Each right vertex is the
+    % corresponding left vertex translated by the same base vector w.
+    \coordinate (r-origin) at (0,0);
+    \coordinate (r-base) at (2.4,0);
+    \coordinate (r-top) at (0.7,2.1);
+    \coordinate (r-v2) at (-1.3,-1.05);
+    \coordinate (r-top-base) at ($(r-top)+(r-base)$);
+    \coordinate (r-sum) at ($(r-top)+(r-v2)$);
+    \coordinate (r-sum-base) at ($(r-sum)+(r-base)$);
+    \fill[black!8] (r-origin) -- (r-base) -- (r-top-base) -- (r-top) -- cycle;
+    \fill[black!20] (r-sum) -- (r-sum-base) -- (r-top-base) -- (r-top) -- cycle;
+    \draw[vector] (r-origin) -- (r-base) node[midway,below=5pt] {\(w\)};
+    \draw[vector] (r-origin) -- (r-top) node[pos=0.75,right=5pt] {\(v_1\)};
+    \draw[vector] (r-top) -- (r-sum) node[midway,left=5pt] {\(v_2\)};
+    \draw (r-top) -- (r-top-base) node[midway,above=5pt] {\(w\)};
+    \draw (r-base) -- (r-top-base) -- (r-sum-base) -- (r-sum);
+    \draw[vector,dashed] (r-origin) -- (r-sum)
+      node[midway,left=5pt] {\(v_1+v_2\)};
+    \draw[vector,dashed] (r-base) -- (r-sum-base);
+  \end{scope}
+\end{tikzpicture}

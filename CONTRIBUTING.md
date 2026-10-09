@@ -14,6 +14,12 @@ relevant topic file under `sections/linear-algebra-i/`, for example
 `01-vector-spaces-and-bases/01-vector-spaces.tex`. Any unfilled headings are
 deliberate scaffolding, not a prompt to generate content.
 
+Consult the root and relevant chapter or appendix README changelogs before
+structural edits. Use the project-local
+[tacit-knowledge skill](.agents/skills/tacit-knowledge/SKILL.md) to record durable
+author decisions and their rationale in the narrowest relevant README. These
+records supplement the exercise placement maps and source coverage tables.
+
 Add supplied topics to their chapter's explicit `\input` list and chapters to
 `part.tex`. Extend the outline only for covered topics supported by supplied
 material or an explicit author request. Keep Linear Algebra II disabled until
@@ -78,13 +84,17 @@ only in the margin.
 
 Author mathematical diagrams in TikZ, using black and gray unless a distinction
 requires color. Every figure has a caption, stable label, and nearby body
-reference with `Figure~\ref{fig:...}`. Use physical point-marker radii and check
+reference with `\autoref{fig:...}`. Use physical point-marker radii and check
 label clearance at the final margin size. Follow the detailed diagram standards
 in [AGENTS.md](AGENTS.md).
 
 Preserve the italic chapter titles, chapter-level contents, `nohyper` class
-option, late book `hyperref` load, and caption-font patch. Layout changes require
-a PDF inspection. Keep numeric citations in the text, with the bibliography
+option, late `hyperref` load, and shared `caption` configuration. Caption labels
+are bold with a full-stop separator; caption text is regular serif at the Tufte
+margin-note size. Use `\autoref` for numbered references and `\autopageref`
+for page references, preserving the alias counters for shared theorem numbering.
+Layout changes require a PDF inspection. Keep numeric citations in the text,
+with the bibliography
 after the course chapters and before the appendices. Add only references used
 by supplied content, and use the full latexmk build so citations resolve.
 

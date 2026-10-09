@@ -1,0 +1,263 @@
+% !TEX root = ../../../main.tex
+\section{Oriented area and volume}
+\label{sec:linear-algebra-i:oriented-area-and-volume}
+
+% Sources: October 1 PDF, pp. 3--18; IMG_9207--IMG_9208.
+\subsection{Parallelograms and their area}
+
+Let \(V\) be a two-dimensional real vector space. The parallelogram spanned
+by \(v_1,v_2\in V\) is
+\[
+  P(v_1,v_2)=\{av_1+bv_2\mid 0\leq a,b\leq1\}.
+\]
+\autoref{fig:linear-algebra-i:determinant-parallelogram} shows its two
+generating vectors and a point given by such a linear combination.
+
+\begin{marginfigure}
+  \centering
+  \input{figures/determinant-parallelogram}
+  \caption[Parallelogram spanned by two vectors.]{A parallelogram spanned by \(v_1,v_2\), shown schematically.
+    The interior point has the form \(av_1+bv_2\).}
+  \label{fig:linear-algebra-i:determinant-parallelogram}
+\end{marginfigure}
+
+Fix an ordered basis \(E=(e_1,e_2)\) and normalize the area of
+\(P(e_1,e_2)\) to be \(1\). If
+\[
+  v_1=ae_1+he_2,\qquad v_2=we_1,\qquad w>0,
+\]
+then the width is \(w\), the height is \(|h|\), and the ordinary area is
+\[
+  \operatorname{area}P(v_1,v_2)=|h|w.
+\]
+For \(h>0\), this is \(hw\); for \(h<0\), the parallelogram lies below
+its base. Both configurations appear in
+\autoref{fig:linear-algebra-i:determinant-signed-height}.
+
+\begin{figure}[htbp]
+  \centering
+  \input{figures/determinant-signed-height}
+  \caption[Signed height and oriented area.]{Positive and negative height coefficients relative to the
+    ordered basis, shown schematically. Ordinary area is \(|h|w\);
+    the oriented area \(A(v_1,v_2)=-hw\) changes sign.}
+  \label{fig:linear-algebra-i:determinant-signed-height}
+\end{figure}
+
+\subsection{Oriented area and bilinearity}
+
+Choose the orientation for which \(e_2\) lies counterclockwise of \(e_1\),
+and normalize \(A(e_1,e_2)=1\). Define the oriented area by
+\[
+  A(v,w)=
+  \begin{cases}
+    \operatorname{area}P(v,w) & \text{if \((v,w)\) is positively oriented},\\
+    -\operatorname{area}P(v,w) & \text{if \((v,w)\) is negatively oriented},\\
+    0 & \text{if \(v,w\) are linearly dependent}.
+  \end{cases}
+\]
+Thus \(A(v,w)\) is positive when \(w\) lies counterclockwise of \(v\),
+and negative when \(w\) lies clockwise of \(v\).
+
+Equal inputs are linearly dependent. The parallelogram \(P(u,u)\)
+collapses to a line segment and has zero area, so \(A(u,u)=0\) for
+every \(u\in V\). In particular,
+\[
+  A(v,v)=A(w,w)=0.
+\]
+% The author requested this explanation before the coordinate calculation.
+
+In the signed-height configuration,
+\[
+  A(v_1,v_2)=-hw.
+\]
+The ordinary area is \(|A(v_1,v_2)|\).
+Under rescaling, ordinary area satisfies
+\[
+  \begin{aligned}
+    \operatorname{area}P(cv,w)&=|c|\operatorname{area}P(v,w),\\
+    \operatorname{area}P(v,cw)&=|c|\operatorname{area}P(v,w).
+  \end{aligned}
+\]
+% IMG_9207 first records the absolute-value scaling of ordinary area.
+% Its later c-scaling identities and PDF pp. 9--12 concern oriented area.
+
+\begin{definition}[Bilinear function]
+  \label{thm:linear-algebra-i:bilinear-function}
+  A function \(B:V\times V\to\R\) is \emph{bilinear} if it is linear
+  in each input separately, with the other input fixed. Thus, for all
+  \(v,v_1,v_2,w,w_1,w_2\in V\) and \(c\in\R\),
+  \[
+    \begin{aligned}
+      B(v_1+v_2,w)&=B(v_1,w)+B(v_2,w),\\
+      B(v,w_1+w_2)&=B(v,w_1)+B(v,w_2),\\
+      B(cv,w)&=B(v,cw)=cB(v,w).
+    \end{aligned}
+  \]
+\end{definition}
+% IMG_9207 gives these three identities, with both scalar identities
+% written together. B distinguishes the general definition from area A.
+
+The oriented area function \(A\) is bilinear and satisfies these identities.
+
+\autoref{fig:linear-algebra-i:determinant-area-addition} illustrates
+addition with a common base. When the two vectors lie on opposite sides
+of the base, the same identity can be written as
+\[
+  A(v_1,w)=A(v_1+v_2,w)-A(v_2,w).
+\]
+% PDF p. 8 labels a downward v_2 as having A(v_2,w)<0 while drawing w
+% to the right. This conflicts with the orientation convention on pp. 6
+% and 11. The valid addition identity is retained without that inequality.
+
+\begin{figure}[htbp]
+  \centering
+  \input{figures/determinant-area-addition}
+  \caption[Addition of oriented areas with a common base.]{Addition with a common base \(w\), shown schematically.
+    The two input vectors lie on the same side of the base on the left,
+    and on opposite sides on the right. Dashed sides represent \(v_1+v_2\).
+    The signed areas add in both cases.}
+  \label{fig:linear-algebra-i:determinant-area-addition}
+\end{figure}
+
+Rescaling a vector multiplies the oriented area by the same scalar;
+reflection changes its sign. These operations appear in
+\autoref{fig:linear-algebra-i:determinant-area-scaling}.
+The two inputs are linear separately. Doubling both inputs therefore
+multiplies the result by \(2\) twice,
+\[
+  A(2v,2w)=4A(v,w).
+\]
+
+\begin{figure}[htbp]
+  \centering
+  \input{figures/determinant-area-scaling}
+  \caption[Rescaling and reflection of oriented area.]{Rescaling and reflection of a parallelogram, shown schematically
+    with \(c>1\). The identities are \(A(cv,w)=cA(v,w)\) and
+    \(A(-v,w)=-A(v,w)\).}
+  \label{fig:linear-algebra-i:determinant-area-scaling}
+\end{figure}
+
+\begin{proposition}[Further properties of oriented area]
+  \label{thm:linear-algebra-i:oriented-area-properties}
+  The oriented area function vanishes on equal inputs and is antisymmetric.
+  For all \(v,w\in V\),
+  \[
+    A(v,v)=0,\qquad A(w,v)=-A(v,w).
+  \]
+\end{proposition}
+
+Equal-input vanishing follows from the degenerate parallelogram described
+above. For a bilinear function on a real vector space, this property implies
+antisymmetry. These are additional properties of oriented area, rather than
+conditions in the definition of bilinearity.
+% PDF p. 12 and IMG_9207 state the implication without a proof.
+% Lucas's October 6 proof is shared in the following exercise's solution.
+The area function is an antisymmetric bilinear tensor.
+
+The following exercise asks for the antisymmetry argument.
+\input{problems/hw05/01-bilinear-antisymmetry/problem}
+
+% Keep the coordinate derivation, its explanation, and its margin diagram together.
+\newpage
+\subsection{The determinant of a two-by-two matrix}
+
+Write \(v=ae_1+ce_2\) and \(w=be_1+de_2\).
+\autoref{fig:linear-algebra-i:determinant-two-by-two-area} shows these
+coordinates and the parallelogram spanned by the two vectors.
+
+\begin{marginfigure}
+  \centering
+  \input{figures/determinant-two-by-two-area}
+  \caption[Two-by-two determinant as oriented area.]{Basis-coordinate
+    schematic for \(v=ae_1+ce_2\) and \(w=be_1+de_2\). The shaded
+    parallelogram has oriented area \(ad-bc\), positive in the pictured
+    configuration.}
+  \label{fig:linear-algebra-i:determinant-two-by-two-area}
+\end{marginfigure}
+
+The equal-input property gives \(A(e_1,e_1)=A(e_2,e_2)=0\).
+Bilinearity gives
+\[
+  \begin{aligned}
+    A(v,w)
+      &=A(ae_1,be_1)+A(ce_2,be_1)\\
+      &\quad+A(ae_1,de_2)+A(ce_2,de_2)\\
+      &=abA(e_1,e_1)+bcA(e_2,e_1)\\
+      &\quad+adA(e_1,e_2)+cdA(e_2,e_2)\\
+      &=bcA(e_2,e_1)+adA(e_1,e_2)\\
+      &=ad-bc.
+  \end{aligned}
+\]
+The terms \(abA(e_1,e_1)\) and \(cdA(e_2,e_2)\) vanish because their
+inputs repeat. Antisymmetry gives
+\(A(e_2,e_1)=-A(e_1,e_2)\), and the normalization is
+\(A(e_1,e_2)=1\).
+
+\begin{definition}
+  The determinant of a two-by-two matrix is
+  \[
+    \det\begin{bmatrix}a&b\\c&d\end{bmatrix}=ad-bc.
+  \]
+\end{definition}
+
+In column notation,
+\[
+  [v\ w]=[e_1\ e_2]\begin{bmatrix}a&b\\c&d\end{bmatrix}.
+\]
+Thus the determinant is the oriented area of the parallelogram whose
+generating vectors are the columns, measured in the normalized basis.
+Before imposing the normalization, the coordinate identity reads
+\[
+  A(v,w)=A(e_1,e_2)(ad-bc).
+\]
+
+\subsection{Oriented volume}
+
+In a three-dimensional real vector space, three independent vectors
+\(a,b,c\) span the parallelepiped
+\[
+  P(a,b,c)=\{sa+tb+uc\mid 0\leq s,t,u\leq1\}.
+\]
+Fix an ordered basis \((e_1,e_2,e_3)\) whose unit parallelepiped has
+volume \(1\). Suppose \(a,b\) lie in the plane spanned by \(e_1,e_2\),
+and write
+\[
+  c=ue_1+ve_2+he_3.
+\]
+Only the \(e_3\)-component takes \(c\) off the base plane. Its coefficient
+\(h\) is the height in these coordinates, as shown in
+\autoref{fig:linear-algebra-i:determinant-parallelepiped}.
+The ordinary volume is
+\[
+  \operatorname{vol}P(a,b,c)=|h|\,|A(a,b)|.
+\]
+
+\begin{figure}[htbp]
+  \centering
+  \input{figures/determinant-parallelepiped}
+  \caption[Parallelepiped and its height coefficient.]{A parallelepiped with base spanned by \(a,b\), shown
+    schematically. The height coefficient is the \(e_3\)-component of
+    \(c\); the drawing does not specify a Euclidean metric.}
+  \label{fig:linear-algebra-i:determinant-parallelepiped}
+\end{figure}
+
+The oriented volume \(\mathcal V(a,b,c)\) is normalized by
+\[
+  \mathcal V(e_1,e_2,e_3)=1,
+  \qquad |\mathcal V(a,b,c)|=\operatorname{vol}P(a,b,c).
+\]
+It is antisymmetric and linear in each of its three inputs. In the
+base-plane configuration,
+\[
+  \mathcal V(a,b,c)=hA(a,b).
+\]
+This formula has no absolute values.
+
+If \([v_1\ v_2\ v_3]=[e_1\ e_2\ e_3]M=EM\), then the determinant
+of the three-by-three matrix \(M\) is characterized by
+\[
+  \mathcal V(v_1,v_2,v_3)=\mathcal V(e_1,e_2,e_3)\det M.
+\]
+With the chosen normalization, \(\det M=\mathcal V(v_1,v_2,v_3)\).
+The same algebraic construction extends to \(n\) inputs through
+multilinear functions.

@@ -73,6 +73,25 @@ and check its build output rather than invoking pdfLaTeX alone.
 The recipe uses `latexmk` from `PATH`; shared settings contain no
 machine-specific executable paths.
 
+## Codex stop hook
+
+The project-local [.codex/hooks.json](.codex/hooks.json) runs `make check`
+when the main agent turn finishes. It calls
+[scripts/codex-stop-check.sh](scripts/codex-stop-check.sh) using the Git root,
+including when the session starts in a subdirectory. The check builds the book
+and all imported homework handouts using tools on `PATH`, with a ten-minute
+timeout.
+
+Build output is saved to `build/codex-stop-check.log`. A failed check produces
+a Codex warning without automatically restarting the agent. The script returns
+JSON so build output cannot corrupt the hook response. The hook supplements
+the required build and visual checks during editing.
+
+Review and trust the hook through `/hooks` in the Codex CLI before relying on
+automatic execution. Codex requires trust for new or changed hook definitions
+and a trusted project configuration for project hooks. See the
+[official Codex hook documentation](https://learn.chatgpt.com/docs/hooks).
+
 ## Check before committing
 
 Review `.vscode/settings.json` before committing it. Include portable team

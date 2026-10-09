@@ -1,0 +1,38 @@
+% Supplied October 1 PDF, pp. 4--6; schematic basis-coordinate diagrams.
+\begin{tikzpicture}[
+  x=1cm,y=1cm,font=\footnotesize,line width=0.5pt,
+  line cap=round,line join=round,
+  vector/.style={-{Latex[length=1.6mm,width=1.1mm]}},
+  guide/.style={black!55,dashed}
+]
+  \begin{scope}
+    \coordinate (O) at (0,0);
+    \coordinate (V1) at (0.65,1.5);
+    \coordinate (V2) at (2.65,0);
+    \coordinate (S) at ($(V1)+(V2)$);
+    \coordinate (F) at (S |- O);
+    \fill[black!8] (O) -- (V2) -- (S) -- (V1) -- cycle;
+    \draw[guide] (V2) -- (F);
+    \draw[guide] (F) -- (S) node[midway,right=5pt,text=black] {\(h>0\)};
+    \draw (V1) -- (S) -- (V2);
+    \draw[vector] (O) -- (V2) node[midway,below=5pt] {\(v_2=we_1\)};
+    \draw[vector] (O) -- (V1) node[pos=0.75,left=5pt] {\(v_1\)};
+    \draw[vector,black!55] (O) -- (0,0.7) node[pos=0.8,left=5pt] {\(e_2\)};
+    \node at (1.65,-0.8) {\(A(v_1,v_2)<0\)};
+  \end{scope}
+  \begin{scope}[xshift=5.5cm,yshift=1.5cm]
+    \coordinate (O) at (0,0);
+    \coordinate (V1) at (0.65,-1.5);
+    \coordinate (V2) at (2.65,0);
+    \coordinate (S) at ($(V1)+(V2)$);
+    \coordinate (F) at (S |- O);
+    \fill[black!8] (O) -- (V2) -- (S) -- (V1) -- cycle;
+    \draw[guide] (V2) -- (F);
+    \draw[guide] (F) -- (S) node[midway,right=5pt,text=black] {\(h<0\)};
+    \draw (V1) -- (S) -- (V2);
+    \draw[vector] (O) -- (V2) node[midway,above=5pt] {\(v_2=we_1\)};
+    \draw[vector] (O) -- (V1) node[midway,left=5pt] {\(v_1\)};
+    \draw[vector,black!55] (O) -- (0,0.7) node[pos=0.8,left=5pt] {\(e_2\)};
+    \node at (1.65,-2.3) {\(A(v_1,v_2)>0\)};
+  \end{scope}
+\end{tikzpicture}

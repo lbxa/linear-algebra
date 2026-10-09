@@ -1,5 +1,252 @@
 % !TEX root = ../../main.tex
+\begingroup
+\newcommand{\notationmeaning}[1]{{\raggedright#1\par}}
 \chapter{Notation}
 \label{ch:appendix:notation}
+\raggedbottom
 
-% Reserved for notation from supplied Linear Algebra notes.
+This appendix explains the symbols and reading conventions used in the book.
+Meanings are local to the stated space, map, or matrix.
+\autoref{ch:appendix:formula-sheet} collects the corresponding formulas.
+
+\section{Scalars, spaces, and sets}
+\label{sec:appendix:notation-spaces}
+
+\begin{table}[htbp]
+  \centering
+  \renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{0.23\linewidth}p{0.72\linewidth}@{}}
+  \toprule
+  Symbol & Meaning \\
+  \midrule
+  \(\mathbb F\) & \notationmeaning{The field of scalars.} \\
+  \(\R,\C\) & \notationmeaning{The real and complex numbers, respectively.} \\
+  \(\mathbb F^n\) & \notationmeaning{Coordinate vectors with \(n\) entries
+    in \(\mathbb F\).} \\
+  \(V,W\) & \notationmeaning{Vector spaces; \(v,w\) usually denote
+    their vectors.} \\
+  \(V^n\) & \notationmeaning{Ordered \(n\)-tuples of vectors in \(V\),
+    the inputs to an \(n\)-input multilinear function.} \\
+  \(\dim V\) & \notationmeaning{The dimension of \(V\).} \\
+  \(\operatorname{span}(S)\) & \notationmeaning{All finite linear
+    combinations of vectors in \(S\).} \\
+  \bottomrule
+\end{tabular}
+  \caption{Scalars, vector spaces, and span.}
+  \label{tab:appendix:notation-spaces}
+\end{table}
+
+\autoref{tab:appendix:notation-spaces} uses the locally specified scalar
+field. \autoref{ch:linear-algebra-i:determinants}
+uses real vector spaces. An ordered basis written with an ordinary letter
+\(F\) is distinct from the scalar field \(\mathbb F\).
+
+In set notation, \(v\in V\) means that \(v\) is an element of \(V\),
+while \(S\subseteq V\) means that \(S\) is a subset of \(V\).
+The symbols \(\varnothing\) and \(\{0\}\) denote the empty set and
+the set containing the zero vector, respectively. In a set such as
+\(\{v\in V\mid L(v)=0\}\), the vertical bar means ``such that'';
+a colon is also used for this purpose.
+
+The symbol \(0\) can denote a scalar, vector, or zero matrix. Subscripts
+in \(0_V\) and \(0_W\) specify the space containing the zero vector.
+Thus \(\ker L=\{0_V\}\) describes a subspace with one element,
+whereas \(\dim\ker L=0\) describes its dimension.
+
+\section{Coordinates and matrix indices}
+\label{sec:appendix:notation-indices}
+
+% The supplied September 24 handout, pp. 18--19, and Homework 5 use
+% upper row indices and lower column indices, consistently with the book.
+For a matrix \(M=(M^i_j)\), the index positions have the following meaning:
+\[
+  M^i_j=\text{entry in row \(i\), column \(j\)}.
+\]
+The \emph{upper} index selects the row; the \emph{lower} index selects
+the column. In notation that places both indices below the letter, the
+same entry would be written \(m_{ij}\), with the row index first.
+For example, \(M^2_3\) is the entry in the second row and third column.
+Here the superscript is an index, not a power.
+
+The notation \(M_j\) denotes the entire \(j\)-th column. Its entries are
+\[
+  M_j=\begin{bmatrix}M^1_j&\cdots&M^r_j\end{bmatrix}^{T}
+  \qquad\text{for a matrix with \(r\) rows.}
+\]
+The superscript \(T\) means transpose, so the displayed row becomes a
+column. Similarly, \(v=(v^1,\ldots,v^n)^T\) is a coordinate column;
+\(v^i\) is its \(i\)-th scalar coordinate. By contrast, \(v_j\) usually
+labels the \(j\)-th vector in a list. In the expression
+\[
+  v_j=\sum_{i=1}^n b^i_j e_i,
+\]
+the lower index \(j\) selects the vector, and the upper index \(i\)
+selects its coordinate in the basis direction \(e_i\).
+
+The size \(r\times c\) always means \(r\) rows and \(c\) columns.
+Both \(\mathrm M_{r\times c}(\mathbb F)\) and
+\(\mathbb F^{r\times c}\) denote matrices of this size with scalar
+entries. The notation \(\mathrm M_{r\times c}(V)\) instead allows
+entries in a vector space \(V\). Read dimension labels \(m,n\) from the
+stated matrix size or map domain and codomain.
+
+\subsection{Summation conventions}
+
+An explicit sum such as \(\sum_{i=1}^n f_iM^i_j\) leaves \(j\) fixed
+and sums over \(i\). Where Einstein notation is used, an index repeated
+once above and once below is summed over its stated range. Thus
+\[
+  f_iM^i_j=\sum_{i=1}^n f_iM^i_j,
+  \qquad
+  e_ja^j=\sum_{j=1}^m e_ja^j.
+\]
+An index that is not summed remains free. For instance, \(j\) in
+\(L(e_j)=f_iM^i_j\) identifies the basis vector whose image is being
+computed. These conventions are used in
+\autoref{sec:linear-algebra-i:change-of-basis-for-functions-and-maps}.
+
+\section{Ordered bases and maps}
+\label{sec:appendix:notation-bases-and-maps}
+
+An ordered basis is written as \(E=(e_1,\ldots,e_m)\) or as the array
+\(E=[e_1\ \cdots\ e_m]\). The expression \(v=Ea\) means
+\[
+  v=e_1a^1+\cdots+e_ma^m.
+\]
+The vector \(v\) belongs to \(V\); the column \(a\in\mathbb F^m\)
+contains its coordinates in \(E\). Changing the basis changes the
+coordinate column while leaving the vector itself unchanged.
+
+The equation \(F=EM\) says that column \(j\) of \(M\) contains the
+\(E\)-coordinates of \(f_j\). If \(v=Ea=Fb\), then \(a=Mb\), so
+\(M\) converts \(F\)-coordinates to \(E\)-coordinates. See
+\autoref{sec:linear-algebra-i:change-of-basis-for-vectors}.
+
+For a linear map \(L:V\to W\), with domain basis \(E\) and codomain
+basis \(F\), the notation
+\[
+  L(E)=[L(e_1)\ \cdots\ L(e_m)]=FM
+\]
+means that \(L\) is applied to each basis vector separately. Column
+\(j\) of \(M\) contains the \(F\)-coordinates of \(L(e_j)\).
+If \(\dim V=m\) and \(\dim W=n\), this matrix has size \(n\times m\).
+The representing matrix depends on \(L\) and both ordered bases.
+\autoref{tab:appendix:notation-maps} lists notation for maps.
+
+\begin{table}[htbp]
+  \centering
+  \renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{0.23\linewidth}p{0.72\linewidth}@{}}
+  \toprule
+  Symbol & Meaning \\
+  \midrule
+  \(L:V\to W\) & \notationmeaning{A map with domain \(V\) and codomain \(W\).} \\
+  \(v\mapsto L(v)\) & \notationmeaning{The rule assigning an output to an input.} \\
+  \(\mathcal L(V,W)\) & \notationmeaning{The vector space of linear maps
+    from \(V\) to \(W\).} \\
+  \(I_V\) & \notationmeaning{The identity map on \(V\).} \\
+  \(I_n\) & \notationmeaning{The \(n\)-by-\(n\) identity matrix.} \\
+  \(L^{-1},M^{-1}\) & \notationmeaning{The inverse map and inverse matrix,
+    respectively, when they exist.} \\
+  \bottomrule
+\end{tabular}
+  \caption{Maps, identities, and inverses.}
+  \label{tab:appendix:notation-maps}
+\end{table}
+
+Composition is read from right to left. In \(L_2\circ L_1\), apply
+\(L_1\) first and \(L_2\) second; the representing matrix is
+\(M_2M_1\) in compatible bases. A prime in \(E'\), \(F'\), or \(M'\)
+labels a new basis or matrix, whereas \(f'\) denotes the derivative
+of a function in the differentiation discussion.
+
+\section{Kernel, image, and function spaces}
+\label{sec:appendix:notation-kernel-and-image}
+
+\begin{table}[htbp]
+  \centering
+  \renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{0.23\linewidth}p{0.72\linewidth}@{}}
+  \toprule
+  Symbol & Meaning \\
+  \midrule
+  \(\ker L\) & \notationmeaning{The subspace of inputs mapped to \(0_W\).} \\
+  \(\operatorname{Null}(M)\) & \notationmeaning{The null space \(\ker M\)
+    of a matrix.} \\
+  \(\operatorname{im}L=L(V)\) & \notationmeaning{The subspace of outputs
+    actually attained by \(L\).} \\
+  \(\operatorname{nullity}L\) & \notationmeaning{The number \(\dim\ker L\).} \\
+  \(\operatorname{rank}L\) & \notationmeaning{The number \(\dim\operatorname{im}L\).} \\
+  \(v_0+\ker L\) & \notationmeaning{The set \(\{v_0+k\mid k\in\ker L\}\).} \\
+  \bottomrule
+\end{tabular}
+  \caption{Kernel, image, rank, and nullity.}
+  \label{tab:appendix:notation-kernel-and-image}
+\end{table}
+
+\autoref{tab:appendix:notation-kernel-and-image} lists kernel and image
+(subspaces) and nullity and rank (their dimensions).
+The codomain \(W\) specifies the target space, while the image records
+which targets are reached. Writing \(\ker M\) or \(\operatorname{im}M\)
+treats the matrix as the linear map \(x\mapsto Mx\).
+See \autoref{sec:linear-algebra-i:kernel} through
+\autoref{sec:linear-algebra-i:rank}.
+
+Both \(C(\R)\) and \(C^0(\R)\) denote continuous real-valued functions
+on \(\R\); \(C^1(\R)\) denotes continuously differentiable ones.
+These superscripts specify regularity. The space \(\mathcal P\) contains
+real polynomials of arbitrary finite degree; \(\mathcal P_d(\R)\) contains
+those of degree at most \(d\), including the zero polynomial.
+These vector spaces consist of functions; see
+\autoref{sec:linear-algebra-i:differentiation}.
+
+\section{Permutations and multilinear notation}
+\label{sec:appendix:notation-permutations}
+
+\begin{table}[htbp]
+  \centering
+  \renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{0.23\linewidth}p{0.72\linewidth}@{}}
+  \toprule
+  Symbol & Meaning \\
+  \midrule
+  \(S_n\) & \notationmeaning{Permutations of \(\{1,\ldots,n\}\),
+    with composition.} \\
+  \(T_n\) & \notationmeaning{All maps from \(\{1,\ldots,n\}\) to itself.} \\
+  \(\iota\) & \notationmeaning{The identity permutation.} \\
+  \(\tau_{ij}\) & \notationmeaning{The transposition exchanging \(i\) and \(j\).} \\
+  \(\varepsilon(\sigma)\) & \notationmeaning{The sign of a permutation,
+    equal to \(1\) or \(-1\).} \\
+  \(\varepsilon(\phi)\) & \notationmeaning{The extended sign on \(T_n\),
+    equal to \(0\) for a map that is not a permutation.} \\
+  \bottomrule
+\end{tabular}
+  \caption{Permutations and their signs.}
+  \label{tab:appendix:notation-permutations}
+\end{table}
+
+\autoref{tab:appendix:notation-permutations} uses \(T_n\) for a set of
+maps, distinct from the transpose superscript \(T\).
+As with maps, \(\sigma_2\circ\sigma_1\) applies \(\sigma_1\) first.
+The indices in \(v_{\sigma(j)}\) and \(b^{\sigma(j)}_j\) select a vector
+from the list and a row of column \(j\), respectively. See
+\autoref{sec:linear-algebra-i:permutations} and
+\autoref{sec:linear-algebra-i:determinant}.
+
+\subsection{Symbols whose meaning depends on context}
+
+The symbol \(A\) denotes a matrix in \(Ax=b\), oriented area in
+\(A(v,w)\), or an antisymmetric multilinear function in
+\(A(v_1,\ldots,v_n)\). Its inputs and domain identify the meaning.
+The symbol \(\mathcal V(a,b,c)\) denotes oriented volume. Ordinary area
+and volume are the absolute values of their oriented counterparts.
+
+For differentiation, \(D(f)=f'\). For determinants, \(D\) is the
+normalized antisymmetric multilinear function, with
+\(\det M=D(C_1,\ldots,C_n)\) for the columns \(C_j\) of a square matrix.
+These column labels are distinct from the field \(\C\) and the function
+spaces \(C^0(\R)\) and \(C^1(\R)\).
+
+The symbols \(P(v,w)\) and \(P(a,b,c)\) denote a parallelogram and a
+parallelepiped, whereas \(\mathcal P\) is a polynomial space.
+\endgroup

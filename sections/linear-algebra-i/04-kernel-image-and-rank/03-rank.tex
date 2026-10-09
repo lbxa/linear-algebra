@@ -9,7 +9,7 @@
   \[
     \operatorname{rank}L=\dim\operatorname{im}L.
   \]
-  Its nullity, introduced in Section~\ref{sec:linear-algebra-i:kernel},
+  Its nullity, introduced in \autoref{sec:linear-algebra-i:kernel},
   is \(\operatorname{nullity}L=\dim\ker L\).
 \end{definition}
 \end{samepage}
@@ -37,7 +37,7 @@ The kernel of \(M\) is a subspace of \(\mathbb F^n\), so
   0\leq\operatorname{nullity}M\leq n.
 \]
 Here \(n\) is the number of columns, the dimension of the domain.
-The rank--nullity theorem (Theorem~\ref{thm:linear-algebra-i:rank-nullity})
+The rank--nullity theorem (\autoref{thm:linear-algebra-i:rank-nullity})
 gives
 \[
   \operatorname{nullity}M=n-\operatorname{rank}M.
@@ -144,21 +144,21 @@ The following lemma supplies a basis adapted to the kernel and image.
 
 \begin{proof}
   Set \(m=\dim V\) and \(k=\dim\ker L\). By
-  Lemma~\ref{thm:linear-algebra-i:adapted-basis}, the image has a basis
+  \autoref{thm:linear-algebra-i:adapted-basis}, the image has a basis
   consisting of \(m-k\) vectors. Consequently,
   \[
     \dim\ker L+\operatorname{rank}L=k+(m-k)=m=\dim V.
   \]
 \end{proof}
 
-The following exercises apply these ideas \cite{Yang2026Homework04}.
+The following exercises apply these ideas.
 
 \input{problems/hw04/01-kernel-image-and-rank/problem}
 
 \subsection{Isomorphisms}
 
 Recall the distinction between injectivity, surjectivity, and bijectivity
-in \S~\ref{sec:appendix:map-properties}.
+in \autoref{sec:appendix:map-properties}.
 A linear map is an \emph{isomorphism} if it is injective and surjective.
 The kernel and image criteria give
 \[
@@ -180,7 +180,7 @@ Another equivalent criterion is
 
 \input{problems/hw04/02-rank-nullity/problem}
 
-Figure~\ref{fig:linear-algebra-i:rank-map-criteria} summarizes the
+\autoref{fig:linear-algebra-i:rank-map-criteria} summarizes the
 rank and nullity tests for a linear map between finite-dimensional spaces.
 The dimension inequalities are necessary consequences of these tests;
 the sizes of the domain and codomain alone do not decide injectivity
@@ -189,7 +189,7 @@ or surjectivity. A bijective map satisfies both sets of criteria.
 \begin{figure*}[htbp]
   \centering
   \input{figures/rank-map-criteria}
-  \caption{Finite-dimensional map criteria. Light gray shows the image;
+  \caption[Finite-dimensional map criteria.]{Finite-dimensional map criteria. Light gray shows the image;
     dark gray shows a nonzero kernel. Dashed paths map to zero.
     The first two sketches illustrate non-bijective possibilities.
     Circle sizes do not encode dimensions.}
@@ -206,14 +206,14 @@ in the matrix.\marginnote{%
   Changing coordinates does not change \(L\), its kernel, or its image;
   it makes the lost input directions and the independent output
   directions easier to identify.}
-As in Section~\ref{sec:linear-algebra-i:change-of-basis-for-functions-and-maps},
+As in \autoref{sec:linear-algebra-i:change-of-basis-for-functions-and-maps},
 each column records the image of one domain basis vector in the chosen
 codomain basis.
 
 For finite-dimensional \(V\) and \(W\), write
 \(m=\dim V\), \(n=\dim W\), \(k=\dim\ker L\), and
 \(r=m-k=\operatorname{rank}L\). Choose the basis \(E\) of
-Lemma~\ref{thm:linear-algebra-i:adapted-basis}, with the \(k\) kernel
+\autoref{thm:linear-algebra-i:adapted-basis}, with the \(k\) kernel
 vectors first. The images of the remaining \(r\) vectors form a basis
 of \(\operatorname{im}L\). Choose a basis
 \(F=[f_1,\ldots,f_n]\) of \(W\) whose first \(r\) vectors are
@@ -243,13 +243,13 @@ Thus the matrix in these bases is
 % September 24 slides 14--15 also assume extension of an image basis to
 % a codomain basis; no proof of basis extension is supplied.
 
-Figure~\ref{fig:linear-algebra-i:adapted-basis-blocks} shows how the
+\autoref{fig:linear-algebra-i:adapted-basis-blocks} shows how the
 ordering of the two bases produces these four blocks.
 
 \begin{figure}[ht]
   \centering
   \input{figures/adapted-basis-block-matrix}
-  \caption{Schematic of the adapted matrix \(D\).
+  \caption[Matrix adapted to the kernel and image.]{Schematic of the adapted matrix \(D\).
     The identity block carries the \(r\) surviving coordinates.
     Block sizes are indicated by the labels, not drawn to scale.
     A coordinate group disappears from \(D\) when its dimension is zero.}
@@ -282,7 +282,7 @@ This makes nullity \(k\) and rank \(r\) directly visible.
     L(e_1)=\cdots=L(e_k)=0,\qquad L(e_{k+j})=f_j\quad(1\leq j\leq r)
   \]
   gives the matrix \(D\) in
-  Equation~\ref{eq:linear-algebra-i:kernel-first-normal-form}.
+  \autoref{eq:linear-algebra-i:kernel-first-normal-form}.
   Here \(r=m-k\leq n\). Its nullity is \(k\) and its rank is \(r\).
   It is injective when \(k=0\), and surjective when \(n-r=0\).
 \end{example}
@@ -406,6 +406,6 @@ of rank \(r\), there are invertible matrices \(A\) and \(B\) such that
   B^{-1}.
 \]
 The displayed block order differs from the kernel-first form in
-Equation~\ref{eq:linear-algebra-i:kernel-first-normal-form}.
+\autoref{eq:linear-algebra-i:kernel-first-normal-form}.
 % The author's source states this factorization without its proof. Block
 % sizes have been made explicit from the supplied domain, codomain, and rank.

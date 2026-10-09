@@ -12,6 +12,11 @@
   updates, including portable exports and placement-map verification.
 - Project skills live in `.agents/skills/` so they are discoverable with the
   repository. Keep their instructions and metadata in version control.
+- [tacit-knowledge](.agents/skills/tacit-knowledge/SKILL.md) records durable
+  author decisions and their rationale in chapter README changelogs, the
+  appendix README, or the root README for book-wide decisions. Consult the
+  relevant changelog before structural edits; keep placement maps and source
+  coverage tables authoritative.
 
 ## Authoritative Content and Course Scope
 
@@ -27,11 +32,16 @@ manage transcription, organization, LaTeX, diagrams, homework reuse, and builds.
   grammar and typesetting corrections are allowed; substantive mathematical
   additions require the author's direction.
 - The [course calendar](https://math.nyu.edu/~dy444/MA-GY7033Fall2026/MA-GY7033Fall2026Calendar.html)
-  supplies headings only. The current outline covers September 3, 10, 17, and
-  24, 2026, as verified on September 29, 2026. Do not infer future topics or
+  supplies headings only. Chapters 1--4 cover September 3, 10, 17, and
+  24, 2026, as verified on September 29, 2026. Chapter 5 covers October 1
+  from the author's supplied Week 5 photos and PDF, imported October 5.
+  Do not infer future topics or
   import linked lecture/homework content without a request to do so.
 - Part I topic files contain supplied lecture photos, quiz-prep material, and
-  the September 17 and September 24 professor handouts. Unfilled topics remain
+  the September 17, September 24, and October 1 professor handouts.
+  Chapter 5, Multilinear algebra and determinants, contains oriented area and
+  volume, permutations, antisymmetric multilinear functions, and determinants.
+  Unfilled topics remain
   empty until corresponding material is supplied. Part II has no planned
   topics and remains disabled until its course material is available.
 - The copied Mathematical Analysis notes, homework, source images, specimen
@@ -49,11 +59,17 @@ manage transcription, organization, LaTeX, diagrams, homework reuse, and builds.
   `01-vector-spaces-and-bases/01-vector-spaces.tex`.
 - `sections/linear-algebra-ii/part.tex` is reserved and excluded until needed.
 - `sections/front-matter/` holds copyright, introduction, and acknowledgements;
-  `sections/appendices/` contains notation, prerequisites, and exercise solutions.
+  `sections/appendices/` contains notation, assumed knowledge, exercise solutions,
+  and a formula sheet summarizing material already supplied for this book.
 - `problems/hwNN.tex` are standalone homework handouts. Homework 4 is imported
   as `problems/hw04.tex`, with supplied solutions.
   `problems/hw04-questions.tex` is its questions-only variant, using the
   same shared statements and assignment identity.
+  Homework 5 is imported as `problems/hw05.tex`, with eight shared questions
+  in §§5.1 and 5.4 and complete appendix restatements; Problems 1--6 have Lucas's
+  supplied solutions, Problem 7 has a solution written at his explicit request,
+  and Problem 8 has Lucas's complete supplied solution (a)--(e), reviewed
+  in red at his request.
   `problems/template.tex` remains an empty template.
 - `problems/hwNN/NN-topic/problem.tex` holds a shared exercise statement; the
   adjacent `solution.tex` holds its supplied solution. Do not add an
@@ -110,7 +126,11 @@ guidance in [CONTRIBUTING.md](CONTRIBUTING.md).
 Always maintain the **Homework placement map** in
 [README.md](README.md#homework-placement-map). It is the authoritative record of
 supplied homework questions and their reuse. It currently records Homework 4,
-Problems 1--5, all included with the author's supplied solutions.
+Problems 1--5, all included with the author's supplied solutions, and Homework 5,
+Problems 1--8, with Lucas's supplied solutions to Problems 1--6, an explicitly
+authorized solution to Problem 7, and a complete supplied solution to Problem 8.
+The October 8 review marks revisions to all five Problem 8 parts in red
+at Lucas's request.
 The README source record maps all 24 solution photos and records conflicting
 draft calculations resolved using the author's final formulas and choices.
 
@@ -139,6 +159,9 @@ draft calculations resolved using the author's final formulas and choices.
   `\solutionlink{hwNN:topic}` in each shared problem. The latter creates an
   unnumbered margin link to `sol:hwNN:topic` and is suppressed in handouts.
   Later mentions cross-reference the existing exercise instead of reincluding it.
+- Keep every multipart question intact, with all its subparts in their original
+  order. Reorganize by moving complete shared questions, never by distributing
+  their subparts among different sections or exercise numbers.
 - Place exercises by assessed content and available prerequisites. Do not invent
   prerequisite results or future chapters to accommodate an exercise. Explain
   an explicitly authorized forward use in the surrounding supplied text.
@@ -163,6 +186,9 @@ the README and source comments. Use internal book references where needed;
 readers should not need to consult separate slides to follow the text.
 Missing arguments still require the author's input; do not invent them.
 
+Do not cite supplied homework PDFs in reader-facing text or include them in
+the bibliography. Keep assignment provenance in the README and source comments.
+
 Maintain the README **Lecture exercise placement map** for supplied lecture
 questions, separately from the homework map. Apply the same one-statement,
 one-main-text-input, complete appendix restatement, stable labels, pending
@@ -182,11 +208,17 @@ Work in the smallest relevant topic file. Use two-space indentation, lowercase
 hyphenated filenames, and explicit `\input` lists. Number files for reading order;
 keep labels independent of numeric prefixes, for example
 `sec:linear-algebra-i:vector-spaces`. Use `ch:`, `sec:`, `thm:`, `eq:`, `fig:`,
-`ex:`, and `sol:` prefixes. Keep shared notation in `macros.tex` and figure
+`tab:`, `ex:`, and `sol:` prefixes. Keep shared notation in `macros.tex` and figure
 names topic-specific. Add notation only as needed by supplied material.
 
 Use the shared mathematical environments and styles. Reusing an exercise in
 the appendix must preserve its identity and presentation as an exercise.
+
+Box outlines are strictly prohibited throughout the book and handouts,
+including equations, statements, examples, exercises, prose, tables, and
+margin notes. Do not use `\boxed`, `\fbox`, `\framebox`, `\fcolorbox`,
+framed or boxed environments, bordered callouts, or TikZ rectangles around
+text. Use headings, bold labels, and spacing for emphasis.
 
 Set list labels before the list computes its indentation. Tufte loads
 paralist; for homework subparts (a)--(e), use `\begin{enumerate}[(a)][2]`.
@@ -202,10 +234,33 @@ visual guides, optional reminders, or secondary observations, never necessary
 justifications. Avoid repeating the same reminder throughout a handout.
 
 Align unnumbered `\marginnote` notes with the relevant passage; do not use
-footnote-style markers. Match figure-caption size to ordinary margin text.
+footnote-style markers. Configure captions with the `caption` package in
+`preamble.tex`: bold labels, a full-stop separator, and regular serif text at
+the ordinary Tufte margin-note size. Keep captions flush left with no first-line
+indent and preserve Tufte's figure placement. Do not restore manual caption
+punctuation or font patches.
 Use margin figures for compact TikZ diagrams and full-width figures when needed.
 Every figure needs a caption, stable label, and explicit nearby body reference
-using `Figure~\ref{fig:...}`. A caption alone is insufficient.
+using `\autoref{fig:...}`. A caption alone is insufficient.
+
+Every table must have a numbered caption, a stable `tab:` label, and an explicit
+nearby in-text reference using `\autoref{tab:...}`. Tables without captions or
+in-text references are strictly prohibited. Follow the same caption process
+as figures: use native Tufte environments with `\caption` followed by `\label`,
+and retain the shared caption styling in `preamble.tex`. Use `table` for a
+text-width table with its caption in the margin, `margintable` for a compact
+table wholly in the margin, and `table*` for a wide table spanning the text
+and margin. Let Tufte place full-width captions as it does for `figure*`;
+do not add custom caption-placement wrappers.
+
+Use `\autoref{...}` for all numbered cross-references, including chapters,
+appendices, sections, equations, results, figures, tables, and exercises.
+Use `\autopageref{...}` for page references, with its starred form inside an
+existing hyperlink. Keep capitalized object names and the alias counters in
+`macros.tex`, so shared numbering still distinguishes lemmas, propositions,
+and exercises correctly. Complete appendix restatements use the linked
+`\autoref` of the original exercise. Handouts use Tufte's optional plain-text
+title and author arguments so formatted titles do not break PDF metadata.
 
 Use black and gray by default; reserve color for a specific distinction. Use
 explicit physical radii such as `circle[radius=1.6pt]` so unequal TikZ coordinate
@@ -220,9 +275,12 @@ the stated function, and use arrows on continued branches. Check label clearance
 at the final margin size. Do not add diagrams that introduce unsupplied examples.
 
 Preserve the documented `nohyper` contents workaround and the late book
-`hyperref` load unless testing an authorized layout revision. The caption-font
-patch must keep captions the same size as margin notes. Figure/table lists and
-the index are disabled in `main.tex` until their content exists.
+`hyperref` load unless testing an authorized layout revision. The shared caption
+configuration must keep captions the same size as margin notes. Keep the list
+of figures and list of tables immediately after the contents, using Tufte's native list
+commands and formatting. Use concise optional figure captions for list entries
+while preserving full captions and attribution beside the figures. The index
+remains disabled in `main.tex` until supplied content contains index entries.
 
 Use bracketed numeric citations such as `[1]` and a readable bibliography after
 the course content and before the appendices. Resolve stable citation keys;
