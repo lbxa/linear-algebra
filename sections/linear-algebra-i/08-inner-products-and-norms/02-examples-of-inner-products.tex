@@ -1,0 +1,65 @@
+% !TEX root = ../../../main.tex
+\section{Examples of inner products}
+\label{sec:linear-algebra-i:examples-of-inner-products}
+
+% Source: October 22 handwritten PDF, bottom of p. 4 and p. 5.
+\subsection{Polynomials}
+
+\begin{example}
+  Let \(\mathcal P_n(\R)\) be the real polynomials of degree at most
+  \(n\), including the zero polynomial. An inner product on this space is
+  \[
+    (p,q)=\int_{-1}^1 p(x)q(x)\,dx.
+  \]
+  In particular,
+  \[
+    (p,p)=\int_{-1}^1 p(x)^2\,dx\ge0,
+    \qquad (p,p)=0\quad\Longleftrightarrow\quad p=0.
+  \]
+\end{example}
+% The source states the zero-integral criterion; it does not supply a
+% separate continuity argument proving positive definiteness.
+
+\subsection{Trigonometric polynomials}
+
+\begin{example}
+  Let \(\mathcal T_n\) be the real trigonometric polynomials
+  \[
+    f(x)=\sum_{k=0}^n\bigl(a_k\cos(kx)+b_k\sin(kx)\bigr),
+    \qquad a_k,b_k\in\R.
+  \]
+  On this space, use the inner product
+  \[
+    (f,g)=\int_0^{2\pi}f(x)g(x)\,dx.
+  \]
+\end{example}
+% Use calligraphic T locally to distinguish these functions from T_n,
+% the set of all maps on n elements in the permutation chapter.
+
+Polynomial and trigonometric families are useful for approximating more
+general functions, with applications to partial differential equations.
+Inner products also play a role in analysis on infinite-dimensional
+function spaces.
+% The named approximation aside on p. 5 is explicitly marked "mispelled".
+% Its phonetic name is unclear (approximately "Kernash-noyeur"); do not
+% guess a named polynomial family or approximation theorem.
+
+\subsection{Matrices}
+
+\begin{definition}
+  The trace of a matrix \(A\in\mathrm M_{n\times n}(\R)\) is the sum
+  of its diagonal entries,
+  \[
+    \operatorname{tr}A=\sum_{i=1}^n A^i_i.
+  \]
+\end{definition}
+
+\begin{example}
+  On the vector space \(\mathrm M_{n\times n}(\R)\), an inner product is
+  \[
+    (A,B)=\operatorname{tr}(B^TA)
+      =\sum_{i=1}^n\sum_{j=1}^n B^i_jA^i_j.
+  \]
+  Thus matrices are paired by summing the products of their corresponding
+  entries.
+\end{example}

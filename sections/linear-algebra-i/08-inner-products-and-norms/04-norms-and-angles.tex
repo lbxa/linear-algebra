@@ -1,0 +1,66 @@
+% !TEX root = ../../../main.tex
+\section{Norms and angles}
+\label{sec:linear-algebra-i:inner-product-norms-and-angles}
+
+% Sources: October 22 handwritten PDF, p. 4 and top of p. 6.
+\begin{definition}
+  The norm induced by a real inner product is the nonnegative number
+  \[
+    \lVert v\rVert=\sqrt{(v,v)}.
+  \]
+\end{definition}
+
+For the ordinary dot product on \(\R^n\), this is the Euclidean
+magnitude. It is often convenient to work with its square,
+\[
+  \lVert v\rVert^2=(v,v),\qquad
+  \lVert v\rVert=0\quad\Longleftrightarrow\quad v=0.
+\]
+% Only the norm induced by an inner product is supplied. Do not add a
+% general norm-axiom definition, triangle inequality, or other norm examples.
+
+\begin{theorem}[Cauchy--Schwarz inequality]
+  \label{thm:linear-algebra-i:cauchy-schwarz}
+  For any \(v,w\) in a real inner-product space,
+  \[
+    \lvert(v,w)\rvert\le\lVert v\rVert\lVert w\rVert.
+  \]
+  Equality holds if and only if the pair \(v,w\) is linearly dependent,
+  including the cases in which either vector is zero.
+\end{theorem}
+% On October 28 Lucas authorized this standard form, correcting p. 5's
+% missing absolute value and incomplete equality condition.
+% The source postpones the proof. Homework 7 Problem 4.3 asks for the
+% squared version, with both equality alternatives. Lucas supplied its proof
+% on October 30 and authorized completion of the converse for w=sv.
+
+% Keep the complete three-part question with its minimization setup.
+\newpage
+\subsection{A minimization problem}
+
+Minimizing a squared norm leads to the Cauchy--Schwarz inequality in
+\autoref{ex:hw07:minimization-and-cauchy-schwarz}. In this exercise,
+single bars denote the induced norm.
+\input{problems/hw07/04-minimization-and-cauchy-schwarz/problem}
+
+\subsection{Angles}
+
+For nonzero \(v,w\), the angle \(\theta\in[0,\pi]\) is described by
+\[
+  (v,w)=\lVert v\rVert\lVert w\rVert\cos\theta,
+  \qquad
+  \cos\theta=\frac{(v,w)}{\lVert v\rVert\lVert w\rVert}.
+\]
+This relation gives a notion of angle using the inner product, including
+when the vectors are functions or matrices. In the ordinary real plane,
+it has the geometric meaning shown in
+\autoref{fig:linear-algebra-i:inner-product-angle}.
+
+\begin{marginfigure}
+  \centering
+  \input{figures/inner-product-angle}
+  \caption[Lengths and angle from an inner product]{A real-plane
+    schematic with the ordinary dot product. The vectors have lengths
+    \(\lVert v\rVert\), \(\lVert w\rVert\), and angle \(\theta\).}
+  \label{fig:linear-algebra-i:inner-product-angle}
+\end{marginfigure}

@@ -1,0 +1,17 @@
+% Author-authorized illustration of October 22 pp. 4/6's cosine relation.
+\begin{tikzpicture}[
+  x=11mm,y=11mm,font=\footnotesize,line width=0.45pt,
+  vector/.style={-{Latex[length=1.6mm,width=1.1mm]}}
+]
+  \coordinate (O) at (0,0);
+  \coordinate (V) at (2.8,0);
+  \coordinate (W) at (1.4,1.8);
+  \draw[vector] (O) -- (V) node[right=3pt] {\(v\)};
+  \draw[vector] (O) -- (W) node[above right=2pt] {\(w\)};
+  \node[below=4pt] at (1.5,0) {\(\lVert v\rVert\)};
+  \node[above left=3pt] at (0.8,1.03) {\(\lVert w\rVert\)};
+  \draw[black!55] (0.8,0) arc[start angle=0,end angle=52.125016,radius=0.8];
+  \node at (26.062508:1.08) {\(\theta\)};
+  \node[below left=2pt] at (O) {\(0\)};
+  \path (current bounding box.south) ++(0,-2mm);
+\end{tikzpicture}

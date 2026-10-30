@@ -1,8 +1,14 @@
+% !TEX TS-program = pdflatexmk
 % !TEX program = pdflatex
 % Questions-only variant of Homework 4, using the original shared statements.
 % Build with make problem HW=hw04-questions.
 % Export with make export-problem HW=hw04-questions.
 \documentclass[nohyper,nobib,nofonts]{tufte-handout}
+\newcommand{\bookroot}{..}
+\IfFileExists{preamble.tex}{\renewcommand{\bookroot}{.}}{}
+\makeatletter
+\edef\input@path{{\bookroot/}}
+\makeatother
 \input{preamble}
 \input{macros}
 
@@ -27,11 +33,9 @@
 \input{problems/hw04/01-kernel-image-and-rank/problem}
 \input{problems/hw04/02-rank-nullity/problem}
 
-\newpage
 \input{problems/hw04/03-prescribed-kernel-and-image/problem}
 \input{problems/hw04/04-adapted-bases/problem}
 
-\newpage
 \input{problems/hw04/05-polynomial-differentiation/problem}
 
 \end{document}

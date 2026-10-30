@@ -1,0 +1,51 @@
+% !TEX root = ../../../main.tex
+\section{Nondegeneracy}
+\label{sec:linear-algebra-i:inner-product-nondegeneracy}
+
+% Source: October 22 handwritten PDF, p. 5.
+An inner product allows us to recognize a vector by its pairings with all
+other vectors.
+
+\begin{proposition}
+  \label{thm:linear-algebra-i:inner-product-nondegeneracy}
+  For \(v\in V\),
+  \[
+    (v,w)=0\text{ for every }w\in V
+    \quad\Longleftrightarrow\quad v=0.
+  \]
+\end{proposition}
+
+\begin{proof}
+  If every pairing is zero, take \(w=v\). Then \((v,v)=0\), so
+  positive definiteness gives \(v=0\). Conversely, bilinearity gives
+  \((0,w)=0\) for every \(w\).
+\end{proof}
+
+\begin{proposition}
+  \label{thm:linear-algebra-i:inner-product-determines-vector}
+  If \(v_1,v_2\in V\) satisfy
+  \[
+    (v_1,w)=(v_2,w)\qquad\text{for every }w\in V,
+  \]
+  then \(v_1=v_2\).
+\end{proposition}
+
+\begin{proof}
+  Bilinearity gives \((v_1-v_2,w)=0\) for every \(w\in V\).
+  By \autoref{thm:linear-algebra-i:inner-product-nondegeneracy},
+  \(v_1-v_2=0\), hence \(v_1=v_2\).
+\end{proof}
+
+\begin{corollary}
+  Let \(W\) be a real inner-product space, and let \(L_1,L_2:V\to W\)
+  be maps. If
+  \[
+    (L_1(v),w)=(L_2(v),w)\qquad
+    \text{for every }v\in V\text{ and }w\in W,
+  \]
+  then \(L_1=L_2\).
+\end{corollary}
+% This consequence is stated on p. 5 without a separate proof.
+
+Such comparisons are useful in the calculus of variations, where an
+identity can be tested by pairing with arbitrary vectors or functions.

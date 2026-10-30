@@ -1,0 +1,116 @@
+% !TEX root = ../../../main.tex
+\section{Computing eigenvalues and eigenspaces}
+\label{sec:linear-algebra-i:computing-eigenspaces}
+
+% Sources: IMG_9323--IMG_9326; October 15 PDF, pp. 11--16.
+\subsection{Diagonal and triangular matrices}
+
+\begin{example}
+  For
+  \[
+    D=\begin{bmatrix}a&0&0\\0&b&0\\0&0&c\end{bmatrix},
+  \]
+  the standard basis vectors satisfy
+  \(De_1=ae_1\), \(De_2=be_2\), and \(De_3=ce_3\).
+  The characteristic polynomial is
+  \[
+    p_D(x)=\det\begin{bmatrix}
+      a-x&0&0\\0&b-x&0\\0&0&c-x
+    \end{bmatrix}=(a-x)(b-x)(c-x).
+  \]
+  Thus the eigenvalues are the diagonal entries.
+\end{example}
+
+A triangular matrix also has its diagonal entries as eigenvalues, since
+subtracting \(xI\) preserves triangularity. For instance,
+\[
+  T=\begin{bmatrix}a&0&0\\b&c&0\\d&e&f\end{bmatrix}
+  \quad\Longrightarrow\quad
+  p_T(x)=(a-x)(c-x)(f-x).
+\]
+Here \(Te_3=fe_3\), so \(e_3\) is an eigenvector for \(f\).
+Finding eigenvectors for \(a\) and \(c\) requires solving the corresponding
+kernel equations. In general, for triangular \(T=(T^i_j)\),
+\[
+  \det T=T^1_1\cdots T^n_n,\qquad
+  p_T(x)=\prod_{j=1}^n(T^j_j-x).
+\]
+
+\input{problems/hw06/01-triangular-matrix-eigenvectors/problem}
+
+\input{problems/hw06/02-eigenvectors-in-a-basis/problem}
+
+\subsection{A matrix that interchanges coordinates}
+
+\begin{example}
+  \label{ex:linear-algebra-i:coordinate-swap-eigenspaces}
+  Let
+  \[
+    A=\begin{bmatrix}0&1\\1&0\end{bmatrix}.
+  \]
+  Its characteristic polynomial is
+  \(p_A(x)=x^2-1=(x-1)(x+1)\). Row reduction gives
+  \[
+    A-\lambda I=
+    \begin{bmatrix}-\lambda&1\\1&-\lambda\end{bmatrix}
+    \sim\begin{bmatrix}1&-\lambda\\-\lambda&1\end{bmatrix}
+    \sim\begin{bmatrix}1&-\lambda\\0&1-\lambda^2\end{bmatrix}.
+  \]
+  If \(1-\lambda^2\ne0\), the matrix reduces to the identity and its
+  kernel is zero. If \(\lambda=1\), the kernel equation is
+  \(v^1-v^2=0\), giving
+  \[
+    E_1(A)=\left\{\begin{bmatrix}t\\t\end{bmatrix}\;\middle|\;t\in\mathbb F\right\}
+      =\operatorname{span}\left\{\begin{bmatrix}1\\1\end{bmatrix}\right\}.
+  \]
+  If \(\lambda=-1\), the equation is \(v^1+v^2=0\), giving
+  \[
+    E_{-1}(A)=\left\{\begin{bmatrix}t\\-t\end{bmatrix}\;\middle|\;t\in\mathbb F\right\}
+      =\operatorname{span}\left\{\begin{bmatrix}1\\-1\end{bmatrix}\right\}.
+  \]
+  The nonzero vectors in these spaces are the eigenvectors.
+  Over \(\R\), their two directions appear in
+  \autoref{fig:linear-algebra-i:swap-eigendirections}.
+  \begin{marginfigure}
+    \centering
+    \input{figures/swap-eigendirections}
+    \caption[Eigendirections of the coordinate swap]{The map
+      \(A(x,y)=(y,x)\) fixes the line \(E_1\) and reverses vectors on
+      \(E_{-1}\). Here \(v=(1,1)\), \(w=(1,-1)\), and \(Aw=-w\).}
+    \label{fig:linear-algebra-i:swap-eigendirections}
+  \end{marginfigure}
+\end{example}
+% IMG_9325's final vector for -1 has a sign inconsistent with v1=-v2.
+% Use the preceding kernel equation and PDF p.15.
+
+\subsection{A matrix with no real eigenvalue}
+
+\begin{example}
+  \label{ex:linear-algebra-i:rotation-no-real-eigenvalue}
+  Consider
+  \[
+    B=\begin{bmatrix}0&-1\\1&0\end{bmatrix},\qquad
+    B\begin{bmatrix}x\\y\end{bmatrix}=\begin{bmatrix}-y\\x\end{bmatrix}.
+  \]
+  Its characteristic polynomial is \(p_B(x)=x^2+1\), and
+  \[
+    B-\lambda I=
+    \begin{bmatrix}-\lambda&-1\\1&-\lambda\end{bmatrix}
+    \sim\begin{bmatrix}1&-\lambda\\-\lambda&-1\end{bmatrix}
+    \sim\begin{bmatrix}1&-\lambda\\0&-1-\lambda^2\end{bmatrix}.
+  \]
+  For real \(\lambda\), the last diagonal entry is strictly negative,
+  so the kernel is zero. Thus \(B\) has no real eigenvalues.
+  Over \(\C\), the roots of \(x^2+1\) are \(i\) and \(-i\).
+  Geometrically, \(B\) makes a counterclockwise quarter-turn in the
+  real plane, as in
+  \autoref{fig:linear-algebra-i:rotation-no-real-eigendirection}.
+  \begin{marginfigure}
+    \centering
+    \input{figures/rotation-no-real-eigendirection}
+    \caption[A quarter-turn in the real plane]{For every real nonzero
+      \(v\), the vector \(Bv\) is perpendicular to \(v\), so it cannot
+      be a real scalar multiple of \(v\).}
+    \label{fig:linear-algebra-i:rotation-no-real-eigendirection}
+  \end{marginfigure}
+\end{example}

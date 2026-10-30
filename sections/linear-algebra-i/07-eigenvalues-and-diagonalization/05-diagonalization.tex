@@ -1,0 +1,96 @@
+% !TEX root = ../../../main.tex
+\section{Diagonalization}
+\label{sec:linear-algebra-i:diagonalization}
+
+% Sources: IMG_9268, IMG_9323--IMG_9324, IMG_9328;
+% October 15 PDF, pp. 22--26.
+\begin{definition}
+  A square matrix \(M\) is diagonalizable over \(\mathbb F\) if it is
+  similar to a diagonal matrix. Equivalently, there exist an invertible
+  matrix \(S\) and a diagonal matrix \(D\) such that
+  \[
+    M=SDS^{-1}.
+  \]
+\end{definition}
+
+\begin{theorem}[Diagonalization and eigenbases]
+  \label{thm:linear-algebra-i:diagonalization-eigenbasis}
+  A matrix \(M\in\mathbb F^{n\times n}\) is diagonalizable if and only
+  if \(\mathbb F^n\) has a basis of eigenvectors of \(M\).
+\end{theorem}
+
+\begin{marginfigure}
+  \centering
+  \input{figures/diagonalization-coordinates}
+  \caption[Diagonalization through coordinates]{The top row acts in
+    eigenbasis coordinates; the bottom acts in the original coordinates.
+    Both routes give \(MSc=SDc\).}
+  \label{fig:linear-algebra-i:diagonalization-coordinates}
+\end{marginfigure}
+
+\begin{proof}
+  Suppose \(M=SDS^{-1}\), where \(D\) has diagonal entries
+  \(\lambda_1,\ldots,\lambda_n\). Let \(c_k=Se_k\) be column \(k\)
+  of \(S\). Since \(S\) is invertible, its columns form a basis, and
+  \begin{align*}
+    Mc_k&=MSe_k=SDS^{-1}Se_k\\
+      &=SDe_k=S(\lambda_ke_k)=\lambda_kc_k.
+  \end{align*}
+  Thus each column is an eigenvector.
+
+  Conversely, suppose \((b_1,\ldots,b_n)\) is a basis of eigenvectors,
+  with \(Mb_k=\lambda_kb_k\). Let \(S\) have these basis vectors as
+  columns, and let \(D\) have the corresponding eigenvalues on its diagonal.
+  The column equations say \(MS=SD\). Since \(S\) is invertible,
+  \(M=SDS^{-1}\).
+\end{proof}
+
+The identity \(MS=SD\) is visualized in
+\autoref{fig:linear-algebra-i:diagonalization-coordinates}.
+If \(c\) is an eigenbasis coordinate column, \(S\) reconstructs the vector
+\(Sc\), while \(D\) multiplies each coordinate by its eigenvalue.
+
+\begin{definition}
+  An endomorphism \(L:V\to V\) is diagonalizable if \(V\) has a basis
+  \((e_1,\ldots,e_n)\) of eigenvectors of \(L\).
+\end{definition}
+
+For such a basis,
+\[
+  L(e_k)=\lambda_ke_k,\qquad
+  L(E)=E\begin{bmatrix}
+    \lambda_1&0&\cdots&0\\
+    0&\lambda_2&\cdots&0\\
+    \vdots&\vdots&\ddots&\vdots\\
+    0&0&\cdots&\lambda_n
+  \end{bmatrix}.
+\]
+Equivalently, the matrix representing \(L\) in any basis is similar
+to a diagonal matrix.
+
+\subsection{Failure of diagonalization}
+
+\begin{example}
+  Let \((e_1,e_2)\) be a basis of \(V\), and define
+  \[
+    L(e_1)=e_2,\qquad L(e_2)=0.
+  \]
+  For \(v=ae_1+be_2\), \(L(v)=ae_2\). The eigenvector equation is
+  \[
+    ae_2=\lambda(ae_1+be_2).
+  \]
+  If \(\lambda\ne0\), comparison of coefficients gives \(a=0\)
+  and then \(b=0\), so there is no nonzero eigenvector. For
+  \(\lambda=0\), it gives \(a=0\). Thus the only eigenvalue is zero
+  and its eigenspace is \(\operatorname{span}\{e_2\}\). It cannot
+  provide a basis of \(V\), so \(L\) is not diagonalizable.
+\end{example}
+
+The nonzero matrix \(N\) in
+\autoref{ex:linear-algebra-i:same-polynomial-not-similar} similarly has
+only the eigenvalue zero and a one-dimensional eigenspace, so it is not
+diagonalizable. The rotation matrix in
+\autoref{ex:linear-algebra-i:rotation-no-real-eigenvalue} is not
+diagonalizable over \(\R\), since it has no real eigenvectors.
+
+\input{problems/hw06/06-nilpotent-eigenvalues/problem}

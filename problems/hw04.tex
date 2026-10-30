@@ -1,7 +1,13 @@
+% !TEX TS-program = pdflatexmk
 % !TEX program = pdflatex
-% Derived from problems/template.tex; compile from the repository root.
+% Derived from problems/template.tex; supports root and problems/ builds.
 % Build with make problem HW=hw04.
 \documentclass[nohyper,nobib,nofonts]{tufte-handout}
+\newcommand{\bookroot}{..}
+\IfFileExists{preamble.tex}{\renewcommand{\bookroot}{.}}{}
+\makeatletter
+\edef\input@path{{\bookroot/}}
+\makeatother
 \input{preamble}
 \input{macros}
 
@@ -28,19 +34,15 @@
 \input{problems/hw04/01-kernel-image-and-rank/problem}
 \input{problems/hw04/01-kernel-image-and-rank/solution}
 
-\newpage
 \input{problems/hw04/02-rank-nullity/problem}
 \input{problems/hw04/02-rank-nullity/solution}
 
-\newpage
 \input{problems/hw04/03-prescribed-kernel-and-image/problem}
 \input{problems/hw04/03-prescribed-kernel-and-image/solution}
 
-\newpage
 \input{problems/hw04/04-adapted-bases/problem}
 \input{problems/hw04/04-adapted-bases/solution}
 
-\newpage
 \input{problems/hw04/05-polynomial-differentiation/problem}
 \input{problems/hw04/05-polynomial-differentiation/solution}
 

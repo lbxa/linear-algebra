@@ -249,4 +249,109 @@ spaces \(C^0(\R)\) and \(C^1(\R)\).
 
 The symbols \(P(v,w)\) and \(P(a,b,c)\) denote a parallelogram and a
 parallelepiped, whereas \(\mathcal P\) is a polynomial space.
+
+\section{Forms and eigenvalues}
+\label{sec:appendix:notation-forms-and-eigenvalues}
+
+\autoref{tab:appendix:notation-forms-and-eigenvalues} collects the notation
+for the determinant of a map and its eigenspaces. In
+\autoref{ch:linear-algebra-i:determinants-of-linear-maps} and
+\autoref{ch:linear-algebra-i:eigenvalues-and-diagonalization}, the scalar
+field is \(\R\) or \(\C\), as stated locally.
+
+\begin{table}[htbp]
+  \centering
+  \renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{0.23\linewidth}p{0.72\linewidth}@{}}
+  \toprule
+  Symbol & Meaning \\
+  \midrule
+  \(V^*\) & \notationmeaning{The linear dual, consisting of linear
+    scalar-valued functions on \(V\).} \\
+  \(\Lambda^k V^*\) & \notationmeaning{The space of antisymmetric
+    multilinear functions on \(V\) with \(k\) inputs.} \\
+  \(L^*A\) & \notationmeaning{The pullback of a form, obtained by
+    applying \(L\) to each input before evaluating \(A\).} \\
+  \(\det L\) & \notationmeaning{For an endomorphism, the scalar by which
+    pullback acts on top-degree forms. For maps between different
+    equal-dimensional spaces, the pullback map itself.} \\
+  \(E_\lambda(L)\) & \notationmeaning{The eigenspace
+    \(\ker(L-\lambda I)\), including zero. Eigenvectors are its nonzero vectors.} \\
+  \(p_M(x)\) & \notationmeaning{The characteristic polynomial
+    \(\det(M-xI)\), with leading coefficient \((-1)^n\) for an
+    \(n\)-by-\(n\) matrix. The map version is \(p_L(x)=\det(L-xI)\).} \\
+  \(\delta^i_j\) & \notationmeaning{The Kronecker delta, or identity-matrix entry, equal to
+    \(1\) when \(i=j\) and \(0\) otherwise.} \\
+  \(\bigoplus_j S_j\) & \notationmeaning{A direct sum, with a unique
+    decomposition into vectors from the indicated subspaces.} \\
+  \bottomrule
+\end{tabular}
+  \caption{Forms, eigenvalues, and direct sums.}
+  \label{tab:appendix:notation-forms-and-eigenvalues}
+\end{table}
+
+In complex arithmetic, if \(z=x+iy\), then \(\overline z=x-iy\) is its
+conjugate and \(|z|=\sqrt{x^2+y^2}\) is its modulus. The symbol
+\(i\) here satisfies \(i^2=-1\); it is distinct from an index named
+\(i\) in a matrix entry. See \autoref{sec:linear-algebra-i:complex-eigenvalues}.
+
+% The preceding forms table fills the previous page; keep this final
+% section heading with its table rather than leaving it before a float page.
+\clearpage
+\section{Inner products and norms}
+\label{sec:appendix:notation-inner-products-and-norms}
+
+The real inner-product notation of
+\autoref{ch:linear-algebra-i:inner-products-and-norms} is summarized in
+\autoref{tab:appendix:notation-inner-products-and-norms}.
+Here \(V\) is a real vector space equipped with a chosen inner product
+\(B:V\times V\to\R\). The pairing \((v,w)=B(v,w)\) is a real
+scalar; these parentheses do not denote an ordered pair. The pairing
+and its induced norm refer to the inner product currently specified,
+since a vector space does not itself determine that choice. See
+\autoref{sec:linear-algebra-i:real-inner-products} and
+\autoref{sec:linear-algebra-i:orthogonality-and-coordinate-products}.
+
+\begin{table}[htbp]
+  \centering
+  \renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{0.23\linewidth}p{0.72\linewidth}@{}}
+  \toprule
+  Symbol & Meaning \\
+  \midrule
+  \(B(v,w)=(v,w)\) & \notationmeaning{A real scalar pairing that is
+    positive definite, symmetric, and bilinear.} \\
+  \(v\cdot w\) & \notationmeaning{The ordinary dot product of real
+    coordinate columns, equal to \(w^Tv\).} \\
+  \(\mathcal T_n\) & \notationmeaning{Real trigonometric polynomials
+    with frequencies from \(0\) to \(n\). This is distinct from the
+    permutation chapter's set \(T_n\) of maps.} \\
+  \(\operatorname{tr}A\) & \notationmeaning{The trace, or sum of the
+    diagonal entries of a square matrix.} \\
+  \(\lVert v\rVert\) & \notationmeaning{The induced norm
+    \(\sqrt{(v,v)}\). Its square is \(\lVert v\rVert^2=(v,v)\).} \\
+  \(\lvert(v,w)\rvert\) & \notationmeaning{The absolute value of the
+    real scalar \((v,w)\), as in the Cauchy--Schwarz inequality.} \\
+  \(\theta\) & \notationmeaning{The angle between nonzero vectors,
+    with \(0\le\theta\le\pi\) and
+    \((v,w)=\lVert v\rVert\lVert w\rVert\cos\theta\).} \\
+  \((v,w)=0\) & \notationmeaning{The condition that \(v\) and \(w\)
+    are orthogonal.} \\
+  \(\delta_{ij}\) & \notationmeaning{The Kronecker delta, equal to \(1\) for \(i=j\) and
+    \(0\) otherwise. An orthonormal family satisfies
+    \((v_i,v_j)=\delta_{ij}\).} \\
+  \((v,w)_E\) & \notationmeaning{The inner product obtained by taking
+    the dot product of the coordinate columns in the basis \(E\).} \\
+  \bottomrule
+\end{tabular}
+  \caption{Real inner products and induced norms.}
+  \label{tab:appendix:notation-inner-products-and-norms}
+\end{table}
+
+Double bars \(\lVert v\rVert\) denote a vector norm, whereas single
+bars \(\lvert s\rvert\) denote the absolute value of a real scalar.
+In \autoref{ex:hw07:minimization-and-cauchy-schwarz}, the original
+single-bar notation \(\lvert v\rvert\) instead denotes the induced
+vector norm, as stated in
+\autoref{sec:linear-algebra-i:inner-product-norms-and-angles}.
 \endgroup

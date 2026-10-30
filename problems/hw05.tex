@@ -1,7 +1,13 @@
+% !TEX TS-program = pdflatexmk
 % !TEX program = pdflatex
-% Derived from problems/template.tex; compile from the repository root.
+% Derived from problems/template.tex; supports root and problems/ builds.
 % Build with make problem HW=hw05.
 \documentclass[nohyper,nobib,nofonts]{tufte-handout}
+\newcommand{\bookroot}{..}
+\IfFileExists{preamble.tex}{\renewcommand{\bookroot}{.}}{}
+\makeatletter
+\edef\input@path{{\bookroot/}}
+\makeatother
 \input{preamble}
 \input{macros}
 
@@ -46,33 +52,25 @@ a matrix \(M\), then the determinant of \(M\) is
 \input{problems/hw05/01-bilinear-antisymmetry/problem}
 \input{problems/hw05/01-bilinear-antisymmetry/solution}
 
-% Keep Problem 2 and its geometric derivation together.
-\newpage
 \input{problems/hw05/02-two-by-two-determinant/problem}
 \input{problems/hw05/02-two-by-two-determinant/solution}
 
-\newpage
 \input{problems/hw05/03-negating-a-matrix/problem}
 \input{problems/hw05/03-negating-a-matrix/solution}
 
 \input{problems/hw05/04-three-by-three-triangular-determinant/problem}
 \input{problems/hw05/04-three-by-three-triangular-determinant/solution}
 
-\newpage
 \input{problems/hw05/05-upper-triangular-determinant/problem}
 \input{problems/hw05/05-upper-triangular-determinant/solution}
 
 \input{problems/hw05/06-column-addition/problem}
 \input{problems/hw05/06-column-addition/solution}
 
-\newpage
 \input{problems/hw05/07-four-by-four-determinant/problem}
 \input{problems/hw05/07-four-by-four-determinant/solution}
 
-\newpage
 \input{problems/hw05/08-permutation-matrices/problem}
-% Begin the reviewed draft after the complete multipart question.
-\newpage
 \input{problems/hw05/08-permutation-matrices/solution}
 
 \end{document}

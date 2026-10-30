@@ -5,13 +5,32 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 
+% Reusable draft styling. Existing author-requested red reviews stay red.
+\definecolor{pendingreviewcolor}{HTML}{486581}
+\newenvironment{pendingreview}{\par\color{pendingreviewcolor}}{\par}
+\newcommand{\pendingreviewtext}[1]{\textcolor{pendingreviewcolor}{#1}}
+
+% The same linked reference typography as Maths Analysis.
+\renewcommand*{\figureautorefname}{Figure}
+\renewcommand*{\tableautorefname}{Table}
+\renewcommand*{\partautorefname}{Part}
+\renewcommand*{\chapterautorefname}{Chapter}
+\renewcommand*{\appendixautorefname}{Appendix}
+\renewcommand*{\sectionautorefname}{\S}
+\renewcommand*{\subsectionautorefname}{\S}
+\renewcommand*{\subsubsectionautorefname}{\S}
+\renewcommand*{\theoremautorefname}{Theorem}
+\def\equationautorefname~#1\null{Equation~(#1)\null}
+
 % Keep submission-specific layout hints out of shared book exercises.
 \makeatletter
 \newcommand{\handoutonly}[1]{\@ifclassloaded{tufte-handout}{#1}{}}
+% Append after the complete statement and hints, before the exercise ends.
 % The handouts print solutions immediately; only the book needs these links.
 \newcommand{\solutionlink}[1]{%
   \@ifclassloaded{tufte-book}{%
-    \leavevmode\marginnote{\hyperref[sol:#1]{Solution on \autopageref*{sol:#1}.}}%
+    \ifhmode\unskip\space\else\noindent\fi
+    \textit{\hyperref[sol:#1]{Solution on \autopageref*{sol:#1}.}}%
   }{}%
 }
 \makeatother
@@ -23,7 +42,7 @@
 }
 
 % Reuse the exercise's theorem styling and original number. Register only
-% the solution anchor, not a second exercise label or solution margin link.
+% the solution anchor, not a second exercise label or solution link.
 \newenvironment{restatedproblem}{%
   \let\restatedproblemlabel\label
   \renewenvironment{exercise}{%
@@ -78,3 +97,30 @@
 \providecommand*{\exerciseautorefname}{Exercise}
 \providecommand*{\remarkautorefname}{Remark}
 \providecommand*{\homeworkproblemautorefname}{Problem}
+
+% Build the theorem catalogue from existing numbered theorem headings.
+\makeatletter
+\@ifclassloaded{tufte-book}{%
+  \newcommand{\listoftheorems}{%
+    \begingroup
+    \let\cleardoublepage\clearpage
+    \chapter*{List of Theorems}%
+    \@starttoc{loe}%
+    \endgroup
+  }
+  \let\l@theorem\@tufte@lof@line
+  \providecommand*{\toclevel@theorem}{2}
+}{}
+\ifdefined\listoftheorems
+  \pretocmd{\@begintheorem}{%
+    \ifstrequal{#1}{Theorem}{%
+      \ifblank{#2}{}{%
+        \addcontentsline{loe}{theorem}{\protect\numberline{#2}#3}%
+      }%
+    }{}%
+  }{}{%
+    \PackageError{linear-algebra-notes}{Could not register theorem list entries}
+      {Check the amsthm definition of \string\@begintheorem.}%
+  }
+\fi
+\makeatother

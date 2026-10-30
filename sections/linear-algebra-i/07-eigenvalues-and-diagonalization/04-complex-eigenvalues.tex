@@ -1,0 +1,128 @@
+% !TEX root = ../../../main.tex
+\section{Complex eigenvalues}
+\label{sec:linear-algebra-i:complex-eigenvalues}
+
+% Sources: IMG_9326--IMG_9327; October 15 PDF, pp. 17--21.
+\subsection{Complex arithmetic}
+
+A complex number has the form \(z=x+iy\), with \(x,y\in\R\) and
+\(i^2=-1\). Its real and imaginary parts are \(x\) and \(y\), respectively.
+\begin{marginfigure}
+  \centering
+  \input{figures/complex-conjugation}
+  \caption[Conjugation in the complex plane]{A schematic for \(x,y>0\).
+    Conjugation reflects a point across the real axis. The distance from
+    zero is \(\lvert z\rvert=\sqrt{x^2+y^2}\) for both points.}
+  \label{fig:linear-algebra-i:complex-conjugation}
+\end{marginfigure}
+Powers of \(i\) repeat with period four,
+\[
+  i^2=-1,\qquad i^3=-i,\qquad i^4=1,\qquad i^5=i,\qquad i^6=-1.
+\]
+The conjugate of \(z\) is \(\overline z=x-iy\), and its modulus is
+the nonnegative number satisfying
+\[
+  |z|^2=z\overline z=x^2+y^2.
+\]
+For \(z\ne0\),
+\[
+  \frac1z=\frac{\overline z}{|z|^2}=\frac{x-iy}{x^2+y^2}.
+\]
+More generally, division by \(w\ne0\) can be written as
+\(z/w=z\overline w/|w|^2\).
+
+\autoref{fig:linear-algebra-i:complex-conjugation} identifies \(z\)
+with the point \((x,y)\) and its conjugate with \((x,-y)\).
+
+\subsection{Returning to the rotation example}
+
+Regard the real matrix \(B\) from
+\autoref{ex:linear-algebra-i:rotation-no-real-eigenvalue} as a matrix
+acting on \(\C^2\). For \(\lambda=i\), its kernel equations give
+\[
+  v^1-iv^2=0\quad\Longleftrightarrow\quad v^2=-iv^1.
+\]
+For \(\lambda=-i\), they give \(v^1+iv^2=0\). Consequently,
+\[
+  \begin{aligned}
+    E_i(B)&=\left\{\begin{bmatrix}t\\-it\end{bmatrix}\;\middle|\;t\in\C\right\},\\
+    E_{-i}(B)&=\left\{\begin{bmatrix}t\\it\end{bmatrix}\;\middle|\;t\in\C\right\}.
+  \end{aligned}
+\]
+In each case, the eigenvectors are obtained by taking \(t\ne0\).
+% IMG_9327 has an isolated +1 in B-iI. The original matrix, its stated
+% action, both kernel equations, and PDF p.18 fix that entry as -1.
+
+\input{problems/hw06/05-rotation-eigenvalues/problem}
+
+\subsection{Roots and multiplicities}
+
+\begin{theorem}[Fundamental theorem of algebra]
+  Every complex polynomial of degree \(n\ge1\),
+  \[
+    p(z)=a_nz^n+\cdots+a_0,\qquad a_n\ne0,
+  \]
+  factors as
+  \[
+    p(z)=a_n(z-\lambda_1)\cdots(z-\lambda_n),
+  \]
+  where \(\lambda_1,\ldots,\lambda_n\in\C\), with repetitions allowed.
+\end{theorem}
+% PDF p.19 states this theorem without a proof.
+
+The characteristic polynomial of an \(n\)-by-\(n\) complex matrix
+therefore has \(n\) roots counted with multiplicity. The multiplicity
+of \(\lambda\) is the number of factors equal to \((z-\lambda)\).
+The \(n\) eigenvalues need not be distinct. Since the convention here is
+\(p_M(z)=\det(M-zI)\), its factorization has leading coefficient
+\((-1)^n\).
+
+\begin{example}
+  For the identity matrix on \(\mathbb F^2\),
+  \[
+    p_I(x)=(1-x)^2,\qquad E_1(I)=\mathbb F^2.
+  \]
+  Its only eigenvalue is \(1\), with multiplicity two, and every
+  nonzero vector is an eigenvector.
+
+  In contrast, let
+  \[
+    J=\begin{bmatrix}1&1\\0&1\end{bmatrix}.
+  \]
+  It has the same characteristic polynomial, but
+  \[
+    (J-I)\begin{bmatrix}v^1\\v^2\end{bmatrix}
+      =\begin{bmatrix}v^2\\0\end{bmatrix}.
+  \]
+  Hence
+  \[
+    E_1(J)=\left\{\begin{bmatrix}t\\0\end{bmatrix}\;\middle|\;t\in\mathbb F\right\},
+  \]
+  which has dimension one.
+\end{example}
+% PDF p.21 prints (0,c) after deriving v2=0. Use (c,0), as its
+% displayed multiplication and the definition of the kernel require.
+
+The different actions of \(I\) and \(J\) over \(\R\) are pictured in
+\autoref{fig:linear-algebra-i:identity-and-shear-eigenspaces}.
+\begin{figure}[htbp]
+  \centering
+  \input{figures/identity-and-shear-eigenspaces}
+  \caption[Equal multiplicities, different eigenspaces]{The identity
+    fixes every vector. The shear \(J\) fixes only the horizontal axis,
+    although both characteristic polynomials are \((1-x)^2\).
+    The dashed unit square on the right shows the shape before applying
+    \(J\); the shaded parallelogram is its image.}
+  \label{fig:linear-algebra-i:identity-and-shear-eigenspaces}
+\end{figure}
+
+\begin{proposition}
+  If \(\lambda\) is an eigenvalue of a complex matrix and has
+  multiplicity \(m_\lambda\) in its characteristic polynomial, then
+  \[
+    1\le\dim E_\lambda\le m_\lambda.
+  \]
+\end{proposition}
+% PDF p.21 states the upper bound without supplying a proof.
+
+\input{problems/hw06/03-eigenvalue-true-or-false/problem}

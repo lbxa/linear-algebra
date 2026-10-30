@@ -1,10 +1,10 @@
+% !TEX root = ../../hw04.tex
 % Author's solution, images/HW04/IMG_9194.HEIC--IMG_9197.HEIC.
 % The derivative's cubic coefficient is 3a, as in IMG_9196's final matrix;
 % IMG_9194--IMG_9195's 2a conflicts with that final result.
 % IMG_9195's edited conclusion says D is surjective.
 \begin{proof}[Solution]
-\begin{enumerate}[(a)][2]
-  \item Write
+  \textbf{(a)} Write
     \[
       p(x)=ax^3+bx^2+cx+d.
     \]
@@ -30,10 +30,10 @@
       \operatorname{rank}D=3.
     \]
 
-  \item The map \(D\) is not injective because its nullity is \(1\).
+  \textbf{(b)} The map \(D\) is not injective because its nullity is \(1\).
     It is surjective because its image is all of \(\mathcal P_2(\mathbb{R})\).
 
-  \item Apply \(D\) to the given basis entries. We obtain
+  \textbf{(c)} Apply \(D\) to the given basis entries. We obtain
     \[
       D(E)=[\,D(1)\ \ D(x)\ \ D(x^2)\ \ D(x^3)\,]
         =[\,0\ \ 1\ \ 2x\ \ 3x^2\,].
@@ -49,7 +49,7 @@
     \]
     Thus \(D(E)=FM\).
 
-  \item We want the nonzero basis images to be \(1,x,x^2\), respectively.
+  \textbf{(d)} We want the nonzero basis images to be \(1,x,x^2\), respectively.
     Taking their antiderivatives gives
     \[
       E'=\left[\,1\ \ x\ \ \frac{x^2}{2}\ \ \frac{x^3}{3}\,\right].
@@ -68,5 +68,4 @@
     \]
     Therefore the matrix of \(D\) with respect to \(E'\) and \(F\) has
     the required form.
-\end{enumerate}
 \end{proof}

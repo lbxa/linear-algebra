@@ -1,0 +1,139 @@
+% !TEX root = ../../../main.tex
+\section{Characteristic polynomials and similarity}
+\label{sec:linear-algebra-i:characteristic-polynomials-and-similarity}
+
+% Sources: IMG_9269, IMG_9320--IMG_9322;
+% October 15 PDF, pp. 6--10 and matrix example p. 26.
+\subsection{Characteristic polynomials}
+
+\begin{definition}
+  The characteristic polynomial of \(M\in\mathbb F^{n\times n}\) is
+  \[
+    p_M(x)=\det(M-xI).
+  \]
+  For an endomorphism \(L:V\to V\), its characteristic polynomial is
+  \(p_L(x)=\det(L-xI)\).
+\end{definition}
+
+Let \(\delta^i_j\) denote the entry in row \(i\), column \(j\) of
+the identity matrix,
+\[
+  \delta^i_j=\begin{cases}1&\text{if }i=j,\\0&\text{if }i\ne j.\end{cases}
+\]
+The permutation formula gives
+\[
+  p_M(x)=\sum_{\sigma\in S_n}\varepsilon(\sigma)
+    \prod_{j=1}^n\bigl(M^{\sigma(j)}_j-x\delta^{\sigma(j)}_j\bigr).
+\]
+This is a polynomial of degree \(n\). Its leading term is \((-x)^n\),
+and its constant term is \(\det M\). Its roots in the scalar field
+are exactly the eigenvalues of \(M\).
+
+There is also a direct expansion for \(L\). Normalize a top-degree form
+\(D\) on a basis \((e_1,\ldots,e_n)\). Then
+\begin{align*}
+  p_L(x)
+    &=D((L-xI)e_1,\ldots,(L-xI)e_n)\\
+    &=D(L(e_1)-xe_1,\ldots,L(e_n)-xe_n).
+\end{align*}
+For \(n\ge2\), multilinearity gives the expansion
+\[
+  \begin{aligned}
+    p_L(x)&=D(L(e_1),\ldots,L(e_n))\\
+      &\quad-x\sum_{j=1}^n
+        D(L(e_1),\ldots,e_j,\ldots,L(e_n))\\
+      &\quad+\cdots+(-x)^nD(e_1,\ldots,e_n).
+  \end{aligned}
+\]
+In the sum displayed here, only the \(j\)-th input is replaced by
+\(e_j\). The coefficient of \((-x)^{n-1}\) is
+\[
+  \sum_{j=1}^n D(e_1,\ldots,L(e_j),\ldots,e_n),
+\]
+where only the \(j\)-th input is acted on by \(L\).
+Since \(D(e_1,\ldots,e_n)=1\), the leading coefficient is \((-1)^n\).
+Thus
+\[
+  p_L(x)=(-x)^n+c_{n-1}(-x)^{n-1}+\cdots+c_1(-x)+c_0,
+  \qquad c_0=\det L.
+\]
+If \(L(E)=EM\), then \((L-xI)(E)=E(M-xI)\), so
+\autoref{thm:linear-algebra-i:determinant-representing-matrix} gives
+\[
+  p_L(x)=\det(L-xI)=\det(M-xI)=p_M(x).
+\]
+
+\subsection{Changing the basis}
+
+Suppose \(E,F\) are bases with \(F=EH\), and write
+\(L(E)=EM\), \(L(F)=FN\). Then
+\[
+  FN=L(F)=L(EH)=EMH=FH^{-1}MH,
+\]
+and hence \(N=H^{-1}MH\). For \(v=Ea=Fb\), the coordinate
+columns satisfy \(a=Hb\) and \(b=H^{-1}a\).
+
+\begin{definition}
+  Two square matrices \(M,N\) are similar if there exists an invertible
+  matrix \(H\) such that
+  \[
+    N=H^{-1}MH.
+  \]
+\end{definition}
+
+\begin{proposition}
+  \label{thm:linear-algebra-i:similarity-invariants}
+  Similar matrices have the same determinant and characteristic polynomial.
+  If \(N=H^{-1}MH\), then \(a\) is an eigenvector of \(M\) for
+  \(\lambda\) if and only if \(H^{-1}a\) is an eigenvector of \(N\)
+  for \(\lambda\).
+\end{proposition}
+
+\begin{proof}
+  Multiplicativity gives
+  \[
+    \det N=(\det H^{-1})(\det M)(\det H)=\det M.
+  \]
+  Also \(N-xI=H^{-1}(M-xI)H\), so
+  \[
+    p_N(x)=(\det H^{-1})\det(M-xI)(\det H)=p_M(x).
+  \]
+  Finally,
+  \[
+    Ma=\lambda a
+    \quad\Longleftrightarrow\quad
+    N(H^{-1}a)=\lambda H^{-1}a.
+  \]
+  Since \(H\) is invertible, \(a\ne0\) if and only if \(H^{-1}a\ne0\).
+\end{proof}
+
+For \(\lambda=0\), this gives an isomorphism of kernels. Its two directions
+are shown in \autoref{fig:linear-algebra-i:similar-matrix-kernels},
+\[
+  \ker M\longrightarrow\ker N,\quad a\longmapsto H^{-1}a,
+  \qquad b\longmapsto Hb\text{ in the reverse direction}.
+\]
+% IMG_9322 labels the direction of its H^{-1} arrow inconsistently.
+% The calculation and N=H^{-1}MH fix the directions used here.
+\begin{marginfigure}
+  \centering
+  \input{figures/similar-matrix-kernels}
+  \caption[Kernel isomorphism under similarity]{For \(N=H^{-1}MH\),
+    the changes of coordinates restrict to inverse isomorphisms of kernels.}
+  \label{fig:linear-algebra-i:similar-matrix-kernels}
+\end{marginfigure}
+
+\begin{example}
+  \label{ex:linear-algebra-i:same-polynomial-not-similar}
+  The converse to characteristic-polynomial invariance fails. Let
+  \[
+    A=\begin{bmatrix}0&0\\0&0\end{bmatrix},\qquad
+    N=\begin{bmatrix}0&1\\0&0\end{bmatrix}.
+  \]
+  Both characteristic polynomials are \(x^2\), but
+  \[
+    \ker A=\mathbb F^2,\qquad
+    \ker N=\left\{\begin{bmatrix}t\\0\end{bmatrix}\;\middle|\;t\in\mathbb F\right\}.
+  \]
+  Their kernels have different dimensions, so they cannot be similar.
+\end{example}

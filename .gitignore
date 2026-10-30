@@ -46,6 +46,13 @@ build/
 *.nav
 *.snm
 *.vrb
+*-SAVE-ERROR
+*.auxlock
+*.pdfsync
+*.aux.bak
+*.bbl.bak
+*.bcf.bak
+*.run.xml.bak
 
 # SyncTeX output, including files written during compilation.
 *.synctex

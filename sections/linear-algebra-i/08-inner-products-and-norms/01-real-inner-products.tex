@@ -1,0 +1,81 @@
+% !TEX root = ../../../main.tex
+\section{Real inner products}
+\label{sec:linear-algebra-i:real-inner-products}
+
+% Source: October 22 handwritten PDF, pp. 4--5; tensor remark on p. 6.
+\subsection{The dot product}
+
+For columns \(v,w\in\R^n\), the dot product sums the products of
+corresponding coordinates. Transposing a column gives a row, so
+\[
+  v\cdot w=\sum_{j=1}^n v^jw^j=v^Tw=w^Tv=w\cdot v.
+\]
+The dot product is positive definite, symmetric, and linear in each
+input. These are the properties used to define an inner product on
+an abstract real vector space.
+
+\subsection{The abstract definition}
+
+\marginnote{Checking the properties in this order often makes proofs
+  easier. Positive definiteness can rule out a candidate quickly.
+  Once symmetry is established, linearity in the second argument
+  implies linearity in the first. For real \(a,b,c,d\) and
+  \(v_1,v_2\in V\), put \(w=cv_1+dv_2\). Then
+  \[
+    \begin{aligned}
+      &(av_1+bv_2,w)\\
+      &\quad=(w,av_1+bv_2)\\
+      &\quad=a(w,v_1)+b(w,v_2)\\
+      &\quad=a(v_1,w)+b(v_2,w).
+    \end{aligned}
+  \]
+}
+
+\begin{definition}
+  An inner product on a real vector space \(V\) is a function
+  \[
+    B:V\times V\longrightarrow\R
+  \]
+  with the following properties.
+  \begin{enumerate}
+    \item It is positive definite, so
+      \[
+        B(v,v)\ge0,\qquad B(v,v)=0\quad\Longleftrightarrow\quad v=0.
+      \]
+    \item It is symmetric, so \(B(v,w)=B(w,v)\).
+    \item It is bilinear. For \(a,b\in\R\) and \(u,v,w\in V\),
+      \[
+        \begin{aligned}
+          B(au+bv,w)&=aB(u,w)+bB(v,w),\\
+          B(u,av+bw)&=aB(u,v)+bB(u,w).
+        \end{aligned}
+      \]
+  \end{enumerate}
+\end{definition}
+
+We also write \((v,w)\) for \(B(v,w)\). In this notation,
+parentheses denote an inner product when their value is a real scalar;
+the context distinguishes them from an ordered pair.
+In the multilinear terminology of
+\autoref{sec:linear-algebra-i:antisymmetric-multilinear-functions}, an
+inner product is a tensor with two inputs. Both inner products and
+determinant functions are examples of multilinear functions.
+
+\subsection{Why the real field matters}
+
+Complex bilinearity is incompatible with positive definiteness. If a
+complex bilinear function satisfied \((v,v)>0\) for a nonzero \(v\),
+then
+\[
+  (iv,iv)=i^2(v,v)=-(v,v)<0.
+\]
+Thus the real definition cannot be carried over unchanged to a complex
+vector space.
+% Author question on October 22 p. 5: how does conjugation change symmetry?
+% No definition of a complex/Hermitian inner product is supplied here.
+% Retain the real scope rather than inventing the later complex theory.
+
+\subsection{Testing the defining properties}
+
+\input{problems/hw07/01-coordinate-inner-products/problem}
+\input{problems/hw07/02-tensor-inner-products/problem}

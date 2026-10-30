@@ -1,9 +1,10 @@
+% !TEX root = ../../hw05.tex
 % Lucas's completed solution, reviewed on October 8, 2026, at his request.
 % Red marks revised prose, mathematical corrections, and added justifications.
 % Purely typographical changes to math delimiters are not marked.
 % All five supplied parts have now been reviewed; retain the red review marks.
 \begin{proof}[Solution]
-For part (a), \textcolor{red}{suppose} a matrix
+\textbf{(a)} \textcolor{red}{Suppose} a matrix
 \(P_\sigma\) is a permutation matrix where \(c_k=e_{\sigma(k)}\).
 Since \(\sigma:\{1,\ldots,n\}\to\{1,\ldots,n\}\) is bijective,
 \(\sigma(1),\ldots,\sigma(n)\) will be distinct and
@@ -33,7 +34,7 @@ and
 Therefore \(P\) is a permutation matrix if and only if every entry is
 \(0\) or \(1\) with exactly one \(1\) in each row and column.
 
-For part (b), we know that when we multiply a matrix \(M\) by a basis
+\textbf{(b)} We know that when we multiply a matrix \(M\) by a basis
 vector it produces \textcolor{red}{the corresponding column},
 \(Me_i=c_i\). \textcolor{red}{Matrix multiplication acts separately on
 each column of the matrix on the right.} So when multiplying \(M\) by
@@ -56,7 +57,7 @@ e_{\sigma(n)}\end{bmatrix}\),
     c_{\sigma(n)}\end{bmatrix}.
 \]
 
-For part (c), we first express \(v\in\R^n\) as a linear combination
+\textbf{(c)} We first express \(v\in\R^n\) as a linear combination
 of \textcolor{red}{the standard basis vectors},
 \[
   v=v^1e_1+\ldots+v^ne_n.
@@ -87,7 +88,7 @@ the input index \(k\) satisfying \(\sigma(k)=i\), so}
   \textcolor{red}{(P_\sigma v)^i=v^{\sigma^{-1}(i)}.}
 \]
 
-For part (d), \textcolor{red}{fix any \(k\in\{1,\ldots,n\}\).}
+\textbf{(d)} \textcolor{red}{Fix any \(k\in\{1,\ldots,n\}\).}
 It was proven in part (c) that
 \[
   P_\tau e_k=e_{\tau(k)}.
@@ -113,9 +114,7 @@ on every vector. Therefore,}
   P_{\sigma\circ\tau}=P_\sigma P_\tau.
 \]
 
-% Keep the final determinant argument together in the handout and appendix.
-\newpage
-For part (e), the determinant of \textcolor{red}{\(P_\sigma\)} is
+\textbf{(e)} The determinant of \textcolor{red}{\(P_\sigma\)} is
 \textcolor{red}{the value of the normalized antisymmetric multilinear
 function \(D\) on its columns. Here \(c_k=e_{\sigma(k)}\), so}
 \begin{align*}

@@ -1,0 +1,20 @@
+% Author-authorized visualization of vector addition; a real-plane schematic.
+\begin{tikzpicture}[
+  x=10mm,y=10mm,font=\footnotesize,line width=0.45pt,
+  line cap=round,line join=round,
+  vector/.style={-{Latex[length=1.6mm,width=1.1mm]}},
+  guide/.style={dashed,black!45,line width=0.35pt}
+]
+  \coordinate (O) at (0,0);
+  \coordinate (V) at (2.3,0.4);
+  \coordinate (W) at (0.6,1.7);
+  \coordinate (S) at ($(V)+(W)$);
+  \fill[black!6] (O) -- (V) -- (S) -- (W) -- cycle;
+  \draw[guide,vector] (V) -- (S);
+  \draw[guide,vector] (W) -- (S);
+  \draw[vector] (O) -- (V) node[midway,below=3pt] {\(v\)};
+  \draw[vector] (O) -- (W) node[midway,left=3pt] {\(w\)};
+  \draw[vector] (O) -- (S) node[pos=0.6,above left=2pt] {\(v+w\)};
+  \node[below left=2pt] at (O) {\(0\)};
+  \path (current bounding box.south) ++(0,-2mm);
+\end{tikzpicture}

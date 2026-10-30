@@ -1,0 +1,29 @@
+% The supplied matrices I and J=[1 1;0 1]. Equal units in both panels.
+\begin{tikzpicture}[
+  x=13mm,y=13mm,font=\footnotesize,line width=0.45pt,
+  vector/.style={-{Latex[length=1.6mm,width=1.1mm]}},
+  axis/.style={vector,black!40,line width=0.35pt},
+  guide/.style={dashed,black!45,line width=0.35pt}
+]
+  \begin{scope}
+    \node at (1.1,2) {\(I\)};
+    \fill[black!8] (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+    \draw[axis] (-0.4,0) -- (2.6,0) node[right=2pt] {\(x\)};
+    \draw[axis] (0,-0.3) -- (0,1.6) node[above=2pt] {\(y\)};
+    \draw (1,0) -- (1,1) -- (0,1);
+    \draw[vector] (0,0) -- (1,0) node[below=3pt] {\(e_1\)};
+    \draw[vector] (0,0) -- (0,1) node[left=3pt] {\(e_2\)};
+    \node at (1.1,-0.9) {\(E_1(I)=\R^2\)};
+  \end{scope}
+  \begin{scope}[xshift=61mm]
+    \node at (1.1,2) {\(J\)};
+    \fill[black!8] (0,0) -- (1,0) -- (2,1) -- (1,1) -- cycle;
+    \draw[axis] (-0.4,0) -- (2.6,0) node[right=2pt] {\(x\)};
+    \draw[axis] (0,-0.3) -- (0,1.6) node[above=2pt] {\(y\)};
+    \draw[guide] (0,0) -- (0,1) -- (1,1) -- (1,0);
+    \draw (1,0) -- (2,1) -- (1,1);
+    \draw[vector] (0,0) -- (1,0) node[below=3pt] {\(Je_1=e_1\)};
+    \draw[vector] (0,0) -- (1,1) node[above left=3pt] {\(Je_2\)};
+    \node at (1.1,-0.9) {\(E_1(J)=\operatorname{span}\{e_1\}\)};
+  \end{scope}
+\end{tikzpicture}

@@ -1,0 +1,28 @@
+% The three configurations already stated in section 3.1, over R.
+\begin{tikzpicture}[
+  x=10mm,y=10mm,font=\footnotesize,line width=0.45pt,
+  axis/.style={black!40,line width=0.35pt,-{Latex[length=1.6mm,width=1.1mm]}},
+  continued/.style={{Latex[length=1.6mm,width=1.1mm]}-{Latex[length=1.6mm,width=1.1mm]}}
+]
+  \foreach \shift/\title in {0/One solution,55/Infinitely many,110/No solution} {
+    \begin{scope}[xshift=\shift mm]
+      \node at (1,3.1) {\title};
+      \draw[axis] (-0.6,0) -- (2.8,0) node[right=2pt] {\(x\)};
+      \draw[axis] (0,-0.6) -- (0,2.6) node[above=2pt] {\(y\)};
+    \end{scope}
+  }
+  \draw[continued] (1.4,-0.5) -- (1.4,2.3) node[above=2pt] {\(x=a\)};
+  \draw[continued] (-0.5,1) -- (2.5,1) node[above right=2pt] {\(y=b\)};
+  \fill (1.4,1) circle[radius=1.6pt];
+  \node[below right=3pt] at (1.4,1) {\((a,b)\)};
+  \begin{scope}[xshift=55mm]
+    \draw[continued] (1.4,-0.5) -- (1.4,2.3) node[above=2pt] {\(x=b\)};
+    \foreach \y in {0.5,1,1.5} {\fill (1.4,\y) circle[radius=1.3pt];}
+    \node at (1,-1.2) {\(y\) is free};
+  \end{scope}
+  \begin{scope}[xshift=110mm]
+    \draw[continued] (0,-0.5) -- (0,2.3) node[above left=2pt] {\(x=0\)};
+    \draw[continued] (1.5,-0.5) -- (1.5,2.3) node[above=2pt] {\(x=1\)};
+    \node at (1,-1.2) {No intersection};
+  \end{scope}
+\end{tikzpicture}

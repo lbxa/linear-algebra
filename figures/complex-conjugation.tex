@@ -1,0 +1,23 @@
+% Generic complex number and its conjugate; the positive quadrant is illustrative.
+\begin{tikzpicture}[
+  x=10mm,y=10mm,font=\footnotesize,line width=0.45pt,
+  axis/.style={black!40,line width=0.35pt,-{Latex[length=1.6mm,width=1.1mm]}},
+  guide/.style={dashed,black!45,line width=0.35pt}
+]
+  \coordinate (Z) at (1.7,1.3);
+  \coordinate (C) at (1.7,-1.3);
+  \draw[axis] (-0.4,0) -- (2.8,0) node[right=2pt] {\(\operatorname{Re}\)};
+  \draw[axis] (0,-1.8) -- (0,1.9) node[above=2pt] {\(\operatorname{Im}\)};
+  \draw[guide] (0,1.3) -- (Z) -- (C) -- (0,-1.3);
+  \draw (0,0) -- (Z) node[midway,above left=1pt] {\(\lvert z\rvert\)};
+  \draw[black!55] (0,0) -- (C);
+  \fill (Z) circle[radius=1.5pt];
+  \fill (C) circle[radius=1.5pt];
+  \node[above right=2pt] at (Z) {\(z=x+iy\)};
+  \node[below right=2pt] at (C) {\(\overline z=x-iy\)};
+  \node[left=3pt] at (0,1.3) {\(y\)};
+  \node[left=3pt] at (0,-1.3) {\(-y\)};
+  \node[above right=1pt] at (1.7,0) {\(x\)};
+  \node[below left=2pt] at (0,0) {\(0\)};
+  \path (current bounding box.south) ++(0,-2mm);
+\end{tikzpicture}

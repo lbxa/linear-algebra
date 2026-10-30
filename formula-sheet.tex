@@ -1,0 +1,17 @@
+% !TEX TS-program = pdflatexmk
+% !TEX program = pdflatex
+% Standalone entry sharing the book appendix; run make formula-sheet.
+\documentclass[nohyper,nobib,nofonts,oneside,openany]{tufte-book}
+\newcommand{\standaloneformulasheet}{}
+\input{preamble}
+\input{macros}
+
+\title{Linear Algebra formula sheet}
+\author[Lucas Barbosa]{Lucas Barbosa}
+\date{}
+
+\begin{document}
+\pagestyle{empty}
+\renewcommand{\thesection}{\arabic{section}}
+\input{sections/appendices/formula-sheet}
+\end{document}

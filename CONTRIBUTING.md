@@ -50,8 +50,10 @@ record the original course/assignment identity in the
 
 Create `problems/hwNN/NN-topic/problem.tex` and adjacent `solution.tex` for each
 question. The shared statement contains its `exercise` environment,
-`\label{ex:hwNN:topic}`, and `\solutionlink{hwNN:topic}`. Preserve original
-question order and numbering in the handout, which inputs each statement
+`\label{ex:hwNN:topic}`, and `\solutionlink{hwNN:topic}`. Preserve the statement
+wording; put the italic solution link after the complete statement and hints,
+before the exercise end tag. Preserve original question order and numbering
+in the handout, which inputs each statement
 followed by its solution. Do not invent solutions; mark missing ones as pending.
 
 Input each book statement exactly once at an appropriate point in the supplied
@@ -59,7 +61,7 @@ notes. In `sections/appendices/exercise-solutions.tex`, repeat the complete
 statement inside `restatedproblem` after `\solutionheading{hwNN:topic}`, then
 input its solution. Keep appendix entries in book exercise order. The macros
 provide the original bold inline exercise number, return link, solution anchor,
-and suppression of duplicate labels/counters and margin links. Later mentions
+and suppression of duplicate labels/counters and solution links. Later mentions
 cross-reference the original exercise.
 
 Update one map row per question in the same change, including unused and deferred
@@ -97,10 +99,24 @@ option, late `hyperref` load, and shared `caption` configuration. Caption labels
 are bold with a full-stop separator; caption text is regular serif at the Tufte
 margin-note size. Use `\autoref` for numbered references and `\autopageref`
 for page references, preserving the alias counters for shared theorem numbering.
-Layout changes require a PDF inspection. Keep numeric citations in the text,
-with the bibliography
-after the course chapters and before the appendices. Add only references used
-by supplied content, and use the full latexmk build so citations resolve.
+Shared macros render sections as `§ 1.2` and equations as `Equation (1.2)`.
+Layout changes require a PDF inspection. Use the alphabetic AMS style shared
+with Maths Analysis, with author/year labels and references ordered by author,
+year, and title after the course chapters and before the appendices. Preserve
+the bundled styles and structured metadata described in [styles/README.md](styles/README.md).
+Add only references used by authorised content, and use the full latexmk build
+so citations resolve. Uncited handouts and their exports remain bibliography-free.
+
+The shared margin scheduler keeps complete notes and figures apart; retain
+its 12pt gap and 6pt bottom reserve, and Tufte's normal handling of ordinary
+and full-width figures. New authorised passages awaiting review may use the
+slate-blue `pendingreview` wrappers. Preserve the author's explicit red Homework
+5 review marks. Leave historical additions for a separate request.
+
+Front matter contains the generated figure, table, and theorem lists, followed
+by Acknowledgements, About this book, and the author's reserved Introduction.
+Keep theorem titles descriptive without altering their statements. Keep
+semester provenance and editing progress in repository records.
 
 ## Share portable editor settings
 
@@ -118,8 +134,15 @@ Run from the repository root:
 make check
 ```
 
-With no imported handouts, this builds the book successfully and creates no
-fake assignments. Once handouts exist, it builds all of them. Preview the book
+This builds the book, shared standalone formula sheet, and every imported
+handout from both the repository root and `problems/`. The subdirectory builds
+match TeXShop and write PDFs beside their sources. The empty handout collection
+remains valid. Use `make check-texshop` for the subdirectory checks alone.
+Every entry and the empty template preserve the `bookroot` path setup and
+TeXShop engine directive; nested homework fragments point to their own handout.
+Test the template in both directories when changing it. See
+[CUSTOMISATION.md](CUSTOMISATION.md#texshop-homework-previews).
+Preview the book
 with `make watch` or an existing handout with `make watch-problems HW=hw01`;
 stop with Ctrl-C. The PDFs are `build/main.pdf` and `build/problems/hwNN.pdf`.
 
@@ -140,5 +163,8 @@ related issues. Include affected-page screenshots for layout or diagram changes.
 Record contributions in
 [acknowledgements](sections/front-matter/acknowledgements.tex).
 Commit source files and editable diagrams; keep PDFs, logs, and auxiliary files
-in ignored `build/` output. Retain the [Apache License](LICENSE) and source
-credits for adapted material in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+in ignored `build/` output. Original text and illustrations, including their
+editable sources, use [CC BY-NC-ND 4.0](LICENSE-CC-BY-NC-ND-4.0.txt).
+Build scripts and typesetting infrastructure retain the [Apache License](LICENSE).
+Retain source credits and existing third-party terms in
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

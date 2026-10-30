@@ -1,0 +1,80 @@
+% !TEX root = ../../../main.tex
+\section{Orthogonality and coordinate inner products}
+\label{sec:linear-algebra-i:orthogonality-and-coordinate-products}
+
+% Source: October 22 handwritten PDF, p. 6; exercise request on p. 4.
+\begin{definition}
+  Vectors \(v,w\) are orthogonal if \((v,w)=0\). A family
+  \(\{v_j\}\) is mutually orthogonal if
+  \[
+    (v_i,v_j)=0\qquad\text{whenever }i\ne j.
+  \]
+  It is orthonormal if it is mutually orthogonal and
+  \((v_j,v_j)=1\) for every \(j\).
+\end{definition}
+
+The Pythagorean identity can be expressed using only the properties of
+an inner product.
+\input{problems/lec08/01-pythagorean-theorem/problem}
+
+\subsection{An inner product chosen from a basis}
+
+A vector space does not come with a specified inner product. Fix an
+ordered basis \(E=[e_1,\ldots,e_n]\). If \(v=Ea\) and \(w=Eb\),
+define
+\[
+  (v,w)_E=a\cdot b=\sum_{j=1}^n a^jb^j.
+\]
+This makes \(E\) an orthonormal basis for the chosen inner product,
+\[
+  (e_i,e_j)_E=\delta_{ij}.
+\]
+Here \(\delta_{ij}\) is the \emph{Kronecker delta}, defined by
+\[
+  \delta_{ij}=
+  \begin{cases}
+    1&\text{if }i=j,\\
+    0&\text{if }i\ne j.
+  \end{cases}
+\]
+The diagonal values \((e_i,e_i)_E=1\) say that the basis vectors
+have unit norm, while the off-diagonal values \((e_i,e_j)_E=0\)
+say that distinct basis vectors are orthogonal. Thus the single formula
+\((e_i,e_j)_E=\delta_{ij}\) records both parts of orthonormality.
+The matrix of these pairings is the identity matrix \(I_n\), with the
+same \(0\)--\(1\) pattern denoted by \(\delta^i_j\) in
+\autoref{sec:linear-algebra-i:characteristic-polynomials-and-similarity}.
+
+% Historical source, explicitly requested by Lucas on October 29, 2026.
+% Kronecker's collected-works reprint, pp. 145 and 150, was checked directly.
+\marginnote{Leopold Kronecker's paper on bilinear forms was read to
+  the Berlin Academy on 15 October 1866. He describes discussions with
+  Weierstrass about theta functions as the motivation for his algebraic
+  investigation. In the paper, the delta expresses that a linear
+  substitution followed by its inverse gives the identity. The same
+  identity pattern appears here in orthonormal coordinates.
+  \cite[145, 150]{Kronecker1895BilinearForms}}
+
+Bilinearity makes the role of the delta explicit. For \(v=Ea\) and
+\(w=Eb\),
+\[
+  \begin{aligned}
+    (v,w)_E
+      &=\sum_{i=1}^n\sum_{j=1}^n a^ib^j(e_i,e_j)_E\\
+      &=\sum_{i=1}^n\sum_{j=1}^n a^ib^j\delta_{ij}\\
+      &=\sum_{i=1}^n a^ib^i.
+  \end{aligned}
+\]
+Only terms with equal indices survive; all cross terms vanish.
+Pairing with a single basis vector therefore reads off a coordinate,
+\[
+  (v,e_i)_E=\sum_{j=1}^n a^j\delta_{ji}=a^i.
+\]
+Conversely, prescribing \((e_i,e_j)=\delta_{ij}\) determines the inner
+product by bilinearity. Choosing a basis therefore provides a way to
+equip the vector space with an inner product.
+% Author review: p. 6 claims infinitely many inner products without
+% excluding the zero space. Retain the supplied construction, not the
+% unqualified count. It also tentatively says that every inner product
+% has a basis giving the coordinate dot product, followed by "(ish?)".
+% Orthonormal-basis existence and its proof remain deferred for clarification.

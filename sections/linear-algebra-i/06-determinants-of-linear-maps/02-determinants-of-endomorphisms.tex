@@ -1,0 +1,143 @@
+% !TEX root = ../../../main.tex
+\section{Determinants of endomorphisms}
+\label{sec:linear-algebra-i:determinants-of-endomorphisms}
+
+% Sources: IMG_9263--IMG_9265, IMG_9317--IMG_9318;
+% October 8 PDF, pp. 15--17.
+An endomorphism is a linear map from a vector space to itself. If \(U\)
+is one dimensional, every linear map \(F:U\to U\) is multiplication
+by a scalar. For \(L:V\to V\), with \(\dim V=n\), apply this fact to
+\[
+  L^*:\Lambda^n V^*\longrightarrow\Lambda^n V^*.
+\]
+
+\begin{definition}
+  The determinant of \(L:V\to V\) is the unique scalar \(\det L\)
+  for which
+  \begin{equation}
+    L^*A=(\det L)A\qquad\text{for every \(A\in\Lambda^n V^*\)}.
+    \label{eq:linear-algebra-i:determinant-pullback}
+  \end{equation}
+\end{definition}
+
+Equivalently, for all \(v_1,\ldots,v_n\in V\),
+\[
+  A(L(v_1),\ldots,L(v_n))=(\det L)A(v_1,\ldots,v_n).
+\]
+The real two-dimensional case is visualized in
+\autoref{fig:linear-algebra-i:determinant-linear-map}.
+\begin{figure}[htbp]
+  \centering
+  \input{figures/determinant-linear-map}
+  \caption[Determinant as oriented-area scaling]{A real-plane schematic.
+    Applying \(L\) to both edges multiplies their oriented area by
+    \(\det L\). The drawing shows positive areas; a negative determinant
+    reverses orientation.}
+  \label{fig:linear-algebra-i:determinant-linear-map}
+\end{figure}
+
+Choose an ordered basis \(E=(e_1,\ldots,e_n)\) and normalize \(A\) so that
+\[
+  A(e_1,\ldots,e_n)=1.
+\]
+Then
+\[
+  \det L=A(L(e_1),\ldots,L(e_n)).
+\]
+For an unnormalized nonzero \(A\), the formula is
+\[
+  \det L=\frac{A(L(e_1),\ldots,L(e_n))}{A(e_1,\ldots,e_n)}.
+\]
+
+\subsection{Agreement with the representing matrix}
+
+\begin{proposition}
+  \label{thm:linear-algebra-i:determinant-representing-matrix}
+  If \(L(E)=EM\), then \(\det L=\det M\).
+\end{proposition}
+
+\begin{proof}
+  Write \(L(e_j)=\sum_{i=1}^n e_iM^i_j\), and normalize \(A\) on \(E\).
+  Expanding each input gives
+  \begin{align*}
+    \det L
+      &=A(L(e_1),\ldots,L(e_n))\\
+      &=\sum_{k_1=1}^n\cdots\sum_{k_n=1}^n
+        M^{k_1}_1\cdots M^{k_n}_n A(e_{k_1},\ldots,e_{k_n})\\
+      &=\sum_{\sigma\in S_n}\varepsilon(\sigma)
+        M^{\sigma(1)}_1\cdots M^{\sigma(n)}_n\\
+      &=\det M.
+  \end{align*}
+  Repeated indices vanish, and each remaining basis value is the sign
+  of its permutation, since \(A(e_1,\ldots,e_n)=1\).
+\end{proof}
+
+\subsection{Computations using multilinearity}
+
+\begin{example}
+  \label{ex:linear-algebra-i:triangular-endomorphism-determinant}
+  Let \((e_1,e_2,e_3)\) be a basis and suppose
+  \[
+    \begin{aligned}
+      L(e_1)&=2e_1+3e_2+4e_3,\\
+      L(e_2)&=5e_2-6e_3,\\
+      L(e_3)&=7e_3.
+    \end{aligned}
+  \]
+  Choose \(A\) with \(A(e_1,e_2,e_3)=1\). Starting with the last
+  input eliminates repeated basis vectors from the earlier inputs,
+  \begin{align*}
+    \det L
+      &=A(2e_1+3e_2+4e_3,5e_2-6e_3,7e_3)\\
+      &=A(2e_1+3e_2,5e_2,7e_3)\\
+      &=A(2e_1,5e_2,7e_3)\\
+      &=2\cdot5\cdot7\,A(e_1,e_2,e_3)=70.
+  \end{align*}
+  For example, the discarded term from the second input is
+  \[
+    -6A(L(e_1),e_3,7e_3)=0.
+  \]
+  After it is removed, the \(3e_2\)
+  and \(4e_3\) terms in the first input also give repeated inputs.
+\end{example}
+
+% IMG_9265 has +2 at (4,2) and obtains -60. PDF p.17 has -2 and
+% obtains +60. These are different matrices, not conflicting answers.
+\begin{example}
+  \label{ex:linear-algebra-i:sparse-determinant}
+  Consider
+  \[
+    M=\begin{bmatrix}
+      2&0&-1&0\\
+      1&3&1&5\\
+      0&0&3&0\\
+      2&2&1&0
+    \end{bmatrix}.
+  \]
+  Its columns are
+  \[
+    \begin{aligned}
+      C_1&=2e_1+e_2+2e_4,& C_2&=3e_2+2e_4,\\
+      C_3&=-e_1+e_2+3e_3+e_4,& C_4&=5e_2.
+    \end{aligned}
+  \]
+  Let \(D\) be normalized on the standard basis. The last input
+  eliminates the \(e_2\) terms, and the second input then eliminates
+  the \(e_4\) terms. Therefore,
+  \begin{align*}
+    \det M
+      &=D(C_1,C_2,C_3,C_4)\\
+      &=D(2e_1+2e_4,2e_4,-e_1+3e_3+e_4,5e_2)\\
+      &=D(2e_1,2e_4,-e_1+3e_3,5e_2)\\
+      &=D(2e_1,2e_4,3e_3,5e_2)\\
+      &=60D(e_1,e_4,e_3,e_2)\\
+      &=-60D(e_1,e_2,e_3,e_4)=-60.
+  \end{align*}
+  The final sign comes from interchanging the second and fourth inputs.
+
+  If the entry in row \(4\), column \(2\) is instead \(-2\), the
+  same calculation gives
+  \[
+    -60D(e_1,e_4,e_3,e_2)=60.
+  \]
+\end{example}

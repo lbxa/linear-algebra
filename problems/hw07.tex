@@ -1,0 +1,44 @@
+% !TEX TS-program = pdflatexmk
+% !TEX program = pdflatex
+% Derived from problems/template.tex; build with make problem HW=hw07.
+% Lucas confirmed that the supplied Linear Algebra II header is a typo.
+\documentclass[nohyper,nobib,nofonts]{tufte-handout}
+\newcommand{\bookroot}{..}
+\IfFileExists{preamble.tex}{\renewcommand{\bookroot}{.}}{}
+\makeatletter
+\edef\input@path{{\bookroot/}}
+\makeatother
+\input{preamble}
+\input{macros}
+
+\counterwithout{theorem}{section}
+\renewcommand{\thetheorem}{\arabic{theorem}}
+\theoremstyle{definition}
+\newaliascnt{homeworkproblem}{theorem}
+\newtheorem{homeworkproblem}[homeworkproblem]{Problem}
+\aliascntresetthe{homeworkproblem}
+\renewenvironment{exercise}{\begin{homeworkproblem}}{\end{homeworkproblem}}
+
+\title[MA-GY7033 Linear Algebra I, Homework 7]{MA-GY7033 Linear Algebra I\\Homework 7}
+\author[Lucas Barbosa, lc6424]{Lucas Barbosa, \texttt{lc6424}}
+\date{}
+
+\fancyhead{}
+\fancyhead[LE,RO]{\footnotesize MA-GY7033 Linear Algebra I, Homework 7\quad\thepage}
+
+\begin{document}
+\maketitle
+
+\input{problems/hw07/01-coordinate-inner-products/problem}
+\input{problems/hw07/01-coordinate-inner-products/solution}
+
+\input{problems/hw07/02-tensor-inner-products/problem}
+\input{problems/hw07/02-tensor-inner-products/solution}
+
+\input{problems/hw07/03-disjoint-subspaces-independence/problem}
+\input{problems/hw07/03-disjoint-subspaces-independence/solution}
+
+\input{problems/hw07/04-minimization-and-cauchy-schwarz/problem}
+\input{problems/hw07/04-minimization-and-cauchy-schwarz/solution}
+
+\end{document}

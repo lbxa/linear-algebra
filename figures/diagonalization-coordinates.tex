@@ -1,0 +1,16 @@
+% MS=SD: S converts eigenbasis coordinates into the original coordinates.
+\begin{tikzpicture}[
+  x=1mm,y=1mm,font=\footnotesize,line width=0.45pt,
+  every node/.style={inner sep=3pt},
+  map/.style={-{Latex[length=1.6mm,width=1.1mm]}}
+]
+  \node (c) at (0,24) {\(c\)};
+  \node (Dc) at (32,24) {\(Dc\)};
+  \node (Sc) at (0,0) {\(Sc\)};
+  \node (SDc) at (32,0) {\(SDc\)};
+  \draw[map] (c) -- node[above] {\(D\)} (Dc);
+  \draw[map] (c) -- node[left] {\(S\)} (Sc);
+  \draw[map] (Dc) -- node[right] {\(S\)} (SDc);
+  \draw[map] (Sc) -- node[below] {\(M\)} (SDc);
+  \path (current bounding box.south) ++(0,-2mm);
+\end{tikzpicture}

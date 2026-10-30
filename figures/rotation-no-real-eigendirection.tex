@@ -1,0 +1,18 @@
+% Exact action B(x,y)=(-y,x). The sample direction is schematic, not a new example.
+\begin{tikzpicture}[
+  x=9mm,y=9mm,font=\footnotesize,line width=0.45pt,
+  vector/.style={-{Latex[length=1.6mm,width=1.1mm]}},
+  axis/.style={vector,black!35,line width=0.35pt}
+]
+  \coordinate (O) at (0,0);
+  \coordinate (V) at (1.8,0.6);
+  \coordinate (BV) at (-0.6,1.8);
+  \draw[axis] (-1.1,0) -- (2.4,0) node[right=2pt] {\(x\)};
+  \draw[axis] (0,-0.5) -- (0,2.4) node[above=2pt] {\(y\)};
+  \draw[vector] (O) -- (V) node[right=3pt] {\(v\)};
+  \draw[vector] (O) -- (BV) node[above left=3pt] {\(Bv\)};
+  \draw[vector,black!60] (18.43495:1.1) arc[start angle=18.43495,end angle=108.43495,radius=1.1];
+  \node at (63.43495:0.7) {\(90^\circ\)};
+  \node[below left=2pt] at (O) {\(0\)};
+  \path (current bounding box.south) ++(0,-2mm);
+\end{tikzpicture}

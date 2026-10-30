@@ -1,4 +1,6 @@
 % Shared packages and typography for the book and homework handouts.
+% Handouts set this directory when compiled from problems/.
+\providecommand{\bookroot}{.}
 \usepackage[T1]{fontenc}
 % Give titletoc a separate part number before nameref wraps \@part.
 \usepackage{etoolbox}
@@ -22,18 +24,27 @@
 \usetikzlibrary{arrows.meta,calc}
 \usepackage{booktabs}
 \usepackage{multicol} % Two-column appendix formula sheet.
+\usepackage{needspace} % Keep an exercise heading with its opening lines.
 \usepackage{makeidx}
 \usepackage{url}
-% Bracketed book citations; bibliography numbered by first citation.
+% The same alphabetic AMS style as Maths Analysis, bundled for Overleaf.
 % Uncited homework exports need neither the book database nor a Biber pass.
 \makeatletter
 \@ifclassloaded{tufte-book}{%
-  \usepackage[backend=biber,natbib=true,style=numeric,sorting=none]{biblatex}
-  \addbibresource{bibliography.bib}
+  \ifdefined\standaloneformulasheet\else
+    \providecommand{\input@path}{}
+    \edef\input@path{{\bookroot/styles/}%
+      {\bookroot/styles/biblatex-ams/bbx/}%
+      {\bookroot/styles/biblatex-ams/cbx/}\input@path}
+    \usepackage[backend=biber,natbib=true,bibstyle=analysis-ams,
+      citestyle=ams-alphabetic,sorting=nyt]{biblatex}
+    \renewcommand*{\multicitedelim}{\addcomma\space}
+    \expandafter\addbibresource\expandafter{\bookroot/bibliography.bib}
+  \fi
 }{}
 \makeatother
 
-\graphicspath{{figures/}}
+\graphicspath{{\bookroot/figures/}}
 \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
 \setcounter{secnumdepth}{1}
 
@@ -96,12 +107,9 @@
 % Enable links after the Tufte contents customizations in both the book and
 % handouts. Their nohyper option defers loading; keep sidenotes unlinked.
 \usepackage[hidelinks,hyperfootnotes=false,bookmarksdepth=0]{hyperref}
-\renewcommand*{\chapterautorefname}{Chapter}
-\renewcommand*{\appendixautorefname}{Appendix}
-\renewcommand*{\sectionautorefname}{Section}
-\renewcommand*{\subsectionautorefname}{Section}
-\renewcommand*{\subsubsectionautorefname}{Section}
-\renewcommand*{\equationautorefname}{Equation}
+\makeatletter
+\pdfstringdefDisableCommands{\let\thanklessauthor\@author}
+\makeatother
 
 % Match the ordinary Tufte margin text. Only the label is bold; the full
 % stop separates it from regular serif text, with no first-line indent.
@@ -118,5 +126,55 @@
   parindent=0pt,
   skip=0pt
 }
-% Margin figures have no ordinary float-start anchor; link to their caption.
-\AtBeginEnvironment{marginfigure}{\captionsetup{hypcap=false}}
+% Tufte assembles all captions in separate boxes; link to the caption.
+\captionsetup{hypcap=false}
+
+% Schedule complete margin notes and figures, as in Maths Analysis.
+\usepackage{marginfix}
+\setlength{\marginparpush}{12pt}
+\setlength{\marginheightadjustment}{-6pt}
+\makeatletter
+\@ifclassloaded{tufte-book}{%
+  \AtBeginDocument{%
+    \BeforeBeginEnvironment{exercise}{\Needspace{3\baselineskip}}%
+  }
+}{}
+% Offsets are preferred positions rather than hidden space in measured boxes.
+\renewcommand{\marginnote}[2][0pt]{%
+  \ifthenelse{\boolean{@tufte@loadnatbib}}{%
+    \let\cite\@tufte@infootnote@cite
+  }{}%
+  \gdef\@tufte@citations{}%
+  \mparshift{#1}%
+  \marginpar{%
+    \@tufte@marginnote@font\@tufte@marginnote@justification
+    \@tufte@margin@par\noindent #2%
+  }%
+  \@tufte@print@citations
+  \ifthenelse{\boolean{@tufte@loadnatbib}}{%
+    \let\cite\@tufte@normal@cite
+  }{}%
+}
+\renewenvironment{@tufte@margin@float}[2][-1.2ex]
+  {\FloatBarrier
+    \def\book@margin@offset{#1}%
+    \begin{lrbox}{\@tufte@margin@floatbox}%
+      \begin{minipage}[t]{\marginparwidth}%
+        \@tufte@caption@font
+        \def\@captype{#2}%
+        \@tufte@caption@justification
+        \@tufte@margin@par\noindent
+  }
+  {\end{minipage}%
+    \end{lrbox}%
+    \ifdim\dimexpr\ht\@tufte@margin@floatbox+\dp\@tufte@margin@floatbox\relax
+        <\dimexpr\textheight+\marginheightadjustment\relax
+      \mparshift{\book@margin@offset}%
+      \marginpar{\usebox{\@tufte@margin@floatbox}}%
+    \else
+      \PackageError{linear-algebra-notes}{Margin float is taller than the usable margin}
+        {Use a main-text figure or table instead; keep labels readable.}%
+    \fi
+  }
+% Ordinary and full-width floats retain Tufte's standard height handling.
+\makeatother

@@ -1,0 +1,17 @@
+% Exact eigendirections of A=[0 1;1 0] over R.
+\begin{tikzpicture}[
+  x=10mm,y=10mm,font=\footnotesize,line width=0.45pt,
+  vector/.style={-{Latex[length=1.6mm,width=1.1mm]}},
+  axis/.style={vector,black!30,line width=0.35pt},
+  direction/.style={dashed,black!55,line width=0.35pt}
+]
+  \draw[axis] (-1.7,0) -- (1.8,0) node[right=2pt] {\(x\)};
+  \draw[axis] (0,-1.6) -- (0,1.8) node[above=2pt] {\(y\)};
+  \draw[direction] (-1.5,-1.5) -- (1.5,1.5) node[above right=1pt] {\(E_1\)};
+  \draw[direction] (-1.5,1.5) -- (1.5,-1.5) node[below right=1pt] {\(E_{-1}\)};
+  \draw[vector] (0,0) -- (1,1) node[right=3pt] {\(v=Av\)};
+  \draw[vector] (0,0) -- (1,-1) node[right=3pt] {\(w\)};
+  \draw[vector] (0,0) -- (-1,1) node[left=3pt] {\(Aw\)};
+  \node[below left=2pt] at (0,0) {\(0\)};
+  \path (current bounding box.south) ++(0,-2mm);
+\end{tikzpicture}

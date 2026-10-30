@@ -1,9 +1,9 @@
+% !TEX root = ../../hw04.tex
 % Author's solution, images/HW04/IMG_9176.HEIC--IMG_9182.HEIC.
 % Use the final parametrization in IMG_9177 and the completed image proof
 % in IMG_9180--IMG_9181; omit crossed-out calculations.
 \begin{proof}[Solution]
-\begin{enumerate}[(a)][2]
-  \item The kernel consists of the solutions of \(Ax=0\). Subtracting the
+  \textbf{(a)} The kernel consists of the solutions of \(Ax=0\). Subtracting the
     first row from the third, and then the second row from the third, gives
     \[
       A\sim
@@ -38,7 +38,7 @@
     since a linear combination equal to zero has both coefficients
     zero. Hence they form a basis of \(\ker T\).
 
-  \item Let \(c_1,c_2,c_3,c_4\) denote the columns of \(A\). They satisfy
+  \textbf{(b)} Let \(c_1,c_2,c_3,c_4\) denote the columns of \(A\). They satisfy
     \[
       c_2=2c_1+c_3,
       \qquad
@@ -75,7 +75,7 @@
     \marginnote{To identify a span with the image, prove both inclusions.
       Then check linear independence to obtain a basis.}
 
-  \item Both bases have two vectors, so
+  \textbf{(c)} Both bases have two vectors, so
     \[
       \operatorname{nullity}T=2,
       \qquad
@@ -87,8 +87,7 @@
         =2+2=4=\dim\mathbb{R}^4.
     \]
 
-  \item The map \(T\) is not injective, since its nullity is \(2\).
+  \textbf{(d)} The map \(T\) is not injective, since its nullity is \(2\).
     It is not surjective, since
     \(\operatorname{rank}T=2<3=\dim\mathbb{R}^3\).
-\end{enumerate}
 \end{proof}

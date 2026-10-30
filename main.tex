@@ -20,8 +20,9 @@
 \tableofcontents
 \listoffigures
 \listoftables
-\input{sections/front-matter/introduction}
+\listoftheorems
 \input{sections/front-matter/acknowledgements}
+\input{sections/front-matter/introduction}
 
 \mainmatter
 \input{sections/linear-algebra-i/part}
@@ -29,7 +30,10 @@
 % \input{sections/linear-algebra-ii/part}
 
 % References follow the course content and precede the appendices.
+\begingroup
+\setlength{\emergencystretch}{1em}
 \printbibliography[heading=bibintoc]
+\endgroup
 
 \appendix
 \input{sections/appendices/part}

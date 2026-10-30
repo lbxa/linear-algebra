@@ -66,6 +66,10 @@ The editor writes the PDF beside its root source (`main.pdf` for the book),
 matching the existing editor preview. Terminal `make book` writes the same
 book to `build/main.pdf`. Both builds process `bibliography.bib`; the
 bibliography appears after the course chapters and before the appendices.
+The alphabetic AMS styles are bundled in `styles/`, matching Maths Analysis.
+No separate style installation is needed. Biber generates author-based labels
+and orders entries by author, year, and title. The uncited handouts and
+standalone formula sheet require no bibliography database or Biber pass.
 If a preview displays a bold citation key such as `[Yang2026Calendar]`,
 the bibliography pass has not completed for that PDF. Run the full recipe
 and check its build output rather than invoking pdfLaTeX alone.
@@ -73,13 +77,38 @@ and check its build output rather than invoking pdfLaTeX alone.
 The recipe uses `latexmk` from `PATH`; shared settings contain no
 machine-specific executable paths.
 
+## TeXShop homework previews
+
+Open `problems/hwNN.tex` in TeXShop and choose **Typeset**. Each entry selects
+`pdflatexmk`, which runs the passes needed to settle references. TeXShop writes
+the PDF beside the entry source. While editing a nested statement or solution,
+its first line points to the corresponding handout, for example:
+
+```tex
+% !TEX root = ../../hw05.tex
+```
+
+The handout detects whether it is running from the repository root or
+`problems/`, setting `bookroot` and the input search path before loading the
+shared preamble. Graphics use the same root. Keep this setup in sync with the
+empty `problems/template.tex`; no absolute paths or global `TEXINPUTS` are needed.
+The shared Homework 4 statements point to the complete handout; open
+`hw04-questions.tex` directly for its questions-only variant.
+
+Run `make check` to build the book, standalone formula sheet, and every handout
+from both directories. `make check-texshop` runs only the subdirectory checks.
+The caches remain separate from `build/problems/`, and `make clean` removes
+generated files in both locations. Portable single-file exports still compile
+in an isolated directory without book files, bibliography files, or Biber.
+
 ## Codex stop hook
 
 The project-local [.codex/hooks.json](.codex/hooks.json) runs `make check`
 when the main agent turn finishes. It calls
 [scripts/codex-stop-check.sh](scripts/codex-stop-check.sh) using the Git root,
 including when the session starts in a subdirectory. The check builds the book
-and all imported homework handouts using tools on `PATH`, with a ten-minute
+and standalone formula sheet, plus all imported homework handouts from both
+supported working directories, using tools on `PATH`, with a ten-minute
 timeout.
 
 Build output is saved to `build/codex-stop-check.log`. A failed check produces

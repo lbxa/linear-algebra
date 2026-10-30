@@ -1,0 +1,121 @@
+% !TEX root = ../../../main.tex
+\section{Eigenvalues and eigenspaces}
+\label{sec:linear-algebra-i:eigenvalues-and-eigenspaces}
+
+% Sources: IMG_9267--IMG_9269, IMG_9317--IMG_9320;
+% October 15 PDF, pp. 3--5.
+\begin{definition}
+  Let \(L:V\to V\) be linear. A scalar \(\lambda\in\mathbb F\)
+  is an eigenvalue of \(L\) if there exists \(v\in V\setminus\{0\}\)
+  such that
+  \[
+    L(v)=\lambda v.
+  \]
+  Such a nonzero vector \(v\) is an eigenvector for \(\lambda\).
+\end{definition}
+
+The identity map \(I\) allows us to subtract scalar multiplication from
+\(L\). Since \((\lambda I)(v)=\lambda v\),
+\[
+  L(v)=\lambda v
+  \quad\Longleftrightarrow\quad (L-\lambda I)(v)=0
+  \quad\Longleftrightarrow\quad v\in\ker(L-\lambda I).
+\]
+For a nonzero solution, \(L-\lambda I\) is singular. Thus
+\autoref{thm:linear-algebra-i:determinant-invertibility} gives
+\begin{equation}
+  \lambda\text{ is an eigenvalue of }L
+  \quad\Longleftrightarrow\quad \det(L-\lambda I)=0.
+  \label{eq:linear-algebra-i:eigenvalue-determinant-criterion}
+\end{equation}
+% IMG_9268 ends with a nonzero determinant. IMG_9320 and the PDF
+% explicitly give zero, consistently with singularity.
+
+\begin{definition}
+  The eigenspace associated with \(\lambda\) is
+  \[
+    E_\lambda(L)=\ker(L-\lambda I)
+      =\{v\in V\mid L(v)=\lambda v\}.
+  \]
+\end{definition}
+
+An eigenspace includes the zero vector, while an eigenvector must be
+nonzero. In particular, \(E_0(L)=\ker L\). A nonzero scalar multiple
+of an eigenvector is another eigenvector for the same eigenvalue.
+
+\begin{proposition}
+  Every eigenspace is a subspace of \(V\). If \(\lambda\) is an
+  eigenvalue, then \(\dim E_\lambda(L)>0\).
+\end{proposition}
+
+\begin{proof}
+  The zero vector belongs to \(E_\lambda(L)\). For
+  \(v_1,v_2\in E_\lambda(L)\) and \(a_1,a_2\in\mathbb F\),
+  \begin{align*}
+    L(a_1v_1+a_2v_2)
+      &=a_1L(v_1)+a_2L(v_2)\\
+      &=a_1\lambda v_1+a_2\lambda v_2\\
+      &=\lambda(a_1v_1+a_2v_2).
+  \end{align*}
+  Hence \(a_1v_1+a_2v_2\in E_\lambda(L)\). For an eigenvalue,
+  the eigenspace contains a nonzero vector, so its dimension is positive.
+\end{proof}
+
+\begin{proposition}
+  \label{thm:linear-algebra-i:distinct-eigenspaces-intersection}
+  If \(\lambda_1,\lambda_2\) are distinct eigenvalues of \(L\), then
+  \[
+    E_{\lambda_1}(L)\cap E_{\lambda_2}(L)=\{0\}.
+  \]
+\end{proposition}
+
+\begin{proof}
+  If \(v\) belongs to both eigenspaces, then
+  \(L(v)=\lambda_1v\) and \(L(v)=\lambda_2v\). Subtracting gives
+  \((\lambda_1-\lambda_2)v=0\). Since the scalar is nonzero,
+  \(v=0\).
+\end{proof}
+
+\input{problems/hw06/04-sums-of-eigenvectors/problem}
+
+\subsection{Matrices and coordinates}
+
+For \(M\in\mathbb F^{n\times n}\), a nonzero column \(a\in\mathbb F^n\)
+is an eigenvector with eigenvalue \(\lambda\) if \(Ma=\lambda a\).
+The eigenspace is \(E_\lambda(M)=\ker(M-\lambda I)\), and the
+eigenvalue criterion is \(\det(M-\lambda I)=0\).
+
+Let \(E=(e_1,\ldots,e_n)\) be an ordered basis and let \(L(E)=EM\).
+For \(v=Ea=\sum_{j=1}^n e_ja^j\),
+\begin{align*}
+  L(v)&=\sum_{j=1}^n a^jL(e_j)\\
+    &=\sum_{j=1}^n a^j\sum_{i=1}^n e_iM^i_j\\
+    &=\sum_{i=1}^n e_i\left(\sum_{j=1}^n M^i_ja^j\right)
+      =E(Ma).
+\end{align*}
+On the other hand, \(\lambda v=E(\lambda a)\). Uniqueness of coordinates
+therefore gives
+\[
+  L(v)=\lambda v\quad\Longleftrightarrow\quad Ma=\lambda a.
+\]
+Thus a nonzero vector is an eigenvector of \(L\) precisely when its
+coordinate column is an eigenvector of the representing matrix.
+
+\subsection{A motivating quotient}
+
+% IMG_9267 also asserts that critical points are eigenvectors without a
+% symmetry hypothesis. On October 22 Lucas asked to leave that claim flagged.
+% Retain the supplied quotient, but do not assert the critical-point claim
+% or identify its supremum with an eigenvalue until the hypothesis is clarified.
+For a real matrix \(M\) and a nonzero vector \(v\in\R^n\), the quotient
+\[
+  \frac{v\cdot Mv}{v\cdot v}
+    =\frac{\displaystyle\sum_{j,k=1}^n v^jM^j_kv^k}
+      {\displaystyle\sum_{j=1}^n(v^j)^2}
+\]
+compares a quadratic expression with the squared length of \(v\).
+The associated optimization problem is to consider
+\[
+  E(M)=\sup_{v\in\R^n\setminus\{0\}}
+    \frac{v\cdot Mv}{v\cdot v}.
+\]
