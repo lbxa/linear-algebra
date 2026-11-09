@@ -1,0 +1,31 @@
+% Schematic visualization of the defining addition identity for a linear map.
+\begin{tikzpicture}[
+  x=11mm,y=11mm,font=\footnotesize,line width=0.45pt,
+  vector/.style={-{Latex[length=1.6mm,width=1.1mm]}},
+  guide/.style={dashed,black!45,line width=0.35pt}
+]
+  \coordinate (O) at (0,0);
+  \coordinate (V) at (1.8,0.2);
+  \coordinate (W) at (0.4,1.8);
+  \coordinate (S) at ($(V)+(W)$);
+  \fill[black!6] (O) -- (V) -- (S) -- (W) -- cycle;
+  \draw[guide] (V) -- (S) -- (W);
+  \draw[vector] (O) -- (V) node[midway,below=3pt] {\(v\)};
+  \draw[vector] (O) -- (W) node[midway,left=3pt] {\(w\)};
+  \draw[vector] (O) -- (S) node[above=3pt] {\(v+w\)};
+  \node at (1,2.8) {\(V\)};
+  \draw[vector] (3,1.2) -- (4.3,1.2) node[midway,above=3pt] {\(L\)};
+  \begin{scope}[xshift=62mm]
+    \coordinate (O) at (0,0);
+    \coordinate (V) at (1.8,0.6);
+    \coordinate (W) at (-0.5,1.5);
+    \coordinate (S) at ($(V)+(W)$);
+    \fill[black!6] (O) -- (V) -- (S) -- (W) -- cycle;
+    \draw[guide] (V) -- (S) -- (W);
+    \draw[vector] (O) -- (V) node[midway,below=3pt] {\(L(v)\)};
+    \draw[vector] (O) -- (W) node[midway,left=3pt] {\(L(w)\)};
+    \draw[vector] (O) -- (S);
+    \node[above=3pt] at (S) {\(L(v)+L(w)\)};
+    \node at (0.7,2.8) {\(W\)};
+  \end{scope}
+\end{tikzpicture}

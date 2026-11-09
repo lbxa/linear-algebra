@@ -6,6 +6,14 @@ Let \(E=[e_1,\ldots,e_n]\) and \(F=[f_1,\ldots,f_n]\) be two ordered
 bases of \(V\). Each vector \(f_j\) has coordinates in the basis \(E\),
 so there is a matrix \(M\in\mathbb F^{n\times n}\) whose \(j\)-th column
 contains those coordinates. In matrix notation,
+\begin{marginfigure}
+  \centering
+  \input{figures/vector-basis-coordinates}
+  \caption[One vector in two bases]{The same vector \(v\) in two bases
+    of the real plane, shown schematically. Dashed lines complete the
+    components. The coordinates satisfy \(a=Mb\) when \(F=EM\).}
+  \label{fig:linear-algebra-i:vector-basis-coordinates}
+\end{marginfigure}
 \[
   F=EM.
 \]
@@ -23,3 +31,7 @@ basis \(F\), then \(v=Ea=Fb\). Using \(F=EM\),
 \]
 Thus \(M\) converts \(F\)-coordinates to \(E\)-coordinates, and
 \(M^{-1}\) converts \(E\)-coordinates to \(F\)-coordinates.
+
+The vector stays fixed while its coordinate column changes.
+\autoref{fig:linear-algebra-i:vector-basis-coordinates} shows the two
+decompositions in the real plane.

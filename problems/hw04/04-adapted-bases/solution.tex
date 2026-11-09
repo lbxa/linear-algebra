@@ -1,11 +1,11 @@
+% !TEX root = ../../hw04.tex
 % Author's solution, images/HW04/IMG_9189.HEIC--IMG_9193.HEIC.
 % IMG_9192 replaces IMG_9191's preliminary e_2,e_3 choices.
 % The assignment and the completed equations use L:R^3 -> R^2 and x+y+z.
 % Describe the supplied solution of the full kernel system, without
 % retaining the invalid IMG_9190 argument restricted to scalar t=0.
-\noindent\textbf{Solution.}
-\begin{enumerate}[(a)][2]
-  \item The condition \(L(x,y,z)=0\) gives the system
+\begin{proof}[Solution]
+  \textbf{(a)} The condition \(L(x,y,z)=0\) gives the system
     \[
       x+y+z=0,
       \qquad
@@ -24,7 +24,7 @@
     The equation \(a(1,-2,1)=0\) forces \(a=0\), so this single
     vector is linearly independent and forms a basis of the kernel.
 
-  \item Choose the ordered list
+  \textbf{(b)} Choose the ordered list
     \[
       E=(e_1,e_2,e_3)
         =\bigl((1,-2,1),(1,0,0),(0,1,0)\bigr).
@@ -36,7 +36,7 @@
     giving \(a=b=c=0\). Thus these vectors are linearly independent
     and form a basis of \(\mathbb{R}^3\), with the kernel basis first.
 
-  \item Set
+  \textbf{(c)} Set
     \[
       f_1=L(e_2)=(1,1),
       \qquad
@@ -52,7 +52,7 @@
     \(F=(f_1,f_2)=\bigl((1,1),(1,2)\bigr)\) is an ordered basis
     of \(\mathbb{R}^2\).
 
-  \item Since
+  \textbf{(d)} Since
     \[
       L(e_1)=0,
       \qquad
@@ -67,7 +67,7 @@
     \marginnote{Each column of \(M\) records \(L(e_j)\) in the basis
       \(F\). The kernel vector gives the zero first column.}
 
-  \item Applying \(L\) to each column of \(E\) gives
+  \textbf{(e)} Applying \(L\) to each column of \(E\) gives
     \[
       L(E)=[\,0\ \ f_1\ \ f_2\,]
         =\begin{pmatrix}0&1&1\\0&1&2\end{pmatrix}.
@@ -81,4 +81,4 @@
           =\begin{pmatrix}0&1&1\\0&1&2\end{pmatrix}.
     \end{align*}
     Thus \(L(E)=FM\).
-\end{enumerate}
+\end{proof}

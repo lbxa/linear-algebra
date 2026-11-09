@@ -1,0 +1,15 @@
+% Basis images for the supplied polynomial differentiation exercise.
+\begin{tikzpicture}[
+  x=1mm,y=1mm,font=\footnotesize,line width=0.45pt,
+  every node/.style={inner sep=3pt},
+  map/.style={-{Latex[length=1.6mm,width=1.1mm]}}
+]
+  \node at (0,38) {\(\mathcal P_3(\R)\)};
+  \node at (30,38) {\(\mathcal P_2(\R)\)};
+  \foreach \source/\target/\height in {1/0/27,x/1/18,x^2/2x/9,x^3/3x^2/0} {
+    \node (s) at (0,\height) {\(\source\)};
+    \node (t) at (30,\height) {\(\target\)};
+    \draw[map] (s) -- node[above] {\(D\)} (t);
+  }
+  \path (current bounding box.south) ++(0,-2mm);
+\end{tikzpicture}

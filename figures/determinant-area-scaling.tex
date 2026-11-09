@@ -1,0 +1,39 @@
+% Supplied October 1 PDF, pp. 9--10; schematic scaling and reflection.
+\begin{tikzpicture}[
+  x=1cm,y=1cm,font=\footnotesize,line width=0.5pt,
+  line cap=round,line join=round,
+  vector/.style={-{Latex[length=1.6mm,width=1.1mm]}}
+]
+  \begin{scope}
+    \coordinate (O) at (0,0);
+    \coordinate (W) at (2,0);
+    \coordinate (V) at (0.5,1.1);
+    \coordinate (S) at ($(V)+(W)$);
+    \fill[black!8] (O) -- (W) -- (S) -- (V) -- cycle;
+    \draw (V) -- (S) -- (W);
+    \draw[vector] (O) -- (W) node[midway,below=5pt] {\(w\)};
+    \draw[vector] (O) -- (V) node[midway,left=5pt] {\(v\)};
+  \end{scope}
+  \begin{scope}[xshift=3.8cm]
+    \coordinate (O) at (0,0);
+    \coordinate (W) at (2,0);
+    \coordinate (V) at (0.5,1.1);
+    \coordinate (CV) at ($2*(V)$);
+    \coordinate (S) at ($(CV)+(W)$);
+    \fill[black!8] (O) -- (W) -- (S) -- (CV) -- cycle;
+    \draw (CV) -- (S) -- (W);
+    \draw[vector] (O) -- (W) node[midway,below=5pt] {\(w\)};
+    \draw[vector] (O) -- (CV) node[midway,left=5pt] {\(cv\)};
+  \end{scope}
+  \begin{scope}[xshift=8.2cm]
+    \coordinate (O) at (0,0);
+    \coordinate (W) at (2,0);
+    \coordinate (V) at (0.5,1.1);
+    \coordinate (NV) at ($-1*(V)$);
+    \coordinate (S) at ($(NV)+(W)$);
+    \fill[black!8] (O) -- (W) -- (S) -- (NV) -- cycle;
+    \draw (NV) -- (S) -- (W);
+    \draw[vector] (O) -- (W) node[midway,above=5pt] {\(w\)};
+    \draw[vector] (O) -- (NV) node[midway,left=5pt] {\(-v\)};
+  \end{scope}
+\end{tikzpicture}

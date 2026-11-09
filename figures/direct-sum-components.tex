@@ -1,0 +1,20 @@
+% Two-dimensional real schematic; the two subspace lines span the plane.
+\begin{tikzpicture}[
+  x=11mm,y=11mm,font=\footnotesize,line width=0.45pt,
+  vector/.style={-{Latex[length=1.6mm,width=1.1mm]}},
+  continued/.style={black!50,line width=0.35pt,{Latex[length=1.6mm,width=1.1mm]}-{Latex[length=1.6mm,width=1.1mm]}},
+  guide/.style={dashed,black!45,line width=0.35pt}
+]
+  \coordinate (O) at (0,0);
+  \coordinate (S) at (1.8,0.3);
+  \coordinate (T) at (0.35,1.4);
+  \coordinate (V) at ($(S)+(T)$);
+  \draw[continued] (-0.6,-0.1) -- (2.7,0.45) node[right=2pt] {\(S\)};
+  \draw[continued] (-0.15,-0.6) -- (0.6,2.4) node[above=2pt] {\(T\)};
+  \draw[guide] (S) -- (V) -- (T);
+  \draw[vector] (O) -- (S) node[midway,below=3pt] {\(s\)};
+  \draw[vector] (O) -- (T) node[midway,left=3pt] {\(t\)};
+  \draw[vector] (O) -- (V) node[above right=2pt] {\(v\)};
+  \node[below left=2pt] at (O) {\(0\)};
+  \path (current bounding box.south) ++(0,-2mm);
+\end{tikzpicture}

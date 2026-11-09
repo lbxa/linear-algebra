@@ -12,6 +12,11 @@
   updates, including portable exports and placement-map verification.
 - Project skills live in `.agents/skills/` so they are discoverable with the
   repository. Keep their instructions and metadata in version control.
+- [tacit-knowledge](.agents/skills/tacit-knowledge/SKILL.md) records durable
+  author decisions and their rationale in chapter README changelogs, the
+  appendix README, or the root README for book-wide decisions. Consult the
+  relevant changelog before structural edits; keep placement maps and source
+  coverage tables authoritative.
 
 ## Authoritative Content and Course Scope
 
@@ -27,11 +32,29 @@ manage transcription, organization, LaTeX, diagrams, homework reuse, and builds.
   grammar and typesetting corrections are allowed; substantive mathematical
   additions require the author's direction.
 - The [course calendar](https://math.nyu.edu/~dy444/MA-GY7033Fall2026/MA-GY7033Fall2026Calendar.html)
-  supplies headings only. The current outline covers September 3, 10, 17, and
-  24, 2026, as verified on September 29, 2026. Do not infer future topics or
+  supplies headings only. Chapters 1--4 cover September 3, 10, 17, and
+  24, 2026, as verified on September 29, 2026. Chapter 5 covers October 1
+  from the author's supplied Week 5 photos and PDF, imported October 5.
+  Chapters 6--7 use the supplied LEC06/LEC07 photos and October 8/15 PDFs,
+  imported October 22; the eigenvalue lead-in at the end of LEC06 is in Chapter 7.
+  The six-page October 22 handwritten continuation, imported October 28,
+  completes the Chapter 7 transversality arguments and supplies Chapter 8.
+  Do not infer future topics or
   import linked lecture/homework content without a request to do so.
 - Part I topic files contain supplied lecture photos, quiz-prep material, and
-  the September 17 and September 24 professor handouts. Unfilled topics remain
+  the September 17, September 24, October 1, October 8, and October 15
+  professor handouts.
+  Chapter 5, Multilinear algebra and determinants, contains oriented area and
+  volume, permutations, antisymmetric multilinear functions, and determinants.
+  Chapter 6 covers pullbacks, determinants of linear maps, multiplicativity,
+  singularity, transposes, and square systems. Chapter 7 covers eigenvalues,
+  characteristic polynomials, similarity, complex eigenvalues, diagonalization,
+  and direct sums. Chapter 8 covers real inner products, integral and matrix
+  examples, nondegeneracy, induced norms and angles, and orthogonality.
+  Its Pythagorean proof request is a shared pending lecture exercise.
+  The energy critical-point claim in IMG_9267 remains flagged
+  at Lucas's explicit request; do not insert a symmetry hypothesis or its proof.
+  Unfilled topics remain
   empty until corresponding material is supplied. Part II has no planned
   topics and remains disabled until its course material is available.
 - The copied Mathematical Analysis notes, homework, source images, specimen
@@ -43,17 +66,35 @@ manage transcription, organization, LaTeX, diagrams, homework reuse, and builds.
 
 - `main.tex` assembles the book; `preamble.tex` holds packages and layout;
   `macros.tex` defines shared notation, theorem environments, and exercise links.
+- `formula-sheet.tex` is a standalone entry that inputs the existing shared
+  formula appendix. Keep formulas authored once, in book topic order.
 - `sections/linear-algebra-i/part.tex` explicitly orders the current chapters.
   Each numbered chapter directory contains `chapter.tex` and one numbered
   `.tex` file per topic, for example
   `01-vector-spaces-and-bases/01-vector-spaces.tex`.
 - `sections/linear-algebra-ii/part.tex` is reserved and excluded until needed.
 - `sections/front-matter/` holds copyright, introduction, and acknowledgements;
-  `sections/appendices/` contains notation, prerequisites, and exercise solutions.
+  `sections/appendices/` contains notation, assumed knowledge, exercise solutions,
+  and a formula sheet summarizing material already supplied for this book.
 - `problems/hwNN.tex` are standalone homework handouts. Homework 4 is imported
   as `problems/hw04.tex`, with supplied solutions.
   `problems/hw04-questions.tex` is its questions-only variant, using the
   same shared statements and assignment identity.
+  Homework 5 is imported as `problems/hw05.tex`, with eight shared questions
+  in §§5.1 and 5.4 and complete appendix restatements; Problems 1--6 have Lucas's
+  supplied solutions, Problem 7 has a solution written at his explicit request,
+  and Problem 8 has Lucas's complete supplied solution (a)--(e), reviewed
+  in red at his request.
+  Homework 6 is imported as `problems/hw06.tex`, with six shared questions
+  in §§7.1, 7.3--7.5, complete appendix restatements, and pending solutions.
+  Keep its four-part true-or-false question intact in §7.4. Its implicit
+  linearity and nonzero-space hypotheses remain flagged in the README.
+  Homework 7 is imported as `problems/hw07.tex`, with four shared questions
+  in §7.6 and §§8.1, 8.4, complete appendix restatements, and Lucas's supplied
+  solutions. The converse for w=sv in 4.3 includes his authorized completion.
+  Its supplied Linear Algebra II header is a typo confirmed by Lucas; use
+  Linear Algebra I in the standalone handout. Its topic placements are in
+  Part I, with Part II still disabled.
   `problems/template.tex` remains an empty template.
 - `problems/hwNN/NN-topic/problem.tex` holds a shared exercise statement; the
   adjacent `solution.tex` holds its supplied solution. Do not add an
@@ -70,10 +111,11 @@ manage transcription, organization, LaTeX, diagrams, homework reuse, and builds.
 
 ## Build & Development Commands
 
-Use an installation with pdfLaTeX, Tufte-LaTeX, biblatex, Biber, latexmk, and
-makeindex. Run from the repository root:
+Use an installation with pdfLaTeX, Tufte-LaTeX, biblatex, Biber, latexmk,
+makeindex, marginfix, and needspace. Run from the repository root:
 
 - `make` or `make book` builds `build/main.pdf` with bibliography/reference passes.
+- `make formula-sheet` builds the shared formulas as `build/formula-sheet.pdf`.
 - `make problem HW=hw01` builds an existing `problems/hw01.tex` into
   `build/problems/hw01.pdf`; `hw01` is the default.
 - `make problems` builds all imported `problems/hw*.tex`. Zero handouts is a
@@ -83,7 +125,9 @@ makeindex. Run from the repository root:
   output; edit the shared sources and regenerate, never maintain a second copy.
 - Use `HW=hw04-questions` with `make problem` and `make export-problem`
   for the questions-only Homework 4 variant.
-- `make check` compiles the book and all imported handouts.
+- `make check` compiles the book, standalone formula sheet, and all imported
+  handouts from both the repository root and `problems/`.
+- `make check-texshop` checks only the handout builds from `problems/`.
 - `make watch` watches the book; stop with Ctrl-C.
 - `make watch-problems HW=hw01` watches an existing handout; stop with Ctrl-C.
 - `make clean` removes generated PDFs and auxiliary files through latexmk.
@@ -93,6 +137,22 @@ its project build rather than a standalone single-document compiler.
 The flattened homework export can separately be compiled with pdfLaTeX or
 latexmk, outside the book project. Uncited homework does not load the book's
 bibliography package or external database and requires no Biber pass.
+
+### TeXShop and portable handouts
+
+Every homework entry and the empty template select TeXShop's `pdflatexmk`
+engine and detect `bookroot` before loading the shared preamble and macros.
+Preserve the relative input search path and the preamble's graphics path so
+root and `problems/` builds both work without absolute paths or duplicated
+files. Put `% !TEX root = ../../hwNN.tex` first in each nested homework
+statement and solution. Shared lecture exercises continue to belong to the
+book; do not create fictitious handouts for them.
+
+When changing shared paths or the template, run `make check` and test the
+empty template from both directories. Compile portable homework exports in
+an isolated directory without repository files. The standalone formula sheet
+omits links to book sections and requires neither the book's auxiliary files
+nor a bibliography database. See [CUSTOMISATION.md](CUSTOMISATION.md#texshop-homework-previews).
 
 ## Shared and Local Editor Settings
 
@@ -110,7 +170,14 @@ guidance in [CONTRIBUTING.md](CONTRIBUTING.md).
 Always maintain the **Homework placement map** in
 [README.md](README.md#homework-placement-map). It is the authoritative record of
 supplied homework questions and their reuse. It currently records Homework 4,
-Problems 1--5, all included with the author's supplied solutions.
+Problems 1--5, all included with the author's supplied solutions, and Homework 5,
+Problems 1--8, with Lucas's supplied solutions to Problems 1--6, an explicitly
+authorized solution to Problem 7, and a complete supplied solution to Problem 8.
+It also records Homework 6, Problems 1--6, with pending solutions, and
+Homework 7, Problems 1--4, with Lucas's supplied solutions and the authorized
+completion of Question 4.3's equality alternatives.
+The October 8 review marks revisions to all five Problem 8 parts in red
+at Lucas's request.
 The README source record maps all 24 solution photos and records conflicting
 draft calculations resolved using the author's final formulas and choices.
 
@@ -133,20 +200,27 @@ draft calculations resolved using the author's final formulas and choices.
 - The appendix restatement uses the main text's bold inline exercise label,
   with its original number linked back to the original exercise, rather than
   a separate heading per problem. `restatedproblem` suppresses duplicate
-  exercise numbering, labels, and solution margin links.
+  exercise numbering, labels, and solution links.
 - Preserve the handout's original question order and numbering; let the book
   use its own numbering. Keep `\label{ex:hwNN:topic}` and
-  `\solutionlink{hwNN:topic}` in each shared problem. The latter creates an
-  unnumbered margin link to `sol:hwNN:topic` and is suppressed in handouts.
+  `\solutionlink{hwNN:topic}` in each shared problem. Put the link after the
+  complete statement and hints, before `\end{exercise}`; it creates an italic
+  inline link to `sol:hwNN:topic` and is suppressed in handouts.
   Later mentions cross-reference the existing exercise instead of reincluding it.
+- Keep every multipart question intact, with all its subparts in their original
+  order. Reorganize by moving complete shared questions, never by distributing
+  their subparts among different sections or exercise numbers.
 - Place exercises by assessed content and available prerequisites. Do not invent
   prerequisite results or future chapters to accommodate an exercise. Explain
   an explicitly authorized forward use in the surrounding supplied text.
 - A missing supplied solution must be marked **Awaiting solution** in the map
   and with an explicit pending notice in the shared solution file. Include the
   complete appendix statement before that notice. Do not fabricate the proof.
-- Keep handout-specific layout in its entry file or use `\handoutonly{...}`
-  inside a shared solution. Put appendix-only breaks in the appendix chapter.
+- Let homework statements and solutions flow with natural pagination in
+  the solutions appendix and every standalone handout. Do not insert forced
+  page breaks between questions, statements and solutions, or solution subparts.
+  Keep other handout-specific layout in its entry file or use `\handoutonly{...}`
+  inside a shared solution.
   Leave `problems/template.tex` unchanged unless the user requests a change.
 - Before finishing homework or book-structure changes, verify every map row
   against actual inputs, ordering, and labels, including complete appendix
@@ -162,6 +236,17 @@ or bibliography. Keep their provenance, page coverage, and source issues in
 the README and source comments. Use internal book references where needed;
 readers should not need to consult separate slides to follow the text.
 Missing arguments still require the author's input; do not invent them.
+
+Keep semester dates, import progress, and source provenance in repository
+records and comments. Order front matter as title, copyright, contents,
+figure/table/theorem lists, Acknowledgements, About this book, and Introduction.
+The unnumbered Introduction is reserved for Lucas's own mathematical orientation.
+The automatic theorem list uses the existing numbered theorem blocks and their
+descriptive optional titles; adding a title must not change a statement.
+Historical additions require a separate request.
+
+Do not cite supplied homework PDFs in reader-facing text or include them in
+the bibliography. Keep assignment provenance in the README and source comments.
 
 Maintain the README **Lecture exercise placement map** for supplied lecture
 questions, separately from the homework map. Apply the same one-statement,
@@ -182,11 +267,33 @@ Work in the smallest relevant topic file. Use two-space indentation, lowercase
 hyphenated filenames, and explicit `\input` lists. Number files for reading order;
 keep labels independent of numeric prefixes, for example
 `sec:linear-algebra-i:vector-spaces`. Use `ch:`, `sec:`, `thm:`, `eq:`, `fig:`,
-`ex:`, and `sol:` prefixes. Keep shared notation in `macros.tex` and figure
+`tab:`, `ex:`, and `sol:` prefixes. Keep shared notation in `macros.tex` and figure
 names topic-specific. Add notation only as needed by supplied material.
 
 Use the shared mathematical environments and styles. Reusing an exercise in
 the appendix must preserve its identity and presentation as an exercise.
+Wrap each supplied or explicitly authorized shared solution in one
+`\begin{proof}[Solution]` / `\end{proof}` environment, including all its
+subparts. Let the environment supply the heading, spacing, and final end
+marker rather than adding a manual solution heading or `\qed`. Keep pending
+solution notices outside proof environments.
+
+Within multipart solutions, begin each subpart with its original label in
+bold inline text, such as `\textbf{(a)}`, `\textbf{(i)}`, or
+`\textbf{4.1.}`, followed by ordinary proof prose. Do not indent entire
+solution subparts as list items or introduce them with “For part …”. Preserve
+the statement's labels and order, and keep all subparts in one Solution proof.
+
+Use the shared `pendingreview` environment and `\pendingreviewtext` for future
+authorised passages awaiting review, in muted slate blue (`#486581`). Retain
+the explicitly requested red Homework 5 Problem 8 review marks. Review wrappers
+do not authorise mathematical additions or the removal of pending notices.
+
+Box outlines are strictly prohibited throughout the book and handouts,
+including equations, statements, examples, exercises, prose, tables, and
+margin notes. Do not use `\boxed`, `\fbox`, `\framebox`, `\fcolorbox`,
+framed or boxed environments, bordered callouts, or TikZ rectangles around
+text. Use headings, bold labels, and spacing for emphasis.
 
 Set list labels before the list computes its indentation. Tufte loads
 paralist; for homework subparts (a)--(e), use `\begin{enumerate}[(a)][2]`.
@@ -202,10 +309,39 @@ visual guides, optional reminders, or secondary observations, never necessary
 justifications. Avoid repeating the same reminder throughout a handout.
 
 Align unnumbered `\marginnote` notes with the relevant passage; do not use
-footnote-style markers. Match figure-caption size to ordinary margin text.
+footnote-style markers. Configure captions with the `caption` package in
+`preamble.tex`: bold labels, a full-stop separator, and regular serif text at
+the ordinary Tufte margin-note size. Keep captions flush left with no first-line
+indent and preserve Tufte's figure placement. Do not restore manual caption
+punctuation or font patches.
 Use margin figures for compact TikZ diagrams and full-width figures when needed.
+The shared marginfix scheduler keeps complete notes and margin figures apart
+with a 12pt gap and 6pt bottom reserve. Offsets are preferred positions; do not
+hide occupied height with negative space. Keep Tufte's standard height handling
+for ordinary and full-width floats. Give an oversized margin figure more width
+rather than shrinking its labels or separating its caption.
 Every figure needs a caption, stable label, and explicit nearby body reference
-using `Figure~\ref{fig:...}`. A caption alone is insufficient.
+using `\autoref{fig:...}`. A caption alone is insufficient.
+
+Every table must have a numbered caption, a stable `tab:` label, and an explicit
+nearby in-text reference using `\autoref{tab:...}`. Tables without captions or
+in-text references are strictly prohibited. Follow the same caption process
+as figures: use native Tufte environments with `\caption` followed by `\label`,
+and retain the shared caption styling in `preamble.tex`. Use `table` for a
+text-width table with its caption in the margin, `margintable` for a compact
+table wholly in the margin, and `table*` for a wide table spanning the text
+and margin. Let Tufte place full-width captions as it does for `figure*`;
+do not add custom caption-placement wrappers.
+
+Use `\autoref{...}` for all numbered cross-references, including chapters,
+appendices, sections, equations, results, figures, tables, and exercises.
+The shared macros render sections as `§ 1.2` and equations as `Equation (1.2)`.
+Use `\autopageref{...}` for page references, with its starred form inside an
+existing hyperlink. Keep capitalized object names and the alias counters in
+`macros.tex`, so shared numbering still distinguishes lemmas, propositions,
+and exercises correctly. Complete appendix restatements use the linked
+`\autoref` of the original exercise. Handouts use Tufte's optional plain-text
+title and author arguments so formatted titles do not break PDF metadata.
 
 Use black and gray by default; reserve color for a specific distinction. Use
 explicit physical radii such as `circle[radius=1.6pt]` so unequal TikZ coordinate
@@ -220,14 +356,28 @@ the stated function, and use arrows on continued branches. Check label clearance
 at the final margin size. Do not add diagrams that introduce unsupplied examples.
 
 Preserve the documented `nohyper` contents workaround and the late book
-`hyperref` load unless testing an authorized layout revision. The caption-font
-patch must keep captions the same size as margin notes. Figure/table lists and
-the index are disabled in `main.tex` until their content exists.
+`hyperref` load unless testing an authorized layout revision. The shared caption
+configuration must keep captions the same size as margin notes. Keep the list
+of figures and list of tables immediately after the contents, followed by the
+automatic List of Theorems, using Tufte's native list
+commands and formatting. Use concise optional figure captions for list entries
+while preserving full captions and attribution beside the figures. The index
+remains disabled in `main.tex` until supplied content contains index entries.
 
-Use bracketed numeric citations such as `[1]` and a readable bibliography after
-the course content and before the appendices. Resolve stable citation keys;
-do not render raw keys or margin-footnote citations. Retain attribution for
-adapted layout material; do not restore unused specimen assets or helpers.
+Use the same alphabetic AMS style as Maths Analysis, with author-based labels
+such as `[Can83]`, and an author/year/title-ordered bibliography after the course
+content and before the appendices. Preserve the bundled styles, structured
+metadata, and Biber-generated labels in [styles/](styles/README.md). Resolve
+stable citation keys; do not render raw keys or margin-footnote citations.
+Uncited handouts and the standalone formula sheet deliberately omit BibLaTeX
+so portable exports remain independent of the book database and Biber.
+
+Original text and illustrations, including editable sources, use CC BY-NC-ND
+4.0; infrastructure and retained Tufte layout retain Apache 2.0. Preserve
+existing third-party terms, including CC BY 4.0 for the adapted kernel/image
+diagrams and LPPL for the bibliography styles. Keep the copyright page,
+licence file, official badge, README, and contributor guidance consistent.
+Do not restore unused specimen assets or helpers.
 
 ## Direct File Authoring
 

@@ -1,10 +1,10 @@
+% !TEX root = ../../hw04.tex
 % Author's solution, images/HW04/IMG_9184.HEIC--IMG_9189.HEIC.
 % The final formula in IMG_9186 uses x-y+z, superseding IMG_9185's plus sign.
 % For K subset ker L, use the generator evaluations supplied in IMG_9185
 % and the general form (a,a+b,b); the later a=b=0 restriction is invalid.
-\noindent\textbf{Solution.}
-\begin{enumerate}[(a)][2]
-  \item Seek a map of the form
+\begin{proof}[Solution]
+  \textbf{(a)} Seek a map of the form
     \[
       L(x,y,z)=(ax+by+cz)(1,2,1).
     \]
@@ -15,7 +15,7 @@
       L(x,y,z)=(x-y+z)(1,2,1).
     \]
 
-  \item In the standard bases, the matrix of \(L\) is
+  \textbf{(b)} In the standard bases, the matrix of \(L\) is
     \[
       M=
       \begin{pmatrix}
@@ -30,7 +30,7 @@
         =\begin{pmatrix}x-y+z\\2(x-y+z)\\x-y+z\end{pmatrix}.
     \]
 
-  \item We verify both equalities by proving both inclusions.
+  \textbf{(c)} We verify both equalities by proving both inclusions.
     The two generators satisfy
     \(L(1,1,0)=0\) and \(L(0,1,1)=0\). By linearity, every vector
     \(a(1,1,0)+b(0,1,1)\) also maps to zero. Hence
@@ -52,7 +52,7 @@
     Hence \(S\subseteq\operatorname{im}L\), and
     \(\operatorname{im}L=S\).
 
-  \item The kernel has dimension \(2\), and the image has dimension \(1\).
+  \textbf{(d)} The kernel has dimension \(2\), and the image has dimension \(1\).
     Thus
     \[
       \operatorname{nullity}L=2,
@@ -64,4 +64,4 @@
       \operatorname{rank}L+\operatorname{nullity}L
         =1+2=3=\dim\mathbb{R}^3.
     \]
-\end{enumerate}
+\end{proof}

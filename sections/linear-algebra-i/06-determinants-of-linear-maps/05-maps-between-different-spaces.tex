@@ -1,0 +1,29 @@
+% !TEX root = ../../../main.tex
+\section{Maps between different spaces}
+\label{sec:linear-algebra-i:determinants-between-spaces}
+
+% Source: October 8 PDF, p. 20.
+For a linear map \(L:V\to W\), pullback is defined even when the domain
+and codomain are different. If \(\dim V=\dim W=n\), it gives a map
+between one-dimensional vector spaces,
+\[
+  L^*:\Lambda^n W^*\longrightarrow\Lambda^n V^*.
+\]
+For an endomorphism, these two spaces coincide, so the map is multiplication
+by a well-defined scalar. When \(V\) and \(W\) are different, there is no
+canonical identification of their top-degree form spaces, and hence no
+canonical scalar for this map.
+
+\begin{definition}
+  For \(L:V\to W\) with \(\dim V=\dim W=n\), its determinant is
+  the map
+  \[
+    \det(L)=L^*:\Lambda^n W^*\longrightarrow\Lambda^n V^*.
+  \]
+\end{definition}
+
+The determinant in this setting is therefore a linear map between two
+lines. It acts on a form \(A\) by the same formula
+\[
+  (L^*A)(v_1,\ldots,v_n)=A(L(v_1),\ldots,L(v_n)).
+\]

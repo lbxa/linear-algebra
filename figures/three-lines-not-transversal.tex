@@ -1,0 +1,12 @@
+% The October 22 p. 1 example: three distinct lines in the real plane.
+\begin{tikzpicture}[
+  x=10mm,y=10mm,font=\footnotesize,line width=0.45pt,
+  continued/.style={{Latex[length=1.6mm,width=1.1mm]}-{Latex[length=1.6mm,width=1.1mm]}}
+]
+  \draw[continued,black!55] (-1.7,0) -- (1.7,0) node[right=2pt] {\(S_1\)};
+  \draw[continued,black!55] (0,-1.5) -- (0,1.7) node[above=2pt] {\(S_2\)};
+  \draw[continued] (-1.4,-1.05) -- (1.5,1.125) node[above right=2pt] {\(S_3\)};
+  \fill (0,0) circle[radius=1.3pt];
+  \node[below right=3pt] at (0,0) {\(0\)};
+  \path (current bounding box.south) ++(0,-2mm);
+\end{tikzpicture}

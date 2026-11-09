@@ -1,0 +1,31 @@
+% Supplied October 1 PDF, pp. 15--17, and IMG_9208; schematic projection.
+\begin{tikzpicture}[
+  x=1cm,y=1cm,font=\footnotesize,line width=0.5pt,
+  line cap=round,line join=round,
+  vector/.style={-{Latex[length=1.6mm,width=1.1mm]}},
+  guide/.style={black!55,dashed}
+]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (-0.95,-0.65);
+  \coordinate (B) at (3.1,0);
+  \coordinate (C) at (0.65,2.3);
+  \coordinate (AB) at ($(A)+(B)$);
+  \coordinate (AC) at ($(A)+(C)$);
+  \coordinate (BC) at ($(B)+(C)$);
+  \coordinate (ABC) at ($(A)+(B)+(C)$);
+  \coordinate (E3) at (0,0.85);
+  \coordinate (H) at (O |- C);
+  \fill[black!8] (O) -- (B) -- (AB) -- (A) -- cycle;
+  \fill[black!4] (C) -- (BC) -- (ABC) -- (AC) -- cycle;
+  \draw (A) -- (AB) -- (B);
+  \draw (A) -- (AC) -- (ABC) -- (AB);
+  \draw (B) -- (BC) -- (ABC);
+  \draw (AC) -- (C) -- (BC);
+  \draw[guide] (O) -- (H) -- (C);
+  \draw[vector] (O) -- (A) node[midway,left=16pt] {\(a\)};
+  \draw[vector] (O) -- (B) node[midway,below=5pt] {\(b\)};
+  \draw[vector] (O) -- (C) node[midway,right=5pt] {\(c\)};
+  \draw[vector,black!55] (O) -- (E3) node[pos=0.6,left=5pt] {\(e_3\)};
+  \node[above left=5pt] at (H) {\(he_3\)};
+  \node[below=5pt] at (O) {\(0\)};
+\end{tikzpicture}

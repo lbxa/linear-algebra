@@ -1,0 +1,26 @@
+% A rank-one real planar schematic; the two infinite lines are parallel.
+\begin{tikzpicture}[
+  x=10mm,y=10mm,font=\footnotesize,line width=0.45pt,
+  vector/.style={-{Latex[length=1.6mm,width=1.1mm]}},
+  continued/.style={{Latex[length=1.6mm,width=1.1mm]}-{Latex[length=1.6mm,width=1.1mm]}}
+]
+  \coordinate (O) at (0,0);
+  \coordinate (X) at (0.2,1.5);
+  \coordinate (V) at (1.4,0.56);
+  \coordinate (P) at ($(X)+(V)$);
+  \draw[continued,black!50] (-0.7,-0.28) -- (2.8,1.12);
+  \draw[continued] (-0.5,1.22) -- (3,2.62);
+  \draw[vector] (O) -- (X);
+  \draw[vector,dashed,black!60] (O) -- (V);
+  \draw[vector] (X) -- (P);
+  \fill (O) circle[radius=1.3pt];
+  \fill (X) circle[radius=1.3pt];
+  \fill (P) circle[radius=1.3pt];
+  \node[below left=2pt] at (O) {\(0\)};
+  \node[above left=3pt] at (X) {\(x_0\)};
+  \node[below=4pt] at (V) {\(v\)};
+  \node[above=4pt] at (P) {\(x_0+v\)};
+  \node[below=4pt] at (2.4,0.96) {\(\ker A\)};
+  \node at (1.2,3.3) {\(x_0+\ker A\)};
+  \path (current bounding box.south) ++(0,-2mm);
+\end{tikzpicture}

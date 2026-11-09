@@ -1,0 +1,17 @@
+% Pullback evaluates by following F and then f; the lower arrow acts on functions.
+\begin{tikzpicture}[
+  x=1mm,y=1mm,font=\footnotesize,line width=0.45pt,
+  every node/.style={inner sep=3pt},
+  map/.style={-{Latex[length=1.6mm,width=1.1mm]}}
+]
+  \node (X) at (0,26) {\(X\)};
+  \node (Y) at (30,26) {\(Y\)};
+  \node (field) at (30,3) {\(\mathbb F\)};
+  \draw[map] (X) -- node[above] {\(F\)} (Y);
+  \draw[map] (Y) -- node[right] {\(f\)} (field);
+  \draw[map] (X) -- node[below left=1pt] {\(F^*f\)} (field);
+  \node (pullback) at (0,-13) {\(F^*f\)};
+  \node (function) at (30,-13) {\(f\)};
+  \draw[map] (function) -- node[above] {\(F^*\)} (pullback);
+  \path (current bounding box.south) ++(0,-2mm);
+\end{tikzpicture}

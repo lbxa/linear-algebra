@@ -1,0 +1,75 @@
+% !TEX root = ../../../main.tex
+\section{Determinant}
+\label{sec:linear-algebra-i:determinant}
+
+% Sources: October 1 PDF, p. 30; IMG_9213. Use the column-indexed
+% expansion from IMG_9213 and PDF pp. 27--28 consistently with M's columns.
+% The final handwritten factor appears to repeat lower index 1. Use n,
+% as in the preceding coordinate expansion and PDF pp. 27--30.
+Let \((e_1,\ldots,e_n)\) be the standard basis of \(\R^n\).
+By \autoref{thm:linear-algebra-i:normalized-volume-function}, there
+is a unique antisymmetric multilinear function
+\[
+  D:(\R^n)^n\longrightarrow\R,\qquad D(e_1,\ldots,e_n)=1.
+\]
+For columns \(v_j=(b^1_j,\ldots,b^n_j)^T\), its formula is
+\[
+  \begin{aligned}
+    D(v_1,\ldots,v_n)
+      &=\sum_{\phi\in T_n}\varepsilon(\phi)
+        b^{\phi(1)}_1\cdots b^{\phi(n)}_n\\
+      &=\sum_{\sigma\in S_n}\varepsilon(\sigma)
+        b^{\sigma(1)}_1\cdots b^{\sigma(n)}_n.
+  \end{aligned}
+\]
+
+\begin{definition}
+  Let \(M\) be a real \(n\)-by-\(n\) matrix with columns \(C_1,\ldots,C_n\).
+  Its determinant is
+  \[
+    \det M=D(C_1,\ldots,C_n).
+  \]
+\end{definition}
+
+Writing \(M=(b^i_j)\), with upper index \(i\) for the row and lower
+index \(j\) for the column, gives the permutation formula
+\begin{equation}
+  \det M=\sum_{\sigma\in S_n}\varepsilon(\sigma)
+    b^{\sigma(1)}_1\cdots b^{\sigma(n)}_n.
+  \label{eq:linear-algebra-i:determinant-permutation-formula}
+\end{equation}
+It selects one row from each column. The equivalent row-indexed expression is
+\[
+  \det M=\sum_{\sigma\in S_n}\varepsilon(\sigma)
+    b^1_{\sigma(1)}\cdots b^n_{\sigma(n)}.
+\]
+% PDF p. 30 uses this row-indexed form; the photos and pp. 27--28 use
+% the column-indexed form. The two sums reindex by inverse permutations.
+For \(n=2\), this agrees with the oriented-area formula \(ad-bc\);
+for \(n=3\), it agrees with the normalized oriented volume.
+
+\subsection{Computation of determinant}
+\label{sec:linear-algebra-i:determinant-computation}
+
+\input{problems/hw05/column-expansion}
+
+The following exercises apply this column expansion.
+\input{problems/hw05/02-two-by-two-determinant/problem}
+\input{problems/hw05/04-three-by-three-triangular-determinant/problem}
+\input{problems/hw05/05-upper-triangular-determinant/problem}
+\input{problems/hw05/07-four-by-four-determinant/problem}
+
+\subsection{Determinant properties}
+\label{sec:linear-algebra-i:determinant-properties}
+
+The following exercises examine how the determinant changes when its
+columns are modified.
+\input{problems/hw05/03-negating-a-matrix/problem}
+\input{problems/hw05/06-column-addition/problem}
+
+% Keep the supplied definition, example, and all five subparts on one page.
+\newpage
+\subsection{Permutation matrices}
+\label{sec:linear-algebra-i:permutation-matrices}
+
+\input{problems/hw05/08-permutation-matrices/problem}

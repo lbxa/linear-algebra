@@ -1,0 +1,28 @@
+% !TEX root = ../../hw07.tex
+% Source: Lucas's supplied typed solutions, October 30, 2026, 2.1--2.2.
+\begin{proof}[Solution]
+  \textbf{2.1.} The prescribed basis values are symmetric, with
+  \(T(e_1,e_2)=T(e_2,e_1)=1\). To test positive definiteness, write
+  \(v=ae_1+be_2\), where \(a,b\in\R\). Since \(T\) is a
+  2-tensor, bilinearity gives
+  \[
+    \begin{aligned}
+      T(v,v)&=T(ae_1+be_2,ae_1+be_2)\\
+        &=a\bigl(aT(e_1,e_1)+bT(e_1,e_2)\bigr)\\
+        &\quad +b\bigl(aT(e_2,e_1)+bT(e_2,e_2)\bigr)\\
+        &=a^2T(e_1,e_1)+abT(e_1,e_2)\\
+        &\quad +abT(e_2,e_1)+b^2T(e_2,e_2)\\
+        &=a^2+ab+ab+b^2\\
+        &=(a+b)^2\ge0.
+    \end{aligned}
+  \]
+  Choosing \(a=1\) and \(b=-1\) gives \(v=e_1-e_2\ne0\), but
+  \(T(v,v)=0\). Therefore \(T\) is not positive definite and is
+  not an inner product.
+
+  \textbf{2.2.} Here
+  \[
+    T(e_1,e_2)=1\ne-1=T(e_2,e_1).
+  \]
+  Thus \(T\) is not symmetric and cannot be an inner product.
+\end{proof}

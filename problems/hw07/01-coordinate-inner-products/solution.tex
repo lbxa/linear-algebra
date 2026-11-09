@@ -1,0 +1,51 @@
+% !TEX root = ../../hw07.tex
+% Source: Lucas's supplied typed solutions, October 30, 2026, 1.1--1.2.
+% Correct the linearity-test typo (u,v) to (u,w), as in his calculation.
+\begin{proof}[Solution]
+  \textbf{1.1.} Testing positive definiteness gives
+  \[
+    (v,v)=v^1v^2+v^2v^1=2v^1v^2.
+  \]
+  The real coordinates \(v^1,v^2\) can have opposite signs, so this
+  expression can be negative even when \(v\ne0\). Thus the form is
+  not positive definite and is not an inner product.
+
+  \textbf{1.2.} First, the form is symmetric because
+  \[
+    \begin{aligned}
+      (w,v)&=2w^1v^1-w^1v^2-w^2v^1+2w^2v^2\\
+        &=(v,w).
+    \end{aligned}
+  \]
+  To test positive definiteness, calculate
+  \[
+    \begin{aligned}
+      (v,v)&=2(v^1)^2-2v^1v^2+2(v^2)^2\\
+        &=\bigl((v^1)^2-2v^1v^2+(v^2)^2\bigr)
+          +(v^1)^2+(v^2)^2\\
+        &=(v^1-v^2)^2+(v^1)^2+(v^2)^2.
+    \end{aligned}
+  \]
+  A sum of real squares is nonnegative and vanishes only when every
+  squared term is zero. Hence \((v,v)=0\) exactly when \(v=0\), and
+  \((v,v)>0\) whenever \(v\ne0\).
+
+  For linearity in the first argument, let \(a\in\R\) and
+  \(u,v,w\in\R^2\) be arbitrary. Then
+  \[
+    \begin{aligned}
+      (av+u,w)
+        &=2(av^1+u^1)w^1-(av^1+u^1)w^2\\
+        &\quad -(av^2+u^2)w^1+2(av^2+u^2)w^2\\
+        &=a\bigl(2v^1w^1-v^1w^2-v^2w^1+2v^2w^2\bigr)\\
+        &\quad +\bigl(2u^1w^1-u^1w^2-u^2w^1+2u^2w^2\bigr)\\
+        &=a(v,w)+(u,w).
+    \end{aligned}
+  \]
+  By symmetry,
+  \[
+    (v,aw+u)=(aw+u,v)=a(w,v)+(u,v)=a(v,w)+(v,u).
+  \]
+  Thus the form is bilinear, symmetric, and positive definite, so it
+  is an inner product.
+\end{proof}

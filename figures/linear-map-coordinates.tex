@@ -1,0 +1,16 @@
+% L(E)=FM: the two routes from coordinates to the output vector agree.
+\begin{tikzpicture}[
+  x=1mm,y=1mm,font=\footnotesize,line width=0.45pt,
+  every node/.style={inner sep=3pt},
+  map/.style={-{Latex[length=1.6mm,width=1.1mm]}}
+]
+  \node (a) at (0,24) {\(a\)};
+  \node (Ma) at (32,24) {\(Ma\)};
+  \node (v) at (0,0) {\(v=Ea\)};
+  \node (Lv) at (32,0) {\(L(v)\)};
+  \draw[map] (a) -- node[above] {\(M\)} (Ma);
+  \draw[map] (a) -- node[left] {\(E\)} (v);
+  \draw[map] (Ma) -- node[right] {\(F\)} (Lv);
+  \draw[map] (v) -- node[below] {\(L\)} (Lv);
+  \path (current bounding box.south) ++(0,-2mm);
+\end{tikzpicture}

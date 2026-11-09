@@ -1,23 +1,31 @@
+% !TEX TS-program = pdflatexmk
 % !TEX program = pdflatex
 % Copy to problems/hwNN.tex only when an assignment is supplied.
-% Compile from the repository root with make problem HW=hwNN.
+% Compile from the repository root with make problem HW=hwNN, or in TeXShop.
 \documentclass[nohyper,nobib,nofonts]{tufte-handout}
+\newcommand{\bookroot}{..}
+\IfFileExists{preamble.tex}{\renewcommand{\bookroot}{.}}{}
+\makeatletter
+\edef\input@path{{\bookroot/}}
+\makeatother
 \input{preamble}
 \input{macros}
 
 % Number assignment questions consecutively, independently of topic sections.
 \counterwithout{theorem}{section}
 \renewcommand{\thetheorem}{\arabic{theorem}}
+\aliascntresetthe{exercise}
 
 \title{Homework 01}
-\author{Lucas Barbosa, \texttt{lc6424}}
+\author[Lucas Barbosa, lc6424]{Lucas Barbosa, \texttt{lc6424}}
 \date{}
 
 \begin{document}
 \maketitle
 
 % Preserve the supplied assignment's question order and numbering.
-% Each shared problem.tex contains its exercise label and solutionlink.
+% Each shared fragment's first-line root points to ../../hwNN.tex.
+% Each problem.tex ends with its solutionlink before the exercise end tag.
 % Input each problem.tex, then its adjacent solution.tex.
 
 \end{document}

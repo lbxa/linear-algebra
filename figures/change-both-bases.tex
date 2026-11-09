@@ -1,0 +1,16 @@
+% M'=B^{-1}MA: vertical arrows convert new coordinates to old coordinates.
+\begin{tikzpicture}[
+  x=1mm,y=1mm,font=\footnotesize,line width=0.45pt,
+  every node/.style={inner sep=3pt},
+  map/.style={-{Latex[length=1.6mm,width=1.1mm]}}
+]
+  \node (newin) at (0,24) {\(a'\)};
+  \node (newout) at (32,24) {\(M'a'\)};
+  \node (oldin) at (0,0) {\(Aa'\)};
+  \node (oldout) at (32,0) {\(MAa'\)};
+  \draw[map] (newin) -- node[above] {\(M'\)} (newout);
+  \draw[map] (newin) -- node[left] {\(A\)} (oldin);
+  \draw[map] (newout) -- node[right] {\(B\)} (oldout);
+  \draw[map] (oldin) -- node[below] {\(M\)} (oldout);
+  \path (current bounding box.south) ++(0,-2mm);
+\end{tikzpicture}

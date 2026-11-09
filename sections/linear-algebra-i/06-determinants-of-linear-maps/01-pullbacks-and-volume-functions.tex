@@ -1,0 +1,81 @@
+% !TEX root = ../../../main.tex
+\section{Pullbacks and volume functions}
+\label{sec:linear-algebra-i:pullbacks-and-volume-functions}
+
+% Sources: IMG_9262--IMG_9263; October 8 PDF, pp. 13--14.
+% The photo uses X* for scalar-valued functions on a set. Use F(X,F) here
+% to distinguish this general function space from the linear dual V*.
+\subsection{Pullback by composition}
+
+Let \(X,Y\) be sets and let \(F:X\to Y\) be a map. Write
+\(\mathcal F(X,\mathbb F)\) for the scalar-valued functions on \(X\).
+Every function \(f:Y\to\mathbb F\) gives a function on \(X\) by composition,
+\[
+  F^*f=f\circ F,\qquad (F^*f)(x)=f(F(x)).
+\]
+This construction is called pullback. Its direction is opposite to that of
+the original map,
+\[
+  F:X\longrightarrow Y,\qquad
+  F^*:\mathcal F(Y,\mathbb F)\longrightarrow\mathcal F(X,\mathbb F).
+\]
+
+\autoref{fig:linear-algebra-i:pullback-composition} separates the path
+of an input from the direction in which a function is pulled back.
+\begin{marginfigure}
+  \centering
+  \input{figures/pullback-composition}
+  \caption[Pullback by composition]{In the triangle, start in \(X\),
+    apply \(F\), then evaluate \(f\). Below, \(F^*\) takes the function
+    \(f\) on \(Y\) back to the function \(F^*f\) on \(X\).}
+  \label{fig:linear-algebra-i:pullback-composition}
+\end{marginfigure}
+
+For a vector space \(V\), its linear dual \(V^*\) consists of the linear
+functions \(V\to\mathbb F\). More generally, write \(\Lambda^k V^*\) for
+the vector space of antisymmetric \(k\)-linear functions on \(V\).
+Here \(k\) is the number of inputs; it need not equal \(\dim V\).
+
+\begin{definition}
+  Let \(L:V\to W\) be linear and let \(A\in\Lambda^k W^*\).
+  The pullback of \(A\) by \(L\) is the function
+  \[
+    (L^*A)(v_1,\ldots,v_k)
+      =A(L(v_1),\ldots,L(v_k)).
+  \]
+\end{definition}
+
+Linearity of \(L\) preserves multilinearity in each input, and interchanging
+two inputs interchanges the corresponding inputs of \(A\). Thus \(L^*A\)
+is again antisymmetric and multilinear. The induced map
+\[
+  L^*:\Lambda^k W^*\longrightarrow\Lambda^k V^*
+\]
+is linear in \(A\).
+
+\subsection{The space of top-degree forms}
+
+Suppose \(\dim V=n\). The functions in \(\Lambda^n V^*\) are the
+top-degree forms on \(V\); over \(\R\), a nonzero such function gives
+an oriented volume function.
+
+\begin{proposition}
+  \label{thm:linear-algebra-i:top-degree-forms}
+  The space \(\Lambda^n V^*\) has dimension one. If
+  \(A\in\Lambda^n V^*\setminus\{0\}\), then every
+  \(B\in\Lambda^n V^*\) is a unique scalar multiple of \(A\).
+  For any ordered basis \((e_1,\ldots,e_n)\), this scalar is
+  \[
+    B=bA,\qquad b=\frac{B(e_1,\ldots,e_n)}{A(e_1,\ldots,e_n)}.
+  \]
+\end{proposition}
+
+\begin{proof}
+  The coordinate expansion in
+  \autoref{eq:linear-algebra-i:antisymmetric-basis-expansion}
+  determines each top-degree form by its value on the ordered basis.
+  Since \(A\ne0\), its basis value cannot be zero. The displayed choice
+  of \(b\) makes \(B\) and \(bA\) agree on that basis, so the same
+  expansion gives \(B=bA\). Thus the single nonzero vector \(A\)
+  is a basis of \(\Lambda^n V^*\).
+\end{proof}

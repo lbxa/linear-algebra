@@ -1,0 +1,88 @@
+% !TEX root = ../../../main.tex
+\section{Transposes and linear systems}
+\label{sec:linear-algebra-i:transposes-and-linear-systems}
+
+% Source: October 8 PDF, pp. 9--12.
+\subsection{Transpose}
+
+\begin{definition}
+  If \(M\) is an \(m\)-by-\(n\) matrix, its transpose \(M^T\)
+  is the \(n\)-by-\(m\) matrix obtained by interchanging rows and columns,
+  \[
+    (M^T)^j_i=M^i_j.
+  \]
+\end{definition}
+
+Transposition reverses the order of a matrix product. For
+\(A\in\mathbb F^{k\times m}\) and \(B\in\mathbb F^{m\times n}\),
+\[
+  (AB)^T=B^TA^T\in\mathbb F^{n\times k}.
+\]
+
+\begin{theorem}[Determinant of a transpose]
+  \label{thm:linear-algebra-i:determinant-transpose}
+  Every square matrix satisfies \(\det(M^T)=\det M\).
+\end{theorem}
+
+\begin{proof}
+  The permutation formula gives
+  \begin{align*}
+    \det M
+      &=\sum_{\sigma\in S_n}\varepsilon(\sigma)
+        M^{\sigma(1)}_1\cdots M^{\sigma(n)}_n\\
+      &=\sum_{\sigma\in S_n}\varepsilon(\sigma)
+        M^1_{\sigma^{-1}(1)}\cdots M^n_{\sigma^{-1}(n)}\\
+      &=\sum_{\tau\in S_n}\varepsilon(\tau)
+        M^1_{\tau(1)}\cdots M^n_{\tau(n)}\\
+      &=\det(M^T).
+  \end{align*}
+  In the second line, the factors are reordered by their row indices.
+  In the third, set \(\tau=\sigma^{-1}\) and use
+  \(\varepsilon(\sigma^{-1})=\varepsilon(\sigma)\).
+\end{proof}
+
+% PDF p.11 supplies this factorization argument but no construction of PLU.
+% Keep it conditional rather than inventing a factorization theorem or proof.
+\begin{remark}
+  For a factorization \(M=PLU\), where \(P\) is a permutation matrix,
+  \(L\) is lower triangular, and \(U\) is upper triangular, the same
+  determinant identity has the calculation
+  \begin{align*}
+    \det(M^T)&=\det(U^TL^TP^T)\\
+      &=(\det U)(\det L)(\det P)\\
+      &=\det(PLU)=\det M.
+  \end{align*}
+  Transposition preserves the diagonal product of a triangular matrix
+  and the determinant of a permutation matrix.
+\end{remark}
+
+\subsection{Square systems of equations}
+
+Consider \(Ax=b\) with \(A\in\R^{n\times n}\) and \(b\in\R^n\).
+If \(\det A\ne0\), the matrix is invertible and the unique solution is
+\[
+  x=A^{-1}b.
+\]
+If \(\det A=0\), then
+\[
+  \dim\ker A>0,\qquad \dim\operatorname{im}A<n.
+\]
+A solution exists exactly when \(b\in\operatorname{im}A\).
+If \(x_0\) is one solution, every vector \(x_0+v\), with
+\(v\in\ker A\), is also a solution, since
+\[
+  A(x_0+v)=Ax_0+Av=b.
+\]
+Thus a singular square system over \(\R\) has either no solution or
+infinitely many solutions. Its full solution set, when nonempty, is
+\(x_0+\ker A\), as in \autoref{sec:linear-algebra-i:kernel}.
+\autoref{fig:linear-algebra-i:affine-solution-fiber} illustrates this
+translation when the kernel is a line in \(\R^2\).
+\begin{marginfigure}
+  \centering
+  \input{figures/affine-solution-fiber}
+  \caption[A solution set as a translated kernel]{A real-plane schematic
+    for a nonempty singular system. Moving from \(x_0\) by any kernel
+    vector \(v\) gives another solution \(x_0+v\). The two lines are parallel.}
+  \label{fig:linear-algebra-i:affine-solution-fiber}
+\end{marginfigure}

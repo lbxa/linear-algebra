@@ -1,6 +1,10 @@
 # Third-party notices
 
-This project retains the [Apache License, Version 2.0](LICENSE).
+Except where otherwise indicated, the book's original text and illustrations,
+including their editable sources, use [CC BY-NC-ND 4.0](LICENSE-CC-BY-NC-ND-4.0.txt).
+Build scripts and typesetting infrastructure retain the
+[Apache License, Version 2.0](LICENSE). The following third-party material
+retains its own terms.
 
 ## Tufte-LaTeX layout
 
@@ -30,9 +34,18 @@ provided by the contributor's LaTeX installation, rather than copied here.
 ### Project modifications
 
 The book is organized into Linear Algebra I and a reserved Linear Algebra II,
-with chapter/topic files, shared homework sources, margin solution links, and
+with chapter/topic files, shared homework sources, inline solution links, and
 appendix restatements. Retain source credits and license notices with adapted
 layout material.
+
+## Formula-sheet layout
+
+The portrait, two-column layout in
+[sections/appendices/formula-sheet.tex](sections/appendices/formula-sheet.tex)
+is adapted from Lucas Barbosa's Maths Analysis project. That sheet credits
+Dave Richeson's LaTeX cheat sheet at divisbyzero.com, Dickinson College, as
+its layout inspiration. The Linear Algebra formulas summarize this book's
+existing supplied content.
 
 ## Kernel and image diagrams
 
@@ -50,4 +63,29 @@ Changes include TikZ reconstruction, grayscale shading, and different geometry.
 The kernel-only version omits the surrounding spaces and the image; the
 companion version uses nested circular regions and separate paths for a
 general input and a kernel vector. Labels are repositioned for clearance.
-These diagrams' license is separate from the repository's default Apache license.
+These diagrams retain CC BY 4.0 separately from the book's content licence.
+
+## AMS-compatible bibliography styles
+
+The unmodified sources under `styles/biblatex-ams/` are from biblatex-ams 0.01,
+copyright 2026 Herbert Voß, based on biblatex-math. Their LaTeX Project Public
+License is included in `styles/biblatex-ams/LPPL-1.3c.txt`; upstream headers,
+README, changelog, and documentation sources are retained.
+
+The local `styles/analysis-ams.bbx` is copied without changes from Lucas
+Barbosa's Maths Analysis project. It extends the upstream style with the
+author-name, title, punctuation, and journal-detail formatting documented in
+[styles/README.md](styles/README.md).
+
+## Creative Commons license badge
+
+The official CC BY-NC-ND badge in `figures/licensing/cc-by-nc-nd.eps` and its
+vector PDF conversion are copied without changes from Maths Analysis. That
+project obtained the EPS from
+[Creative Commons' official press kit](https://mirrors.creativecommons.org/presskit/buttons/88x31/eps/by-nc-nd.eps).
+The design and proportions are unchanged, and the copyright-page badge links
+to the CC BY-NC-ND 4.0 deed.
+
+Creative Commons logos are trademarks used under the
+[Creative Commons Trademark Policy](https://creativecommons.org/policies/#trademark),
+rather than under the book's content licence.

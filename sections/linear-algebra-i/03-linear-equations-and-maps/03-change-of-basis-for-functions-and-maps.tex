@@ -44,6 +44,14 @@ Express each image in the basis \(F\):
 \]
 The matrix \(M=(M^i_j)\in\mathbb F^{n\times m}\) represents \(L\) in
 these bases. Its \(j\)-th column is the coordinate column of \(L(e_j)\).
+\begin{marginfigure}
+  \centering
+  \input{figures/linear-map-coordinates}
+  \caption[Coordinates of a linear map]{Across the top, \(M\) acts on
+    coordinates. Across the bottom, \(L\) acts on vectors. The vertical
+    arrows reconstruct vectors in the bases \(E\) and \(F\).}
+  \label{fig:linear-algebra-i:linear-map-coordinates}
+\end{marginfigure}
 In compact notation,
 \[
   L(E)=FM.
@@ -54,6 +62,9 @@ If \(v=Ea\), then
 \]
 Thus \(M\) converts the \(E\)-coordinates of an input into the
 \(F\)-coordinates of its image.
+
+Both routes through \autoref{fig:linear-algebra-i:linear-map-coordinates}
+give the same output vector, since \(L(Ea)=F(Ma)\).
 
 In Einstein notation, repeated upper and lower indices are summed over their
 ranges. With this convention, the expressions above become
@@ -102,7 +113,7 @@ Let \(E\) and \(F\) be bases of \(V\) and \(W\), and write
   L(E)=FM,\qquad L^{-1}(F)=EN.
 \]
 Using the linearity of the inverse map, as requested in
-Exercise~\ref{ex:lec03:inverse-is-linear}, gives
+\autoref{ex:lec03:inverse-is-linear}, gives
 \[
   \begin{aligned}
     F&=L(L^{-1}(F))=L(EN)=L(E)N=FMN,\\
@@ -128,3 +139,15 @@ Therefore, the matrix \(M'\) satisfying \(L(E')=F'M'\) is
   \label{eq:linear-algebra-i:change-of-basis-for-maps}
 \end{equation}
 % September 17 slide 33 supplies the formula missing from the earlier photo.
+
+\autoref{fig:linear-algebra-i:change-both-bases} tracks the conversions.
+Following either route gives \(BM'a'=MAa'\), hence
+\(M'=B^{-1}MA\).
+\begin{marginfigure}
+  \centering
+  \input{figures/change-both-bases}
+  \caption[Changing both coordinate systems]{The top row uses the new
+    bases \(E',F'\); the bottom uses \(E,F\). The downward arrows convert
+    new coordinates to old ones.}
+  \label{fig:linear-algebra-i:change-both-bases}
+\end{marginfigure}

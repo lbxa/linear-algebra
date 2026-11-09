@@ -25,7 +25,7 @@ For \(f_1,f_2,f\in C^1(\R)\) and \(r\in\R\),
 \]
 Thus differentiation preserves addition and scalar multiplication.
 Its inputs and outputs are functions.
-Section~\ref{sec:linear-algebra-i:linear-combinations-and-bases}
+\autoref{sec:linear-algebra-i:linear-combinations-and-bases}
 discusses bases beyond finite dimension, including function spaces.
 
 % Keep the complete shared polynomial exercise together in the book.
@@ -37,3 +37,14 @@ polynomial spaces. It brings together the kernel, image, rank, nullity,
 and matrix construction in chosen bases.
 
 \input{problems/hw04/05-polynomial-differentiation/problem}
+
+\autoref{fig:linear-algebra-i:polynomial-differentiation} shows how
+differentiation acts on the monomials in the given basis.
+\begin{marginfigure}
+  \centering
+  \input{figures/polynomial-differentiation}
+  \caption[Differentiation of monomials]{The basis images for
+    \(D:\mathcal P_3(\R)\to\mathcal P_2(\R)\). Constants go to zero;
+    the other monomials lose one degree.}
+  \label{fig:linear-algebra-i:polynomial-differentiation}
+\end{marginfigure}
