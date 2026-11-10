@@ -14,8 +14,10 @@ PDFs, supply Chapters 6--7 on determinants of linear maps, eigenvalues,
 diagonalization, and direct sums. The six-page October 22 handwritten PDF,
 imported October 28, completes the distinct-eigenspace argument in Chapter 7
 and supplies Chapter 8 on real inner products and induced norms.
-Two lecture exercises are embedded and
-restated in the appendix, awaiting supplied solutions. Homework 4's five
+All seven supplied homeworks are now included. Homeworks 1--3 contribute
+10, 12, and 6 questions respectively, placed in Chapters 1--4 with complete
+appendix restatements and pending solutions. Two lecture exercises are embedded
+and restated in the appendix, awaiting supplied solutions. Homework 4's five
 problems are included in §§4.3–4.4 and the appendix, with Lucas's supplied
 solutions and standalone handouts with and without solutions.
 Homework 5's eight questions are included in §§5.1 and 5.4, the appendix,
@@ -41,6 +43,7 @@ or dictated by Lucas; the calendar supplies organizational headings only.
 - [Supplied sources and editorial review](#supplied-sources-and-editorial-review)
 - [Import supplied material](#import-supplied-material)
 - [Build the notes](#build-the-notes)
+- [Published PDFs](#published-pdfs)
 - [Local customisation](#local-customisation)
 - [Contributing](#contributing)
 - [License and attribution](#license-and-attribution)
@@ -102,6 +105,7 @@ injectivity, surjectivity, and bijectivity with finite-set TikZ diagrams
 and visual examples in real two- and three-dimensional spaces.
 The exercise appendix
 contains the complete shared lecture exercises and Homework 4 and 5 statements.
+It also restates all 28 Homework 1--3 questions with pending solution notices.
 It also contains all six Homework 6 statements with pending solution notices
 and all four Homework 7 statements with Lucas's supplied solutions.
 Homework 4 statements are followed by Lucas's transcribed solutions; the
@@ -185,7 +189,8 @@ styles/                        Shared AMS bibliography styles and licences
 scripts/jpeg.sh                Optional local lecture-image conversion helper
 scripts/codex-stop-check.sh     Build check used by the Codex Stop hook
 .codex/hooks.json              Project-local hook configuration
-.agents/skills/                Lecture, homework, and tacit-knowledge workflows
+.github/workflows/publish-book.yml Build and publish versioned book PDFs
+.agents/skills/                Editing, lecture, homework, and tacit-knowledge workflows
 images/                        Local supplied lecture images (ignored by Git)
 build/                         Generated output and review artifacts (ignored)
 Makefile                       Build, watch, and cleanup commands
@@ -217,6 +222,12 @@ transcription and revisions can be made without editing the whole book.
 
 ## Homework placement map
 
+**Homeworks 1--3 are imported from the supplied PDFs**, preserved as
+`images/supplied/homework-01.pdf`, `homework-02.pdf`, and `homework-03.pdf`.
+Their 10, 12, and 6 questions all have shared statements, complete appendix
+restatements, and pending solutions. The original handouts contain no supplied
+solutions. The source records below identify Lucas's approved corrections.
+
 This is the authoritative record of homework reuse. **Homework 4, Problems 1–5,
 is imported from the supplied two-page PDF.** All 21 subparts are preserved in
 their original order, including the missing final punctuation in Problem 3(b).
@@ -247,29 +258,57 @@ status. Do not add guessed questions or invented source paths as data rows.
 
 | Course / original homework question | Problem source | Content assessed | Book chapter and section/subsection | Appendix order | Solution source | Stable key | Status / reason |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Linear Algebra I / HW4, Problem 1(a–d) | [problem.tex](problems/hw04/01-kernel-image-and-rank/problem.tex) | Kernel/image bases, nullity, rank, injectivity, surjectivity | 4, §4.3, Adapted bases and rank–nullity, after the theorem | 2 (HW4 #1) | [solution.tex](problems/hw04/01-kernel-image-and-rank/solution.tex) | `hw04:kernel-image-and-rank` | **Included**; supplied solution (a–d) |
-| Linear Algebra I / HW4, Problem 2(a–d) | [problem.tex](problems/hw04/02-rank-nullity/problem.tex) | Rank–nullity and dimension criteria | 4, §4.3, Isomorphisms | 3 (HW4 #2) | [solution.tex](problems/hw04/02-rank-nullity/solution.tex) | `hw04:rank-nullity` | **Included**; supplied solution (a–d) |
-| Linear Algebra I / HW4, Problem 3(a–d) | [problem.tex](problems/hw04/03-prescribed-kernel-and-image/problem.tex) | Constructing a map with prescribed kernel and image | 4, §4.3, A matrix adapted to the kernel and image, after the fundamental example | 4 (HW4 #3) | [solution.tex](problems/hw04/03-prescribed-kernel-and-image/solution.tex) | `hw04:prescribed-kernel-and-image` | **Included**; supplied solution (a–d) |
-| Linear Algebra I / HW4, Problem 4(a–e) | [problem.tex](problems/hw04/04-adapted-bases/problem.tex) | Adapted bases and the identity L(E) = FM | 4, §4.3, Using the identity L(E) = FM, after the worked example | 5 (HW4 #4) | [solution.tex](problems/hw04/04-adapted-bases/solution.tex) | `hw04:adapted-bases` | **Included**; supplied solution (a–e) |
-| Linear Algebra I / HW4, Problem 5(a–d) | [problem.tex](problems/hw04/05-polynomial-differentiation/problem.tex) | Polynomial differentiation, kernel/image, matrices, and adapted bases | 4, §4.4, Differentiation as a linear map → Polynomial differentiation | 6 (HW4 #5) | [solution.tex](problems/hw04/05-polynomial-differentiation/solution.tex) | `hw04:polynomial-differentiation` | **Included**; supplied solution (a–d) |
-| Linear Algebra I / HW5, Problem 1 | [problem.tex](problems/hw05/01-bilinear-antisymmetry/problem.tex) | Equal-input vanishing implies bilinear antisymmetry over R | 5, §5.1, Oriented area and bilinearity, after the stated antisymmetry property | 7 (HW5 #1) | [solution.tex](problems/hw05/01-bilinear-antisymmetry/solution.tex) | `hw05:bilinear-antisymmetry` | **Included**; Lucas's supplied solution |
-| Linear Algebra I / HW5, Problem 2 | [problem.tex](problems/hw05/02-two-by-two-determinant/problem.tex) | Two-by-two determinant from multilinearity | 5, §5.4, Computation of determinant | 8 (HW5 #2) | [solution.tex](problems/hw05/02-two-by-two-determinant/solution.tex) | `hw05:two-by-two-determinant` | **Included**; Lucas's supplied solution with the requested geometric interpretation; related calculation appears in §5.1 |
-| Linear Algebra I / HW5, Problem 3 | [problem.tex](problems/hw05/03-negating-a-matrix/problem.tex) | Determinant under negation of all columns | 5, §5.4, Determinant properties | 12 (HW5 #3) | [solution.tex](problems/hw05/03-negating-a-matrix/solution.tex) | `hw05:negating-a-matrix` | **Included**; Lucas's supplied solution, reviewed October 7 |
-| Linear Algebra I / HW5, Problem 4 | [problem.tex](problems/hw05/04-three-by-three-triangular-determinant/problem.tex) | Three-by-three upper triangular determinant | 5, §5.4, Computation of determinant | 9 (HW5 #4) | [solution.tex](problems/hw05/04-three-by-three-triangular-determinant/solution.tex) | `hw05:three-by-three-triangular-determinant` | **Included**; Lucas's supplied solution, reviewed October 7 |
-| Linear Algebra I / HW5, Problem 5 | [problem.tex](problems/hw05/05-upper-triangular-determinant/problem.tex) | General upper triangular determinant and column-expansion process | 5, §5.4, Computation of determinant | 10 (HW5 #5) | [solution.tex](problems/hw05/05-upper-triangular-determinant/solution.tex) | `hw05:upper-triangular-determinant` | **Included**; Lucas's supplied solution with the diagonal-selection argument made explicit in the authorized review |
-| Linear Algebra I / HW5, Problem 6 | [problem.tex](problems/hw05/06-column-addition/problem.tex) | Adding a multiple of another column preserves the determinant | 5, §5.4, Determinant properties | 13 (HW5 #6) | [solution.tex](problems/hw05/06-column-addition/solution.tex) | `hw05:column-addition` | **Included**; Lucas's supplied solution, corrected to cover all j ≠ k; original field F retained |
-| Linear Algebra I / HW5, Problem 7 | [problem.tex](problems/hw05/07-four-by-four-determinant/problem.tex) | Four-by-four determinant using the supplied computation procedure | 5, §5.4, Computation of determinant | 11 (HW5 #7) | [solution.tex](problems/hw05/07-four-by-four-determinant/solution.tex) | `hw05:four-by-four-determinant` | **Included**; adapted from Lucas's two supplied photos at his request, using successive column additions and the triangular diagonal product; arithmetic corrected and value 65 verified |
-| Linear Algebra I / HW5, Problem 8(a–e) | [problem.tex](problems/hw05/08-permutation-matrices/problem.tex) | Permutation matrices, column reordering, linear action, composition, and determinant sign | 5, §5.4, Permutation matrices, after the determinant definition and §5.2 permutation prerequisites | 14 (HW5 #8) | [solution.tex](problems/hw05/08-permutation-matrices/solution.tex) | `hw05:permutation-matrices` | **Included**; Lucas's complete supplied solution (a–e), reviewed with corrections and added justifications in red on October 8; all five question subparts remain together |
-| Linear Algebra I / HW6, Problem 1 | [problem.tex](problems/hw06/01-triangular-matrix-eigenvectors/problem.tex) | Eigenvectors of an upper triangular matrix with a repeated eigenvalue | 7, §7.3, Diagonal and triangular matrices | 16 (HW6 #1) | [solution.tex](problems/hw06/01-triangular-matrix-eigenvectors/solution.tex) | `hw06:triangular-matrix-eigenvectors` | **Awaiting solution**; complete statement included |
-| Linear Algebra I / HW6, Problem 2 | [problem.tex](problems/hw06/02-eigenvectors-in-a-basis/problem.tex) | Solving the eigenvector equation directly in basis coordinates | 7, §7.3, Diagonal and triangular matrices, after HW6 Problem 1 | 17 (HW6 #2) | [solution.tex](problems/hw06/02-eigenvectors-in-a-basis/solution.tex) | `hw06:eigenvectors-in-a-basis` | **Awaiting solution**; basis images and superscript coefficients preserved; implicit linearity flagged in the source record |
-| Linear Algebra I / HW6, Problem 3 (3.1--3.4) | [problem.tex](problems/hw06/03-eigenvalue-true-or-false/problem.tex) | Eigenvector scaling, field-dependent eigenvalue existence, similarity, and its converse | 7, §7.4, Roots and multiplicities, after all four prerequisites | 19 (HW6 #3) | [solution.tex](problems/hw06/03-eigenvalue-true-or-false/solution.tex) | `hw06:eigenvalue-true-or-false` | **Awaiting solution**; all four true-or-false subparts remain one exercise; field qualifications are not silently changed |
-| Linear Algebra I / HW6, Problem 4 | [problem.tex](problems/hw06/04-sums-of-eigenvectors/problem.tex) | Conditions for the sum of two eigenvectors to be an eigenvector | 7, §7.1, after the distinct-eigenspace intersection proof | 15 (HW6 #4) | [solution.tex](problems/hw06/04-sums-of-eigenvectors/solution.tex) | `hw06:sums-of-eigenvectors` | **Awaiting solution**; necessary and sufficient conditions and resulting eigenvalue retained |
-| Linear Algebra I / HW6, Problem 5 | [problem.tex](problems/hw06/05-rotation-eigenvalues/problem.tex) | Real rotation matrices and possibly complex eigenvalues and eigenvectors | 7, §7.4, Returning to the rotation example, after the quarter-turn computation | 18 (HW6 #5) | [solution.tex](problems/hw06/05-rotation-eigenvalues/solution.tex) | `hw06:rotation-eigenvalues` | **Awaiting solution**; arbitrary real angle and complex option preserved |
-| Linear Algebra I / HW6, Problem 6 | [problem.tex](problems/hw06/06-nilpotent-eigenvalues/problem.tex) | Eigenvalues of nilpotent linear transformations | 7, §7.5, Failure of diagonalization, after the supplied nilpotent examples | 20 (HW6 #6) | [solution.tex](problems/hw06/06-nilpotent-eigenvalues/solution.tex) | `hw06:nilpotent-eigenvalues` | **Awaiting solution**; definition and proof request preserved, with source wording and missing nonzero-space hypothesis flagged |
-| Linear Algebra I / HW7, Problem 1 (1.1--1.2) | [problem.tex](problems/hw07/01-coordinate-inner-products/problem.tex) | Testing bilinearity, symmetry, and positive definiteness of coordinate formulas | 8, §8.1, Testing the defining properties | 22 (HW7 #1) | [solution.tex](problems/hw07/01-coordinate-inner-products/solution.tex) | `hw07:coordinate-inner-products` | **Included** with Lucas's supplied solutions; opposite-sign observation and linearity notation clarified |
-| Linear Algebra I / HW7, Problem 2 (2.1--2.2) | [problem.tex](problems/hw07/02-tensor-inner-products/problem.tex) | Testing bilinear tensors from values on a basis | 8, §8.1, Testing the defining properties | 23 (HW7 #2) | [solution.tex](problems/hw07/02-tensor-inner-products/solution.tex) | `hw07:tensor-inner-products` | **Included** with Lucas's supplied solutions to both tensor tests |
-| Linear Algebra I / HW7, Problem 3 | [problem.tex](problems/hw07/03-disjoint-subspaces-independence/problem.tex) | Independence of nonzero vectors from two subspaces with zero intersection | 7, §7.6, Transversal subspaces, after the two-subspace argument | 21 (HW7 #3) | [solution.tex](problems/hw07/03-disjoint-subspaces-independence/solution.tex) | `hw07:disjoint-subspaces-independence` | **Included** with Lucas's supplied zero-intersection argument; both vectors are nonzero |
-| Linear Algebra I / HW7, Problem 4 (4.1--4.3) | [problem.tex](problems/hw07/04-minimization-and-cauchy-schwarz/problem.tex) | Quadratic norm minimization and the squared Cauchy--Schwarz inequality with its equality cases | 8, §8.4, A minimization problem, before angles | 24 (HW7 #4) | [solution.tex](problems/hw07/04-minimization-and-cauchy-schwarz/solution.tex) | `hw07:minimization-and-cauchy-schwarz` | **Included** with Lucas's supplied solutions to all three parts and his explicitly authorized completion for w=sv, including s=0 |
+| Linear Algebra I / HW1, Problem 1(a–d) | [problem.tex](problems/hw01/01-axiom-consequences/problem.tex) | Uniqueness of zero and inverses, zero scalar products, negation, and cancellation | 1, §1.1, Vector spaces, after the axioms | 1 (HW1 #1) | [solution.tex](problems/hw01/01-axiom-consequences/solution.tex) | `hw01:axiom-consequences` | **Awaiting solution**; all four axiom-based proof requests and the scalar/vector zero distinction retained |
+| Linear Algebra I / HW1, Problem 2(a–b) | [problem.tex](problems/hw01/02-positive-real-vector-space/problem.tex) | Nonstandard vector operations on positive reals, dimension, and bases | 1, §1.2, Exercises on span, bases, and subspaces | 2 (HW1 #2) | [solution.tex](problems/hw01/02-positive-real-vector-space/solution.tex) | `hw01:positive-real-vector-space` | **Awaiting solution**; both parts and permission to use powers and logarithms retained |
+| Linear Algebra I / HW1, Problem 3(a–b) | [problem.tex](problems/hw01/03-span-and-containing-subspaces/problem.tex) | Span as a subspace and the intersection of all containing subspaces | 1, §1.2, Exercises on span, bases, and subspaces | 3 (HW1 #3) | [solution.tex](problems/hw01/03-span-and-containing-subspaces/solution.tex) | `hw01:span-and-containing-subspaces` | **Awaiting solution**; arbitrary, possibly empty or infinite subsets and empty combinations preserved |
+| Linear Algebra I / HW1, Problem 4(a–b) | [problem.tex](problems/hw01/04-parameter-dependent-span/problem.tex) | Parameter-dependent bases, dimensions, linear equations, and coordinates | 1, §1.2, Exercises on span, bases, and subspaces | 4 (HW1 #4) | [solution.tex](problems/hw01/04-parameter-dependent-span/solution.tex) | `hw01:parameter-dependent-span` | **Awaiting solution**; all parameter cases and the coordinate request kept together |
+| Linear Algebra I / HW1, Problem 5(a–b) | [problem.tex](problems/hw01/05-affine-solution-set/problem.tex) | Homogeneous subspace, affine translate, and differences of solutions | 1, §1.2, Exercises on span, bases, and subspaces | 5 (HW1 #5) | [solution.tex](problems/hw01/05-affine-solution-set/solution.tex) | `hw01:affine-solution-set` | **Awaiting solution**; complete paired homogeneous and affine sets retained |
+| Linear Algebra I / HW1, Problem 6(a–c) | [problem.tex](problems/hw01/06-polynomial-interpolation/problem.tex) | Interpolation polynomials, basis, reconstruction, and prescribed values | 1, §1.2, Exercises on span, bases, and subspaces | 6 (HW1 #6) | [solution.tex](problems/hw01/06-polynomial-interpolation/solution.tex) | `hw01:polynomial-interpolation` | **Awaiting solution**; all three subparts and polynomial-space conventions retained |
+| Linear Algebra I / HW1, Problem 7(a–b) | [problem.tex](problems/hw01/07-recursive-sequences/problem.tex) | Vector space of recursive sequences, basis, dimension, and finite support | 1, §1.2, Exercises on span, bases, and subspaces | 7 (HW1 #7) | [solution.tex](problems/hw01/07-recursive-sequences/solution.tex) | `hw01:recursive-sequences` | **Awaiting solution**; infinite-sequence domain, componentwise operations, and initial-value hint retained |
+| Linear Algebra I / HW1, Problem 8(a–b) | [problem.tex](problems/hw01/08-intersections-and-sums/problem.tex) | Bases and dimensions of intersections and sums of concrete subspaces | 1, §1.2, Exercises on span, bases, and subspaces | 8 (HW1 #8) | [solution.tex](problems/hw01/08-intersections-and-sums/solution.tex) | `hw01:intersections-and-sums` | **Awaiting solution**; direct proof requested without assuming a dimension formula for sums |
+| Linear Algebra I / HW1, Problem 9(a–c) | [problem.tex](problems/hw01/09-basis-extension/problem.tex) | Basis extension, finite-dimensional basis criteria, and equal-dimensional subspaces | 1, §1.2, Exercises on span, bases, and subspaces | 9 (HW1 #9) | [solution.tex](problems/hw01/09-basis-extension/solution.tex) | `hw01:basis-extension` | **Awaiting solution**; prerequisite comparison theorem stated with Lucas's authorization; infinite-dimensional counterexample request retained |
+| Linear Algebra I / HW1, Problem 10(a–e) | [problem.tex](problems/hw01/10-span-and-independence-assertions/problem.tex) | Independence, unions, intersections, cardinality, and span assertions | 1, §1.2, Exercises on span, bases, and subspaces | 10 (HW1 #10) | [solution.tex](problems/hw01/10-span-and-independence-assertions/solution.tex) | `hw01:span-and-independence-assertions` | **Awaiting solution**; five true-or-false statements remain one exercise, with proofs or counterexamples pending |
+| Linear Algebra I / HW2, Problem 1 | [problem.tex](problems/hw02/01-matrix-product-entries/problem.tex) | Matrix-product entry formula, dimensions, and row/column indices | 2, §2.1, Exercises on matrix multiplication | 13 (HW2 #1) | [solution.tex](problems/hw02/01-matrix-product-entries/solution.tex) | `hw02:matrix-product-entries` | **Awaiting solution**; follows the column-wise product definition authorized by Lucas |
+| Linear Algebra I / HW2, Problem 2 | [problem.tex](problems/hw02/02-matrix-product-associativity/problem.tex) | Associativity from the matrix-product entry formula | 2, §2.1, Exercises on matrix multiplication, after HW2 Problem 1 | 14 (HW2 #2) | [solution.tex](problems/hw02/02-matrix-product-associativity/solution.tex) | `hw02:matrix-product-associativity` | **Awaiting solution**; internal exercise reference replaces the source's relative formula reference |
+| Linear Algebra I / HW2, Problem 3(a–b) | [problem.tex](problems/hw02/03-block-shear-inverses/problem.tex) | Block products and construction of a two-sided inverse | 2, §2.1, Exercises on matrix multiplication | 15 (HW2 #3) | [solution.tex](problems/hw02/03-block-shear-inverses/solution.tex) | `hw02:block-shear-inverses` | **Awaiting solution**; both block matrices and subparts preserved |
+| Linear Algebra I / HW2, Problem 4(a–b) | [problem.tex](problems/hw02/04-characterizing-the-identity/problem.tex) | Universal identity action versus action on one nonzero matrix | 2, §2.1, Exercises on matrix multiplication | 16 (HW2 #4) | [solution.tex](problems/hw02/04-characterizing-the-identity/solution.tex) | `hw02:characterizing-the-identity` | **Awaiting solution**; all size hypotheses and the r=1 question retained |
+| Linear Algebra I / HW2, Problem 5(a–b) | [problem.tex](problems/hw02/05-matrix-product-bilinearity/problem.tex) | Linearity of matrix multiplication in each factor | 3, §3.2, The vector space of linear maps | 22 (HW2 #5) | [solution.tex](problems/hw02/05-matrix-product-bilinearity/solution.tex) | `hw02:matrix-product-bilinearity` | **Awaiting solution**; Lucas approved correcting the fixed right factor in (b) to a q-by-r matrix |
+| Linear Algebra I / HW2, Problem 6(a–f) | [problem.tex](problems/hw02/06-matrix-commutation/problem.tex) | Compatible products, noncommutativity, matrix units, and universal/diagonal commutation | 2, §2.1, Exercises on matrix multiplication | 17 (HW2 #6) | [solution.tex](problems/hw02/06-matrix-commutation/solution.tex) | `hw02:matrix-commutation` | **Awaiting solution**; all six subparts and hint intact; Lucas approved the reference to (e) in (f) |
+| Linear Algebra I / HW2, Problem 7(a–b) | [problem.tex](problems/hw02/07-zero-products/problem.tex) | Square-zero matrices and order-sensitive zero products | 2, §2.1, Exercises on matrix multiplication | 18 (HW2 #7) | [solution.tex](problems/hw02/07-zero-products/solution.tex) | `hw02:zero-products` | **Awaiting solution**; both two-by-two matrix requests retained |
+| Linear Algebra I / HW2, Problem 8 | [problem.tex](problems/hw02/08-upper-triangular-subspace/problem.tex) | Upper triangular subspace, dimension, and multiplicative closure | 2, §2.1, Exercises on matrix multiplication | 19 (HW2 #8) | [solution.tex](problems/hw02/08-upper-triangular-subspace/solution.tex) | `hw02:upper-triangular-subspace` | **Awaiting solution**; entire subspace/dimension/product question remains together |
+| Linear Algebra I / HW2, Problem 9(a–f) | [problem.tex](problems/hw02/09-two-by-two-matrix-identities/problem.tex) | Commutator, centralizer, intertwiner equation, powers, and inverse construction | 2, §2.1, Exercises on matrix multiplication | 20 (HW2 #9) | [solution.tex](problems/hw02/09-two-by-two-matrix-identities/solution.tex) | `hw02:two-by-two-matrix-identities` | **Awaiting solution**; all six parts preserved; Lucas approved the real/complex field restriction |
+| Linear Algebra I / HW2, Problem 10 | [problem.tex](problems/hw02/10-inverse-uniqueness-and-products/problem.tex) | Uniqueness of inverses and inversion of a product | 3, §3.3, Invertible maps and inverse matrices | 26 (HW2 #10) | [solution.tex](problems/hw02/10-inverse-uniqueness-and-products/solution.tex) | `hw02:inverse-uniqueness-and-products` | **Awaiting solution**; full definition and both proof requests retained |
+| Linear Algebra I / HW2, Problem 11(a–c) | [problem.tex](problems/hw02/11-one-sided-inverses/problem.tex) | Independent columns, square bases, and one-sided inverses | 3, §3.3, Invertible maps and inverse matrices, after HW2 Problem 10 | 27 (HW2 #11) | [solution.tex](problems/hw02/11-one-sided-inverses/solution.tex) | `hw02:one-sided-inverses` | **Awaiting solution**; all three parts retained after basis and inverse prerequisites |
+| Linear Algebra I / HW2, Problem 12(a–c) | [problem.tex](problems/hw02/12-inconsistent-system/problem.tex) | Inconsistency, matrix form, solvable right-hand sides, and uniqueness | 3, §3.1, Normalized systems | 21 (HW2 #12) | [solution.tex](problems/hw02/12-inconsistent-system/solution.tex) | `hw02:inconsistent-system` | **Awaiting solution**; same supplied system retained; Lucas approved the real/complex field restriction |
+| Linear Algebra I / HW3, Problem 1(a–b) | [problem.tex](problems/hw03/01-polynomial-differentiation-powers/problem.tex) | Matrices of differentiation and its square on cubic polynomials | 4, §4.4, Polynomial differentiation, before HW4 Problem 5 | 33 (HW3 #1) | [solution.tex](problems/hw03/01-polynomial-differentiation-powers/solution.tex) | `hw03:polynomial-differentiation-powers` | **Awaiting solution**; Lucas approved specializing the source's general polynomial basis to n=3 |
+| Linear Algebra I / HW3, Problem 2 | [problem.tex](problems/hw03/02-continuous-functions-infinite-dimension/problem.tex) | Infinite dimension of the space of continuous real functions | 1, §1.2, Exercises on span, bases, and subspaces | 12 (HW3 #2) | [solution.tex](problems/hw03/02-continuous-functions-infinite-dimension/solution.tex) | `hw03:continuous-functions-infinite-dimension` | **Awaiting solution**; statement included after bases beyond finite dimension |
+| Linear Algebra I / HW3, Problem 3 | [problem.tex](problems/hw03/03-shift-map-powers/problem.tex) | Basis-prescribed shift map and powers of its matrix | 3, §3.3, Composition | 23 (HW3 #3) | [solution.tex](problems/hw03/03-shift-map-powers/solution.tex) | `hw03:shift-map-powers` | **Awaiting solution**; basis images and nonzero/zero power conditions retained |
+| Linear Algebra I / HW3, Problem 4 | [problem.tex](problems/hw03/04-prescribed-nilpotence-index/problem.tex) | Construction of a matrix with prescribed nilpotence index | 3, §3.3, Composition, after HW3 Problem 3 | 24 (HW3 #4) | [solution.tex](problems/hw03/04-prescribed-nilpotence-index/solution.tex) | `hw03:prescribed-nilpotence-index` | **Awaiting solution**; Lucas approved m≥2 to resolve the source's incompatible m=1 case |
+| Linear Algebra I / HW3, Problem 5(a–b) | [problem.tex](problems/hw03/05-modified-bases-and-dependence/problem.tex) | Bases formed by vector sums and preservation of dependence | 1, §1.2, Exercises on span, bases, and subspaces | 11 (HW3 #5) | [solution.tex](problems/hw03/05-modified-bases-and-dependence/solution.tex) | `hw03:modified-bases-and-dependence` | **Awaiting solution**; both real-vector-space subparts preserved |
+| Linear Algebra I / HW3, Problem 6(a–e) | [problem.tex](problems/hw03/06-kernel-image-and-adapted-bases/problem.tex) | Kernel/image subspaces, adapted bases, rank–nullity, and block matrix | 4, §4.3, Using the identity L(E)=FM, after HW4 Problem 4 | 32 (HW3 #6) | [solution.tex](problems/hw03/06-kernel-image-and-adapted-bases/solution.tex) | `hw03:kernel-image-and-adapted-bases` | **Awaiting solution**; all five parts and image-first basis order retained; Lucas approved defining k=dim K |
+| Linear Algebra I / HW4, Problem 1(a–d) | [problem.tex](problems/hw04/01-kernel-image-and-rank/problem.tex) | Kernel/image bases, nullity, rank, injectivity, surjectivity | 4, §4.3, Adapted bases and rank–nullity, after the theorem | 28 (HW4 #1) | [solution.tex](problems/hw04/01-kernel-image-and-rank/solution.tex) | `hw04:kernel-image-and-rank` | **Included**; supplied solution (a–d) |
+| Linear Algebra I / HW4, Problem 2(a–d) | [problem.tex](problems/hw04/02-rank-nullity/problem.tex) | Rank–nullity and dimension criteria | 4, §4.3, Isomorphisms | 29 (HW4 #2) | [solution.tex](problems/hw04/02-rank-nullity/solution.tex) | `hw04:rank-nullity` | **Included**; supplied solution (a–d) |
+| Linear Algebra I / HW4, Problem 3(a–d) | [problem.tex](problems/hw04/03-prescribed-kernel-and-image/problem.tex) | Constructing a map with prescribed kernel and image | 4, §4.3, A matrix adapted to the kernel and image, after the fundamental example | 30 (HW4 #3) | [solution.tex](problems/hw04/03-prescribed-kernel-and-image/solution.tex) | `hw04:prescribed-kernel-and-image` | **Included**; supplied solution (a–d) |
+| Linear Algebra I / HW4, Problem 4(a–e) | [problem.tex](problems/hw04/04-adapted-bases/problem.tex) | Adapted bases and the identity L(E) = FM | 4, §4.3, Using the identity L(E) = FM, after the worked example | 31 (HW4 #4) | [solution.tex](problems/hw04/04-adapted-bases/solution.tex) | `hw04:adapted-bases` | **Included**; supplied solution (a–e) |
+| Linear Algebra I / HW4, Problem 5(a–d) | [problem.tex](problems/hw04/05-polynomial-differentiation/problem.tex) | Polynomial differentiation, kernel/image, matrices, and adapted bases | 4, §4.4, Differentiation as a linear map → Polynomial differentiation | 34 (HW4 #5) | [solution.tex](problems/hw04/05-polynomial-differentiation/solution.tex) | `hw04:polynomial-differentiation` | **Included**; supplied solution (a–d) |
+| Linear Algebra I / HW5, Problem 1 | [problem.tex](problems/hw05/01-bilinear-antisymmetry/problem.tex) | Equal-input vanishing implies bilinear antisymmetry over R | 5, §5.1, Oriented area and bilinearity, after the stated antisymmetry property | 35 (HW5 #1) | [solution.tex](problems/hw05/01-bilinear-antisymmetry/solution.tex) | `hw05:bilinear-antisymmetry` | **Included**; Lucas's supplied solution |
+| Linear Algebra I / HW5, Problem 2 | [problem.tex](problems/hw05/02-two-by-two-determinant/problem.tex) | Two-by-two determinant from multilinearity | 5, §5.4, Computation of determinant | 36 (HW5 #2) | [solution.tex](problems/hw05/02-two-by-two-determinant/solution.tex) | `hw05:two-by-two-determinant` | **Included**; Lucas's supplied solution with the requested geometric interpretation; related calculation appears in §5.1 |
+| Linear Algebra I / HW5, Problem 3 | [problem.tex](problems/hw05/03-negating-a-matrix/problem.tex) | Determinant under negation of all columns | 5, §5.4, Determinant properties | 40 (HW5 #3) | [solution.tex](problems/hw05/03-negating-a-matrix/solution.tex) | `hw05:negating-a-matrix` | **Included**; Lucas's supplied solution, reviewed October 7 |
+| Linear Algebra I / HW5, Problem 4 | [problem.tex](problems/hw05/04-three-by-three-triangular-determinant/problem.tex) | Three-by-three upper triangular determinant | 5, §5.4, Computation of determinant | 37 (HW5 #4) | [solution.tex](problems/hw05/04-three-by-three-triangular-determinant/solution.tex) | `hw05:three-by-three-triangular-determinant` | **Included**; Lucas's supplied solution, reviewed October 7 |
+| Linear Algebra I / HW5, Problem 5 | [problem.tex](problems/hw05/05-upper-triangular-determinant/problem.tex) | General upper triangular determinant and column-expansion process | 5, §5.4, Computation of determinant | 38 (HW5 #5) | [solution.tex](problems/hw05/05-upper-triangular-determinant/solution.tex) | `hw05:upper-triangular-determinant` | **Included**; Lucas's supplied solution with the diagonal-selection argument made explicit in the authorized review |
+| Linear Algebra I / HW5, Problem 6 | [problem.tex](problems/hw05/06-column-addition/problem.tex) | Adding a multiple of another column preserves the determinant | 5, §5.4, Determinant properties | 41 (HW5 #6) | [solution.tex](problems/hw05/06-column-addition/solution.tex) | `hw05:column-addition` | **Included**; Lucas's supplied solution, corrected to cover all j ≠ k; original field F retained |
+| Linear Algebra I / HW5, Problem 7 | [problem.tex](problems/hw05/07-four-by-four-determinant/problem.tex) | Four-by-four determinant using the supplied computation procedure | 5, §5.4, Computation of determinant | 39 (HW5 #7) | [solution.tex](problems/hw05/07-four-by-four-determinant/solution.tex) | `hw05:four-by-four-determinant` | **Included**; adapted from Lucas's two supplied photos at his request, using successive column additions and the triangular diagonal product; arithmetic corrected and value 65 verified |
+| Linear Algebra I / HW5, Problem 8(a–e) | [problem.tex](problems/hw05/08-permutation-matrices/problem.tex) | Permutation matrices, column reordering, linear action, composition, and determinant sign | 5, §5.4, Permutation matrices, after the determinant definition and §5.2 permutation prerequisites | 42 (HW5 #8) | [solution.tex](problems/hw05/08-permutation-matrices/solution.tex) | `hw05:permutation-matrices` | **Included**; Lucas's complete supplied solution (a–e), reviewed with corrections and added justifications in red on October 8; all five question subparts remain together |
+| Linear Algebra I / HW6, Problem 1 | [problem.tex](problems/hw06/01-triangular-matrix-eigenvectors/problem.tex) | Eigenvectors of an upper triangular matrix with a repeated eigenvalue | 7, §7.3, Diagonal and triangular matrices | 44 (HW6 #1) | [solution.tex](problems/hw06/01-triangular-matrix-eigenvectors/solution.tex) | `hw06:triangular-matrix-eigenvectors` | **Awaiting solution**; complete statement included |
+| Linear Algebra I / HW6, Problem 2 | [problem.tex](problems/hw06/02-eigenvectors-in-a-basis/problem.tex) | Solving the eigenvector equation directly in basis coordinates | 7, §7.3, Diagonal and triangular matrices, after HW6 Problem 1 | 45 (HW6 #2) | [solution.tex](problems/hw06/02-eigenvectors-in-a-basis/solution.tex) | `hw06:eigenvectors-in-a-basis` | **Awaiting solution**; basis images and superscript coefficients preserved; implicit linearity flagged in the source record |
+| Linear Algebra I / HW6, Problem 3 (3.1--3.4) | [problem.tex](problems/hw06/03-eigenvalue-true-or-false/problem.tex) | Eigenvector scaling, field-dependent eigenvalue existence, similarity, and its converse | 7, §7.4, Roots and multiplicities, after all four prerequisites | 47 (HW6 #3) | [solution.tex](problems/hw06/03-eigenvalue-true-or-false/solution.tex) | `hw06:eigenvalue-true-or-false` | **Awaiting solution**; all four true-or-false subparts remain one exercise; field qualifications are not silently changed |
+| Linear Algebra I / HW6, Problem 4 | [problem.tex](problems/hw06/04-sums-of-eigenvectors/problem.tex) | Conditions for the sum of two eigenvectors to be an eigenvector | 7, §7.1, after the distinct-eigenspace intersection proof | 43 (HW6 #4) | [solution.tex](problems/hw06/04-sums-of-eigenvectors/solution.tex) | `hw06:sums-of-eigenvectors` | **Awaiting solution**; necessary and sufficient conditions and resulting eigenvalue retained |
+| Linear Algebra I / HW6, Problem 5 | [problem.tex](problems/hw06/05-rotation-eigenvalues/problem.tex) | Real rotation matrices and possibly complex eigenvalues and eigenvectors | 7, §7.4, Returning to the rotation example, after the quarter-turn computation | 46 (HW6 #5) | [solution.tex](problems/hw06/05-rotation-eigenvalues/solution.tex) | `hw06:rotation-eigenvalues` | **Awaiting solution**; arbitrary real angle and complex option preserved |
+| Linear Algebra I / HW6, Problem 6 | [problem.tex](problems/hw06/06-nilpotent-eigenvalues/problem.tex) | Eigenvalues of nilpotent linear transformations | 7, §7.5, Failure of diagonalization, after the supplied nilpotent examples | 48 (HW6 #6) | [solution.tex](problems/hw06/06-nilpotent-eigenvalues/solution.tex) | `hw06:nilpotent-eigenvalues` | **Awaiting solution**; definition and proof request preserved, with source wording and missing nonzero-space hypothesis flagged |
+| Linear Algebra I / HW7, Problem 1 (1.1--1.2) | [problem.tex](problems/hw07/01-coordinate-inner-products/problem.tex) | Testing bilinearity, symmetry, and positive definiteness of coordinate formulas | 8, §8.1, Testing the defining properties | 50 (HW7 #1) | [solution.tex](problems/hw07/01-coordinate-inner-products/solution.tex) | `hw07:coordinate-inner-products` | **Included** with Lucas's supplied solutions; opposite-sign observation and linearity notation clarified |
+| Linear Algebra I / HW7, Problem 2 (2.1--2.2) | [problem.tex](problems/hw07/02-tensor-inner-products/problem.tex) | Testing bilinear tensors from values on a basis | 8, §8.1, Testing the defining properties | 51 (HW7 #2) | [solution.tex](problems/hw07/02-tensor-inner-products/solution.tex) | `hw07:tensor-inner-products` | **Included** with Lucas's supplied solutions to both tensor tests |
+| Linear Algebra I / HW7, Problem 3 | [problem.tex](problems/hw07/03-disjoint-subspaces-independence/problem.tex) | Independence of nonzero vectors from two subspaces with zero intersection | 7, §7.6, Transversal subspaces, after the two-subspace argument | 49 (HW7 #3) | [solution.tex](problems/hw07/03-disjoint-subspaces-independence/solution.tex) | `hw07:disjoint-subspaces-independence` | **Included** with Lucas's supplied zero-intersection argument; both vectors are nonzero |
+| Linear Algebra I / HW7, Problem 4 (4.1--4.3) | [problem.tex](problems/hw07/04-minimization-and-cauchy-schwarz/problem.tex) | Quadratic norm minimization and the squared Cauchy--Schwarz inequality with its equality cases | 8, §8.4, A minimization problem, before angles | 52 (HW7 #4) | [solution.tex](problems/hw07/04-minimization-and-cauchy-schwarz/solution.tex) | `hw07:minimization-and-cauchy-schwarz` | **Included** with Lucas's supplied solutions to all three parts and his explicitly authorized completion for w=sv, including s=0 |
 
 Use **Included**, **Not yet included**, **Deferred**, or **Awaiting solution**.
 Record the reason and intended destination for a deferred question when known.
@@ -333,8 +372,8 @@ use a different globally unique group for any Part II material.
 
 | Course / lecture question | Problem source | Content assessed | Book chapter and section/subsection | Appendix order | Solution source | Stable key | Status / reason |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Linear Algebra I / September 17 handout, slide 32, “K is a linear map” | [problem.tex](problems/lec03/01-inverse-is-linear/problem.tex) | Linearity of the inverse of an invertible map | 3, §3.3, Invertible maps and inverse matrices | 1, Linear equations and maps | [solution.tex](problems/lec03/01-inverse-is-linear/solution.tex) | `lec03:inverse-is-linear` | **Awaiting solution**; statement included, handout supplies no proof |
-| Linear Algebra I / October 22 handwritten notes, page 4, Pythagorean proof request | [problem.tex](problems/lec08/01-pythagorean-theorem/problem.tex) | Pythagorean identity from real inner-product properties and orthogonality | 8, §8.5, Orthogonality and coordinate inner products | 25, Inner products and norms | [solution.tex](problems/lec08/01-pythagorean-theorem/solution.tex) | `lec08:pythagorean-theorem` | **Awaiting solution**; proof request preserved as a complete shared exercise, with no invented solution |
+| Linear Algebra I / September 17 handout, slide 32, “K is a linear map” | [problem.tex](problems/lec03/01-inverse-is-linear/problem.tex) | Linearity of the inverse of an invertible map | 3, §3.3, Invertible maps and inverse matrices | 25, Linear equations and maps | [solution.tex](problems/lec03/01-inverse-is-linear/solution.tex) | `lec03:inverse-is-linear` | **Awaiting solution**; statement included, handout supplies no proof |
+| Linear Algebra I / October 22 handwritten notes, page 4, Pythagorean proof request | [problem.tex](problems/lec08/01-pythagorean-theorem/problem.tex) | Pythagorean identity from real inner-product properties and orthogonality | 8, §8.5, Orthogonality and coordinate inner products | 53, Inner products and norms | [solution.tex](problems/lec08/01-pythagorean-theorem/solution.tex) | `lec08:pythagorean-theorem` | **Awaiting solution**; proof request preserved as a complete shared exercise, with no invented solution |
 
 ## Supplied sources and editorial review
 
@@ -347,6 +386,10 @@ Downloads files remain unchanged.
 | --- | --- |
 | Lucas's photographed LEC02–LEC04 notes, converted with `scripts/jpeg.sh` | Chapters 1–4; existing material retained and merged with the handouts |
 | `MA-GY 7033 Quiz Prep.pdf`, 5 pages | §1.1 operations; §1.2 combinations, independence, bases, dimension, and subspaces; §3.2 linearity |
+| `ma-gy7033fall2026homework1.pdf`, 4 pages, Problems 1--10 | §§1.1--1.2; all 27 subparts and assignment-wide real/complex conventions retained; complete appendix restatements and `hw01.tex`, with solutions pending |
+| `ma-gy7033fall2026homework2.pdf`, 3 pages, Problems 1--12 | §§2.1 and 3.1--3.3; all 26 subparts, matrix entries and indices, and the hint retained; complete appendix restatements and `hw02.tex`, with solutions pending and approved source corrections |
+| `ma-gy7033fall2026homework3.pdf`, 2 pages, Problems 1--6 | §§1.2, 3.3, 4.3--4.4; all nine lettered subparts retained; complete appendix restatements and `hw03.tex`, with solutions pending and approved source corrections |
+| Lucas's typed early-week notes, supplied November 9, 2026 | §§1.1–1.2 vector-space axioms, combinations, span, independence, dependence, bases, dimension, and subspaces; §3.2 linear functions and maps. Repeated material merged; mathematical corrections expressly approved by Lucas, with coverage recorded below |
 | `MA-GY7033 Lecture Sept 17 2026 (1).pdf`, 33 slides, Deane Yang | §§3.1–3.3 systems, row reductions, normalized forms, maps, matrix representations, composition, inverses, and change of basis; differentiation from slide 21 in §4.4, with a pointer in §3.2 |
 | `MA-GY7033 Lecture Sept 24 2026.pdf`, 20 slides, Deane Yang | §§4.1–4.3 kernel, image, six examples, rank–nullity, isomorphisms, and adapted matrices; repeated matrix notation merged into §3.3; infinite-dimensional basis aside in §1.2 |
 | `MA-GY7033 Fall 2026 Homework 4.pdf`, 2 pages, Problems 1–5 | §§4.3–4.4 exercises in original assignment order, complete appendix restatements, and both Homework 4 handouts; original statements unchanged |
@@ -361,6 +404,68 @@ Downloads files remain unchanged.
 | `MA-GY7033 Fall 2026 Homework 5.pdf`, 2 pages, Problems 1–8 | §5.1 bilinear antisymmetry and §5.4 determinant exercises; complete appendix restatements and the `hw05.tex` handout. Problems 1–6 and 8 have complete supplied solutions; Problem 7 has an authorized solution |
 | `ma-gy7033fall2026homework6 (1).pdf`, 2 pages, Problems 1--6 | §§7.1, 7.3--7.5 eigenvector, similarity, rotation, and nilpotence exercises; complete appendix restatements and `hw06.tex`, all awaiting solutions. Preserved as `images/supplied/homework-06.pdf` |
 | `ma-gy7033fall2026homework7 (1).pdf`, reattached as `(2).pdf`, 2 pages, Problems 1--4 | §7.6 and §§8.1, 8.4; complete appendix restatements and `hw07.tex`, with Lucas's typed solutions supplied October 30. Both PDFs are byte-identical. The source header's Linear Algebra II is a typo confirmed by Lucas; the handout uses Linear Algebra I and retains the original assignment numbering |
+
+### Typed early-week notes
+
+Lucas supplied these notes directly in chat on November 9, 2026. They repeat
+much of the quiz-prep material already incorporated in Chapters 1 and 3.
+The import merges repeated statements into their existing destinations.
+
+| Supplied heading or passage | Destination and treatment |
+| --- | --- |
+| Abstract Vector Spaces / Axioms / Vector Addition | §1.1, the vector-space definition, groups the addition axioms as A1--A4, uses `0_V`, and retains the name origin. Lucas approved the standard associativity formula in place of the repeated source error |
+| Scalar Multiplication | §1.1, the same vector-space definition, groups the scalar axioms as S1--S4. Lucas approved R or C rather than their union, the identity `1v=v`, and the missing distributivity over vector addition |
+| Linear Combination of Vectors / Span | §1.2 retains the finite-combination definition and finite-dimensionality criterion; adds the explicit span formula for an arbitrary subset. The empty span and empty-sum convention remain included |
+| Linear Independence | §1.2 retains the finite distinct-vector criterion, uniqueness of coefficients, and independence of the empty set. Lucas approved interpreting the informal R^n construction as a basis statement |
+| Linear Dependence | §1.2 retains the nontrivial zero-relation criterion. With Lucas's approval, the same-line description applies to dependent pairs rather than arbitrary dependent sets |
+| Basis of a Vector Space | §1.2 retains the basis definition, dimension, and R^3 example; explains existence and uniqueness of coordinates using a basis of R^n |
+| Vector Space / Subspaces | Both subspace passages are merged in §1.2. The supplied zero-coefficient argument is included, and the dimension comparison retains its existing finite-dimensional hypothesis |
+| Linear Functions and Maps | Already covered in §3.2 by the common-field linear-map and functional definitions, additivity, homogeneity, and `L(0_V)=0_W`; repeated formulas are not duplicated |
+
+### Homeworks 1--3 source coverage
+
+Imported November 9, 2026. All nine source pages and all three reconstructed
+handouts were inspected visually, independently of text extraction. The three
+original Downloads files remain unchanged, and their ignored local copies
+preserve their bytes. No solutions accompanied these assignments. Commands
+to prove a statement remain exercise prompts, with explicit pending notices
+in every new shared solution file.
+
+| Assignment / PDF page | Supplied content | Book destination and status |
+| --- | --- | --- |
+| HW1 / 1 | Real-or-complex field convention, polynomial and pointwise-operation conventions, instructions; Questions 1(a--d), 2(a--b), 3(a--b) | Question 1 in §1.1; Questions 2--3 in the §1.2 exercise group. Global hypotheses made explicit in shared statements where needed; original topic groups retained in `hw01.tex` |
+| HW1 / 2 | Questions 4(a--b), 5(a--b), 6(a--c), including parameter vectors, affine equations, and interpolation data | Complete questions in §1.2, each with one appendix restatement and pending solution |
+| HW1 / 3 | Question 7(a--b) and recurrence hint; Questions 8(a--b), 9(a--c) and basis-extension hint | Complete questions in §1.2 after subspaces and infinite-dimensional examples; comparison theorem statement authorized by Lucas, proof pending |
+| HW1 / 4 | Question 10(a--e), five assertions about span and independence | Kept as one complete exercise in §1.2, with an appendix restatement and pending solution |
+| HW2 / 1 | Questions 1--5, entrywise multiplication formula, associativity, block matrices, identity tests, and bilinearity | Questions 1--4 in §2.1 after the approved column definition; Question 5 in §3.2 after linear maps. Parts 5(a--b) remain intact |
+| HW2 / 2 | Questions 6(a--f) and hint, 7(a--b), 8, 9(a--f), 10, opening of 11 | Questions 6--9 in §2.1; Questions 10--11 in §3.3 after inverse matrices. Full Question 11 remains shared across the page boundary |
+| HW2 / 3 | Questions 11(a--c), 12(a--c), inconsistent three-equation system | Question 11 in §3.3; Question 12 in §3.1 after systems and solvability. Original order preserved in the handout |
+| HW3 / 1 | Questions 1(a--b), 2, 3, 4, 5(a--b), and setup of 6 | Question 1 in §4.4; Question 2 in §1.2; Questions 3--4 in §3.3 after composition; Question 5 in §1.2; all of Question 6 in §4.3 |
+| HW3 / 2 | Question 6(a--e), kernel/image subspaces, image-first adapted basis, rank--nullity, and block form | Complete Question 6 at the end of §4.3; image-first order preserved, distinct from the earlier kernel-first presentation; complete appendix statement and pending solution |
+
+Source issues and authorized treatment:
+
+- HW1's field is R or C, including the interpolation question. Its unused
+  subset T in Question 3 is preserved. Classroom references in the introduction
+  and Question 9's hint become self-contained references to vector-space
+  results and the comparison theorem. The comparison theorem was absent from
+  the book; Lucas authorized its statement, without a new proof.
+- HW2 Question 1's entry formula is an exercise, so Lucas authorized the
+  column-by-column product definition before it. No proof of associativity
+  or other requested matrix identities has been supplied.
+- In HW2 Question 5(b), the source gives B size p×q, incompatible with the
+  stated map on A of size p×q into matrices of size p×r. Lucas approved B of
+  size q×r. In Question 6(f), the source reference to (d) becomes (e), the
+  actual universal-commutation condition. The hint remains after the whole list.
+- HW2 never specifies the field globally, although its numerical Questions
+  9 and 12 have characteristic-sensitive claims. Lucas authorized explicit
+  real-or-complex qualifications in these two shared questions. References
+  to lecture slides in Questions 1 and 9 are replaced by self-contained wording.
+- HW3 Question 1 introduces a general P_n basis but differentiates on P_3.
+  Lucas approved taking n=3 explicitly. Question 4 prints m>0 together with
+  a nonzero-M condition, which conflicts at m=1; Lucas approved m≥2.
+  Question 6 never defines k; Lucas approved setting k=dim K. The original
+  source conventions and all approved changes are retained in source comments.
 
 ### Homework 6 source coverage
 
@@ -538,9 +643,9 @@ visible for the author's comparison.
 | PDF page | Supplied content | Destination and status |
 | --- | --- | --- |
 | 1 | Assignment title, determinant definition over F, normalized function D, and standard-basis column-expansion instructions | Original introduction in `problems/hw05.tex`; computation passage in `problems/hw05/column-expansion.tex`, reused in §5.4 and the solutions appendix. Existing real determinant definition remains in §5.4 |
-| 1 | Problems 1–5 | Shared statements mapped above: Problem 1 in §5.1; Problems 2–5 in §5.4. Appendix positions are 7, 8, 12, 9, and 10 respectively; the handout retains assignment order |
-| 2 | Problems 6–7 | Shared statements in §5.4, appendix positions 13 and 11 respectively, and the handout; column entries and the four-by-four matrix are preserved |
-| 2 | Problem 8 and its five subparts (a–e) | Complete shared definition, example, and subparts in §5.4, appendix order 14, and the handout. The whole question is placed after the determinant definition because part (e) needs it |
+| 1 | Problems 1–5 | Shared statements mapped above: Problem 1 in §5.1; Problems 2–5 in §5.4. Appendix positions are 35, 36, 40, 37, and 38 respectively; the handout retains assignment order |
+| 2 | Problems 6–7 | Shared statements in §5.4, appendix positions 41 and 39 respectively, and the handout; column entries and the four-by-four matrix are preserved |
+| 2 | Problem 8 and its five subparts (a–e) | Complete shared definition, example, and subparts in §5.4, appendix order 42, and the handout. The whole question is placed after the determinant definition because part (e) needs it |
 
 Preserve Problem 2's matrix `[a c; b d]`, Problem 8(c)'s superscript
 coordinates, the column convention `c_k = e_{σ(k)}`, and the punctuation
@@ -931,11 +1036,6 @@ satisfies both injectivity and surjectivity criteria.
 
 Items still requiring the author's mathematical input:
 
-- The quiz-prep axiom list has an unusual “Associative” formula, writes
-  `F = R ∪ C`, and states `av = v` without `a = 1`. It also omits
-  distributivity over vector addition. The clear supplied properties are
-  included; §1.1 does not claim to give a complete axiom list. Exact source
-  issues are preserved in comments.
 - The adapted-basis fact in §4.3 is stated in the professor's handout, but
   basis extension and the spanning/independence verification are not proved
   there. The rank–nullity argument explicitly depends on that stated lemma.
@@ -952,6 +1052,9 @@ Project workflows are available as
 for supplied lecture notes and
 [homework-to-book-exercises](.agents/skills/homework-to-book-exercises/SKILL.md)
 for assignment transcription, shared exercise reuse, and standalone exports.
+Use [homework-solutions-to-book](.agents/skills/homework-solutions-to-book/SKILL.md)
+for supplied proofs and [editor](.agents/skills/editor/SKILL.md) for clear,
+coherent exposition within the supplied mathematical scope.
 
 1. Record the lecture date or assignment identity and work from the material
    Lucas supplies. Flag ambiguities and gaps instead of silently completing
@@ -1044,6 +1147,28 @@ On Overleaf, select `main.tex` and pdfLaTeX. This is a modular project, so build
 the entire repository rather than sending `main.tex` alone to a standalone
 document compiler.
 
+## Published PDFs
+
+The [Publish book PDF workflow](.github/workflows/publish-book.yml) runs on
+every push to `main`, including pull request merges. It installs the LaTeX
+dependencies and runs `make book`. Only the main book is published.
+
+Each successful build publishes a
+[GitHub Release](https://github.com/lbxa/linear-algebra/releases) with an
+automatically numbered version (`v1`, `v2`, and so on, using the workflow
+run number). Failed runs can leave gaps. The release tag points to the exact
+commit used to build the book.
+
+The PDF filename comes from `\title{...}` in `main.tex`, giving
+`linear-algebra-v1.pdf` for the first run. The same PDF is retained as a workflow
+artifact for 90 days; the release asset remains available after that artifact
+expires. Re-running a workflow keeps its version and replaces its artifact
+and release asset.
+
+Publication uses the built-in `GITHUB_TOKEN`, with `contents: write` granted
+only to the release job. No personal access token or extra secret is needed.
+The workflow becomes active when it is committed and pushed to `main`.
+
 ## Local customisation
 
 See [CUSTOMISATION.md](CUSTOMISATION.md) for LaTeX Workshop setup and the
@@ -1073,6 +1198,18 @@ terms. [Third-party notices](THIRD_PARTY_NOTICES.md) record these exceptions and
 source credits. The imported specimen prose and graphics remain removed.
 
 ## Changelog
+
+### 2026-11-09
+
+- Import all 28 supplied Homework 1--3 questions as shared exercises, retaining
+  complete multipart statements and pending solutions. Add the explicitly
+  authorized column-product definition and comparison theorem statement so
+  their prerequisites are available, and record the approved source corrections.
+- Bring over Maths Analysis's PDF publication workflow, retaining pinned
+  actions, separate build and release jobs, automatic versioning, and the
+  built-in token. Keep the existing local hooks, editor settings, image
+  conversion, and portable export build support; add missing auxiliary-file
+  ignore patterns and register the copied editorial and solution skills.
 
 ### 2026-10-30
 

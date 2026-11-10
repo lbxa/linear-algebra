@@ -3,7 +3,7 @@
 \label{sec:linear-algebra-i:linear-combinations-and-bases}
 
 % Sources: supplied lecture photos, quiz-prep pp. 3--5, and September 24
-% handout, slide 20.
+% handout, slide 20, and Lucas's typed early-week notes, November 9, 2026.
 \subsection{Linear combinations and span}
 
 \begin{definition}
@@ -12,7 +12,19 @@
     a_1v_1+\cdots+a_nv_n,\qquad a_1,\ldots,a_n\in\mathbb F.
   \]
   For \(S\subseteq V\), its span, denoted \(\operatorname{span}(S)\), is the
-  set of all finite linear combinations of elements of \(S\).
+  set of all finite linear combinations of elements of \(S\). Explicitly,
+  \[
+    \operatorname{span}(S)=
+      \left\{\sum_{j=1}^n a_jv_j\;\middle|\;
+        \begin{gathered}
+          n\ge0,\quad a_1,\ldots,a_n\in\mathbb F,\\
+          v_1,\ldots,v_n\in S
+        \end{gathered}
+      \right\},
+  \]
+  where \(n\) ranges over the nonnegative integers. The subset \(S\)
+  need not be finite, but each linear combination uses finitely many
+  of its vectors.
 \end{definition}
 
 The empty linear combination is the zero vector, so
@@ -48,10 +60,8 @@ then \(a_j=b_j\) for each \(j\).
   \]
   with at least one coefficient nonzero.
 \end{definition}
-% Author review: the quiz-prep gloss about "maximal access" to the span and
-% generating any vector in R^n from n vectors does not state a spanning
-% hypothesis. The gloss about dependent vectors lying on the same line is
-% also too restrictive. The precise supplied definitions are retained above.
+% On November 9 Lucas authorized interpreting the R^n construction as a
+% basis statement and restricting the same-line description to pairs.
 
 \autoref{fig:linear-algebra-i:span-and-dependence} compares two-vector
 configurations in \(\R^2\). A dependent pair lies on a line through zero;
@@ -76,6 +86,22 @@ an independent pair supplies two directions in the plane.
 Every vector space has a basis. The zero vector space has the empty basis,
 and a basis of \(\R^3\) has three vectors, so \(\dim\R^3=3\).
 
+More generally, a basis \(\{v_1,\ldots,v_n\}\) of \(\R^n\) allows
+every vector in \(\R^n\) to be written uniquely as
+\(a_1v_1+\cdots+a_nv_n\). The spanning property guarantees that the
+representation exists, and linear independence makes its coefficients unique.
+
+% The Homework 1 hint invokes this comparison theorem. Lucas authorized
+% its statement on November 9, 2026; its proof remains unsupplied.
+\begin{theorem}[Comparison of independent and spanning sets]
+  \label{thm:linear-algebra-i:comparison-independent-spanning}
+  Let \(T\) be a finite spanning set of a vector space \(V\). Every
+  linearly independent subset \(S\subseteq V\) is finite, and
+  \[
+    |S|\leq|T|.
+  \]
+\end{theorem}
+
 \subsection{Subspaces}
 
 \begin{definition}
@@ -88,7 +114,11 @@ and a basis of \(\R^3\) has three vectors, so \(\dim\R^3=3\).
 \end{definition}
 
 Equivalently, every finite linear combination of elements of \(T\) lies in
-\(T\). For finite-dimensional \(V\),
+\(T\). Every subspace contains the zero vector. Choose \(v,w\in T\),
+which is possible because \(T\) is nonempty. Taking \(a=b=0\) in the
+closure condition gives \(0v+0w=0_V\in T\).
+
+For finite-dimensional \(V\),
 \[
   \dim T\leq\dim V,
   \qquad
@@ -114,3 +144,21 @@ constructed here. This example motivates the study of topological vector
 spaces.
 % The handout's stronger wording, "no explicit one can be written down",
 % is not developed here into a separate impossibility claim or proof.
+
+\subsection{Exercises on span, bases, and subspaces}
+
+The following exercises apply the definitions to coordinate vectors,
+polynomials, functions, and sequences. The basis-extension question
+uses \autoref{thm:linear-algebra-i:comparison-independent-spanning}.
+
+\input{problems/hw01/02-positive-real-vector-space/problem}
+\input{problems/hw01/03-span-and-containing-subspaces/problem}
+\input{problems/hw01/04-parameter-dependent-span/problem}
+\input{problems/hw01/05-affine-solution-set/problem}
+\input{problems/hw01/06-polynomial-interpolation/problem}
+\input{problems/hw01/07-recursive-sequences/problem}
+\input{problems/hw01/08-intersections-and-sums/problem}
+\input{problems/hw01/09-basis-extension/problem}
+\input{problems/hw01/10-span-and-independence-assertions/problem}
+\input{problems/hw03/05-modified-bases-and-dependence/problem}
+\input{problems/hw03/02-continuous-functions-infinite-dimension/problem}

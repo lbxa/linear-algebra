@@ -1,0 +1,67 @@
+% !TEX TS-program = pdflatexmk
+% !TEX program = pdflatex
+% Derived from problems/template.tex; build with make problem HW=hw02.
+\documentclass[nohyper,nobib,nofonts]{tufte-handout}
+\newcommand{\bookroot}{..}
+\IfFileExists{preamble.tex}{\renewcommand{\bookroot}{.}}{}
+\makeatletter
+\edef\input@path{{\bookroot/}}
+\makeatother
+\input{preamble}
+\input{macros}
+
+\counterwithout{theorem}{section}
+\renewcommand{\thetheorem}{\arabic{theorem}}
+\theoremstyle{definition}
+\newaliascnt{homeworkproblem}{theorem}
+\newtheorem{homeworkproblem}[homeworkproblem]{Problem}
+\aliascntresetthe{homeworkproblem}
+\renewenvironment{exercise}{\begin{homeworkproblem}}{\end{homeworkproblem}}
+
+\title[MA-GY7033 Linear Algebra I, Homework 2]{MA-GY7033 Linear Algebra I\\Homework 2}
+\author[Lucas Barbosa, lc6424]{Lucas Barbosa, \texttt{lc6424}}
+\date{}
+
+\fancyhead{}
+\fancyhead[LE,RO]{\footnotesize MA-GY7033 Linear Algebra I, Homework 2\quad\thepage}
+
+\begin{document}
+\maketitle
+
+\input{problems/hw02/01-matrix-product-entries/problem}
+\input{problems/hw02/01-matrix-product-entries/solution}
+
+\input{problems/hw02/02-matrix-product-associativity/problem}
+\input{problems/hw02/02-matrix-product-associativity/solution}
+
+\input{problems/hw02/03-block-shear-inverses/problem}
+\input{problems/hw02/03-block-shear-inverses/solution}
+
+\input{problems/hw02/04-characterizing-the-identity/problem}
+\input{problems/hw02/04-characterizing-the-identity/solution}
+
+\input{problems/hw02/05-matrix-product-bilinearity/problem}
+\input{problems/hw02/05-matrix-product-bilinearity/solution}
+
+\input{problems/hw02/06-matrix-commutation/problem}
+\input{problems/hw02/06-matrix-commutation/solution}
+
+\input{problems/hw02/07-zero-products/problem}
+\input{problems/hw02/07-zero-products/solution}
+
+\input{problems/hw02/08-upper-triangular-subspace/problem}
+\input{problems/hw02/08-upper-triangular-subspace/solution}
+
+\input{problems/hw02/09-two-by-two-matrix-identities/problem}
+\input{problems/hw02/09-two-by-two-matrix-identities/solution}
+
+\input{problems/hw02/10-inverse-uniqueness-and-products/problem}
+\input{problems/hw02/10-inverse-uniqueness-and-products/solution}
+
+\input{problems/hw02/11-one-sided-inverses/problem}
+\input{problems/hw02/11-one-sided-inverses/solution}
+
+\input{problems/hw02/12-inconsistent-system/problem}
+\input{problems/hw02/12-inconsistent-system/solution}
+
+\end{document}

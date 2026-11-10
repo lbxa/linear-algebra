@@ -1,0 +1,77 @@
+% !TEX TS-program = pdflatexmk
+% !TEX program = pdflatex
+% Derived from problems/template.tex; build with make problem HW=hw01.
+\documentclass[nohyper,nobib,nofonts]{tufte-handout}
+\newcommand{\bookroot}{..}
+\IfFileExists{preamble.tex}{\renewcommand{\bookroot}{.}}{}
+\makeatletter
+\edef\input@path{{\bookroot/}}
+\makeatother
+\input{preamble}
+\input{macros}
+
+\counterwithout{theorem}{section}
+\renewcommand{\thetheorem}{\arabic{theorem}}
+\theoremstyle{definition}
+\newaliascnt{homeworkproblem}{theorem}
+\newtheorem{homeworkproblem}[homeworkproblem]{Problem}
+\aliascntresetthe{homeworkproblem}
+\renewenvironment{exercise}{\begin{homeworkproblem}}{\end{homeworkproblem}}
+
+\title[MA-GY7033 Linear Algebra I, Homework 1]{MA-GY7033 Linear Algebra I\\Homework 1}
+\author[Lucas Barbosa, lc6424]{Lucas Barbosa, \texttt{lc6424}}
+\date{}
+\fancyhead{}
+\fancyhead[LE,RO]{\footnotesize MA-GY7033 Linear Algebra I, Homework 1\quad\thepage}
+
+\begin{document}
+\maketitle
+
+% Source: supplied Homework 1 PDF, p. 1, assignment-wide conventions.
+Throughout, \(\mathbb F\) denotes \(\R\) or \(\C\), and vector spaces
+are over \(\mathbb F\) unless another field is specified. The symbol
+\(\subseteq\) allows equality. The space \(\mathcal P_n(\mathbb F)\)
+consists of all polynomials of degree at most \(n\) with coefficients in
+\(\mathbb F\), including the zero polynomial. Operations on functions
+and sequences are pointwise unless stated otherwise.
+
+% Replace the source's lecture-PDF filename with self-contained topic wording.
+Justify every answer. Use the definitions and results on vector spaces and
+bases, together with elementary algebra and any results you have proved in
+earlier problems. Matrices, determinants, and theorems about linear maps
+are not needed. The final two problems are challenges.
+
+\section*{Axioms, subspaces, and span}
+\input{problems/hw01/01-axiom-consequences/problem}
+\input{problems/hw01/01-axiom-consequences/solution}
+
+\input{problems/hw01/02-positive-real-vector-space/problem}
+\input{problems/hw01/02-positive-real-vector-space/solution}
+
+\input{problems/hw01/03-span-and-containing-subspaces/problem}
+\input{problems/hw01/03-span-and-containing-subspaces/solution}
+
+\input{problems/hw01/04-parameter-dependent-span/problem}
+\input{problems/hw01/04-parameter-dependent-span/solution}
+
+\input{problems/hw01/05-affine-solution-set/problem}
+\input{problems/hw01/05-affine-solution-set/solution}
+
+\section*{Polynomials, functions, and sequences}
+\input{problems/hw01/06-polynomial-interpolation/problem}
+\input{problems/hw01/06-polynomial-interpolation/solution}
+
+\input{problems/hw01/07-recursive-sequences/problem}
+\input{problems/hw01/07-recursive-sequences/solution}
+
+\section*{Bases and dimension}
+\input{problems/hw01/08-intersections-and-sums/problem}
+\input{problems/hw01/08-intersections-and-sums/solution}
+
+\input{problems/hw01/09-basis-extension/problem}
+\input{problems/hw01/09-basis-extension/solution}
+
+\input{problems/hw01/10-span-and-independence-assertions/problem}
+\input{problems/hw01/10-span-and-independence-assertions/solution}
+
+\end{document}

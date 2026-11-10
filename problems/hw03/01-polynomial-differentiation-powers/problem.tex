@@ -1,0 +1,33 @@
+% !TEX root = ../../hw03.tex
+% Source: ma-gy7033fall2026homework3.pdf, p. 1, Problem 1(a--b).
+% The source gives a general P_n basis but then uses D on P_3. On
+% November 9 Lucas authorized the explicit specialization n=3 below.
+\begin{exercise}
+  \label{ex:hw03:polynomial-differentiation-powers}
+  Let \(\mathcal P_n(\R)\) be the vector space of all polynomials of
+  degree at most \(n\) in the variable \(x\) with real coefficients,
+  including the zero polynomial. Take \(n=3\). A basis of
+  \(\mathcal P_3(\R)\) is
+  \[
+    E=\begin{bmatrix}1&x&x^2&x^3\end{bmatrix}.
+  \]
+  \begin{enumerate}[(a)][2]
+    \item Recall that differentiation is a linear map,
+      \[
+        \begin{aligned}
+          D:\mathcal P_3(\R)&\to\mathcal P_3(\R)\\
+          f&\mapsto f'
+        \end{aligned}
+      \]
+      Find the matrix \(M\) such that
+      \[
+        D(E)=EM.
+      \]
+    \item Find the matrix \(N\) such that
+      \[
+        D^2(E)=EN,
+      \]
+      where \(D^2=D\circ D:\mathcal P_3(\R)\to\mathcal P_3(\R)\).
+  \end{enumerate}
+  \solutionlink{hw03:polynomial-differentiation-powers}
+\end{exercise}

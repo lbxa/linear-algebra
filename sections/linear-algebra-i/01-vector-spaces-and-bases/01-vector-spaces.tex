@@ -2,18 +2,50 @@
 \section{Vector spaces}
 \label{sec:linear-algebra-i:vector-spaces}
 
-% Source: Lucas's supplied MA-GY 7033 Quiz Prep.pdf, pp. 2--3.
-Let \(V\) be a vector space over a field \(\mathbb F\). Vector addition and
-scalar multiplication are operations
-\[
-  V\times V\longrightarrow V,\qquad (v,w)\longmapsto v+w,
-\]
-and
-\[
-  \mathbb F\times V\longrightarrow V,\qquad (a,v)\longmapsto av.
-\]
+% Sources: Lucas's supplied MA-GY 7033 Quiz Prep.pdf, pp. 2--3,
+% and his typed early-week notes supplied November 9, 2026.
+% On November 9 Lucas authorized standard associativity, the choice R or C,
+% the scalar identity 1v=v, and distributivity over vector addition.
+Let \(\mathbb F\) be a field, such as \(\R\) or \(\C\).
+
+\begin{definition}
+  A vector space over \(\mathbb F\) is a nonempty set \(V\) with
+  addition and scalar multiplication
+  \[
+    \begin{aligned}
+      V\times V&\longrightarrow V,& (v,w)&\longmapsto v+w,\\
+      \mathbb F\times V&\longrightarrow V,& (a,v)&\longmapsto av,
+    \end{aligned}
+  \]
+  satisfying the following axioms for all \(u,v,w\in V\) and
+  \(a,b\in\mathbb F\).
+
+  \emph{Addition.}
+  \begin{enumerate}[({A}1)][4]
+    \setlength{\itemsep}{3pt}
+    \setlength{\parsep}{0pt}
+    \item \((u+v)+w=u+(v+w)\) (associativity).
+    \item \(v+w=w+v\) (commutativity).
+    \item There is a vector \(0_V\in V\) such that \(v+0_V=v\)
+      for every \(v\in V\).
+    \item Each \(v\in V\) has an inverse \(-v\in V\) with
+      \(v+(-v)=0_V\).
+  \end{enumerate}
+
+  \emph{Scalar multiplication.}
+  \begin{enumerate}[({S}1)][4]
+    \setlength{\itemsep}{3pt}
+    \setlength{\parsep}{0pt}
+    \item \((ab)v=a(bv)\) (associativity).
+    \item \((a+b)v=av+bv\) (distributivity over scalar addition).
+    \item \(a(v+w)=av+aw\) (distributivity over vector addition).
+    \item \(1v=v\) (scalar identity).
+  \end{enumerate}
+\end{definition}
+
 The elements of \(V\) are vectors, and the elements of \(\mathbb F\) are
-scalars.
+scalars. The vector \(0_V\) is called the zero vector or the origin.
+We write it as \(0\) when the vector space is clear from the context.
 
 In the real plane, vector addition can be drawn by completing a
 parallelogram, as in \autoref{fig:linear-algebra-i:vector-addition}.
@@ -25,18 +57,4 @@ parallelogram, as in \autoref{fig:linear-algebra-i:vector-addition}.
   \label{fig:linear-algebra-i:vector-addition}
 \end{marginfigure}
 
-These operations satisfy the following properties.
-For \(v,w\in V\), addition is commutative, there is a zero vector, and each
-vector has an additive inverse:
-\[
-  v+w=w+v,\qquad v+0=v,\qquad v+(-v)=0.
-\]
-For \(a,b\in\mathbb F\) and \(v\in V\), scalar multiplication satisfies
-\[
-  (ab)v=a(bv),\qquad (a+b)v=av+bv.
-\]
-% Author review: this is not an exhaustive axiom list. The quiz-prep source
-% labels (v_1+v_2)+v_3=(v_1+v_3)+v_2 as "Associative", writes F=R union C,
-% and gives "av=v" under "Identity" without the hypothesis a=1.
-% It also omits a(v+w)=av+aw. Confirm the intended axiom list before
-% presenting a complete definition of a vector space.
+\input{problems/hw01/01-axiom-consequences/problem}

@@ -2,6 +2,12 @@
 
 ## Project-local Skills
 
+- [editor](.agents/skills/editor/SKILL.md) guides textbook exposition,
+  proof clarity, topic flow, and consistent presentation within the supplied
+  mathematical scope.
+- [homework-solutions-to-book](.agents/skills/homework-solutions-to-book/SKILL.md)
+  incorporates and reviews supplied solutions while preserving the author's
+  strategy and voice. Use the assignment-import skill for statements and placement.
 - [lecture-notes-to-book-chapter](.agents/skills/lecture-notes-to-book-chapter/SKILL.md)
   converts supplied lecture images, scans, and notes into book chapters. Read
   this skill when transcribing, organizing, or incorporating supplied notes
@@ -76,7 +82,12 @@ manage transcription, organization, LaTeX, diagrams, homework reuse, and builds.
 - `sections/front-matter/` holds copyright, introduction, and acknowledgements;
   `sections/appendices/` contains notation, assumed knowledge, exercise solutions,
   and a formula sheet summarizing material already supplied for this book.
-- `problems/hwNN.tex` are standalone homework handouts. Homework 4 is imported
+- `problems/hwNN.tex` are standalone homework handouts. Homeworks 1--3 are
+  imported as `hw01.tex`, `hw02.tex`, and `hw03.tex`, with 10, 12, and 6
+  questions respectively, shared book statements, complete appendix
+  restatements, and pending solutions. Their original source discrepancies
+  and Lucas's approved corrections are recorded in the README.
+  Homework 4 is imported
   as `problems/hw04.tex`, with supplied solutions.
   `problems/hw04-questions.tex` is its questions-only variant, using the
   same shared statements and assignment identity.
@@ -169,7 +180,8 @@ guidance in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Always maintain the **Homework placement map** in
 [README.md](README.md#homework-placement-map). It is the authoritative record of
-supplied homework questions and their reuse. It currently records Homework 4,
+supplied homework questions and their reuse. It records all questions from
+Homeworks 1--7. Homeworks 1--3 have pending solutions. It records Homework 4,
 Problems 1--5, all included with the author's supplied solutions, and Homework 5,
 Problems 1--8, with Lucas's supplied solutions to Problems 1--6, an explicitly
 authorized solution to Problem 7, and a complete supplied solution to Problem 8.
@@ -398,7 +410,10 @@ equation overflow, contents numbering, and unresolved references/citations.
 Verify body references for every figure. Read proofs without margin notes and
 review mathematical correctness separately. Empty course headings and pending
 solutions are deliberate until content is supplied. No mathematical test
-suite, coverage threshold, or CI is configured.
+suite or coverage threshold is configured. The GitHub Actions workflow
+`.github/workflows/publish-book.yml` builds the main book and publishes a
+versioned PDF to GitHub Releases on pushes to `main`, using the built-in
+`GITHUB_TOKEN`. Keep publication scoped to the main book.
 
 ## Commits & Pull Requests
 

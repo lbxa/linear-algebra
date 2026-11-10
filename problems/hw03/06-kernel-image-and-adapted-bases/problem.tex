@@ -1,0 +1,51 @@
+% !TEX root = ../../hw03.tex
+% Source: ma-gy7033fall2026homework3.pdf, pp. 1--2, Problem 6(a--e).
+% The source does not explicitly define k. Lucas authorized k=dim K
+% on November 9. Preserve the image-first basis order and block matrix.
+\begin{exercise}
+  \label{ex:hw03:kernel-image-and-adapted-bases}
+  Let \(V,W\) be finite dimensional vector spaces, with
+  \(\dim V=m\) and \(\dim W=n\), and let \(L:V\to W\) be a linear
+  map. Consider the sets
+  \[
+    K=\{v\in V:L(v)=0\}\subset V
+  \]
+  and
+  \[
+    L(V)=\{L(v):v\in V\}\subset W.
+  \]
+  Set \(k=\dim K\).
+  Recall that the empty set is a basis of the zero subspace.
+  \begin{enumerate}[(a)][2]
+    \item Prove that \(K\) is a subspace of \(V\).
+    \item Prove that \(L(V)\) is a subspace of \(W\).
+    \item Prove that there exists a row matrix basis
+      \(E=\begin{bmatrix}e_1&\cdots&e_m\end{bmatrix}\) of \(V\)
+      such that the following hold:
+      \[
+        \begin{aligned}
+          \begin{bmatrix}L(e_1)&\cdots&L(e_{m-k})\end{bmatrix}
+            &\text{ is a basis of }L(V)\\
+          \begin{bmatrix}e_{m-k+1}&\cdots&e_m\end{bmatrix}
+            &\text{ is a basis of }K.
+        \end{aligned}
+      \]
+    \item Prove that
+      \[
+        \dim(K)+\dim(L(V))=\dim(V).
+      \]
+      This is known as the rank-nullity theorem.
+    \item Prove that there exist row matrix bases \(E\) of \(V\) and
+      \(F\) of \(W\) such that \(L(E)=FM\), where \(r=m-k\) and
+      \[
+        M=\left[
+          \begin{array}{c|c}
+            I_{r\times r}&0_{r\times(m-r)}\\
+            \hline
+            0_{(n-r)\times r}&0_{(n-r)\times(m-r)}
+          \end{array}
+        \right].
+      \]
+  \end{enumerate}
+  \solutionlink{hw03:kernel-image-and-adapted-bases}
+\end{exercise}

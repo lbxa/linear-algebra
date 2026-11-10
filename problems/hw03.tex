@@ -1,0 +1,50 @@
+% !TEX TS-program = pdflatexmk
+% !TEX program = pdflatex
+% Derived from problems/template.tex; supports root and problems/ builds.
+% Source: ma-gy7033fall2026homework3.pdf, supplied November 9, 2026.
+\documentclass[nohyper,nobib,nofonts]{tufte-handout}
+\newcommand{\bookroot}{..}
+\IfFileExists{preamble.tex}{\renewcommand{\bookroot}{.}}{}
+\makeatletter
+\edef\input@path{{\bookroot/}}
+\makeatother
+\input{preamble}
+\input{macros}
+
+\counterwithout{theorem}{section}
+\renewcommand{\thetheorem}{\arabic{theorem}}
+\theoremstyle{definition}
+\newaliascnt{homeworkproblem}{theorem}
+\newtheorem{homeworkproblem}[homeworkproblem]{Problem}
+\aliascntresetthe{homeworkproblem}
+\renewenvironment{exercise}{\begin{homeworkproblem}}{\end{homeworkproblem}}
+
+\title[MA-GY7033 Linear Algebra I, Homework 3]{MA-GY7033 Linear Algebra I\\Homework 3}
+\author[Lucas Barbosa, lc6424]{Lucas Barbosa, \texttt{lc6424}}
+\date{}
+
+\fancyhead{}
+\fancyhead[LE,RO]{\footnotesize MA-GY7033 Linear Algebra I, Homework 3\quad\thepage}
+
+\begin{document}
+\maketitle
+
+\input{problems/hw03/01-polynomial-differentiation-powers/problem}
+\input{problems/hw03/01-polynomial-differentiation-powers/solution}
+
+\input{problems/hw03/02-continuous-functions-infinite-dimension/problem}
+\input{problems/hw03/02-continuous-functions-infinite-dimension/solution}
+
+\input{problems/hw03/03-shift-map-powers/problem}
+\input{problems/hw03/03-shift-map-powers/solution}
+
+\input{problems/hw03/04-prescribed-nilpotence-index/problem}
+\input{problems/hw03/04-prescribed-nilpotence-index/solution}
+
+\input{problems/hw03/05-modified-bases-and-dependence/problem}
+\input{problems/hw03/05-modified-bases-and-dependence/solution}
+
+\input{problems/hw03/06-kernel-image-and-adapted-bases/problem}
+\input{problems/hw03/06-kernel-image-and-adapted-bases/solution}
+
+\end{document}

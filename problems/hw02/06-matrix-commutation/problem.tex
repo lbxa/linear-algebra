@@ -1,0 +1,35 @@
+% !TEX root = ../../hw02.tex
+% Source: ma-gy7033fall2026homework2.pdf, p. 2, Problem 6(a--f) and hint.
+% Source issue: part (f) refers to (d), although universal commutation is
+% the condition in (e). Lucas approved the corrected reference November 9, 2026.
+\begin{exercise}
+  \label{ex:hw02:matrix-commutation}
+  Recall that matrix multiplication is not necessarily commutative.
+  \begin{enumerate}[(a)][2]
+    \item For \(A\in\mathcal M_{r\times s}\) and
+      \(B\in\mathcal M_{p\times q}\), determine exactly when \(AB\)
+      and \(BA\) are both defined.
+    \item Determine when \(AB\) and \(BA\) have the same size.
+    \item Given \(r\ge2\), find matrices \(A,B\in\mathcal M_{r\times r}\)
+      such that \(AB\ne BA\).
+    \item Let \(E^i_j\in\mathcal M_{r\times r}\) be the matrix whose
+      entry in row \(i\) and column \(j\) is \(1\) and all of whose
+      other entries are \(0\). Prove that
+      \(\{E^i_j:1\le i,j\le r\}\) is a basis of
+      \(\mathcal M_{r\times r}\) and that
+      \[
+        E^i_jE^k_l=\delta^k_jE^i_l,
+      \]
+      where \(\delta^k_j=1\) if \(j=k\) and \(0\) otherwise.
+    \item Prove that if \(A\in\mathcal M_{r\times r}\) satisfies
+      \(AB=BA\) for every \(B\in\mathcal M_{r\times r}\), then
+      \(A=cI_{r\times r}\) for some \(c\in\mathbb F\).
+    \item Determine all \(A\in\mathcal M_{r\times r}\) that commute
+      with every \(E^i_i\), \(1\le i\le r\). Conclude that, for
+      \(r\ge2\), commuting with every diagonal matrix is a strictly
+      weaker condition than the one in (e).
+
+  \end{enumerate}
+  \emph{Hint.} Compare the entries of \(AE^i_j\) and \(E^i_jA\).
+  \solutionlink{hw02:matrix-commutation}
+\end{exercise}

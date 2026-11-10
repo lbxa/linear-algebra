@@ -1,0 +1,28 @@
+% !TEX root = ../../hw01.tex
+% Source: ma-gy7033fall2026homework1.pdf, p. 3, Problem 7(a--b), including hint.
+\begin{exercise}[A vector space of recursively defined sequences]
+  \label{ex:hw01:recursive-sequences}
+  Let \(\mathbb F\) be \(\R\) or \(\C\). Let \(V\) consist of the
+  infinite sequences \((x_0,x_1,\ldots)\), where each \(x_k\in\mathbb F\),
+  that satisfy
+  \[
+    x_{n+2}=x_{n+1}+x_n\qquad(n\ge0).
+  \]
+  \begin{enumerate}[(a)][2]
+    \item Prove that \(V\) is a vector space where vector addition is
+      \[
+        (x_0,x_1,\ldots)+(y_0,y_1,\ldots)
+          =(x_0+y_0,x_1+y_1,\ldots)
+      \]
+      and scalar multiplication is
+      \[
+        s(x_0,x_1,\ldots)=(sx_0,sx_1,\ldots).
+      \]
+      Construct a basis and determine its dimension.
+    \item Prove that the only sequence in \(V\) with finitely many nonzero
+      terms is the zero sequence.
+  \end{enumerate}
+  \emph{Hint.} For (a), consider the two sequences with initial values
+  \((x_0,x_1)=(1,0)\) and \((x_0,x_1)=(0,1)\).
+  \solutionlink{hw01:recursive-sequences}
+\end{exercise}

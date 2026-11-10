@@ -1,0 +1,28 @@
+% !TEX root = ../../hw01.tex
+% Source: ma-gy7033fall2026homework1.pdf, p. 2, Problem 6(a--c).
+% Include assignment-wide field and polynomial conventions for shared reuse.
+\begin{exercise}[A polynomial determined by three values]
+  \label{ex:hw01:polynomial-interpolation}
+  Let \(\mathbb F\) denote \(\R\) or \(\C\), and work in
+  \(\mathcal P_2(\mathbb F)\), the polynomials of degree at most two
+  with coefficients in \(\mathbb F\), including the zero polynomial.
+  \begin{enumerate}[(a)][2]
+    \item Construct \(q_{-1},q_0,q_1\) such that, for
+      \(j,k\in\{-1,0,1\}\),
+      \[
+        q_j(k)=
+        \begin{cases}
+          1,&j=k,\\
+          0,&j\ne k.
+        \end{cases}
+      \]
+    \item Prove that these polynomials form a basis and that every
+      \(p\in\mathcal P_2(\mathbb F)\) satisfies
+      \[
+        p=p(-1)q_{-1}+p(0)q_0+p(1)q_1.
+      \]
+    \item Find the unique polynomial \(p\in\mathcal P_2(\mathbb F)\)
+      for which \(p(-1)=2\), \(p(0)=-1\), and \(p(1)=4\).
+  \end{enumerate}
+  \solutionlink{hw01:polynomial-interpolation}
+\end{exercise}

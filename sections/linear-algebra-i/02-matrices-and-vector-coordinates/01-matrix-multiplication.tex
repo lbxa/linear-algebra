@@ -7,3 +7,34 @@ A matrix with \(r\) rows and \(c\) columns has size \(r\times c\). Write
 matrices with entries in \(\mathbb F\). More generally,
 \(\mathrm M_{r\times c}(V)\) denotes the \(r\)-by-\(c\) arrays with entries
 in a vector space \(V\).
+The notation \(\mathcal M_{r\times c}\) also denotes scalar-valued
+matrices of this size when the field is understood.
+
+\subsection{Multiplication by columns}
+
+% Lucas authorized this prerequisite definition on November 9, 2026.
+Let \(A=[A_1,\ldots,A_s]\in\mathrm M_{r\times s}(\mathbb F)\).
+For a column \(b=(b^1,\ldots,b^s)^T\), multiplication by \(A\) is
+defined by the linear combination of its columns
+\[
+  Ab=\sum_{k=1}^s A_kb^k\in\mathbb F^r.
+\]
+If \(B=[B_1,\ldots,B_t]\in\mathrm M_{s\times t}(\mathbb F)\),
+define its product with \(A\) column by column,
+\[
+  AB=[AB_1,\ldots,AB_t]\in\mathrm M_{r\times t}(\mathbb F).
+\]
+Thus the number of columns of \(A\) must equal the number of rows of
+\(B\). We write \(I_{r\times r}\) for the identity matrix and \(0\)
+for a zero matrix of the required size.
+
+\subsection{Exercises on matrix multiplication}
+
+\input{problems/hw02/01-matrix-product-entries/problem}
+\input{problems/hw02/02-matrix-product-associativity/problem}
+\input{problems/hw02/03-block-shear-inverses/problem}
+\input{problems/hw02/04-characterizing-the-identity/problem}
+\input{problems/hw02/06-matrix-commutation/problem}
+\input{problems/hw02/07-zero-products/problem}
+\input{problems/hw02/08-upper-triangular-subspace/problem}
+\input{problems/hw02/09-two-by-two-matrix-identities/problem}

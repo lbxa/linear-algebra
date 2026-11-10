@@ -1,0 +1,35 @@
+% !TEX root = ../../hw02.tex
+% Source: ma-gy7033fall2026homework2.pdf, p. 1, Problem 5(a--b).
+% Source issue: part (b) prescribes B in M_{p x q}, while the displayed map
+% requires B in M_{q x r}. Lucas approved this correction November 9, 2026.
+\begin{exercise}
+  \label{ex:hw02:matrix-product-bilinearity}
+  Matrix multiplication defines a map
+  \[
+    \begin{gathered}
+      \mathcal M_{p\times q}\times\mathcal M_{q\times r}
+        \longrightarrow\mathcal M_{p\times r}\\
+      (A,B)\longmapsto AB.
+    \end{gathered}
+  \]
+  This problem shows that matrix multiplication is a bilinear map.
+  \begin{enumerate}[(a)][2]
+    \item Show that given \(A\in\mathcal M_{p\times q}\), the map
+      \[
+        \begin{gathered}
+          \mathcal M_{q\times r}\longrightarrow\mathcal M_{p\times r}\\
+          B\longmapsto AB
+        \end{gathered}
+      \]
+      is linear.
+    \item Show that given \(B\in\mathcal M_{q\times r}\), the map
+      \[
+        \begin{gathered}
+          \mathcal M_{p\times q}\longrightarrow\mathcal M_{p\times r}\\
+          A\longmapsto AB
+        \end{gathered}
+      \]
+      is linear.
+  \end{enumerate}
+  \solutionlink{hw02:matrix-product-bilinearity}
+\end{exercise}

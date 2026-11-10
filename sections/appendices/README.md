@@ -19,6 +19,15 @@ remain authoritative for exercise inclusion and solution order.
 
 ## Changelog
 
+### 2026-11-09
+
+- Add all 28 Homework 1--3 restatements with pending solutions, bringing the
+  appendix to 53 shared exercises. Follow actual book order, including the
+  differentiation and adapted-basis questions placed in Chapter 4; preserve
+  original assignment order only in the dedicated handouts. Preserve optional
+  exercise titles through the shared restatement environment as well as the
+  original numbers and return links.
+
 ### 2026-10-30
 
 - Replace the four Homework 7 pending notices with Lucas's supplied

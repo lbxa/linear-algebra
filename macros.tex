@@ -45,8 +45,12 @@
 % the solution anchor, not a second exercise label or solution link.
 \newenvironment{restatedproblem}{%
   \let\restatedproblemlabel\label
-  \renewenvironment{exercise}{%
-    \begin{restatedexercise}%
+  \renewenvironment{exercise}[1][]{%
+    \ifstrempty{##1}{%
+      \begin{restatedexercise}%
+    }{%
+      \begin{restatedexercise}[##1]%
+    }%
     \phantomsection
     \restatedproblemlabel{sol:\restatedexercisekey}%
   }{\end{restatedexercise}}%

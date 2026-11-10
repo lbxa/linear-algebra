@@ -46,6 +46,10 @@ build/
 *.nav
 *.snm
 *.vrb
+*.brf
+*.thm
+*.tdo
+*.spl
 *-SAVE-ERROR
 *.auxlock
 *.pdfsync
