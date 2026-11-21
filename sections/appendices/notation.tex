@@ -23,7 +23,7 @@ Meanings are local to the stated space, map, or matrix.
   \(\R,\C\) & \notationmeaning{The real and complex numbers, respectively.} \\
   \(\mathbb F^n\) & \notationmeaning{Coordinate vectors with \(n\) entries
     in \(\mathbb F\).} \\
-  \(V,W\) & \notationmeaning{Vector spaces; \(v,w\) usually denote
+  \(V,W\) & \notationmeaning{Vector spaces. The letters \(v,w\) usually denote
     their vectors.} \\
   \(V^n\) & \notationmeaning{Ordered \(n\)-tuples of vectors in \(V\),
     the inputs to an \(n\)-input multilinear function.} \\
@@ -45,8 +45,10 @@ In set notation, \(v\in V\) means that \(v\) is an element of \(V\),
 while \(S\subseteq V\) means that \(S\) is a subset of \(V\).
 The symbols \(\varnothing\) and \(\{0\}\) denote the empty set and
 the set containing the zero vector, respectively. In a set such as
-\(\{v\in V\mid L(v)=0\}\), the vertical bar means ``such that'';
-a colon is also used for this purpose.
+\(\{v\in V\mid L(v)=0\}\), the vertical bar means ``such that''.
+A colon is also used for this purpose.
+\pendingreviewtext{For the set-equality proof template, see
+\autoref{sec:linear-algebra-i:set-equality-proofs}.}
 
 The symbol \(0\) can denote a scalar, vector, or zero matrix. Subscripts
 in \(0_V\) and \(0_W\) specify the space containing the zero vector.
@@ -58,11 +60,11 @@ whereas \(\dim\ker L=0\) describes its dimension.
 
 % The supplied September 24 handout, pp. 18--19, and Homework 5 use
 % upper row indices and lower column indices, consistently with the book.
-For a matrix \(M=(M^i_j)\), the index positions have the following meaning:
+For a matrix \(M=(M^i_j)\), the notation means that
 \[
   M^i_j=\text{entry in row \(i\), column \(j\)}.
 \]
-The \emph{upper} index selects the row; the \emph{lower} index selects
+The \emph{upper} index selects the row, and the \emph{lower} index selects
 the column. In notation that places both indices below the letter, the
 same entry would be written \(m_{ij}\), with the row index first.
 For example, \(M^2_3\) is the entry in the second row and third column.
@@ -74,7 +76,7 @@ The notation \(M_j\) denotes the entire \(j\)-th column. Its entries are
   \qquad\text{for a matrix with \(r\) rows.}
 \]
 The superscript \(T\) means transpose, so the displayed row becomes a
-column. Similarly, \(v=(v^1,\ldots,v^n)^T\) is a coordinate column;
+column. The expression \(v=(v^1,\ldots,v^n)^T\) is a coordinate column, and
 \(v^i\) is its \(i\)-th scalar coordinate. By contrast, \(v_j\) usually
 labels the \(j\)-th vector in a list. In the expression
 \[
@@ -113,7 +115,7 @@ An ordered basis is written as \(E=(e_1,\ldots,e_m)\) or as the array
 \[
   v=e_1a^1+\cdots+e_ma^m.
 \]
-The vector \(v\) belongs to \(V\); the column \(a\in\mathbb F^m\)
+The vector \(v\) belongs to \(V\), and the column \(a\in\mathbb F^m\)
 contains its coordinates in \(E\). Changing the basis changes the
 coordinate column while leaving the vector itself unchanged.
 
@@ -155,7 +157,7 @@ The representing matrix depends on \(L\) and both ordered bases.
 \end{table}
 
 Composition is read from right to left. In \(L_2\circ L_1\), apply
-\(L_1\) first and \(L_2\) second; the representing matrix is
+\(L_1\) first and \(L_2\) second. The representing matrix is
 \(M_2M_1\) in compatible bases. A prime in \(E'\), \(F'\), or \(M'\)
 labels a new basis or matrix, whereas \(f'\) denotes the derivative
 of a function in the differentiation discussion.
@@ -193,11 +195,11 @@ See \autoref{sec:linear-algebra-i:kernel} through
 \autoref{sec:linear-algebra-i:rank}.
 
 Both \(C(\R)\) and \(C^0(\R)\) denote continuous real-valued functions
-on \(\R\); \(C^1(\R)\) denotes continuously differentiable ones.
+on \(\R\). The notation \(C^1(\R)\) denotes continuously differentiable ones.
 These superscripts specify regularity. The space \(\mathcal P\) contains
-real polynomials of arbitrary finite degree; \(\mathcal P_d(\R)\) contains
+real polynomials of arbitrary finite degree, while \(\mathcal P_d(\R)\) contains
 those of degree at most \(d\), including the zero polynomial.
-These vector spaces consist of functions; see
+These vector spaces consist of functions, as discussed in
 \autoref{sec:linear-algebra-i:differentiation}.
 
 \section{Permutations and multilinear notation}
@@ -292,7 +294,7 @@ field is \(\R\) or \(\C\), as stated locally.
 
 In complex arithmetic, if \(z=x+iy\), then \(\overline z=x-iy\) is its
 conjugate and \(|z|=\sqrt{x^2+y^2}\) is its modulus. The symbol
-\(i\) here satisfies \(i^2=-1\); it is distinct from an index named
+\(i\) here satisfies \(i^2=-1\). It is distinct from an index named
 \(i\) in a matrix entry. See \autoref{sec:linear-algebra-i:complex-eigenvalues}.
 
 % The preceding forms table fills the previous page; keep this final
@@ -306,7 +308,7 @@ The real inner-product notation of
 \autoref{tab:appendix:notation-inner-products-and-norms}.
 Here \(V\) is a real vector space equipped with a chosen inner product
 \(B:V\times V\to\R\). The pairing \((v,w)=B(v,w)\) is a real
-scalar; these parentheses do not denote an ordered pair. The pairing
+scalar. These parentheses do not denote an ordered pair. The pairing
 and its induced norm refer to the inner product currently specified,
 since a vector space does not itself determine that choice. See
 \autoref{sec:linear-algebra-i:real-inner-products} and

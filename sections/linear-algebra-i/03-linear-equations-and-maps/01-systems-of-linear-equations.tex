@@ -28,7 +28,7 @@ The number of equations and the number of unknowns need not agree.
     \begin{bmatrix}x\\y\end{bmatrix}
     =\begin{bmatrix}5\\-1\\0\end{bmatrix}.
   \]
-  Similarly, \(x+y+z=1\) and \(3y-5z=2\) become
+  The equations \(x+y+z=1\) and \(3y-5z=2\) have matrix form
   \[
     \begin{bmatrix}1&1&1\\0&3&-5\end{bmatrix}
     \begin{bmatrix}x\\y\\z\end{bmatrix}
@@ -42,7 +42,7 @@ Over \(\R\), the equation \(x=b\) has exactly one solution, whereas
   \begin{bmatrix}x\\y\end{bmatrix}=b
 \]
 has infinitely many, since \(y\) is arbitrary. The equations \(x=1\) and
-\(x=0\) are inconsistent:
+\(x=0\) are inconsistent because no scalar satisfies both,
 \[
   \begin{bmatrix}1\\1\end{bmatrix}x=\begin{bmatrix}1\\0\end{bmatrix}.
 \]
@@ -58,13 +58,18 @@ The solution sets in these examples are visualized in
   \centering
   \input{figures/linear-system-solution-sets}
   \caption[Three kinds of solution sets]{Real-plane schematics of the
-    preceding systems. The equations \(x=a\), \(y=b\) meet at one point;
-    \(x=b\) leaves a whole line of solutions; and \(x=0\), \(x=1\)
+    preceding systems. The equations \(x=a\), \(y=b\) meet at one point.
+    The equation \(x=b\) leaves a whole line of solutions, while \(x=0\), \(x=1\)
     have no common point. Arrows indicate that the lines continue.}
   \label{fig:linear-algebra-i:linear-system-solution-sets}
 \end{figure*}
 
 \subsection{Augmented matrices and row operations}
+
+To solve a system, we rewrite its equations in a form that exposes which
+variables are determined and which can be chosen freely. The augmented
+matrix keeps the coefficients and right-hand sides together throughout
+this calculation.
 
 Appending the right-hand side produces the augmented matrix
 \([A\mid b]\). The equation \(Ax=b\) is equivalent to
@@ -138,12 +143,13 @@ variables corresponds to reordering the columns of \(A\).
 \subsection{Triangular systems and factorization}
 
 \begin{example}
-  An upper triangular system can be solved from the last equation upward:
+  Consider the upper triangular system
   \[
     2x+y+z=3,\qquad y-3z=4,\qquad -z=2.
   \]
-  In augmented form, divide the last row by \(-1\), then eliminate \(z\)
-  from the first two rows:
+  We solve it from the last equation upward. In augmented form, dividing
+  the last row by \(-1\) and then eliminating \(z\) from the first two
+  rows gives
   \[
     \left[\begin{array}{rrr|r}
       2&1&1&3\\0&1&-3&4\\0&0&-1&2
@@ -157,7 +163,8 @@ variables corresponds to reordering the columns of \(A\).
       2&1&0&5\\0&1&0&-2\\0&0&1&-2
     \end{array}\right].
   \]
-  Subtract row \(2\) from row \(1\), then divide row \(1\) by \(2\):
+  Subtracting row \(2\) from row \(1\) and then dividing row \(1\)
+  by \(2\) gives
   \[
     \left[\begin{array}{rrr|r}
       2&0&0&7\\0&1&0&-2\\0&0&1&-2
@@ -175,31 +182,36 @@ For a square system \(Ax=b\), an available factorization \(A=LU\), with
 \[
   Ly=b,\qquad Ux=y.
 \]
-Indeed, \(Ax=LUx=Ly=b\). Sparse matrices have many zero entries.
+One first solves \(Ly=b\) for \(y\), then solves \(Ux=y\) for \(x\).
+The resulting vector satisfies \(Ax=LUx=Ly=b\).
+Sparse matrices have many zero entries.
 Their pattern of zeros can support more efficient solution strategies.
 Fast matrix multiplication is another topic in numerical linear algebra.
 
 \subsection{Normalized systems}
 
-After row operations and a possible reordering of variables, consider the
-following four forms.
+The reduced equations reveal both the consistency conditions on the
+right-hand side and the freedom left in the unknowns. After row operations
+and a possible reordering of variables, consider the following four forms.
 
 \begin{enumerate}
-  \item For \(I_mx=b'\), every variable is determined:
-    \(x^j=(b')^j\), \(1\leq j\leq m\).
+  \item For \(I_mx=b'\), every variable is determined by
+    \(x^j=(b')^j\), where \(1\leq j\leq m\).
   \item For
     \[
       [I_k\mid C]x=b',\qquad C\in\mathbb F^{k\times(m-k)},\quad k<m,
     \]
     the last \(m-k\) variables are free. The first \(k\) satisfy
     \[
-      x^j+\sum_{\ell=k+1}^m c^j_\ell x^\ell=(b')^j,\qquad 1\leq j\leq k.
+      x^j+\sum_{\ell=1}^{m-k} c^j_\ell x^{k+\ell}=(b')^j,
+      \qquad 1\leq j\leq k.
     \]
   \item For
     \[
       \begin{bmatrix}I_k\\0_{(n-k)\times k}\end{bmatrix}x=b',
     \]
-    the equations require \(x^j=(b')^j\) for \(1\leq j\leq k\) and
+    the unknown column has \(k\) entries. The equations require
+    \(x^j=(b')^j\) for \(1\leq j\leq k\) and
     \((b')^{k+1}=\cdots=(b')^n=0\). A nonzero entry among these last
     right-hand sides makes the system inconsistent.
   \item In the combined case,

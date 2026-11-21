@@ -15,6 +15,25 @@ maps every photo and PDF page, including source issues and proof gaps.
 
 ## Changelog
 
+### 2026-11-10
+
+- Complete the theorem proofs at Lucas's explicit request. Prove
+  transposition decomposition, parity without determinants, the sign identities,
+  the alternating converse, and normalized-volume existence and uniqueness.
+  This order avoids using determinant properties to justify the signs in
+  their own construction. Cover empty decompositions and dimensions zero and
+  one. The area proposition explicitly invokes Lucas's existing shared HW5
+  argument. New proofs await author review in `pendingreview`.
+- Connect oriented geometry to permutations, multilinearity, basis expansion,
+  and normalization in the major editorial pass. Explain how inverse
+  permutations match the two determinant formulas, using the supplied sign
+  identities. Treat width and height as basis coefficients, preserving the
+  distinction from a Euclidean metric.
+- Add descriptive titles to the existing parity and alternating-function
+  results. Record their original source omissions separately from the
+  subsequently authorized proofs. Preserve the expanded
+  determinant calculations and Homework 5 Problem 8's red review marks.
+
 ### 2026-10-08
 
 - Review all five supplied Homework 5 Problem 8 proofs, showing corrections

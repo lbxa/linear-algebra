@@ -33,6 +33,41 @@ magnitude. It is often convenient to work with its square,
 % The source postpones the proof. Homework 7 Problem 4.3 asks for the
 % squared version, with both equality alternatives. Lucas supplied its proof
 % on October 30 and authorized completion of the converse for w=sv.
+% On November 10 Lucas requested proofs for every theorem. The local
+% deduction below reuses the shared authored proof rather than copying it.
+\begin{pendingreview}
+\begin{proof}
+  The minimization argument in
+  \autoref{ex:hw07:minimization-and-cauchy-schwarz}, proved in its
+  solution on \autopageref{sol:hw07:minimization-and-cauchy-schwarz},
+  uses only the inner-product axioms and establishes
+  \[
+    (v,w)^2\leq(v,v)(w,w)
+  \]
+  for all \(v,w\in V\). It also proves that equality holds exactly
+  when \(v=sw\) or \(w=sv\) for some real scalar \(s\).
+
+  By the definition of the induced norm,
+  \[
+    \lvert(v,w)\rvert^2=(v,w)^2,
+    \qquad
+    \bigl(\lVert v\rVert\lVert w\rVert\bigr)^2=(v,v)(w,w).
+  \]
+  Both \(\lvert(v,w)\rvert\) and
+  \(\lVert v\rVert\lVert w\rVert\) are nonnegative. Taking
+  nonnegative square roots therefore gives the stated inequality and
+  preserves equality.
+
+  To identify the equality condition, suppose the pair is dependent.
+  Choose real \(a,b\), not both zero, with \(av+bw=0\).
+  If \(a\ne0\), then \(v=-(b/a)w\). If \(a=0\), then
+  \(b\ne0\) and \(w=0=0v\). Conversely, \(v=sw\) gives the
+  nontrivial relation \(v-sw=0\), and \(w=sv\) gives
+  \(w-sv=0\). Thus the scalar-multiple alternatives are equivalent
+  to linear dependence, including the zero-vector cases. This proves
+  the full equality characterization.
+\end{proof}
+\end{pendingreview}
 
 % Keep the complete three-part question with its minimization setup.
 \newpage
@@ -51,6 +86,8 @@ For nonzero \(v,w\), the angle \(\theta\in[0,\pi]\) is described by
   \qquad
   \cos\theta=\frac{(v,w)}{\lVert v\rVert\lVert w\rVert}.
 \]
+The Cauchy--Schwarz inequality puts the displayed quotient in
+\([-1,1]\), so it determines an angle in \([0,\pi]\).
 This relation gives a notion of angle using the inner product, including
 when the vectors are functions or matrices. In the ordinary real plane,
 it has the geometric meaning shown in

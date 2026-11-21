@@ -1,0 +1,20 @@
+% The coordinate-grid interpretation of Lucas's primitives notes.
+\begin{tikzpicture}[
+  x=10mm,y=10mm,font=\footnotesize,line width=0.45pt,
+  vector/.style={-{Latex[length=1.6mm,width=1.1mm]}},
+  grid line/.style={black!25,line width=0.3pt}
+]
+  \begin{scope}
+    \clip (-0.55,-0.55) rectangle (3.2,2.1);
+    \foreach \k in {-2,-1,0,1,2,3} {
+      \draw[grid line] ({\k-1.2},-2) -- ({\k+1.8},3);
+      \draw[grid line] (-2,\k) -- (5,\k);
+    }
+  \end{scope}
+  \draw[vector] (0,0) -- (1,0) node[midway,below=3pt] {\(e_1\)};
+  \draw[vector] (0,0) -- (0.6,1) node[midway,left=3pt] {\(e_2\)};
+  \draw[vector] (0,0) -- (2.6,1);
+  \fill (2.6,1) circle[radius=1.3pt];
+  \node[above=4pt] at (2.6,1) {\(v=2e_1+e_2\)};
+  \node[below left=2pt] at (0,0) {\(0\)};
+\end{tikzpicture}

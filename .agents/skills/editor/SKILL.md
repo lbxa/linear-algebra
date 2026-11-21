@@ -22,6 +22,29 @@ Use only supplied or explicitly authorized mathematical content. Flag missing
 hypotheses and proof steps for the author instead of silently supplying them.
 Historical additions also require a separate request under the book's conventions.
 
+## Sentence punctuation throughout the book
+
+Do not use colons as punctuation anywhere in reader-facing book or handout
+material. This applies to exposition, definitions, statements, examples,
+proofs, exercises, solutions, headings, captions, diagram and table text,
+margin notes, front matter, and appendices. It is not limited to proof prose.
+
+Never end a paragraph or an equation's introductory sentence with a colon
+before a line break or displayed equation. Make the equation part of a
+grammatical sentence. Use a comma only when the syntax calls for one, or
+leave the lead-in unpunctuated when the display completes the sentence.
+For example, write “Expanding the inner product gives” before the display,
+or “By linearity,” when the display supplies the following assertion.
+Punctuate the end of the display according to the surrounding sentence.
+
+Rewrite the wording when necessary rather than mechanically replacing every
+colon with a comma. Avoid comma splices. Use a full stop or connected phrasing
+for headings and bold lead-in labels. During review, check both source and
+rendered text, especially the prose immediately before displayed mathematics.
+Distinguish reader-facing punctuation from technical colon characters in
+LaTeX commands, internal label and citation keys, paths, and link targets.
+Do not corrupt those identifiers or syntax during punctuation edits.
+
 ## Write the reasoning in full
 
 For supplied homework proofs, use
@@ -29,8 +52,9 @@ For supplied homework proofs, use
 Preserve the author's strategy, tone, notation, and valid working. Apply the
 clarity standard through focused repairs instead of default proof replacement.
 
-- Use complete sentences and connected paragraphs. Avoid semicolons. Do not
-  use colons in proof prose. Let equations participate in grammatical sentences.
+- Use complete sentences and connected paragraphs. Avoid semicolons.
+  Apply the book-wide punctuation rule above, and let equations participate
+  in grammatical sentences.
 - Define notation, state hypotheses, and explain why a theorem applies. Spell
   out the bridge between steps instead of compressing it into “clearly,”
   “similarly,” or a chain of implications that hides the argument.

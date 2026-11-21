@@ -32,7 +32,8 @@ supplied solutions, with an authorized completion of the equality alternatives
 in 4.3. Lucas confirmed that its original Linear Algebra II header is a
 typo; the handout correctly identifies it as Linear Algebra I.
 Mathematical content is added only from material supplied
-or dictated by Lucas; the calendar supplies organizational headings only.
+or dictated by Lucas, including his November 10 authorization to complete
+all theorem proofs. The calendar supplies organizational headings only.
 
 ## Table of contents
 
@@ -40,6 +41,7 @@ or dictated by Lucas; the calendar supplies organizational headings only.
 - [Repository structure](#repository-structure)
 - [Homework placement map](#homework-placement-map)
 - [Lecture exercise placement map](#lecture-exercise-placement-map)
+- [Proof coverage](#proof-coverage)
 - [Supplied sources and editorial review](#supplied-sources-and-editorial-review)
 - [Import supplied material](#import-supplied-material)
 - [Build the notes](#build-the-notes)
@@ -100,8 +102,9 @@ Its input in `main.tex` remains commented out until course material is supplied.
 
 Notation explains the current symbols, matrix indices, coordinate conventions,
 composition order, and context-dependent uses of letters. Assumed knowledge
-includes a recall of
-injectivity, surjectivity, and bijectivity with finite-set TikZ diagrams
+begins with Set theory, including the two-inclusion set-equality template
+and proof tree, followed by a recall of injectivity, surjectivity,
+and bijectivity with finite-set TikZ diagrams
 and visual examples in real two- and three-dimensional spaces.
 The exercise appendix
 contains the complete shared lecture exercises and Homework 4 and 5 statements.
@@ -230,8 +233,9 @@ solutions. The source records below identify Lucas's approved corrections.
 
 This is the authoritative record of homework reuse. **Homework 4, Problems 1–5,
 is imported from the supplied two-page PDF.** All 21 subparts are preserved in
-their original order, including the missing final punctuation in Problem 3(b).
-Statements are transcribed verbatim; exercise labels and line wrapping follow
+their original order. The source's missing final punctuation in Problem 3(b)
+is corrected in the shared statement. Mathematical statements retain their
+source wording, with editorial punctuation corrections. Exercise labels and line wrapping follow
 the book's layout. The original PDF is preserved locally as
 `images/supplied/homework-04.pdf`. **Homework 5, Problems 1–8, is imported
 from its supplied two-page PDF**, including all five subparts of Problem 8.
@@ -372,8 +376,27 @@ use a different globally unique group for any Part II material.
 
 | Course / lecture question | Problem source | Content assessed | Book chapter and section/subsection | Appendix order | Solution source | Stable key | Status / reason |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Linear Algebra I / September 17 handout, slide 32, “K is a linear map” | [problem.tex](problems/lec03/01-inverse-is-linear/problem.tex) | Linearity of the inverse of an invertible map | 3, §3.3, Invertible maps and inverse matrices | 25, Linear equations and maps | [solution.tex](problems/lec03/01-inverse-is-linear/solution.tex) | `lec03:inverse-is-linear` | **Awaiting solution**; statement included, handout supplies no proof |
+| Linear Algebra I / September 17 handout, slide 32, “K is a linear map” | [problem.tex](problems/lec03/01-inverse-is-linear/problem.tex) | Linearity of the inverse of an invertible map | 3, §3.3, Invertible maps and inverse matrices | 25, Linear equations and maps | [solution.tex](problems/lec03/01-inverse-is-linear/solution.tex) | `lec03:inverse-is-linear` | **Awaiting solution**; no authored shared solution supplied. The prerequisite fact has a local §3.3 proof authorized November 10 |
 | Linear Algebra I / October 22 handwritten notes, page 4, Pythagorean proof request | [problem.tex](problems/lec08/01-pythagorean-theorem/problem.tex) | Pythagorean identity from real inner-product properties and orthogonality | 8, §8.5, Orthogonality and coordinate inner products | 53, Inner products and norms | [solution.tex](problems/lec08/01-pythagorean-theorem/solution.tex) | `lec08:pythagorean-theorem` | **Awaiting solution**; proof request preserved as a complete shared exercise, with no invented solution |
+
+## Proof coverage
+
+Lucas requested proofs for every theorem on November 10, 2026, with
+subagents planning and drafting under the editor guidelines. The
+[proof audit and dependency plan](PROOF_AUDIT.md) lists the twelve formal
+results initially lacking attached proofs and records their completion.
+All 36 current theorems, lemmas, propositions, and corollaries now have
+proofs, including seven supporting results formalized during this pass.
+The oriented-area and Cauchy--Schwarz arguments reuse Lucas's shared
+homework proofs through explicit local deductions and links.
+
+Newly authored proofs and supporting passages use the muted-blue
+`pendingreview` style for Lucas's review. Finite basis theory is proved
+without Zorn's lemma. General basis existence explicitly assumes Zorn's
+lemma, and the fundamental theorem of algebra names its elementary
+real-analysis prerequisites. Source omissions below remain provenance
+facts, with current proof status updated separately. Pending exercise
+solutions and the expressly flagged energy claim retain their status.
 
 ## Supplied sources and editorial review
 
@@ -390,7 +413,10 @@ Downloads files remain unchanged.
 | `ma-gy7033fall2026homework2.pdf`, 3 pages, Problems 1--12 | §§2.1 and 3.1--3.3; all 26 subparts, matrix entries and indices, and the hint retained; complete appendix restatements and `hw02.tex`, with solutions pending and approved source corrections |
 | `ma-gy7033fall2026homework3.pdf`, 2 pages, Problems 1--6 | §§1.2, 3.3, 4.3--4.4; all nine lettered subparts retained; complete appendix restatements and `hw03.tex`, with solutions pending and approved source corrections |
 | Lucas's typed early-week notes, supplied November 9, 2026 | §§1.1–1.2 vector-space axioms, combinations, span, independence, dependence, bases, dimension, and subspaces; §3.2 linear functions and maps. Repeated material merged; mathematical corrections expressly approved by Lucas, with coverage recorded below |
-| `MA-GY7033 Lecture Sept 17 2026 (1).pdf`, 33 slides, Deane Yang | §§3.1–3.3 systems, row reductions, normalized forms, maps, matrix representations, composition, inverses, and change of basis; differentiation from slide 21 in §4.4, with a pointer in §3.2 |
+| Lucas's seven conceptual primitives photos, `images/primitives/IMG_9444.jpeg`–`IMG_9450.jpeg`, supplied November 10, 2026 | Conceptual bridges in §§1.1–1.2, 2.1–2.2, and 3.2–3.3; five new editable grid diagrams; §4.3 adds the supplied rectangular-matrix example and a column diagram connecting full rank, dependence, image, and kernel. Page-by-page treatment and approved source corrections recorded below |
+| Lucas's set-equality template, `IMG_9457.heic`, supplied November 10, 2026 | Assumed knowledge, §B.1 Set theory, Proving equality of sets. Both inclusion arguments and the full proof tree are included, with links from §1.2 and Notation; the cropped preceding proof fragment is outside the requested template |
+| Lucas's one-page eigenvalue proof, `IMG_9462.heic`, supplied November 11, 2026 | §7.1, immediately after the first definition. Preserve the eigenvalue-to-kernel reformulation and the contradiction proof that an inverse for L−λI would force v=0. The existing determinant criterion follows with both directions explained. Original, converted JPEG, and built-in imagegen reading reference remain in ignored `images/supplied/` |
+| `MA-GY7033 Lecture Sept 17 2026 (1).pdf`, reattached November 11 as `ma-gy7033lecture20260917.pdf`, 33 slides, Deane Yang | Byte-identical sources. §§3.1–3.3 systems, row reductions, normalized forms, maps, matrix representations, composition, inverses, and change of basis; differentiation from page 21 in §4.4. Pages 20, 22, and 25--29 now have expanded worked calculations and the first-principles `L(E)=FM` derivation, at Lucas's request |
 | `MA-GY7033 Lecture Sept 24 2026.pdf`, 20 slides, Deane Yang | §§4.1–4.3 kernel, image, six examples, rank–nullity, isomorphisms, and adapted matrices; repeated matrix notation merged into §3.3; infinite-dimensional basis aside in §1.2 |
 | `MA-GY7033 Fall 2026 Homework 4.pdf`, 2 pages, Problems 1–5 | §§4.3–4.4 exercises in original assignment order, complete appendix restatements, and both Homework 4 handouts; original statements unchanged |
 | Lucas's 24 Homework 4 photos, `images/HW04/IMG_9174.HEIC`–`IMG_9197.HEIC`, converted with `scripts/jpeg.sh` | All 21 solution subparts in the five shared solution files, reused in the appendix and the combined handout; review pages merged with existing notes rather than repeated |
@@ -404,6 +430,26 @@ Downloads files remain unchanged.
 | `MA-GY7033 Fall 2026 Homework 5.pdf`, 2 pages, Problems 1–8 | §5.1 bilinear antisymmetry and §5.4 determinant exercises; complete appendix restatements and the `hw05.tex` handout. Problems 1–6 and 8 have complete supplied solutions; Problem 7 has an authorized solution |
 | `ma-gy7033fall2026homework6 (1).pdf`, 2 pages, Problems 1--6 | §§7.1, 7.3--7.5 eigenvector, similarity, rotation, and nilpotence exercises; complete appendix restatements and `hw06.tex`, all awaiting solutions. Preserved as `images/supplied/homework-06.pdf` |
 | `ma-gy7033fall2026homework7 (1).pdf`, reattached as `(2).pdf`, 2 pages, Problems 1--4 | §7.6 and §§8.1, 8.4; complete appendix restatements and `hw07.tex`, with Lucas's typed solutions supplied October 30. Both PDFs are byte-identical. The source header's Linear Algebra II is a typo confirmed by Lucas; the handout uses Linear Algebra I and retains the original assignment numbering |
+
+### Set-equality proof template
+
+The supplied `IMG_9457.heic` was inspected visually after conversion. The
+original Downloads file is unchanged, with a local HEIC and usable JPEG
+in ignored `images/proof-templates/`. `scripts/jpeg.sh` ran as requested,
+but its `sips` output could not be opened. The available `heif-convert`
+decoder completed the conversion at the same JPEG path.
+
+| Source region | Supplied content | Book destination and status |
+| --- | --- | --- |
+| Top, above the horizontal divider | Cropped ending of a preceding span/independence argument | Incomplete context, outside Lucas's requested set-equality template; not imported as a new proof |
+| Middle, two inclusion steps | Prove S=T by taking an arbitrary element first from S and then from T | Assumed knowledge, §B.1 Set theory, Proving equality of sets; both steps in ordinary prose, with a common arbitrary-element notation |
+| Lower tree | S=T branches to S⊆T and T⊆S, then to the two elementwise implications | Assumed knowledge, §B.1, `fig:linear-algebra-i:set-equality-proof-tree`; editable TikZ, caption, and nearby body reference. Both branches are required |
+
+The built-in imagegen tool produced an accurate layout study, saved as
+`images/proof-templates/set-equality-imagegen-reference.png`. The final
+figure uses book-native mathematical typography and exact TikZ placement.
+The [design record](figures/set-equality-design.md) preserves the complete
+prompt, generated path, source processing, and validation criteria.
 
 ### Typed early-week notes
 
@@ -422,6 +468,61 @@ The import merges repeated statements into their existing destinations.
 | Vector Space / Subspaces | Both subspace passages are merged in §1.2. The supplied zero-coefficient argument is included, and the dimension comparison retains its existing finite-dimensional hypothesis |
 | Linear Functions and Maps | Already covered in §3.2 by the common-field linear-map and functional definitions, additivity, homogeneity, and `L(0_V)=0_W`; repeated formulas are not duplicated |
 
+### Conceptual primitives notes
+
+Lucas supplied the seven photos in `images/primitives` on November 10, 2026,
+and requested conceptual connections and additional grid diagrams, including
+imagegen exploration. All seven pages were read visually. Filenames below
+give the notebook's reading order. The import develops the common linear-
+combination mechanism across the existing chapter sequence and leaves the
+homework inputs, question order, and pending solutions unchanged.
+
+| Photo | Supplied content | Destination and treatment |
+| --- | --- | --- |
+| `IMG_9444.jpeg` | Vectors, functions, and matrices as vector-space objects; combinations and span; transformations and a fixed origin | Chapter 1 introduction and §§1.1–1.2 connect operations, span, independence, coordinates, and transformations. The two-vector span sketch is treated as the span of that pair; the existing arbitrary-subset definition is retained. Movement of vectors and change of coordinates are distinguished in §2.2, with the approved treatment below |
+| `IMG_9445.jpeg` | Before-and-after grids; parallelism and even spacing; nonlinear warning; transformation of a basis | §1.2 shear overview and §3.2 constant-step explanation, unequal-step schematic, and collapse qualification. A finite sketch illustrates consequences rather than serving as the definition of linearity. The warning's unequal steps are retained without introducing a formula for an unsupplied nonlinear map |
+| `IMG_9446.jpeg` | Coordinates in the standard basis; identity matrix; shear `(x,y) -> (x+y,y)`; column interpretation | §1.2 coordinate-grid diagram and §2.1 explicit column calculation. §2.2 links coordinate conversion to the distinction between vectors and their descriptions. With Lucas's approval, §2.1 distinguishes the fixed first basis vector from the changing first output coordinate |
+| `IMG_9447.jpeg` | Images of basis vectors determine a linear map; matrix columns; rotation followed by shear and their product | §§1.2 and 3.3 develop the basis-image mechanism and `L(E)=FM`. §3.3 retains the supplied quarter-turn followed by shear, with the exact product `SR` and a three-stage grid. The different matrix at the page top is recorded below rather than silently identified with the preceding shear |
+| `IMG_9448.jpeg` | Coordinate formula `y=Ax`, rectangular dimensions, abstract spaces, injectivity/surjectivity/bijectivity, kernel and image | §§3.2–3.3 explicitly require linearity and explain coordinates for abstract spaces, with Lucas's approved corrections. Existing §§4.1–4.3 and the map-properties appendix cover the repeated classification material |
+| `IMG_9449.jpeg` | Kernel/null space, image, rank, full rank, dependence, basis-vector images as columns | §§4.1–4.3 cover the definitions and rank bound, linked from the grid discussion. §4.3 uses the correct input dimension in the image formula and explains full rank for wide matrices. §3.3 distinguishes basis images from a basis of the codomain, with Lucas's approval |
+| `IMG_9450.jpeg` | A 2×3 matrix, its three columns, action from R³ to R², and rank by independent columns | §4.3, `ex:linear-algebra-i:full-rank-dependent-columns`, gives the approved multiplication order, full-rank/dependent-column interpretation, and column diagram. The column relation also identifies a nonzero kernel vector, linking the example to the existing kernel and image theory |
+
+Source issues and authorized treatment. Lucas approved the mathematical
+corrections on November 10, 2026. The originals are retained here for provenance.
+
+- `IMG_9444` describes a transformation as movement of a basis or coordinate
+  system. A map acting on vectors and a change of coordinates are different
+  operations. The book distinction is explicit in §2.2, and §3.3 explains
+  the roles of the input basis, output basis, map, and coordinate matrix.
+- `IMG_9446` says that an unchanged column leaves a component unchanged.
+  For the printed shear, the first basis vector is fixed, while the first
+  output coordinate is `x+y`. Section 2.1 states both facts explicitly.
+- At the top of `IMG_9447`, `S=[[1,1],[1,0]]` acts by `(x+y,x)`.
+  This is a valid different map, but it reuses the preceding shear's label.
+  This alternative is recorded here as redundant with the column-reading
+  mechanism in §2.1, rather than identifying the two matrices. The lower page's
+  rotation-and-shear calculation uses `[[1,1],[0,1]]` consistently.
+- `IMG_9448` calls an arbitrary function Rⁿ -> Rᵐ linear without a hypothesis
+  and describes abstract spaces as subsets of coordinate spaces. The book
+  explicitly requires linearity in §3.2 and uses basis-dependent coordinate
+  descriptions of abstract spaces in §3.3.
+- `IMG_9449` gives Rᵐ rather than Rⁿ as the input range in the image formula
+  for a map Rⁿ -> Rᵐ. Its rank discussion should count a maximal independent
+  selection of columns. Full rank for a wide matrix still permits dependent
+  columns. Section 4.3 writes `im M={Mx : x in F^n}` for an m×n matrix
+  and gives the rank bound and maximum-independent-column interpretation.
+- `IMG_9450` supplies `A=[[1,0,1],[0,1,1]]`, columns `(1,0)`, `(0,1)`,
+  `(1,1)`, and intended output `(x+z,y+z)`. It prints the input column to
+  the left of the matrix, an undefined product. Section 4.3 places A on the
+  left, calculates its action, and explains why rank 2 is full rank even
+  though `c3=c1+c2`. The same relation gives the kernel vector `(1,1,-1)`.
+
+The imagegen draft's layout was reconstructed as exact TikZ after its arrows
+failed the grid-intersection check. See
+[the figure design record](figures/primitives-design.md) for the complete
+prompt and saved draft location. Reader-facing illustrations contain no
+source provenance or generated-image inaccuracies.
+
 ### Homeworks 1--3 source coverage
 
 Imported November 9, 2026. All nine source pages and all three reconstructed
@@ -435,7 +536,7 @@ in every new shared solution file.
 | --- | --- | --- |
 | HW1 / 1 | Real-or-complex field convention, polynomial and pointwise-operation conventions, instructions; Questions 1(a--d), 2(a--b), 3(a--b) | Question 1 in §1.1; Questions 2--3 in the §1.2 exercise group. Global hypotheses made explicit in shared statements where needed; original topic groups retained in `hw01.tex` |
 | HW1 / 2 | Questions 4(a--b), 5(a--b), 6(a--c), including parameter vectors, affine equations, and interpolation data | Complete questions in §1.2, each with one appendix restatement and pending solution |
-| HW1 / 3 | Question 7(a--b) and recurrence hint; Questions 8(a--b), 9(a--c) and basis-extension hint | Complete questions in §1.2 after subspaces and infinite-dimensional examples; comparison theorem statement authorized by Lucas, proof pending |
+| HW1 / 3 | Question 7(a--b) and recurrence hint; Questions 8(a--b), 9(a--c) and basis-extension hint | Complete questions in §1.2 after subspaces and infinite-dimensional examples; comparison theorem and proof included under Lucas's November 9 and 10 authorizations |
 | HW1 / 4 | Question 10(a--e), five assertions about span and independence | Kept as one complete exercise in §1.2, with an appendix restatement and pending solution |
 | HW2 / 1 | Questions 1--5, entrywise multiplication formula, associativity, block matrices, identity tests, and bilinearity | Questions 1--4 in §2.1 after the approved column definition; Question 5 in §3.2 after linear maps. Parts 5(a--b) remain intact |
 | HW2 / 2 | Questions 6(a--f) and hint, 7(a--b), 8, 9(a--f), 10, opening of 11 | Questions 6--9 in §2.1; Questions 10--11 in §3.3 after inverse matrices. Full Question 11 remains shared across the page boundary |
@@ -449,7 +550,8 @@ Source issues and authorized treatment:
   subset T in Question 3 is preserved. Classroom references in the introduction
   and Question 9's hint become self-contained references to vector-space
   results and the comparison theorem. The comparison theorem was absent from
-  the book; Lucas authorized its statement, without a new proof.
+  the book; Lucas authorized its statement on November 9 and its proof in
+  the November 10 book-wide proof request.
 - HW2 Question 1's entry formula is an exercise, so Lucas authorized the
   column-by-column product definition before it. No proof of associativity
   or other requested matrix identities has been supplied.
@@ -494,8 +596,9 @@ Editorial and placement decisions:
   The conclusion presumes a nonzero space if it is meant to assert that zero
   actually occurs as an eigenvalue; that hypothesis is not in the PDF and
   remains flagged. No proof or extra hypothesis is supplied by this import.
-- Preserve the absent final full stops in Questions 3.4 and 5, the unspecified
-  fields of Questions 1--2, and the real-angle/possibly-complex wording in
+- The source omits final full stops in Questions 3.4 and 5. Supply those
+  stops under the November 11 editorial pass. Preserve the unspecified
+  fields of Questions 1--2 and the real-angle/possibly-complex wording in
   Question 5. Use the standard Tufte text column and margin area, matching the
   other handouts; keep local page breaks out of the shared statements.
 
@@ -557,9 +660,9 @@ in the supplied filename, rather than a printed date in the notes.
 | --- | --- | --- |
 | 1 | Two-by-two and general distinct-eigenvalue criteria; abandoned elimination proof; sums, transversality, coordinate axes, three lines in a plane, unique decomposition | §7.6, existing definitions merged, two examples and a three-line margin diagram added. The abandoned proof is replaced by page 2's completed argument. Classroom metadata omitted; the premature direct-sum notation is regularized, and the dimension hypothesis follows page 2's explicit correction |
 | 2 | Zero-relation and unique-decomposition proof; direct sums and concatenated bases; distinct eigenspaces are transversal by successive elimination | §7.6, complete supplied uniqueness proof and distinct-eigenspace transversality proof. Existing basis-concatenation proof retained once; the dimension equality remains a consequence. Personal guesses and review annotations are source metadata |
-| 3 | Eigenspaces spanning V give an eigenbasis; converse asserted; nilpotent counterexample; distinct-eigenvalue corollary; “almost every matrix” density aside | §7.6, supplied spanning-eigenspaces proof and corollary, with a reference to the existing nilpotent example. The converse remains a stated equivalence. At Lucas's clarification, density is stated over C in the entrywise topology, without an invented proof or a full-measure claim |
+| 3 | Eigenspaces spanning V give an eigenbasis; converse asserted; nilpotent counterexample; distinct-eigenvalue corollary; “almost every matrix” density aside | §7.6, supplied spanning-eigenspaces proof, with a reference to the existing nilpotent example. The converse, distinct-eigenvalue corollary, and complex entrywise-density result now have proofs authorized November 10. Density is not treated as a full-measure claim |
 | 4 | Real dot product and transpose; squared length and cosine; abstract bilinear, symmetric, positive-definite definition; Pythagorean proof request; polynomial-space definition | §§8.1, 8.2, and 8.4; proof request preserved as `lec08:pythagorean-theorem` in §8.5 and fully restated in the appendix, awaiting solution. No general norm axioms or Pythagorean solution supplied |
-| 5 | Integral products for polynomials and trigonometric polynomials; approximation/PDE aside; trace and matrix product; inner-product notation; nondegeneracy; complex bilinear obstruction; Cauchy–Schwarz | §§8.1–8.3 contain the definitions, examples, two supplied nondegeneracy proofs, and stated map consequence. The uncertain named approximation aside and missing complex definition remain flagged. Lucas authorized the standard absolute-value Cauchy--Schwarz statement with equality for linearly dependent pairs in §8.4. Homework 7, Question 4.3, supplies its squared formulation and, as of October 30, Lucas's proof with the authorized completion of the equality alternatives |
+| 5 | Integral products for polynomials and trigonometric polynomials; approximation/PDE aside; trace and matrix product; inner-product notation; nondegeneracy; complex bilinear obstruction; Cauchy–Schwarz | §§8.1–8.3 contain the definitions, examples, two supplied nondegeneracy proofs, and the map consequence, now proved under the November 10 request. The uncertain named approximation aside and missing complex definition remain flagged. §8.4 deduces the approved absolute-value Cauchy--Schwarz statement and full equality condition from Lucas's shared Homework 7, Question 4.3 proof, including its authorized completion |
 | 6 | Cosine relation; inner product as extra structure; coordinate construction; tentative orthonormal-basis existence; orthogonal and orthonormal families; tensor remark | §§8.1, 8.4, and 8.5, with a real-plane angle schematic. The tentative basis-existence claim is flagged, and the unqualified “infinitely many” count is not promoted because the zero space is an exception |
 
 Source issues and scope:
@@ -570,8 +673,10 @@ Source issues and scope:
   the forward spanning-eigenspaces argument; the converse is asserted there.
 - Lucas clarified on October 28 that the density aside concerns complex
   matrices. Section 7.6 states density in the entrywise topology. No proof
-  was supplied; do not conflate density with a full-measure assertion or
-  extend it to diagonalization over the reals.
+  was supplied in the notes. The proof authorized November 10 uses
+  triangularization and a controlled diagonal perturbation. Do not conflate
+  density with a full-measure assertion or extend it to diagonalization
+  over the reals.
 - Cauchy–Schwarz is written without an absolute value and with an equality
   condition that fails for negative multiples and a zero-vector case. The
   author explicitly approved the standard absolute-value statement, with
@@ -579,7 +684,9 @@ Source issues and scope:
   Section 8.4 now contains that statement. Homework 7, Question 4.3, retains
   the precise squared version and both equality alternatives as an exercise.
   Its proof is now supplied by Lucas in the shared Homework 7 solution,
-  with the authorized completion of the equality alternatives.
+  with the authorized completion of the equality alternatives. The November
+  10 local proof deduces the norm formulation and dependent-pair condition
+  from that shared argument without copying its source.
 - The notes restrict to real inner products. They explain why complex
   bilinearity fails and ask about conjugation, but do not define the complex
   replacement. The orthonormal-basis existence aside is expressly tentative.
@@ -708,6 +815,51 @@ The September 17 file's title slide prints **September 10, 2026**. Placement
 follows the supplied filename and September 17 calendar session; the discrepancy
 is retained in this source record and source comments.
 
+#### September 17 page coverage
+
+All 33 pages were visually audited again on November 11, 2026, when Lucas
+reattached `ma-gy7033lecture20260917.pdf` and requested more explicit
+Chapter 3 examples and the derivation of `L(E)=FM`. The new attachment is
+byte-identical to `images/supplied/lecture-2026-09-17.pdf`. The original
+Downloads file remains unchanged. Page renders and the transcription outline
+are retained in ignored `build/review-chapter03/`.
+
+| PDF page | Supplied content | Book destination and status |
+| --- | --- | --- |
+| 1 | Title, lecturer, institution, September 10 date | Source metadata; date discrepancy retained above, with Chapter 3 following the supplied filename and established course order |
+| 2 | Systems and linear-map outline | Chapter 3's existing section order |
+| 3 | Three-equation and two-equation examples in matrix form | §3.1, Matrix form, both supplied examples |
+| 4 | General n-equation, m-unknown system and Ax=b | §3.1, Matrix form, with dimensions explicit |
+| 5 | One solution, infinitely many, inconsistent equations, and identity system | §3.1, Matrix form, supplied cases and existing solution-set diagram |
+| 6 | Two-equation elimination and row rescaling | §3.1, Augmented matrices and row operations, first worked example |
+| 7 | Further elimination and free-parameter solution | §3.1, same example, full resulting formulas |
+| 8 | Augmented homogeneous form with last coordinate -1 and allowed row operations | §3.1, augmented-matrix definition and operation description; nonzero rescaling explicit |
+| 9 | Five-variable example and augmented matrix | §3.1, second row-reduction example, setup |
+| 10 | Successive reductions of that matrix | §3.1, same example, all supplied intermediate matrices |
+| 11 | Upper-triangular system and bottom-up solution | §3.1, Triangular systems and factorization, complete worked calculation |
+| 12 | Conditional LU strategy, sparse matrices, efficient multiplication | §3.1, same subsection; factorization is conditional, with no unsupplied existence theorem or algorithm added |
+| 13 | Elementary row operations and column/variable reordering | §3.1, Augmented matrices and row operations, repeated description merged |
+| 14 | Identity normalized system | §3.1, Normalized systems, first case |
+| 15 | Identity-plus-remaining-columns form and free variables | §3.1, Normalized systems, second case |
+| 16 | Identity-over-zero form and consistency constraints | §3.1, Normalized systems, third case, with consistent index ranges |
+| 17 | Combined normalized form | §3.1, Normalized systems, fourth case, including free variables and zero-row constraints |
+| 18 | Linear functionals, maps, and the zero image | §3.2, Linearity and linear functionals, common-field formulation |
+| 19 | Prescribing basis-vector images and extending by linear combinations | §3.2, Prescribing a map on a basis, complete supplied formula |
+| 20 | Map with coefficients 3, -2, 5, 6, its matrix, and evaluations at (1,1) and (-2,3) | §3.2, expanded worked example recovering the columns from basis-vector images, retaining both numerical evaluations |
+| 21 | C⁰/C¹ function spaces and differentiation linearity | §4.4, differentiation definition and sum/scalar calculation; §3.2 retains its pointer rather than repeating the proof |
+| 22 | General F²-to-F³ calculation from the images of (1,0) and (0,1) | §3.3, Matrices in standard bases, expanded two-image example with the linearity and column-combination stages visible |
+| 23 | General F^m-to-F^n matrix assembled from images | §3.3, Matrices in standard bases, expanded basis/column calculation |
+| 24 | Vector space of linear maps and bijective linear matrix correspondence | §3.2, The vector space of linear maps; §3.3, correspondence and explanation of injectivity, surjectivity, and linearity |
+| 25 | T from F² to F³ with columns (2,1,-1) and (-1,1,3) | §3.2, expanded three-output example, component rule, basis images, and matrix multiplication |
+| 26 | Separate output-basis expansions of L(e_j) and assembly of M | §3.3, Matrices in arbitrary bases, full first/last expansions, coefficient matrix, and individual-column verification |
+| 27 | Basis rows E,F and L(E)=FM | §3.3, same subsection, explicit meaning of the basis-row products and the labelled basis-image identity |
+| 28 | Input expansion v=Ea, substitution into L, and regrouping into F(Ma) | §3.3, same subsection, full expanded calculation before compact notation |
+| 29 | Input/output bases and coordinate interpretation of the matrix | §3.3, same subsection, explanation of the roles of a, Ma, and F(Ma), with the existing coordinate diagram |
+| 30 | Composition and product order | §3.3, Composition, complete supplied matrix calculation |
+| 31 | Invertibility, injectivity/surjectivity, and images of a basis | §3.3, Invertible maps and inverse matrices; existing November 10 proof includes the basis assertion |
+| 32 | Inverse-linearity proof request and inverse-matrix calculation | §3.3, shared `lec03:inverse-is-linear` exercise and supplied inverse-matrix derivation. The prerequisite has a local proof authorized November 10; the separate authored exercise solution remains pending |
+| 33 | Simultaneous basis change and M'=B⁻¹MA | §3.3, Changing both bases, complete supplied formula and calculation |
+
 The book presents this material through self-contained exposition. Lecture
 handouts and slides are documented here for editorial provenance, without
 citations, links, or references to them in the reader-facing book or bibliography.
@@ -739,7 +891,8 @@ matrix columns to basis-vector images, describes each zero and identity
 block, and reads the matrix as an operation on two input coordinate groups.
 Margin notes explain the motivation and dimension convention; an original
 TikZ block schematic shows the basis ordering. This elaborates the existing
-construction without supplying the missing basis-extension proof.
+construction. The basis-extension prerequisite and adapted-basis proof
+were subsequently completed under Lucas's November 10 proof request.
 
 Lucas then requested practical notes on constructing the matrix from
 L(E) = FM. The new walkthrough in §4.3 uses September 24 slides 16–19
@@ -811,7 +964,7 @@ Week 6 source issues and boundaries:
   The text uses F(X,F) for all scalar-valued functions and V* for linear ones.
 - The PLU construction is not supplied. The matrix factorization calculation
   is therefore conditional. The earlier normalized-form existence and
-  basis-extension gaps remain as previously recorded.
+  basis-extension gaps were resolved under the November 10 proof request.
 - IMG_9267 does not assume M is symmetric when claiming that critical points
   of its energy quotient are eigenvectors. Lucas asked on October 22 to leave
   this claim flagged. The quotient is included, while the claim is retained
@@ -871,9 +1024,9 @@ exercise placement maps retain their existing identities and ordering.
 | 16 | Rotation matrix, row reduction, no real eigenvalues, complex roots | §7.3, real calculation and transition to §7.4 |
 | 17 | Complex numbers, conjugation, modulus, reciprocal | §7.4, Complex arithmetic; reciprocal restricted to nonzero numbers |
 | 18 | Rotation example over C and complex eigenspaces | §7.4, Returning to the rotation example; equivalent photo parametrizations retained |
-| 19 | Fundamental theorem of algebra, roots counted with multiplicity | §7.4, Roots and multiplicities. The theorem is supplied as a statement without proof |
+| 19 | Fundamental theorem of algebra, roots counted with multiplicity | §7.4, Roots and multiplicities. Supplied statement now accompanied by the proof authorized November 10, with elementary real-analysis prerequisites named |
 | 20 | Identity matrix, repeated eigenvalue with full eigenspace | §7.4, identity/Jordan comparison |
-| 21 | Jordan example and eigenspace-dimension bound | §7.4, comparison and stated bound. Printed (0,c) corrected to (c,0) using the displayed equation v2=0; bound has no supplied proof |
+| 21 | Jordan example and eigenspace-dimension bound | §7.4, comparison and bound, with a block-determinant proof authorized November 10. Printed (0,c) corrected to (c,0) using the displayed equation v2=0; the source does not supply the bound's proof |
 | 22 | Diagonalizable matrix, diagonal entries, columns of S form a basis | §7.5, definition and forward direction of the theorem |
 | 23 | Columns of S are eigenvectors; converse construction | §7.5, complete eigenbasis equivalence proof |
 | 24 | Diagonalizable endomorphism and basis-independent formulation | §7.5, definition and displayed diagonal representation |
@@ -895,11 +1048,12 @@ Week 7 source issues and proof gaps:
   Pairwise trivial intersections are weaker. The book does not infer the
   family condition from the pairwise eigenspace proposition.
 - The fundamental theorem of algebra and the eigenspace-dimension upper bound
-  have no supplied proofs. They remain stated results. The two photo-only
+  have no supplied proofs. Their newly authored proofs were authorized
+  November 10. The two photo-only
   diagonalization criteria initially had no proofs; the October 22 continuation
   now supplies distinct-eigenspace transversality and the eigenbasis argument.
-  The concatenated-basis proof is supplied and
-  included; it does not fill those other proof gaps.
+  The November 10 pass completes the converse and distinct-eigenvalue
+  corollary. The supplied concatenated-basis proof remains included.
 - The source pages contain equations and map arrows, with no pictorial
   bitmap diagram. Following the imagegen skill's code-native guidance, the
   kernel arrows are redrawn in editable TikZ; no generated raster asset is needed.
@@ -921,9 +1075,9 @@ reconverted with the bundled `heif-convert` utility, preserving originals.
 | --- | --- | --- |
 | IMG_9207 | Parallelogram sketch, ordinary and oriented area, bilinearity, A(v,v) = 0, doubling both inputs, antisymmetry, tensor terminology | §5.1, Parallelograms and their area; Oriented area and bilinearity. Formal bilinear-function definition lists both additivity identities and the combined scalar identity; the two-input doubling warning and a proposition collecting equal-input vanishing and antisymmetry follow. Absolute-value scaling is assigned to ordinary area; signed scaling follows the later photo formulas and PDF |
 | IMG_9208 | Parallelepiped sketch, unit-volume normalization, n-input function, permutations, identity, closure, inverses, associativity | §5.1, Oriented volume; §5.2, Permutations and composition; §5.3, Multilinearity and antisymmetry. General-field notation remains a source-scope issue below |
-| IMG_9209 | Transpositions, decomposition, parity independence, sign definition and properties | §5.2, all three subsections; decomposition and parity independence remain stated results without supplied proofs |
+| IMG_9209 | Transpositions, decomposition, parity independence, sign definition and properties | §5.2, all three subsections; decomposition, parity independence, and sign identities have proofs authorized November 10, absent from the supplied source |
 | IMG_9210 | All maps T_n, sign extension by zero, multilinearity, antisymmetry/alternation | §5.2, Extending the sign to all maps; §5.3, Multilinearity and antisymmetry, in the PDF's real scope |
-| IMG_9211 | Repeated-input vanishing, nonbijective selections, alternating converse, oriented-volume terminology, iterated coordinate expansion | §5.3, Multilinearity and antisymmetry; Expansion in a basis. Converse is stated without an invented proof |
+| IMG_9211 | Repeated-input vanishing, nonbijective selections, alternating converse, oriented-volume terminology, iterated coordinate expansion | §5.3, Multilinearity and antisymmetry; Expansion in a basis. Converse now has the two-slot proof authorized November 10 |
 | IMG_9212 | Expansion over T_n and S_n, factoring out the basis value, determination by normalization | §5.3, Expansion in a basis; Normalization and uniqueness. Crossed-out draft line omitted; surviving formulas retained |
 | IMG_9213 | Standard coordinate basis, matrix columns, normalized determinant and permutation formula | §5.4, Determinant, using upper row indices and lower column indices |
 
@@ -940,7 +1094,7 @@ reconverted with the bundled `heif-convert` utility, preserving originals.
 | 9 | Scalar rescaling of oriented area | §5.1, bilinearity and rescaling; first two panels of Figure 5.4 |
 | 10 | Reflection changes the sign | §5.1, reflection identity; final panel of Figure 5.4 |
 | 11 | Basis/orientation dependence, unit normalization, piecewise signed-area definition, zero for dependent inputs | §5.1, Oriented area and bilinearity |
-| 12 | Linearity in each slot, bilinear terminology, equal-input vanishing, antisymmetry | §5.1, same subsection; formal bilinear-function definition and proposition collecting the further oriented-area properties. Equal-input vanishing is explained beside the area definition at Lucas's request. The source supplies no proof of the implication to antisymmetry; Lucas's subsequently supplied proof appears in the solution to Exercise 5.1.3 |
+| 12 | Linearity in each slot, bilinear terminology, equal-input vanishing, antisymmetry | §5.1, same subsection; formal bilinear-function definition and proposition collecting the further oriented-area properties. Equal-input vanishing is explained beside the area definition. The local proof explicitly invokes Lucas's shared Homework 5 Problem 1 argument; the source supplies no proof of the implication |
 | 13 | Bilinear expansion, ad−bc, two-by-two determinant | §5.1, The determinant of a two-by-two matrix, complete supplied calculation with explicit repeated-input cancellation; author-requested basis-coordinate margin diagram in Figure 5.5 |
 | 14 | Matrix columns, basis-coordinate identity, determinant as normalized oriented area | §5.1, same subsection and Figure 5.5; repeated calculation merged |
 | 15 | Parallelepiped definition and three-vector sketch | §5.1, Oriented volume; Figure 5.6 |
@@ -949,15 +1103,15 @@ reconverted with the bundled `heif-convert` utility, preserving originals.
 | 18 | Three-dimensional column-coordinate matrix and volume/determinant identity | §5.1, concluding matrix identity |
 | 19 | General multilinearity definition, one slot at a time, real coordinate space | §5.3, Multilinearity and antisymmetry; positioned after permutation prerequisites from the photos |
 | 20 | Permutations, transpositions, four-element example, decomposition, three-element composition example | §5.2, Permutations and composition; both examples included |
-| 21 | Transposition formula, decomposition, identity as zero transpositions | §5.2, same subsection; repeated decomposition merged, proof not supplied |
+| 21 | Transposition formula, decomposition, identity as zero transpositions | §5.2, same subsection; repeated decomposition merged, proof authorized November 10 and absent from the source |
 | 22 | Parity/sign, identity and transposition signs, composition, inverse sign and reversed order | §5.2, Parity and the sign function |
-| 23 | Sign-function existence/uniqueness and parity independence | §5.2, stated parity proposition and dependence of sign existence on it; no proof imported from the external link |
+| 23 | Sign-function existence/uniqueness and parity independence | §5.2, parity proof and sign verification authorized November 10; determinant-free argument, with no proof imported from the external link |
 | 24 | T_n, inclusion of S_n, zero extension of the sign function | §5.2, Extending the sign to all maps |
 | 25 | Swap antisymmetry and repeated-input argument | §5.3, Multilinearity and antisymmetry, with the supplied vanishing argument in the body |
 | 26 | Permutation sign rule, nonbijective selections, all-map identity | §5.3, same subsection and labelled reindexing identity |
 | 27 | Basis coordinates and full multilinear expansion | §5.3, Expansion in a basis; first-slot and iterated sums |
 | 28 | Repeated-index terms vanish; remaining tuples are permutations; antisymmetric expansion | §5.3, same subsection, sums over both T_n and S_n |
-| 29 | Existence/uniqueness for a chosen basis value, normalized function, proportionality | §5.3, Normalization and uniqueness. Coordinate expansion gives determination; existence verification is not supplied |
+| 29 | Existence/uniqueness for a chosen basis value, normalized function, proportionality | §5.3, Normalization and uniqueness. Coordinate expansion gives determination; the existence verification absent from the source was authorized November 10 and is now included |
 | 30 | Normalized determinant function, all-map/permutation sums, definition on columns | §5.4, Determinant. Column-index convention follows the photos and pages 27–28; equivalent row-indexed form from this page is also included |
 
 Week 5 source issues and proof gaps:
@@ -974,18 +1128,21 @@ Week 5 source issues and proof gaps:
 - The last factor in IMG_9213's determinant product appears to repeat lower
   index 1. The book uses lower index n, consistently with the preceding
   coordinate expansion and PDF pages 27–30.
-- Transposition decomposition and parity independence are stated without proofs.
-  The sign-function discussion explicitly depends on the stated parity result.
+- Transposition decomposition and parity independence lack supplied proofs.
+  The November 10 completion proves both, then verifies the sign identities
+  before they enter the normalized-volume construction.
 - The lecture sources assert the implication from equal-input vanishing to
   antisymmetry for bilinear functions in §5.1 and multilinear functions in §5.3
   without proofs. Lucas's October 6 solution to Homework 5 Problem 1 now proves
   the bilinear implication in the appendix. The general multilinear converse
-  remains without a supplied proof. The lecture's repeated-input argument
-  proves the other direction in the real case.
+  has no supplied proof. Its November 10 proof fixes the other inputs and
+  expands in two slots. The lecture's repeated-input argument proves the
+  other direction in the real case.
 - The normalized-volume theorem includes the supplied existence claim. The
   coordinate expansion establishes determination by the basis value, but the
   sources do not verify that the constructed formula is multilinear and
-  antisymmetric. That existence proof remains unsupplied.
+  antisymmetric. The November 10 proof verifies these properties and
+  normalization directly, then uses the expansion to establish uniqueness.
 
 ### September 24 handout coverage audit
 
@@ -1008,20 +1165,20 @@ September 17 handout and now appears in §4.4.
 | 8 | Map (x, y, z) ↦ (z, 0), its matrix and kernel/image bases | §4.3, Examples in Euclidean spaces, fifth example |
 | 9 | Zero map R³ → R², its matrix, kernel, image, and dimensions | §4.3, Examples in Euclidean spaces, sixth example |
 | 10 | Rank–nullity statement | §4.3, Adapted bases and rank–nullity, theorem |
-| 11 | Kernel-first basis, image basis, zero-kernel case, and dimension count | §4.3, adapted-basis lemma and rank–nullity proof; basis-extension and image-basis verification are asserted without proof in the source and remain flagged |
+| 11 | Kernel-first basis, image basis, zero-kernel case, and dimension count | §4.3, adapted-basis lemma and rank–nullity proof; the source omits basis extension and image-basis verification, now proved under the November 10 request |
 | 12 | Injectivity, surjectivity, and isomorphism criteria | §4.1 Injectivity; §4.2 surjectivity criterion; §4.3 Isomorphisms |
 | 13 | Fundamental kernel-first matrix example and its rank/nullity | §4.3, A matrix adapted to the kernel and image, coordinate action and fundamental example |
 | 14 | Adapted bases of an abstract map and the block matrix | §4.3, A matrix adapted to the kernel and image |
-| 15 | Existence of bases giving the fundamental block matrix | §4.3, adapted-matrix construction using the stated adapted-basis lemma |
+| 15 | Existence of bases giving the fundamental block matrix | §4.3, adapted-matrix construction using the now-proved adapted-basis lemma |
 | 16 | Worked map R³ → R², its kernel, and adapted domain/image bases | §4.3, Using the identity L(E) = FM, worked example |
 | 17 | Explicit E, F, M, the identity L(E) = FM, and L(v) = FMa | §4.3, same worked example, expanded coefficient calculation and multiplication check |
 | 18 | Linearity, ordered bases, matrix columns, Einstein notation, and dependence on L, E, F | §§3.2–3.3 definitions and matrix notation; §4.3 practical construction. Vector-space structures are explicit hypotheses rather than consequences of linearity |
 | 19 | Coordinate expansion v = Ec and derivation of L(v) = FMc | §3.3, Matrices in arbitrary bases; §4.3 worked calculation |
-| 20 | Infinite-dimensional bases, polynomial basis, continuous-function space, Zorn's lemma, and motivation for topological vector spaces | §1.2, Bases beyond finite dimension; the source's stronger wording about an explicit continuous-function basis remains documented in its source comment |
+| 20 | Infinite-dimensional bases, polynomial basis, continuous-function space, Zorn's lemma, and motivation for topological vector spaces | §1.2, Bases beyond finite dimension, with the Zorn argument authorized November 10; the stronger wording about an explicit continuous-function basis remains documented in its source comment |
 
 On September 30, 2026, Lucas requested a recall of injectivity, surjectivity,
 and bijectivity, with TikZ diagrams and examples in real two- and
-three-dimensional spaces. It appears in Assumed knowledge, §B.1, with links
+three-dimensional spaces. It appears in Assumed knowledge, §B.2, with links
 from kernel, image, and rank. The inclusion and projection reuse maps
 already discussed in §4.3; the coordinate swap is an authorized new example.
 The supplied injectivity wording described the existence of outputs, which
@@ -1034,15 +1191,20 @@ TikZ summary in §4.3 states the finite-dimensional assumption, distinguishes
 map tests from necessary dimension inequalities, and shows that bijectivity
 satisfies both injectivity and surjectivity criteria.
 
-Items still requiring the author's mathematical input:
+Source gaps and current treatment:
 
 - The adapted-basis fact in §4.3 is stated in the professor's handout, but
   basis extension and the spanning/independence verification are not proved
-  there. The rank–nullity argument explicitly depends on that stated lemma.
-- The inverse-linearity exercise awaits a solution. The kernel criterion is
-  now explained in both directions within the authorized kernel expansion.
-- The identity-first matrix factorization from Lucas's photos remains a
-  stated result without an invented proof. It is distinguished from the
+  there. The November 10 proofs establish both and complete the prerequisite
+  chain for rank--nullity.
+- The inverse-linearity exercise still awaits an authored shared solution.
+  Its prerequisite fact now has a local proposition and proof in §3.3,
+  authorized November 10, so the later inverse-matrix and determinant
+  arguments no longer depend on a pending exercise. Kernel and image
+  closure are verified in §§4.1--4.2, and the kernel criterion is explained
+  in both directions within the authorized kernel expansion.
+- The identity-first matrix factorization from Lucas's photos now has a
+  proof authorized November 10. It remains distinguished from the
   professor's kernel-first basis order.
 
 ## Import supplied material
@@ -1198,6 +1360,100 @@ terms. [Third-party notices](THIRD_PARTY_NOTICES.md) record these exceptions and
 source credits. The imported specimen prose and graphics remain removed.
 
 ## Changelog
+
+### 2026-11-11
+
+- Add Lucas's supplied inverse-contradiction proof after Chapter 7's first
+  definition, explicitly justifying why a nonzero eigenvector forces
+  `L-lambda I` to be singular. Use the existing inverse-linearity and
+  finite-dimensional kernel criteria, keeping the determinant criterion's
+  identity and all exercise placements unchanged. Process the source with
+  `jpeg.sh`, the working HEIC decoder, and built-in imagegen, then transcribe
+  the verified argument into editable LaTeX. Lucas approved the expanded
+  passage the same day, and its pending-review marking has been removed.
+- Expand Chapter 3 from the reattached September 17 PDF, using its numerical
+  maps, basis-image calculations, and full coefficient regrouping to derive
+  `L(E)=FM` and `L(Ea)=F(Ma)` from first principles. Separate the roles of
+  vectors and their coordinate columns. Retain the existing chapter order,
+  shared exercises, and single diagram sources. Record source coverage here,
+  with no lecture citations in the book, as Lucas requested.
+- Apply the editor's punctuation rule across the chapters, appendix recall,
+  captions, and shared exercises. Rewrite equation lead-ins as grammatical
+  sentences, use full sentences in exercise lists, and replace colon-bearing
+  headings with descriptive phrases. Apply the same rule to generated
+  bibliography field labels and journal-page separators in the local wrapper.
+  Preserve mathematical notation, link targets, proof strategies, review
+  marks, pending solutions, and all shared exercise identities.
+- Lucas prohibits colon punctuation throughout reader-facing book and
+  handout material, extending the earlier proof-only rule. In particular,
+  displayed mathematics must continue a grammatical sentence introduced
+  with a syntactically justified comma or no punctuation. Record this in
+  `AGENTS.md` and the editor skill, including a source-and-rendered-text
+  review requirement. Rephrase sentences rather than creating comma splices.
+- Move the set-equality template and proof tree to Assumed knowledge under
+  Set theory, following Lucas's placement correction. General set-theoretic
+  proof techniques belong there, with short links from Chapter 1 and the
+  set-notation paragraph. Keep the diagram and stable labels unchanged.
+  The existing map-property recall follows as §B.2. No exercises move.
+- Integrate Lucas's set-equality template and tree in §1.2. Explain the
+  arbitrary-element argument in each direction and require both inclusions.
+  Process the HEIC with `jpeg.sh` and a working decoder, use built-in
+  imagegen for layout refinement, and typeset the final unboxed diagram in
+  TikZ. Keep the source coverage and full prompt in repository records.
+
+### 2026-11-10
+
+- Make Zorn's lemma findable by name in §1.2, with an explicit statement
+  and explanations of chains, upper bounds, and maximality before its
+  application to bases. Add the original-paper citation, Max Zorn,
+  *A remark on method in transfinite algebra*, *Bulletin of the American
+  Mathematical Society* 41(10):667--670 (1935),
+  [DOI](https://doi.org/10.1090/S0002-9904-1935-06166-X).
+  Bibliographic details were checked against the publisher-deposited
+  [Crossref record](https://api.crossref.org/works/10.1090/S0002-9904-1935-06166-X).
+  The principle remains an explicit set-theoretic prerequisite, with the
+  subsequent basis theorem proved in full.
+- Complete the proof audit at Lucas's explicit request, using three
+  subagents for foundations, multilinear algebra, and spectral theory,
+  followed by independent review. Resolve all twelve missing attached
+  proofs and formalize seven supporting results with proofs, giving 36
+  proved formal results. The inventory, dependencies, review status, and
+  validation are recorded in [PROOF_AUDIT.md](PROOF_AUDIT.md).
+  This request supersedes earlier instructions to retain those proof gaps.
+  Preserve their source omissions as provenance and mark new passages for
+  author review. Pending exercise solutions and the energy claim are separate.
+- Keep theorem-catalogue writes with their deferred headings so a natural
+  page break cannot leave a theorem's listed page number on the previous page.
+- Run a major editorial pass across all eight chapters, front matter,
+  notation, assumed knowledge, the formula sheet, and supplied solutions.
+  Develop the connections between existing results, make coordinate and
+  proof conventions explicit, and add descriptive result titles without
+  changing their statements. Preserve chapter order, exercise identities,
+  supplied proof strategies, review marks, and documented mathematical gaps.
+- Keep acknowledgements as a concise account of contributions. Detailed
+  import history and individual editorial decisions belong in these source
+  records and chapter changelogs, rather than an accumulating contributor
+  sentence in the reader-facing book.
+- Put the determinant-of-maps formula groups in chapter order and summarize
+  the existing column-product and full-rank definitions. Preserve the shared
+  four-page formula-sheet layout with ordinary text sizes. Routine solution
+  edits clarify the existing coordinate-independence argument and notation,
+  retaining expanded calculations and natural pagination.
+
+- Integrate Lucas's conceptual primitives notes as a continuous thread across
+  the existing early chapters, beginning with bases and coefficients in
+  Chapter 1. Use the supplied shear and rotation to connect grid geometry,
+  basis-vector images, matrix columns, and composition. Retain formal topic
+  order and record the source ambiguities separately from reader-facing prose.
+- Apply Lucas's approved primitives corrections to linearity, abstract
+  coordinates, basis-vector images, the shear, and rectangular multiplication.
+  Complete the supplied 2×3 example in §4.3, showing full rank with dependent
+  columns and connecting the column relation to a nonzero kernel vector.
+- Use imagegen to explore the requested grid layout, then author five final
+  grid diagrams and the companion column diagram in editable TikZ so all
+  lines, steps, intersections, and arrows
+  agree with the mathematics. Record the prompt and inspection outcome with
+  the figures.
 
 ### 2026-11-09
 

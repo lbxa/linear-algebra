@@ -5,7 +5,7 @@
 % Sources: IMG_9263--IMG_9265, IMG_9317--IMG_9318;
 % October 8 PDF, pp. 15--17.
 An endomorphism is a linear map from a vector space to itself. If \(U\)
-is one dimensional, every linear map \(F:U\to U\) is multiplication
+is one-dimensional, every linear map \(F:U\to U\) is multiplication
 by a scalar. For \(L:V\to V\), with \(\dim V=n\), apply this fact to
 \[
   L^*:\Lambda^n V^*\longrightarrow\Lambda^n V^*.
@@ -31,7 +31,7 @@ The real two-dimensional case is visualized in
   \input{figures/determinant-linear-map}
   \caption[Determinant as oriented-area scaling]{A real-plane schematic.
     Applying \(L\) to both edges multiplies their oriented area by
-    \(\det L\). The drawing shows positive areas; a negative determinant
+    \(\det L\). The drawing shows positive areas. A negative determinant
     reverses orientation.}
   \label{fig:linear-algebra-i:determinant-linear-map}
 \end{figure}
@@ -51,7 +51,7 @@ For an unnormalized nonzero \(A\), the formula is
 
 \subsection{Agreement with the representing matrix}
 
-\begin{proposition}
+\begin{proposition}[Determinant of a representing matrix]
   \label{thm:linear-algebra-i:determinant-representing-matrix}
   If \(L(E)=EM\), then \(\det L=\det M\).
 \end{proposition}
@@ -71,6 +71,10 @@ For an unnormalized nonzero \(A\), the formula is
   Repeated indices vanish, and each remaining basis value is the sign
   of its permutation, since \(A(e_1,\ldots,e_n)=1\).
 \end{proof}
+
+The ordered basis in this argument was arbitrary. Each representing matrix
+therefore has the same determinant, even though its entries can change
+when the basis changes. The scalar \(\det L\) belongs to the map itself.
 
 \subsection{Computations using multilinearity}
 

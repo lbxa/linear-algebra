@@ -2,8 +2,9 @@
 
 - [Notation](notation.tex) explains the current symbols, matrix indices,
   coordinate conventions, and context-dependent uses of letters.
-- [Assumed knowledge](assumed-knowledge.tex) recalls injective, surjective,
-  and bijective maps.
+- [Assumed knowledge](assumed-knowledge.tex) begins with
+  [Set theory](recall-set-theory.tex), including the set-equality proof
+  template and tree, then recalls injective, surjective, and bijective maps.
 - [Solutions to exercises](exercise-solutions.tex) repeats complete shared
   statements before supplied solutions or pending notices, in book exercise order.
 - [Formula sheet](formula-sheet.tex) summarizes existing Linear Algebra content
@@ -18,6 +19,42 @@ The root [homework placement map](../../README.md#homework-placement-map) and
 remain authoritative for exercise inclusion and solution order.
 
 ## Changelog
+
+### 2026-11-11
+
+- Apply the no-colon rule to the map-recall heading, example headings,
+  figure caption, and matrix-notation lead-in. Use complete caption sentences
+  and preserve all diagram sources and cross-reference labels. The shared
+  exercise restatements inherit their punctuation corrections from the
+  original statements, without changes to placement or pending status.
+- At Lucas's direction, put the general set-equality template and its
+  proof tree in a dedicated Set theory section of Assumed knowledge.
+  Keep the existing map-property recall after it, and link the template
+  from Chapter 1 and the notation page. Preserve its stable labels and
+  editable diagram. The chapter's span-to-independence progression should
+  not be interrupted by the full general proof template. Exercise inputs,
+  placement maps, and solution order remain unchanged.
+
+### 2026-11-10
+
+- The theorem-proof completion links the chapter's oriented-area and
+  Cauchy--Schwarz deductions to Lucas's existing shared solutions, preserving
+  one authored copy. The inverse-linearity prerequisite now has a local
+  chapter proof, while the separate unsupplied exercise solution remains
+  pending. Exercise placements, restatements, and handout pagination do not
+  change. See the root [proof audit](../../PROOF_AUDIT.md).
+- In the major editorial pass, keep notation consistent with the chapter
+  conventions and order the map-property recall as injective, surjective,
+  then bijective, matching the diagrams and examples. Normalize short
+  figure-list entries as titles without terminal full stops.
+- Order the determinant-of-maps formula groups as pullbacks, endomorphism
+  determinants, products and inverses, transposes, and different spaces.
+  Include the existing column-product and full-rank definitions, with
+  endomorphism hypotheses explicit. Preserve four pages and ordinary text
+  sizes by tightening local spacing and removing repeated prose.
+- Retain all 53 complete shared restatements in main-text order. Focused
+  solution edits clarify existing working and notation, preserving author
+  strategies, pending notices, review marks, and natural pagination.
 
 ### 2026-11-09
 

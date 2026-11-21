@@ -313,8 +313,22 @@ The second optional argument measures label (b), the widest of these labels.
 Do not redefine `\labelenumi` after starting the list. For other label ranges,
 choose a width representative that accommodates the widest label.
 
+Do not use colons as punctuation anywhere in reader-facing book or handout
+material. This applies to exposition, definitions, statements, examples,
+proofs, exercises, solutions, headings, captions, diagram and table text,
+margin notes, front matter, and appendices. The rule is not limited to proofs.
+Never end a paragraph or an equation's introductory sentence with a colon
+before a line break or displayed equation. Integrate the equation into a
+grammatical sentence, using a comma only when the syntax requires it, or no
+punctuation before the display when it completes the sentence. Punctuate the
+display's ending according to that sentence. Rewrite awkward wording instead
+of mechanically replacing colons with commas or creating comma splices.
+Use a full stop or connected phrasing for headings and bold lead-in labels.
+Technical colon characters in LaTeX commands, internal label and citation keys,
+paths, and link targets are not prose punctuation and must not be corrupted.
+
 Write proofs in clear English with complete sentences, proper grammar and
-punctuation, and no colons in proof prose. Preserve every essential hypothesis,
+punctuation. Preserve every essential hypothesis,
 result invocation, logical step, and conclusion in the body. Read it without
 the margin to check that it remains a complete proof. Margin notes contain
 visual guides, optional reminders, or secondary observations, never necessary
@@ -376,7 +390,8 @@ commands and formatting. Use concise optional figure captions for list entries
 while preserving full captions and attribution beside the figures. The index
 remains disabled in `main.tex` until supplied content contains index entries.
 
-Use the same alphabetic AMS style as Maths Analysis, with author-based labels
+Use the same alphabetic AMS style as Maths Analysis, with the book's no-colon
+punctuation overrides in the local wrapper and author-based labels
 such as `[Can83]`, and an author/year/title-ordered bibliography after the course
 content and before the appendices. Preserve the bundled styles, structured
 metadata, and Biber-generated labels in [styles/](styles/README.md). Resolve
@@ -404,6 +419,12 @@ Notebook explanations and conclusions belong in dedicated Markdown cells,
 not prose printed or embedded in Python cells.
 
 ## Validation Guidelines
+
+Check source and rendered reader-facing text for colon punctuation throughout
+the book and handouts, including headings, captions, margin notes, and every
+lead-in to displayed mathematics. Check sentence structure as well as the
+punctuation mark. Distinguish prose punctuation from technical identifiers
+and syntax when searching or editing.
 
 Run `make check` after LaTeX edits. Inspect affected PDFs for margin collisions,
 equation overflow, contents numbering, and unresolved references/citations.

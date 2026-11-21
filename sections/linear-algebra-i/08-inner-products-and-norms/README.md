@@ -10,7 +10,7 @@ Chapter 8 uses pages 4--6 of the six-page handwritten PDF
 - [Examples](02-examples-of-inner-products.tex) preserves both integral
   pairings, the trace definition, and the real matrix pairing.
 - [Nondegeneracy](03-nondegeneracy.tex) contains the two supplied vector proofs
-  and the stated consequence for maps.
+  and the now-proved consequence for maps.
 - [Norms and angles](04-norms-and-angles.tex) treats inner-product-induced
   norms and the cosine relation, with an authorized Euclidean schematic.
 - [Orthogonality and coordinate products](05-orthogonality-and-coordinate-products.tex)
@@ -23,6 +23,26 @@ Question 3 belongs to section 7.6. All four solutions were supplied by Lucas
 on October 30 and are shared by the appendix and handout.
 
 ## Changelog
+
+### 2026-11-10
+
+- Complete the map corollary and give Cauchy--Schwarz an attached proof at
+  Lucas's request. Reuse the shared minimization argument through an explicit
+  internal link, then justify taking nonnegative square roots and the
+  equivalence of the scalar-multiple alternatives with dependence, including
+  zero vectors. Keep Lucas's working authored once in the shared solution.
+  The new local deductions use `pendingreview`. Pending lecture exercise
+  solutions and the tentative orthonormal-basis aside remain separate.
+- In the major editorial pass, connect the examples through their common
+  bilinear structure, title the existing nondegeneracy results, and explain
+  why Cauchy--Schwarz places the angle quotient in [-1,1]. Preserve the real
+  scope, property order, chosen-basis construction, and historical margin note.
+  Qualify the complex-bilinearity obstruction by the nonzero vector used in
+  its supplied argument, so the zero space is not included in the obstruction.
+- Retain the supplied Homework 7 proof strategy, complete-square calculation,
+  equality alternatives, and single-bar norm exception. Remove only a repeated
+  closing sentence about the already-treated zero case. No complex inner
+  product theory or orthonormal-basis existence proof is added.
 
 ### 2026-10-30
 

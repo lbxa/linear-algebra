@@ -7,6 +7,48 @@ and margin-size checks in [AGENTS.md](../AGENTS.md).
 
 The copied analysis diagrams and Tufte specimen graphics have been removed.
 
+## Set-equality proof tree
+
+[set-equality-proof-tree.tex](set-equality-proof-tree.tex) redraws Lucas's
+`IMG_9457.heic` template in Assumed knowledge, §B.1 Set theory.
+Chapter 1 and Notation link to this recall. Both inclusion branches are required.
+Unboxed nodes, symmetric spacing, gray connectors, and ordinary mathematical
+fonts match the book. The [design record](set-equality-design.md) contains
+the complete built-in imagegen prompt and the local reference-image path.
+
+## Primitives and grid diagrams
+
+Lucas requested these diagrams on November 10, 2026, with the conceptual
+notes in `images/primitives`. Their mathematical source coverage is recorded
+in the root README. The five grid diagrams are editable TikZ in black and
+gray, with captions and nearby body references.
+
+- [basis-coordinate-grid.tex](basis-coordinate-grid.tex), §1.2, constructs
+  a vector by two steps in one basis direction and one in the other.
+- [linear-map-grid-overview.tex](linear-map-grid-overview.tex), §1.2,
+  maps the square grid by the supplied shear `(x,y) -> (x+y,y)`.
+- [unequal-grid-steps.tex](unequal-grid-steps.tex), §3.2, redraws the
+  source's warning that parallelism alone does not imply linearity. It is
+  a schematic, with no new nonlinear function introduced.
+- [collapsed-grid.tex](collapsed-grid.tex), §3.2, qualifies the grid
+  intuition when one basis direction maps to zero.
+- [rotation-shear-grid.tex](rotation-shear-grid.tex), §3.3, follows the
+  supplied quarter-turn and shear through the product `SR`. At Lucas's
+  November 11 request, its three panels use 11mm grid steps instead of 7mm,
+  with shorter transition arrows so the grids remain large on the printed page.
+
+The companion [dependent-matrix-columns.tex](dependent-matrix-columns.tex)
+in §4.3 draws the three columns of the supplied 2×3 matrix. It completes
+the conceptual thread with two independent output directions and one
+dependent column. Lucas approved this source's corrections on November 10.
+
+At Lucas's explicit request, the built-in imagegen tool was used to explore
+the two-panel shear layout. The generated draft misplaced the origin and
+basis arrows relative to its grid, so it is not embedded in the book.
+The final diagram reconstructs the layout with exact coordinates. The
+[design record](primitives-design.md) preserves the complete prompt, output
+location, and geometry checks.
+
 `licensing/` contains the official CC BY-NC-ND badge and its vector PDF
 conversion, copied unchanged from Maths Analysis. These identify the book's
 content licence; their source and trademark terms are recorded in

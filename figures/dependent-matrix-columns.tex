@@ -1,0 +1,14 @@
+% The three output columns of A in images/primitives/IMG_9450.jpeg.
+\begin{tikzpicture}[
+  x=19mm,y=19mm,font=\footnotesize,line width=0.45pt,
+  vector/.style={-{Latex[length=1.6mm,width=1.1mm]}},
+  guide/.style={dashed,black!35,line width=0.3pt}
+]
+  \draw[guide] (1,0) -- (1,1) -- (0,1);
+  \draw[vector] (0,0) -- (1,0) node[below=3pt] {\(c_1\)};
+  \draw[vector] (0,0) -- (0,1) node[left=3pt] {\(c_2\)};
+  \draw[vector] (0,0) -- (1,1);
+  \node[above=4pt] at (0.65,1) {\(c_3=c_1+c_2\)};
+  \fill (0,0) circle[radius=1.3pt];
+  \node[below left=2pt] at (0,0) {\(0\)};
+\end{tikzpicture}

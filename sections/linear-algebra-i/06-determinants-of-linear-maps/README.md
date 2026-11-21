@@ -21,6 +21,22 @@ maps every source page, including the LEC06 eigenvalue material placed in Chapte
 
 ## Changelog
 
+### 2026-11-10
+
+- The all-theorems audit preserves the supplied determinant proofs and
+  supplies their missing prerequisites earlier in the book. Chapter 1 now
+  proves basis extension, Chapter 3 proves inverse linearity, and Chapter 5
+  proves normalized-volume existence. Keep the PLU calculation conditional.
+  Give the representing-matrix proposition a descriptive theorem-list title.
+- In the major editorial pass, make the progression from pullbacks to the
+  one-dimensional space of top-degree forms and its scalar action explicit.
+  Explain basis independence after the representing-matrix proof and identify
+  singularity with the existing finite-dimensional kernel criterion.
+- Preserve the conditional PLU argument and both sparse-matrix examples.
+  For maps between distinct spaces, explain that a scalar description requires
+  choosing bases of the two form spaces, retaining the supplied determinant
+  map rather than asserting a canonical scalar.
+
 ### 2026-10-22
 
 - Keep the photo progression from pullbacks to endomorphism determinants,

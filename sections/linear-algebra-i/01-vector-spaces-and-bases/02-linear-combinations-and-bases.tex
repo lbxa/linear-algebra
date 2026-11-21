@@ -6,6 +6,10 @@
 % handout, slide 20, and Lucas's typed early-week notes, November 9, 2026.
 \subsection{Linear combinations and span}
 
+A linear combination is one result of choosing vectors and coefficients.
+The span collects every result obtainable when those coefficients and the
+finite selection of vectors are allowed to vary.
+
 \begin{definition}
   A linear combination of \(v_1,\ldots,v_n\in V\) is a vector of the form
   \[
@@ -30,7 +34,11 @@
 The empty linear combination is the zero vector, so
 \(\operatorname{span}(\varnothing)=\{0\}\). A vector space is
 \emph{finite-dimensional} when it has a finite spanning set. Unless explicitly
-stated otherwise, the vector spaces in these notes are finite-dimensional.
+stated otherwise, the vector spaces in this book are finite-dimensional.
+
+\pendingreviewtext{Set equalities can be proved by checking both inclusions.
+The template in \autoref{sec:linear-algebra-i:set-equality-proofs}
+recalls this method.}
 
 \subsection{Linear independence}
 
@@ -51,6 +59,9 @@ an independent set are unique. If
   a_1v_1+\cdots+a_nv_n=b_1v_1+\cdots+b_nv_n,
 \]
 then \(a_j=b_j\) for each \(j\).
+Thus independence answers a different question from spanning. Spanning asks
+whether a vector can be constructed from the chosen vectors. Independence
+asks whether two different coefficient choices can construct the same vector.
 
 \begin{definition}
   A subset is linearly dependent if some finite selection of distinct
@@ -64,8 +75,8 @@ then \(a_j=b_j\) for each \(j\).
 % basis statement and restricting the same-line description to pairs.
 
 \autoref{fig:linear-algebra-i:span-and-dependence} compares two-vector
-configurations in \(\R^2\). A dependent pair lies on a line through zero;
-an independent pair supplies two directions in the plane.
+configurations in \(\R^2\). A dependent pair lies on a line through zero.
+An independent pair supplies two directions in the plane.
 \begin{figure}[htbp]
   \centering
   \input{figures/span-and-dependence}
@@ -83,16 +94,40 @@ an independent pair supplies two directions in the plane.
   vectors in a basis.
 \end{definition}
 
-Every vector space has a basis. The zero vector space has the empty basis,
-and a basis of \(\R^3\) has three vectors, so \(\dim\R^3=3\).
+Every finite-dimensional vector space has a basis, as
+\autoref{thm:linear-algebra-i:basis-extension} will show. The general
+existence result is proved in \autoref{thm:linear-algebra-i:basis-existence}.
+The zero vector space has the empty basis. The three standard coordinate
+vectors span \(\R^3\) and are independent, so \(\dim\R^3=3\).
 
 More generally, a basis \(\{v_1,\ldots,v_n\}\) of \(\R^n\) allows
 every vector in \(\R^n\) to be written uniquely as
 \(a_1v_1+\cdots+a_nv_n\). The spanning property guarantees that the
 representation exists, and linear independence makes its coefficients unique.
 
+An ordered basis makes these coefficients into coordinates. For example,
+with an ordered basis \(E=(e_1,e_2)\) of a real two-dimensional space,
+\[
+  v=xe_1+ye_2
+\]
+identifies \(v\) by the coordinate column \((x,y)^T\).
+\autoref{fig:linear-algebra-i:basis-coordinate-grid} shows how repeated
+steps in the two basis directions build a coordinate grid. The lines need
+not meet at right angles. Uniqueness of the coefficients, rather than the
+angles in the drawing, makes this a coordinate system.
+\begin{marginfigure}
+  \centering
+  \input{figures/basis-coordinate-grid}
+  \caption[A basis builds a grid]{A real-plane schematic in the ordered
+    basis \(E=(e_1,e_2)\). The marked vector has coordinates \((2,1)^T\),
+    since it is two steps in the \(e_1\) direction and one in the
+    \(e_2\) direction. Only integer grid lines are drawn.}
+  \label{fig:linear-algebra-i:basis-coordinate-grid}
+\end{marginfigure}
+
 % The Homework 1 hint invokes this comparison theorem. Lucas authorized
-% its statement on November 9, 2026; its proof remains unsupplied.
+% its statement on November 9, 2026. Its proof was absent from the supplied
+% sources and was added under his all-theorems proof request, November 10.
 \begin{theorem}[Comparison of independent and spanning sets]
   \label{thm:linear-algebra-i:comparison-independent-spanning}
   Let \(T\) be a finite spanning set of a vector space \(V\). Every
@@ -101,6 +136,86 @@ representation exists, and linear independence makes its coefficients unique.
     |S|\leq|T|.
   \]
 \end{theorem}
+
+\begin{pendingreview}
+\begin{proof}
+  Write \(n=|T|\). If \(n=0\), then \(V=\{0\}\), whose only independent
+  subset is empty. Suppose \(n>0\) and that \(S\) contains distinct vectors
+  \(u_1,\ldots,u_{n+1}\). We will replace the vectors of \(T\), one at a
+  time, by \(u_1,\ldots,u_n\), preserving the spanning property.
+
+  At step \(j\), write the current spanning list as
+  \[
+    u_1,\ldots,u_{j-1},w_j,\ldots,w_n.
+  \]
+  Its first \(j-1\) entries are the vectors already chosen from \(S\).
+  Since the list spans \(V\), there are coefficients such that
+  \[
+    u_j=\sum_{i=1}^{j-1}a_i u_i+\sum_{i=j}^n b_iw_i.
+  \]
+  At least one \(b_i\) is nonzero. Otherwise \(u_j\) would be a linear
+  combination of \(u_1,\ldots,u_{j-1}\), contradicting the independence
+  of the chosen vectors from \(S\). For an index \(\ell\) with
+  \(b_\ell\ne0\), solve this equation for \(w_\ell\). It expresses
+  \(w_\ell\) as a linear combination of \(u_j\) and the other vectors
+  in the current list. Replacing \(w_\ell\) by \(u_j\) therefore leaves
+  a spanning list. Reorder the remaining \(w_i\) to prepare the next step.
+
+  After \(n\) steps, \(u_1,\ldots,u_n\) span \(V\). In particular,
+  \(u_{n+1}\) is a linear combination of them, again contradicting
+  independence. Thus \(S\) cannot contain \(n+1\) distinct vectors.
+  It is consequently finite and has at most \(n=|T|\) elements.
+\end{proof}
+\end{pendingreview}
+
+% These finite-dimensional consequences supply the basis-extension
+% prerequisite used later in the book. Lucas authorized their statements
+% and proofs in the November 10, 2026 proof-completion request.
+\begin{pendingreview}
+\begin{proposition}[Finite basis extension]
+  \label{thm:linear-algebra-i:basis-extension}
+  Every linearly independent subset of a finite-dimensional vector space
+  \(V\) is contained in a finite basis of \(V\). In particular, \(V\)
+  has a finite basis.
+\end{proposition}
+
+\begin{proof}
+  Let \(S\subseteq V\) be independent, and choose a finite spanning set
+  \(T=\{t_1,\ldots,t_n\}\) of \(V\). By
+  \autoref{thm:linear-algebra-i:comparison-independent-spanning}, \(S\)
+  is finite. Starting with \(S\), consider \(t_1,\ldots,t_n\) in order.
+  Add \(t_j\) to the current set precisely when it is outside its span.
+
+  Each addition preserves independence. Indeed, if the current independent
+  set is \(\{v_1,\ldots,v_q\}\) and
+  \[
+    a_1v_1+\cdots+a_qv_q+bt_j=0,
+  \]
+  a nonzero \(b\) would express \(t_j\) as a linear combination of the
+  current vectors. Since \(t_j\) was outside their span, \(b=0\), and
+  independence then gives \(a_1=\cdots=a_q=0\).
+
+  The resulting set is finite, independent, and contains \(S\). Every
+  element of \(T\) belongs to its span, whether it was added or was already
+  in the span when considered. The resulting set therefore spans \(V\)
+  and is a basis. Taking \(S=\varnothing\) gives the final assertion.
+\end{proof}
+
+\begin{corollary}[The size of a finite basis]
+  \label{thm:linear-algebra-i:basis-cardinality}
+  Any two bases of a finite-dimensional vector space have the same finite
+  number of elements. Thus its dimension is well-defined.
+\end{corollary}
+
+\begin{proof}
+  Any basis is finite by
+  \autoref{thm:linear-algebra-i:comparison-independent-spanning}, applied
+  to a finite spanning set of the space. If \(E\) and \(F\) are two bases,
+  the same theorem gives \(|E|\leq|F|\), since \(E\) is independent and
+  \(F\) spans. Interchanging \(E\) and \(F\) gives \(|F|\leq|E|\).
+  Hence \(|E|=|F|\).
+\end{proof}
+\end{pendingreview}
 
 \subsection{Subspaces}
 
@@ -118,17 +233,110 @@ Equivalently, every finite linear combination of elements of \(T\) lies in
 which is possible because \(T\) is nonempty. Taking \(a=b=0\) in the
 closure condition gives \(0v+0w=0_V\in T\).
 
-For finite-dimensional \(V\),
-\[
-  \dim T\leq\dim V,
-  \qquad
-  \dim T=\dim V\quad\Longleftrightarrow\quad T=V.
-\]
+\begin{pendingreview}
+\begin{proposition}[Subspaces of a finite-dimensional space]
+  \label{thm:linear-algebra-i:finite-dimensional-subspaces}
+  If \(T\) is a subspace of a finite-dimensional vector space \(V\), then
+  \(T\) is finite-dimensional, and every basis of \(T\) extends to a basis
+  of \(V\). Moreover,
+  \[
+    \dim T\leq\dim V,
+    \qquad
+    \dim T=\dim V\quad\Longleftrightarrow\quad T=V.
+  \]
+\end{proposition}
 
-\subsection{Bases beyond finite dimension}
+\begin{proof}
+  Put \(n=\dim V\). Every independent subset of \(T\) is independent
+  in \(V\), so its size is at most \(n\) by
+  \autoref{thm:linear-algebra-i:comparison-independent-spanning}.
+  The possible sizes of independent subsets of \(T\) form a nonempty
+  subset of \(\{0,\ldots,n\}\), since the empty set is independent.
+  Choose an independent subset \(B\subseteq T\) of largest possible size.
+
+  If \(B\) did not span \(T\), there would be a vector \(t\in T\)
+  outside its span. Adjoining \(t\) would preserve independence, by the
+  coefficient argument in the proof of
+  \autoref{thm:linear-algebra-i:basis-extension}. This contradicts the
+  choice of \(B\). Thus \(B\) is a finite basis of \(T\).
+
+  Every basis of \(T\) is an independent subset of \(V\), so
+  \autoref{thm:linear-algebra-i:basis-extension} extends it to a basis of
+  \(V\). Consequently \(\dim T\leq\dim V\). If these dimensions are
+  equal, the extended basis has no additional vectors. The original basis
+  of \(T\) then spans \(V\), giving \(T=V\). Conversely, \(T=V\)
+  immediately gives equality of their dimensions.
+\end{proof}
+\end{pendingreview}
+
+\subsection{Zorn's lemma and infinite-dimensional bases}
+\label{sec:linear-algebra-i:zorns-lemma}
 
 In infinite-dimensional spaces, a basis \(S\) is still linearly independent, and
 each vector is a \emph{finite} linear combination of elements of \(S\).
+
+% The supplied notes invoke Zorn's lemma for basis existence. Lucas
+% authorized the full argument on November 10, 2026. Zorn's lemma is an
+% explicit set-theoretic prerequisite, not a consequence of the finite theory.
+\begin{pendingreview}
+The finite basis-extension argument examines a finite spanning set one vector
+at a time. For a space with no finite spanning set, we instead use a
+set-theoretic principle that guarantees a maximal independent set.
+
+Let \(\mathcal F\) be a nonempty family of sets, ordered by inclusion.
+A \emph{chain} in \(\mathcal F\) is a subfamily \(\mathcal C\) such
+that any two of its members are comparable by inclusion. An \emph{upper
+bound} for this chain is a member \(U\in\mathcal F\) containing every
+member of \(\mathcal C\). A member \(M\in\mathcal F\) is
+\emph{maximal} if no member of \(\mathcal F\) properly contains \(M\).
+Maximality does not require \(M\) to contain every other member.
+
+\textbf{Zorn's lemma \cite{Zorn1935TransfiniteAlgebra}.}
+If every chain in a nonempty family \(\mathcal F\) has an upper bound
+in \(\mathcal F\), then \(\mathcal F\) has a maximal member.
+
+We use this inclusion-ordered form of Zorn's lemma as a set-theoretic
+prerequisite. It is equivalent to the axiom of choice. The finite-dimensional
+arguments above do not require this principle. In the basis-existence proof,
+the sets are independent subsets of \(V\), and the upper bound for a chain
+will be its union. Maximality then forces the resulting independent set to
+span \(V\).
+
+\begin{theorem}[Existence of a basis]
+  \label{thm:linear-algebra-i:basis-existence}
+  Every vector space has a basis.
+\end{theorem}
+
+\begin{proof}
+  Let \(\mathcal I\) be the family of all linearly independent subsets of
+  \(V\), ordered by inclusion. This family is nonempty because
+  \(\varnothing\in\mathcal I\). We first show that every chain in
+  \(\mathcal I\) has an upper bound in \(\mathcal I\).
+
+  For a nonempty chain \(\mathcal C\), let
+  \(U=\bigcup_{A\in\mathcal C}A\). Every finite selection of vectors
+  from \(U\) lies in a single member of \(\mathcal C\). Indeed, choose
+  a chain member containing each vector and take the largest of these
+  finitely many members, using their comparability. Since that member is
+  independent, any zero linear combination of the selected vectors has
+  all coefficients zero. Thus \(U\) is independent and is an upper bound
+  for \(\mathcal C\). The empty chain has the independent upper bound
+  \(\varnothing\).
+
+  Zorn's lemma now gives an inclusion-maximal independent subset
+  \(B\subseteq V\). Suppose \(v\in V\) were outside
+  \(\operatorname{span}(B)\). In any relation
+  \[
+    av+b_1e_1+\cdots+b_qe_q=0,
+    \qquad e_1,\ldots,e_q\in B
+  \]
+  with the \(e_i\) distinct, a nonzero \(a\) would express \(v\) as a
+  finite linear combination of vectors from \(B\). Hence \(a=0\), and
+  independence of \(B\) gives \(b_1=\cdots=b_q=0\). Therefore
+  \(B\cup\{v\}\) would be independent, contradicting maximality.
+  It follows that \(B\) spans \(V\) and is a basis.
+\end{proof}
+\end{pendingreview}
 
 \begin{example}
   The vector space \(\mathcal P\) of polynomials in \(x\) with real
@@ -136,14 +344,65 @@ each vector is a \emph{finite} linear combination of elements of \(S\).
   \[
     \{1,x,x^2,\ldots\}.
   \]
+  \begin{pendingreview}
+  Every polynomial is a finite linear combination of these monomials.
+  Such a combination is the zero polynomial only when all its coefficients
+  are zero, so the monomials are independent as well as spanning.
+  \end{pendingreview}
 \end{example}
 
 For the vector space \(C(\R)\) of continuous functions \(\R\to\R\),
-the existence of a basis follows from Zorn's lemma. No explicit basis is
-constructed here. This example motivates the study of topological vector
-spaces.
+\autoref{thm:linear-algebra-i:basis-existence} guarantees a basis. No explicit
+basis is constructed here. This example motivates the study of topological
+vector spaces.
 % The handout's stronger wording, "no explicit one can be written down",
 % is not developed here into a separate impossibility claim or proof.
+
+\subsection{From bases to linear transformations}
+\label{sec:linear-algebra-i:bases-to-transformations}
+
+% Source: Lucas's conceptual notes, images/primitives/IMG_9444--9447.jpeg.
+The same linear combinations connect vector spaces to maps between them.
+A \emph{linear map}, also called a \emph{linear transformation}, is a map
+\(L:V\to W\) between vector spaces over the same field that satisfies,
+for every \(a,b\in\mathbb F\) and \(v,w\in V\),
+\[
+  L(av+bw)=aL(v)+bL(w).
+\]
+It preserves the way a vector is assembled. If \(v=ae_1+be_2\), then
+\[
+  L(v)=aL(e_1)+bL(e_2).
+\]
+The coefficients \(a,b\) are retained, while the building blocks
+\(e_1,e_2\) are replaced by their images. Since a basis describes every
+input uniquely, specifying its images determines a linear map everywhere.
+
+In the real plane, consider the shear \(S(x,y)=(x+y,y)\), illustrated in
+\autoref{fig:linear-algebra-i:shear-grid-overview}. Its action on two
+basis vectors determines the action on the entire grid. The origin stays
+fixed, and repeated equal steps in a basis direction become repeated equal
+steps in its image direction. This is the geometric content of preserving
+linear combinations.
+\begin{figure}[htbp]
+  \centering
+  \input{figures/linear-map-grid-overview}
+  \caption[A grid under a shear]{Schematic of \(S(x,y)=(x+y,y)\).
+    The square grid becomes a parallelogram grid. Within each family,
+    lines remain parallel and equally spaced, although angles change.
+    The two arrows show the images of the standard basis vectors.}
+  \label{fig:linear-algebra-i:shear-grid-overview}
+\end{figure}
+
+To calculate such an action, we choose output coordinates and record the
+coordinates of the basis-vector images as columns of a matrix.
+Matrix multiplication then forms their linear
+combination using the input coefficients. This is the link between the
+basis language of this chapter and the column calculations in
+\autoref{sec:linear-algebra-i:matrix-multiplication}.
+The general definition of linearity and its grid interpretation are developed
+in \autoref{sec:linear-algebra-i:linear-functions-and-maps}, and
+\autoref{sec:linear-algebra-i:change-of-basis-for-functions-and-maps}
+explains how the matrix records a map in chosen input and output bases.
 
 \subsection{Exercises on span, bases, and subspaces}
 

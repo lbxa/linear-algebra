@@ -4,6 +4,11 @@
 
 % Sources: IMG_9267--IMG_9269, IMG_9317--IMG_9320;
 % October 15 PDF, pp. 3--5.
+The determinant detects when an endomorphism loses an input direction.
+To find directions on which \(L\) acts by scalar multiplication, we
+apply that test to \(L-\lambda I\). Its kernel will collect the
+vectors satisfying the eigenvector equation.
+
 \begin{definition}
   Let \(L:V\to V\) be linear. A scalar \(\lambda\in\mathbb F\)
   is an eigenvalue of \(L\) if there exists \(v\in V\setminus\{0\}\)
@@ -17,11 +22,44 @@
 The identity map \(I\) allows us to subtract scalar multiplication from
 \(L\). Since \((\lambda I)(v)=\lambda v\),
 \[
-  L(v)=\lambda v
-  \quad\Longleftrightarrow\quad (L-\lambda I)(v)=0
-  \quad\Longleftrightarrow\quad v\in\ker(L-\lambda I).
+  \begin{aligned}
+    L(v)=\lambda v
+      &\Longleftrightarrow L(v)-\lambda v=0\\
+      &\Longleftrightarrow (L-\lambda I)(v)=0\\
+      &\Longleftrightarrow v\in\ker(L-\lambda I).
+  \end{aligned}
 \]
-For a nonzero solution, \(L-\lambda I\) is singular. Thus
+% Lucas's supplied IMG_9462.heic, November 11, 2026, gives the inverse
+% contradiction below, approved by Lucas the same day.
+The requirement \(v\ne0\) forces \(L-\lambda I\) to be singular,
+meaning that it has no inverse.
+
+\begin{proof}
+  Let \(v\ne0\) satisfy \((L-\lambda I)(v)=0\).
+  Suppose, for a contradiction, that \(L-\lambda I\) is not singular.
+  It then has an inverse, with
+  \[
+    (L-\lambda I)^{-1}\circ(L-\lambda I)=I.
+  \]
+  Applying this inverse to \((L-\lambda I)(v)=0\) gives
+  \[
+    \begin{aligned}
+      v&=(L-\lambda I)^{-1}\bigl((L-\lambda I)(v)\bigr)\\
+        &=(L-\lambda I)^{-1}(0)=0.
+    \end{aligned}
+  \]
+  The inverse is linear by
+  \autoref{thm:linear-algebra-i:inverse-linearity}, so it sends the zero
+  vector to the zero vector. This contradicts \(v\ne0\).
+  Therefore \(L-\lambda I\) is singular.
+\end{proof}
+
+Conversely, if \(L-\lambda I\) is singular, the finite-dimensional
+endomorphism criteria in \autoref{sec:linear-algebra-i:rank} give a nonzero
+vector in its kernel. The displayed equivalences then show that this vector
+is an eigenvector of \(L\) with eigenvalue \(\lambda\).
+
+Thus
 \autoref{thm:linear-algebra-i:determinant-invertibility} gives
 \begin{equation}
   \lambda\text{ is an eigenvalue of }L
@@ -43,7 +81,8 @@ An eigenspace includes the zero vector, while an eigenvector must be
 nonzero. In particular, \(E_0(L)=\ker L\). A nonzero scalar multiple
 of an eigenvector is another eigenvector for the same eigenvalue.
 
-\begin{proposition}
+\begin{proposition}[Eigenspaces are subspaces]
+  \label{thm:linear-algebra-i:eigenspaces-are-subspaces}
   Every eigenspace is a subspace of \(V\). If \(\lambda\) is an
   eigenvalue, then \(\dim E_\lambda(L)>0\).
 \end{proposition}
@@ -61,7 +100,7 @@ of an eigenvector is another eigenvector for the same eigenvalue.
   the eigenspace contains a nonzero vector, so its dimension is positive.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}[Intersection of distinct eigenspaces]
   \label{thm:linear-algebra-i:distinct-eigenspaces-intersection}
   If \(\lambda_1,\lambda_2\) are distinct eigenvalues of \(L\), then
   \[

@@ -25,8 +25,10 @@ The permutation formula gives
   p_M(x)=\sum_{\sigma\in S_n}\varepsilon(\sigma)
     \prod_{j=1}^n\bigl(M^{\sigma(j)}_j-x\delta^{\sigma(j)}_j\bigr).
 \]
-This is a polynomial of degree \(n\). Its leading term is \((-x)^n\),
-and its constant term is \(\det M\). Its roots in the scalar field
+The term of degree \(n\) is obtained by selecting \(-x\) from every
+diagonal position. Thus this is a polynomial of degree \(n\) with
+leading term \((-x)^n\). Setting \(x=0\) gives its constant term,
+\(\det M\). Its roots in the scalar field
 are exactly the eigenvalues of \(M\).
 
 There is also a direct expansion for \(L\). Normalize a top-degree form
@@ -65,6 +67,11 @@ If \(L(E)=EM\), then \((L-xI)(E)=E(M-xI)\), so
 
 \subsection{Changing the basis}
 
+Changing coordinates changes the entries of a representing matrix, but
+the equation \(L(v)=\lambda v\) concerns the map and vector themselves.
+The change-of-basis formula identifies how this equation is expressed in
+two coordinate systems.
+
 Suppose \(E,F\) are bases with \(F=EH\), and write
 \(L(E)=EM\), \(L(F)=FN\). Then
 \[
@@ -81,7 +88,7 @@ columns satisfy \(a=Hb\) and \(b=H^{-1}a\).
   \]
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}[Invariants under similarity]
   \label{thm:linear-algebra-i:similarity-invariants}
   Similar matrices have the same determinant and characteristic polynomial.
   If \(N=H^{-1}MH\), then \(a\) is an eigenvector of \(M\) for
@@ -98,7 +105,7 @@ columns satisfy \(a=Hb\) and \(b=H^{-1}a\).
   \[
     p_N(x)=(\det H^{-1})\det(M-xI)(\det H)=p_M(x).
   \]
-  Finally,
+  Finally, \(NH^{-1}=H^{-1}M\) gives
   \[
     Ma=\lambda a
     \quad\Longleftrightarrow\quad

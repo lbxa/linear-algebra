@@ -6,6 +6,11 @@
 % The PDF uses real vector spaces. The photos use F without a
 % characteristic restriction; that broader scope requires author review.
 Let \(V\) be an \(n\)-dimensional real vector space.
+The oriented area and volume functions of
+\autoref{sec:linear-algebra-i:oriented-area-and-volume} share two properties.
+They are linear in each input separately, and reordering their inputs changes
+the value according to the sign of the permutation. We now formulate these
+properties for \(n\) inputs and express them in a basis.
 
 \subsection{Multilinearity and antisymmetry}
 
@@ -57,18 +62,47 @@ is zero. With the extended sign function, both cases are expressed by
   \label{eq:linear-algebra-i:antisymmetric-reindexing}
 \end{equation}
 
-\begin{proposition}
+\begin{proposition}[Alternating and antisymmetric multilinear functions]
+  \label{thm:linear-algebra-i:alternating-antisymmetric}
   A multilinear function on a real vector space is antisymmetric if and
   only if it vanishes whenever two inputs are equal. Such a multilinear
   function is also called alternating.
 \end{proposition}
-% IMG_9211, fact 4, asserts the converse without supplying its proof.
-% No polarization argument has been added to complete that proof.
+% IMG_9211, fact 4, states the converse without a proof. The following
+% two-slot argument was authorized on November 10, 2026.
+\begin{pendingreview}
+\begin{proof}
+  If two inputs of an antisymmetric function agree, interchanging them
+  leaves the value unchanged and also negates it. Over \(\R\), the value
+  must therefore be zero.
 
-An antisymmetric multilinear function with \(n\) inputs on an
-\(n\)-dimensional space is an oriented volume function.
+  Conversely, suppose the multilinear function vanishes whenever two
+  inputs agree. If it has at most one input, both conditions are vacuous.
+  Otherwise, choose any two input positions and fix every other input.
+  Let \(B(u,v)\) denote the resulting bilinear function of the two
+  remaining inputs. The vanishing hypothesis gives
+  \(B(u,u)=B(v,v)=B(u+v,u+v)=0\). Expanding the last expression,
+  \[
+    \begin{aligned}
+      0=B(u+v,u+v)
+        &=B(u,u)+B(u,v)+B(v,u)+B(v,v)\\
+        &=B(u,v)+B(v,u).
+    \end{aligned}
+  \]
+  Hence \(B(v,u)=-B(u,v)\). The chosen positions and fixed inputs were
+  arbitrary, so exchanging any two inputs negates the original function.
+  It is antisymmetric.
+\end{proof}
+\end{pendingreview}
+
+Antisymmetric multilinear functions with \(n\) inputs give the algebraic
+description of oriented volume on an \(n\)-dimensional space.
 
 \subsection{Expansion in a basis}
+
+For a linear map, its values on a basis determine its values everywhere.
+Here multilinearity lets us expand every input in a basis. Antisymmetry
+then removes all terms that repeat a basis vector.
 
 Let \(E=(e_1,\ldots,e_n)\) be a basis of \(V\). Write
 \[
@@ -129,7 +163,55 @@ Thus \(A\) is determined by its value on the ordered basis.
 \end{theorem}
 % PDF p. 29 states existence and uniqueness. The supplied coordinate
 % expansion establishes determination by c, but the sources do not verify
-% multilinearity and antisymmetry of the formula to prove existence.
+% existence. The complete construction below was authorized November 10, 2026.
+\begin{pendingreview}
+\begin{proof}
+  If \(n=0\), there is only the empty input tuple. Assigning it the value
+  \(c\) gives the unique function, and multilinearity and antisymmetry
+  have no input positions to check. Assume henceforth that \(n\geq1\).
+
+  For each \(v_j\), write its unique basis expansion as
+  \(v_j=\sum_{i=1}^n b^i_j e_i\), and define
+  \[
+    A(v_1,\ldots,v_n)
+      =c\sum_{\sigma\in S_n}\varepsilon(\sigma)
+        \prod_{j=1}^n b^{\sigma(j)}_j.
+  \]
+  The coordinate functions of \(v_j\) are linear, because addition and
+  scalar multiplication act on its basis coefficients. Every product in
+  the sum contains exactly one coordinate from each input. With all other
+  inputs fixed, that product is therefore linear in the remaining input.
+  The finite sum is consequently multilinear.
+
+  To check antisymmetry, exchange input positions \(r,s\), and let
+  \(\tau=\tau_{rs}\). The new coordinate array has entries
+  \(\widetilde b^i_j=b^i_{\tau(j)}\). Reordering the scalar factors gives
+  \[
+    \begin{aligned}
+      \prod_{j=1}^n\widetilde b^{\sigma(j)}_j
+        &=\prod_{j=1}^n b^{\sigma(j)}_{\tau(j)}\\
+        &=\prod_{\ell=1}^n b^{(\sigma\circ\tau)(\ell)}_\ell.
+    \end{aligned}
+  \]
+  The substitution \(\rho=\sigma\circ\tau\) is a bijection of
+  \(S_n\), and the sign identities give
+  \(\varepsilon(\rho)=-\varepsilon(\sigma)\). Thus the sum defining
+  the value on the exchanged inputs is \(-A(v_1,\ldots,v_n)\).
+  For \(n=1\), there are no two positions to exchange, so this condition
+  is vacuous.
+
+  On the input \((e_1,\ldots,e_n)\), the coordinate in row \(i\),
+  column \(j\) is \(1\) when \(i=j\) and \(0\) otherwise.
+  All terms in the defining sum vanish except the identity permutation's
+  term, whose coordinate product and sign are both \(1\). Hence
+  \(A(e_1,\ldots,e_n)=c\), proving existence.
+
+  Finally, \autoref{eq:linear-algebra-i:antisymmetric-basis-expansion}
+  shows that any antisymmetric multilinear function with this basis value
+  must have exactly the displayed formula. The constructed function is
+  therefore unique.
+\end{proof}
+\end{pendingreview}
 
 In particular, there is a unique such function normalized by
 \[

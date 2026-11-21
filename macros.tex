@@ -116,12 +116,15 @@
   \providecommand*{\toclevel@theorem}{2}
 }{}
 \ifdefined\listoftheorems
-  \pretocmd{\@begintheorem}{%
+  % Keep the catalogue write inside the deferred heading box so a page
+  % break before the theorem cannot leave its list entry on the prior page.
+  \patchcmd{\@begintheorem}{\the\thm@headfont}{%
     \ifstrequal{#1}{Theorem}{%
       \ifblank{#2}{}{%
         \addcontentsline{loe}{theorem}{\protect\numberline{#2}#3}%
       }%
     }{}%
+    \the\thm@headfont
   }{}{%
     \PackageError{linear-algebra-notes}{Could not register theorem list entries}
       {Check the amsthm definition of \string\@begintheorem.}%

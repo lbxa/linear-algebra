@@ -23,6 +23,45 @@ for every photo and PDF page.
 
 ## Changelog
 
+### 2026-11-11
+
+- Integrate Lucas's one-page `IMG_9462.heic` proof immediately after the
+  first eigenvalue/eigenvector definition in §7.1. Preserve his contradiction
+  strategy and explicit inverse calculation showing that invertibility of
+  `L-lambda I` would force the eigenvector to be zero. Invoke the earlier
+  inverse-linearity result for the zero-vector step and the finite-dimensional
+  kernel criterion for the existing determinant equivalence's converse.
+  Keep the definition, stable equation label, exercise identities, and
+  source progression unchanged. Lucas approved the expanded passage the same
+  day, so its pending-review wrapper has been removed.
+- Preserve the original and converted JPEG in ignored `images/supplied/`.
+  `scripts/jpeg.sh` first encountered the known metadata-only `sips` output.
+  Decode a PNG with `heif-convert`, then run `jpeg.sh` on that PNG. Use built-in
+  imagegen to make a readable reference at
+  `images/supplied/eigenvalue-singularity-imagegen-reference.png`, checking
+  it against the original. The book uses editable LaTeX rather than embedding
+  the bitmap. The full prompt and transcription outline are retained locally
+  in `build/review-eigenvalue-proof/transcription.md`.
+
+### 2026-11-10
+
+- Lucas's all-theorems request authorizes the missing proofs. Prove the
+  fundamental theorem of algebra using an explicit minimum-modulus estimate,
+  naming its real-analysis prerequisites. Extend an eigenspace basis to
+  prove the multiplicity bound directly from the permutation determinant.
+  Complete the eigenspaces-span converse and distinct-eigenvalue corollary.
+  For complex density, prove triangularization, perturb diagonal entries to
+  distinct values, and control the error after conjugation. New passages
+  await author review. The energy critical-point claim remains flagged.
+- In the major editorial pass, connect the determinant criterion to kernels,
+  separate finding eigenvalues from solving for eigenspaces, and explain
+  similarity as a change in the coordinates of the eigenvector equation.
+  Link the shear example to its earlier grid interpretation.
+- Relate direct sums to the existence and uniqueness of basis coordinates,
+  and add descriptive titles to existing results. Preserve the supplied
+  induction and eigenbasis proofs and the field convention. The proof gaps
+  retained at that stage are resolved by the later request above.
+
 ### 2026-10-28
 
 - Place Homework 6 in main-text order 4, 1, 2, 5, 3, 6. Eigenvector sums

@@ -11,13 +11,13 @@
 \setlength{\parindent}{0pt}
 \setlength{\columnsep}{24pt}
 \setlength{\multicolsep}{8pt}
-\setlength{\abovedisplayskip}{5pt plus 2pt minus 1pt}
-\setlength{\belowdisplayskip}{5pt plus 2pt minus 1pt}
+\setlength{\abovedisplayskip}{4pt plus 2pt minus 1pt}
+\setlength{\belowdisplayskip}{4pt plus 2pt minus 1pt}
 \setlength{\abovedisplayshortskip}{3pt plus 1pt}
 \setlength{\belowdisplayshortskip}{5pt plus 2pt minus 1pt}
 \titlespacing*{\section}{0pt}{0pt}{9pt}
 \newcommand{\formulagroup}[2]{%
-  \par\addvspace{6pt}\noindent\textbf{#1}%
+  \par\addvspace{4pt}\noindent\textbf{#1}%
   \ifdefined\standaloneformulasheet\else\hfill\autoref{#2}\fi
   \par\nobreak\smallskip
 }
@@ -42,7 +42,14 @@
       \sum_{j=1}^m a_jv_j=0
       \quad\Longrightarrow\quad a_1=\cdots=a_m=0.
     \]
-    A basis is an independent spanning set; its size is \(\dim V\).
+    A basis of \(V\) is independent and spans \(V\). It has \(\dim V\) vectors.
+
+    \formulagroup{Multiplication by columns}{sec:linear-algebra-i:matrix-multiplication}
+    For \(A\in\mathbb F^{n\times m}\), \(b\in\mathbb F^m\), and
+    \(B\in\mathbb F^{m\times s}\), writing \(A_j,B_j\) for columns,
+    \[
+      Ab=\sum_{j=1}^m b^jA_j,\qquad AB=[AB_1\ \cdots\ AB_s].
+    \]
 
     \formulagroup{Vector coordinates}{sec:linear-algebra-i:change-of-basis-for-vectors}
     For ordered bases \(E,F\) of \(V\), with \(F=EM\),
@@ -56,19 +63,17 @@
     \[
       L(av+bw)=aL(v)+bL(w),\qquad L(0_V)=0_W.
     \]
-    Values on a basis determine the map. If \(L(e_j)=w_j\),
-    \[
-      L\left(\sum_{j=1}^m a_je_j\right)=\sum_{j=1}^m a_jw_j.
-    \]
+    On a basis \(E\),
+    \(L(\sum_{j=1}^m a_je_j)=\sum_{j=1}^m a_jL(e_j)\).
 
     \formulagroup{Matrix of a map}{sec:linear-algebra-i:change-of-basis-for-functions-and-maps}
-    Let \(E\) be an ordered basis of \(V\), and \(F\) of \(W\).
-    The representing matrix \(M\in\mathbb F^{n\times m}\) satisfies
+    In ordered bases \(E\) of \(V\) and \(F\) of \(W\), the matrix
+    \(M\in\mathbb F^{n\times m}\) satisfies
     \[
       L(E)=FM,\qquad v=Ea\ \Longrightarrow\ L(v)=FMa.
     \]
-    Column \(j\) of \(M\) gives the \(F\)-coordinates of \(L(e_j)\).
-    In coordinate spaces, with standard-basis matrix \(C\),
+    Column \(j\) contains the \(F\)-coordinates of \(L(e_j)\).
+    For coordinate spaces with standard-basis matrix \(C\),
     \[
       CE=FM,\qquad M=F^{-1}CE.
     \]
@@ -115,6 +120,7 @@
         \max(0,m-n)\leq k&\leq m.
       \end{aligned}
     \]
+    Full rank means \(r=\min(m,n)\).
 
     \formulagroup{Injectivity and surjectivity}{sec:linear-algebra-i:rank}
     \[
@@ -249,24 +255,6 @@
     \section{Determinants of maps}
     \label{sec:appendix:formula-sheet-determinants-of-maps}
 
-    \formulagroup{Products and inverses}{sec:linear-algebra-i:multiplicativity-and-singularity}
-    \[
-      \begin{aligned}
-        \det(AB)&=(\det A)(\det B),\\
-        \det(L_2\circ L_1)&=(\det L_2)(\det L_1),\\
-        L\text{ invertible}&\ \Longleftrightarrow\ \det L\ne0,\\
-        \det(L^{-1})&=\frac1{\det L}\quad\text{if \(L\) is invertible}.
-      \end{aligned}
-    \]
-
-    \formulagroup{Transpose}{sec:linear-algebra-i:transposes-and-linear-systems}
-    \[
-      \begin{gathered}
-        (M^T)^j_i=M^i_j,\qquad (AB)^T=B^TA^T,\\
-        \det(M^T)=\det M.
-      \end{gathered}
-    \]
-
     \formulagroup{Pullbacks}{sec:linear-algebra-i:pullbacks-and-volume-functions}
     For \(L:V\to W\) and \(A\in\Lambda^k W^*\),
     \[
@@ -287,6 +275,25 @@
       \det L=\frac{A(L(e_1),\ldots,L(e_n))}{A(e_1,\ldots,e_n)}.
     \]
     If \(L(E)=EM\), then \(\det L=\det M\).
+
+    \formulagroup{Products and inverses}{sec:linear-algebra-i:multiplicativity-and-singularity}
+    For endomorphisms \(L,L_1,L_2\) of \(V\),
+    \[
+      \begin{aligned}
+        \det(AB)&=(\det A)(\det B),\\
+        \det(L_2\circ L_1)&=(\det L_2)(\det L_1),\\
+        L\text{ invertible}&\ \Longleftrightarrow\ \det L\ne0,\\
+        \det(L^{-1})&=\frac1{\det L}\quad\text{if \(L\) is invertible}.
+      \end{aligned}
+    \]
+
+    \formulagroup{Transpose}{sec:linear-algebra-i:transposes-and-linear-systems}
+    \[
+      \begin{gathered}
+        (M^T)^j_i=M^i_j,\qquad (AB)^T=B^TA^T,\\
+        \det(M^T)=\det M.
+      \end{gathered}
+    \]
 
     \formulagroup{Different domain and codomain}{sec:linear-algebra-i:determinants-between-spaces}
     For \(L:V\to W\), the determinant is a map between lines,
@@ -346,7 +353,7 @@
 \clearpage
 \begin{fullwidth}
   Here \(V\) is a real inner-product space. The norms below are induced by
-  its inner product; no general norm axioms are assumed.
+  its inner product.
 
   \begin{multicols}{2}
     \raggedcolumns
@@ -354,14 +361,14 @@
     \label{sec:appendix:formula-sheet-real-inner-products}
 
     \formulagroup{Defining properties}{sec:linear-algebra-i:real-inner-products}
-    The function \(B:V\times V\to\R\) is bilinear and satisfies
+    A real inner product \(B:V\times V\to\R\) satisfies
     \[
       \begin{gathered}
-        B(v,w)=B(w,v),\qquad B(v,v)\ge0,\\
-        B(v,v)=0\quad\Longleftrightarrow\quad v=0.
+        B(v,v)\ge0,\qquad B(v,v)=0\quad\Longleftrightarrow\quad v=0,\\
+        B(v,w)=B(w,v).
       \end{gathered}
     \]
-    Also write \((v,w)=B(v,w)\).
+    It is bilinear. Also write \((v,w)=B(v,w)\).
 
     \formulagroup{Coordinate and integral examples}{sec:linear-algebra-i:examples-of-inner-products}
     For real coordinate columns,

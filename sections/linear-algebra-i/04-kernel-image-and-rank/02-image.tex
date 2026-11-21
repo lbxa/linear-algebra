@@ -4,24 +4,36 @@
 
 % Sources: supplied lecture photos and September 24 slides 3 and 12.
 \begin{definition}
-  The image of \(L:V\to W\) is the set of its possible outputs:
+  The image of \(L:V\to W\) is the set of its possible outputs, given by
   \[
     \operatorname{im}L=L(V)=\{L(v):v\in V\}\subseteq W.
   \]
   It is a subspace of the codomain \(W\).
 \end{definition}
 
+% Closure verification authorized by the November 10, 2026 proof request.
+\begin{pendingreview}
+The image contains \(0_W=L(0_V)\). For any two of its elements,
+write \(w_1=L(v_1)\) and \(w_2=L(v_2)\). For scalars
+\(a,b\in\mathbb F\), linearity gives
+\[
+  aw_1+bw_2=aL(v_1)+bL(v_2)=L(av_1+bv_2)\in\operatorname{im}L.
+\]
+The image is therefore nonempty and closed under linear combinations,
+so it is a subspace of \(W\).
+\end{pendingreview}
+
 \autoref{fig:linear-algebra-i:kernel-image} shows the kernel and image
 inside \(V\) and \(W\). The map sends every vector of \(V\)
 to a vector in \(\operatorname{im}L\subseteq W\), and sends every vector
 of \(\ker L\subseteq V\) to \(0_W\). The codomain specifies the target
-space; the image consists of the outputs actually attained.
+space. The image consists of the outputs actually attained.
 
 \begin{figure}[htbp]
   \centering
   \input{figures/kernel-image-linear-map}
-  \caption[Kernel and image of a linear map.]{Domain, kernel, image, and codomain of \(L:V\to W\).
-    The solid line sends \(v\) to \(L(v)\); the dashed line sends
+  \caption[Kernel and image of a linear map]{Domain, kernel, image, and codomain of \(L:V\to W\).
+    The solid line sends \(v\) to \(L(v)\). The dashed line sends
     \(k\in\ker L\) to \(0_W\). Circles show set containment
     schematically, not bounded vector spaces. TikZ redrawing inspired by
     Wikipedia's \emph{Kernel (linear algebra)} page

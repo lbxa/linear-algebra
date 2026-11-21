@@ -9,23 +9,49 @@
 Let \(L:\mathbb F^m\to\mathbb F^n\) be linear, and let
 \(e_1,\ldots,e_m\) be the standard basis of \(\mathbb F^m\).
 Write \(A_j=L(e_j)\), and form the matrix \(A\) whose columns are
-\(A_1,\ldots,A_m\). For \(v=\sum_{j=1}^m v^je_j\), linearity gives
+\(A_1,\ldots,A_m\).
+% September 17 PDF p. 23, expanded at Lucas's request on November 11.
+\begin{pendingreview}
+For \(v=v^1e_1+\cdots+v^me_m\), linearity gives
 \[
-  L(v)=\sum_{j=1}^m v^jL(e_j)=\sum_{j=1}^m v^jA_j=Av.
+  \begin{aligned}
+    L(v)&=L(v^1e_1+\cdots+v^me_m)\\
+      &=v^1L(e_1)+\cdots+v^mL(e_m)\\
+      &=v^1A_1+\cdots+v^mA_m\\
+      &=\begin{bmatrix}A_1&\cdots&A_m\end{bmatrix}
+        \begin{bmatrix}v^1\\\vdots\\v^m\end{bmatrix}=Av.
+  \end{aligned}
 \]
+The last equality is precisely the column definition of matrix multiplication.
+Each input coordinate multiplies the image of its corresponding basis vector.
+\end{pendingreview}
 Thus a linear map is represented by the matrix of its values on the
 standard basis. Conversely, an \(n\)-by-\(m\) matrix \(A\) defines the
 linear map \(v\mapsto Av\).
 
-\begin{example}
-  If \(L:\mathbb F^2\to\mathbb F^3\) satisfies
+\begin{example}[A map determined by two basis-vector images]
+  \label{ex:linear-algebra-i:two-basis-images-matrix}
+  % Source: September 17 PDF p. 22.
+  \begin{pendingreview}
+  If the linear map \(L:\mathbb F^2\to\mathbb F^3\) satisfies
   \(L(e_1)=a=(a^1,a^2,a^3)^T\) and
   \(L(e_2)=b=(b^1,b^2,b^3)^T\), then
+  every input has the form \(v=v^1e_1+v^2e_2\), and
   \[
-    L(v)=v^1a+v^2b
-      =\begin{bmatrix}a^1&b^1\\a^2&b^2\\a^3&b^3\end{bmatrix}
-        \begin{bmatrix}v^1\\v^2\end{bmatrix}.
+    \begin{aligned}
+      L(v)&=L(v^1e_1+v^2e_2)\\
+        &=v^1L(e_1)+v^2L(e_2)\\
+        &=v^1\begin{bmatrix}a^1\\a^2\\a^3\end{bmatrix}
+          +v^2\begin{bmatrix}b^1\\b^2\\b^3\end{bmatrix}\\
+        &=\begin{bmatrix}a^1&b^1\\a^2&b^2\\a^3&b^3\end{bmatrix}
+          \begin{bmatrix}v^1\\v^2\end{bmatrix}.
+    \end{aligned}
   \]
+  There are two columns because the input has two basis vectors, and three
+  rows because each image has three coordinates. No further values of
+  \(L\) need to be specified. Its values on \(e_1,e_2\) already determine
+  its value on every linear combination of them.
+  \end{pendingreview}
 \end{example}
 
 The correspondence \(L\mapsto A\) is a bijective linear map
@@ -33,17 +59,129 @@ The correspondence \(L\mapsto A\) is a bijective linear map
   \mathcal L(\mathbb F^m,\mathbb F^n)
     \longrightarrow \mathrm M_{n\times m}(\mathbb F).
 \]
+\begin{pendingreview}
+It is one-to-one because equal matrices give equal basis-vector images and
+hence equal values at every input. Every matrix occurs, since multiplication
+by that matrix defines a linear map. Addition and scalar multiplication of
+maps act on each basis-vector image separately, so the correspondence also
+preserves these operations.
+\end{pendingreview}
 
 \subsection{Matrices in arbitrary bases}
 
+The standard-basis formula combines three ingredients already encountered.
+An input basis gives coefficients, the map determines the images of its
+basis vectors, and an output basis supplies coordinates for those images.
+The same construction works for abstract finite-dimensional vector spaces.
+
 Choose ordered bases \(E=[e_1,\ldots,e_m]\) of \(V\) and
 \(F=[f_1,\ldots,f_n]\) of \(W\), and let \(L:V\to W\) be linear.
-Express each image in the basis \(F\):
+The basis \(E\) assigns each vector in \(V\) a unique coordinate column
+in \(\mathbb F^m\), and \(F\) does the same for \(W\) in
+\(\mathbb F^n\). These coordinate descriptions allow the vectors
+themselves to be functions, polynomials, or other vector-space objects.
+No containment of \(V\) or \(W\) in a Euclidean space is assumed.
+
+% Sources: September 17 PDF pp. 26--29. Lucas requested this full
+% first-principles derivation on November 11, 2026.
+\begin{pendingreview}
+The row notation for a basis represents a linear combination. For scalar
+columns \(a\in\mathbb F^m\) and \(b\in\mathbb F^n\), it means
 \[
-  L(e_j)=\sum_{i=1}^n f_iM^i_j.
+  \begin{aligned}
+    Ea&=e_1a^1+\cdots+e_ma^m,\\
+    Fb&=f_1b^1+\cdots+f_nb^n.
+  \end{aligned}
 \]
-The matrix \(M=(M^i_j)\in\mathbb F^{n\times m}\) represents \(L\) in
-these bases. Its \(j\)-th column is the coordinate column of \(L(e_j)\).
+Thus \(Ea\) is a vector in \(V\), and \(Fb\) is a vector in \(W\).
+The basis vectors themselves may be functions or polynomials.
+
+Since \(F\) is a basis of \(W\), each image \(L(e_j)\) has a unique
+expansion in its vectors. Writing these expansions separately gives
+\[
+  \begin{aligned}
+    L(e_1)&=f_1M^1_1+\cdots+f_nM^n_1,\\
+      &\ \vdots\\
+    L(e_m)&=f_1M^1_m+\cdots+f_nM^n_m.
+  \end{aligned}
+\]
+Place the coefficients of \(L(e_j)\) in column \(j\) of a matrix,
+\[
+  M=\begin{bmatrix}
+    M^1_1&\cdots&M^1_m\\
+    \vdots&&\vdots\\
+    M^n_1&\cdots&M^n_m
+  \end{bmatrix}\in\mathbb F^{n\times m}.
+\]
+Column \(j\) belongs to input basis vector \(e_j\), and row \(i\)
+records its image's coefficient in output direction \(f_i\).
+The \(j\)-th column \(M_j\) therefore satisfies
+\[
+  \begin{aligned}
+    FM_j&=\begin{bmatrix}f_1&\cdots&f_n\end{bmatrix}
+      \begin{bmatrix}M^1_j\\\vdots\\M^n_j\end{bmatrix}\\
+      &=f_1M^1_j+\cdots+f_nM^n_j=L(e_j).
+  \end{aligned}
+\]
+This equality holds for every \(j\). By column-by-column multiplication,
+\(FM\) is consequently the row of vectors
+\(\begin{bmatrix}L(e_1)&\cdots&L(e_m)\end{bmatrix}\).
+We denote this row by \(L(E)\), meaning that \(L\) is applied to each
+basis vector separately. Thus
+\begin{equation}
+  L(E)=FM.
+  \label{eq:linear-algebra-i:basis-image-matrix}
+\end{equation}
+The matrix is unique because each basis-image expansion is unique.
+\end{pendingreview}
+
+The images \(L(e_j)\) may be zero or linearly dependent, so they need
+not form a basis of \(W\). The matrix records their coordinates in
+\(F\) in every case. Their span and dependencies are studied through
+image, rank, and kernel in
+\autoref{ch:linear-algebra-i:kernel-image-and-rank}.
+\autoref{ex:linear-algebra-i:full-rank-dependent-columns} shows how
+dependent images can still span the entire codomain.
+
+\begin{pendingreview}
+\autoref{eq:linear-algebra-i:basis-image-matrix} records what happens
+to the basis vectors. Linearity explains why the same matrix computes
+the image of every input. Let
+\[
+  v=Ea=e_1a^1+\cdots+e_ma^m.
+\]
+Applying \(L\) and substituting the basis-image expansions gives
+\[
+  \begin{aligned}
+    L(v)&=L(e_1a^1+\cdots+e_ma^m)\\
+      &=L(e_1)a^1+\cdots+L(e_m)a^m\\
+      &=(f_1M^1_1+\cdots+f_nM^n_1)a^1\\
+      &\quad+\cdots+(f_1M^1_m+\cdots+f_nM^n_m)a^m.
+  \end{aligned}
+\]
+Regrouping by the output basis vectors produces
+\[
+  \begin{aligned}
+    L(v)&=f_1(M^1_1a^1+\cdots+M^1_ma^m)\\
+      &\quad+\cdots+f_n(M^n_1a^1+\cdots+M^n_ma^m).
+  \end{aligned}
+\]
+The coefficient of \(f_i\) is the \(i\)-th entry of \(Ma\).
+Consequently,
+\[
+  L(v)=L(Ea)=L(E)a=(FM)a=F(Ma).
+\]
+The input-coordinate column is \(a\), the output-coordinate column is
+\(Ma\), and the output vector itself is \(F(Ma)\). These expressions
+distinguish the coordinates from the vectors they represent. The matrix
+\(M\) converts the \(E\)-coordinates of the input into the
+\(F\)-coordinates of its image. For a zero-dimensional space, the
+corresponding basis and coordinate column are empty, and the formulas
+use empty sums.
+\end{pendingreview}
+
+Both routes through \autoref{fig:linear-algebra-i:linear-map-coordinates}
+give the same output vector, since \(L(Ea)=F(Ma)\).
 \begin{marginfigure}
   \centering
   \input{figures/linear-map-coordinates}
@@ -52,19 +190,6 @@ these bases. Its \(j\)-th column is the coordinate column of \(L(e_j)\).
     arrows reconstruct vectors in the bases \(E\) and \(F\).}
   \label{fig:linear-algebra-i:linear-map-coordinates}
 \end{marginfigure}
-In compact notation,
-\[
-  L(E)=FM.
-\]
-If \(v=Ea\), then
-\[
-  L(v)=L(E)a=FMa.
-\]
-Thus \(M\) converts the \(E\)-coordinates of an input into the
-\(F\)-coordinates of its image.
-
-Both routes through \autoref{fig:linear-algebra-i:linear-map-coordinates}
-give the same output vector, since \(L(Ea)=F(Ma)\).
 
 In Einstein notation, repeated upper and lower indices are summed over their
 ranges. With this convention, the expressions above become
@@ -72,11 +197,16 @@ ranges. With this convention, the expressions above become
   L(e_j)=f_iM^i_j,\qquad v=e_ja^j,\qquad L(v)=f_iM^i_ja^j.
 \]
 The matrix depends on the map and on both ordered bases.
+The map \(L\) specifies what happens to a vector. Its matrix specifies
+how to compute the corresponding output coordinates from the chosen input
+coordinates. Changing either basis changes the coordinate descriptions
+used in this calculation. The identity \(L(E)=FM\) keeps these roles
+separate and makes their connection explicit.
 
 \subsection{Composition}
 
 Suppose \(L_1:V_0\to V_1\) and \(L_2:V_1\to V_2\) have matrices
-\(M_1\) and \(M_2\) in compatible ordered bases:
+\(M_1\) and \(M_2\) in compatible ordered bases, so that
 \[
   L_1(E_0)=E_1M_1,\qquad L_2(E_1)=E_2M_2.
 \]
@@ -92,6 +222,39 @@ Then
 The matrix of the composite is \(M_2M_1\), in that order.
 For \(v=E_0a\), this gives \((L_2\circ L_1)(v)=E_2M_2M_1a\).
 
+% Source: images/primitives/IMG_9447.jpeg, lower half.
+\begin{example}
+  Rotate the real plane through \(90^\circ\) counterclockwise and then
+  apply the shear \(S(x,y)=(x+y,y)\). In standard coordinates, the
+  rotation and shear have matrices
+  \[
+    R=\begin{bmatrix}0&-1\\1&0\end{bmatrix},
+    \qquad S=\begin{bmatrix}1&1\\0&1\end{bmatrix}.
+  \]
+  The rotation acts first, so the combined action is
+  \[
+    S(Rv)=(SR)v,
+    \qquad
+    SR=\begin{bmatrix}1&-1\\1&0\end{bmatrix}.
+  \]
+  Indeed, \((x,y)^T\) first becomes \((-y,x)^T\), which the shear
+  sends to \((x-y,x)^T\).
+  \autoref{fig:linear-algebra-i:rotation-shear-grid} follows the basis
+  arrows and the grid through these two stages. The columns of \(SR\)
+  record their final images, so the product contains the complete combined
+  transformation.
+\end{example}
+\begin{figure*}[htbp]
+  \centering
+  \input{figures/rotation-shear-grid}
+  \caption[Rotation followed by shear]{A real-plane grid under a
+    counterclockwise quarter-turn \(R\), followed by the shear \(S\).
+    The grid in the middle still consists of squares, but its basis
+    arrows have rotated. The final step vectors are the columns of
+    \(SR\). The rightmost factor acts first.}
+  \label{fig:linear-algebra-i:rotation-shear-grid}
+\end{figure*}
+
 \input{problems/hw03/03-shift-map-powers/problem}
 \input{problems/hw03/04-prescribed-nilpotence-index/problem}
 
@@ -106,8 +269,42 @@ For \(v=E_0a\), this gives \((L_2\circ L_1)(v)=E_2M_2M_1a\).
   \]
 \end{definition}
 
-If \(E\) is a basis of \(V\), then \(L(E)\) is a basis of \(W\).
-In particular, \(\dim V=\dim W\).
+% The supplied inverse-linearity exercise has no authored solution.
+% Lucas's November 10, 2026 theorem-proof request authorizes this
+% prerequisite argument for inverse matrices and determinant multiplicativity.
+\begin{pendingreview}
+\begin{proposition}[The inverse of a linear map]
+  \label{thm:linear-algebra-i:inverse-linearity}
+  The inverse of an invertible linear map \(L:V\to W\) is linear.
+  If \(E\) is a basis of \(V\), then \(L(E)\) is a basis of \(W\).
+  In particular, finite-dimensional \(V\) and \(W\) have equal dimension.
+\end{proposition}
+
+\begin{proof}
+  Let \(w_1,w_2\in W\) and \(a,b\in\mathbb F\). Put
+  \(v_1=L^{-1}(w_1)\) and \(v_2=L^{-1}(w_2)\). Linearity gives
+  \[
+    L(av_1+bv_2)=aL(v_1)+bL(v_2)=aw_1+bw_2.
+  \]
+  Applying \(L^{-1}\) yields
+  \[
+    L^{-1}(aw_1+bw_2)=aL^{-1}(w_1)+bL^{-1}(w_2),
+  \]
+  proving that the inverse is linear.
+
+  To prove the basis assertion, every \(w\in W\) is \(L(v)\) for
+  some \(v\in V\). Expanding \(v\) in \(E\) and applying \(L\)
+  expresses \(w\) as a finite linear combination of the vectors in
+  \(L(E)\). Thus \(L(E)\) spans \(W\).
+  If distinct \(e_1,\ldots,e_q\in E\) satisfy
+  \(\sum_{j=1}^q a_jL(e_j)=0\), then
+  \(L(\sum_{j=1}^q a_je_j)=0=L(0)\). Injectivity gives
+  \(\sum_{j=1}^q a_je_j=0\), and independence of \(E\) forces
+  every \(a_j=0\). The images are independent and form a basis.
+  Since injectivity also keeps distinct basis vectors distinct,
+  the two bases have the same size, giving the dimension assertion.
+\end{proof}
+\end{pendingreview}
 
 \input{problems/lec03/01-inverse-is-linear/problem}
 
@@ -115,8 +312,7 @@ Let \(E\) and \(F\) be bases of \(V\) and \(W\), and write
 \[
   L(E)=FM,\qquad L^{-1}(F)=EN.
 \]
-Using the linearity of the inverse map, as requested in
-\autoref{ex:lec03:inverse-is-linear}, gives
+Using \autoref{thm:linear-algebra-i:inverse-linearity} gives
 \[
   \begin{aligned}
     F&=L(L^{-1}(F))=L(EN)=L(E)N=FMN,\\
@@ -153,7 +349,7 @@ Following either route gives \(BM'a'=MAa'\), hence
   \centering
   \input{figures/change-both-bases}
   \caption[Changing both coordinate systems]{The top row uses the new
-    bases \(E',F'\); the bottom uses \(E,F\). The downward arrows convert
+    bases \(E',F'\). The bottom uses \(E,F\). The downward arrows convert
     new coordinates to old ones.}
   \label{fig:linear-algebra-i:change-both-bases}
 \end{marginfigure}

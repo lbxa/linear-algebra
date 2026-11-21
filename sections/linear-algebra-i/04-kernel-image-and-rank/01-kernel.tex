@@ -17,6 +17,17 @@
   mapped to the zero vector.
 \end{definition}
 
+% Closure verification authorized by the November 10, 2026 proof request.
+\begin{pendingreview}
+To verify the subspace assertion, linearity gives \(L(0_V)=0_W\),
+so the kernel is nonempty. If \(v_1,v_2\in\ker L\) and
+\(a,b\in\mathbb F\), then
+\[
+  L(av_1+bv_2)=aL(v_1)+bL(v_2)=0_W.
+\]
+Thus \(av_1+bv_2\in\ker L\), proving closure under linear combinations.
+\end{pendingreview}
+
 \autoref{fig:linear-algebra-i:kernel-to-zero} emphasizes the defining
 property of the kernel. Every input in this subspace has the same output,
 the zero vector \(0_W\).
@@ -24,7 +35,7 @@ the zero vector \(0_W\).
 \begin{figure}[htbp]
   \centering
   \input{figures/kernel-to-zero}
-  \caption[Kernel of a linear map.]{The kernel of \(L:V\to W\), shown schematically.
+  \caption[Kernel of a linear map]{The kernel of \(L:V\to W\), shown schematically.
     All vectors in the shaded region map to \(0_W\).
     The circle indicates a set, not a bounded vector space.
     TikZ redrawing inspired by
@@ -46,8 +57,8 @@ The \emph{nullity} of \(L\) is the dimension of its null space,
   \operatorname{nullity}L=\dim\ker L.
 \]
 When the kernel is finite-dimensional, its nullity is the number of vectors
-in any basis of \(\ker L\). The null space is a subspace of inputs;
-nullity counts its independent directions.
+in any basis of \(\ker L\). The null space is a subspace of inputs.
+Nullity counts its independent directions.
 
 % The author requested explicit rank/nullity bounds on October 1, 2026.
 In finite dimensions, nullity is therefore a nonnegative integer.
@@ -110,7 +121,7 @@ Indeed, adding \(k\in\ker L\) preserves the output, and any other solution
 differs from \(v_0\) by a kernel vector. For a matrix equation \(Ax=b\),
 this says that every solution is a particular solution plus a solution
 of \(Ax=0\) \cite{MargalitRabinoffSolutionSets}. The image determines
-whether a solution exists; the kernel determines whether an existing
+whether a solution exists. The kernel determines whether an existing
 solution is unique.
 
 \subsection{Injectivity}

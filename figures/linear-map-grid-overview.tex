@@ -1,0 +1,32 @@
+% Exact reconstruction of the imagegen layout for Lucas's grid sketches.
+% The right grid is the image of the left under S(x,y)=(x+y,y).
+\begin{tikzpicture}[
+  x=7mm,y=7mm,font=\footnotesize,line width=0.45pt,
+  vector/.style={-{Latex[length=1.6mm,width=1.1mm]}},
+  grid line/.style={black!30,line width=0.3pt}
+]
+  \begin{scope}
+    \foreach \k in {-2,-1,0,1,2} {
+      \draw[grid line] (-2.25,\k) -- (2.25,\k);
+      \draw[grid line] (\k,-2.25) -- (\k,2.25);
+    }
+    \draw[vector] (0,0) -- (1,0) node[below right=2pt] {\(e_1\)};
+    \draw[vector] (0,0) -- (0,1) node[above left=2pt] {\(e_2\)};
+    \fill (0,0) circle[radius=1.3pt];
+    \node[below left=2pt] at (0,0) {\(0\)};
+  \end{scope}
+  \draw[vector] (2.8,0.2) -- (4.2,0.2) node[midway,above=3pt] {\(S\)};
+  \begin{scope}[xshift=53mm]
+    \begin{scope}
+      \clip (-2.25,-2.25) rectangle (2.25,2.25);
+      \foreach \k in {-4,-3,-2,-1,0,1,2,3,4} {
+        \draw[grid line] (-3,\k) -- (3,\k);
+        \draw[grid line] ({\k-3},-3) -- ({\k+3},3);
+      }
+    \end{scope}
+    \draw[vector] (0,0) -- (1,0) node[below right=2pt] {\(S(e_1)\)};
+    \draw[vector] (0,0) -- (1,1) node[above left=2pt] {\(S(e_2)\)};
+    \fill (0,0) circle[radius=1.3pt];
+    \node[below left=2pt] at (0,0) {\(0\)};
+  \end{scope}
+\end{tikzpicture}

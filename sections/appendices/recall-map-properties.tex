@@ -2,7 +2,7 @@
 % Author requested this recall, diagrams, and Euclidean examples on September 30, 2026.
 % Editorial clarification: assigning each input an output defines a function;
 % injectivity additionally requires that distinct inputs have distinct outputs.
-\section{Recall: injective, surjective, and bijective maps}
+\section{Injective, surjective, and bijective maps}
 \label{sec:appendix:map-properties}
 
 Let \(f:A\to B\) be a function, also called a map. The set \(A\) is its
@@ -10,18 +10,6 @@ Let \(f:A\to B\) be a function, also called a map. The set \(A\) is its
 has exactly one output in \(B\). This requirement alone does not say
 whether every element of \(B\) is reached or whether two different
 inputs can have the same output.
-
-\subsection{Surjectivity}
-
-The map \(f\) is \emph{surjective}, or \emph{onto}, if every element
-of the codomain is the output of at least one input. Equivalently,
-\[
-  \text{for every }b\in B,\text{ there exists }a\in A
-  \text{ such that }f(a)=b.
-\]
-Different inputs may have the same output. In the middle panel of
-\autoref{fig:recall:map-properties}, every codomain element receives
-an arrow, and two inputs share an output.
 
 \subsection{Injectivity}
 
@@ -37,6 +25,18 @@ Each codomain element has at most one input mapping to it. Some
 codomain elements may have no such input, as the top panel of
 \autoref{fig:recall:map-properties} shows.
 
+\subsection{Surjectivity}
+
+The map \(f\) is \emph{surjective}, or \emph{onto}, if every element
+of the codomain is the output of at least one input. Equivalently,
+\[
+  \text{for every }b\in B,\text{ there exists }a\in A
+  \text{ such that }f(a)=b.
+\]
+Different inputs may have the same output. In the middle panel of
+\autoref{fig:recall:map-properties}, every codomain element receives
+an arrow, and two inputs share an output.
+
 \subsection{Bijectivity}
 
 The map \(f\) is \emph{bijective} if it is both injective and surjective.
@@ -49,11 +49,12 @@ conditions, so it is stronger than either condition alone.
 \begin{figure}[htbp]
   \centering
   \input{figures/map-properties}
-  \caption[Injective, surjective, and bijective maps.]{Three maps between finite sets. Each dot is an element.
-    Top: an injective map leaves an output unused.
-    Middle: a surjective map reaches every output, but two inputs share
-    an output. Bottom: a bijective map reaches every output exactly once.
-    These finite-set diagrams illustrate the definitions; the ellipses
+  \caption[Injective, surjective, and bijective maps]{Three maps between finite sets. Each dot is an element.
+    The top map is injective and leaves an output unused.
+    The middle map is surjective and reaches every output, but two inputs
+    share an output. The bottom map is bijective and reaches every output
+    exactly once.
+    These finite-set diagrams illustrate the definitions. The ellipses
     are not pictures of vector subspaces.}
   \label{fig:recall:map-properties}
 \end{figure}
@@ -63,7 +64,7 @@ conditions, so it is stronger than either condition alone.
 The same definitions apply to maps between spaces such as \(\R^2\)
 and \(\R^3\). The domain and codomain are part of each example.
 
-\paragraph{Injective: including a plane in three-dimensional space.}
+\paragraph{An injective plane inclusion.}
 Consider
 \[
   Z:\R^2\to\R^3,\qquad Z(x,y)=(x,y,0).
@@ -77,14 +78,14 @@ plane.
 \begin{figure}[htbp]
   \centering
   \input{figures/map-plane-inclusion}
-  \caption[Plane inclusion into three-dimensional space.]{Schematic inclusion \(Z:\R^2\to\R^3\). The shaded region
+  \caption[Plane inclusion into three-dimensional space]{Schematic inclusion \(Z:\R^2\to\R^3\). The shaded region
     depicts part of the \(xy\)-plane, which continues beyond the drawing.
     The marked input maps to a point in this plane. Distinct input
     coordinates remain distinct after inclusion.}
   \label{fig:recall:plane-inclusion}
 \end{figure}
 
-\paragraph{Surjective: forgetting one coordinate.}
+\paragraph{A surjective coordinate projection.}
 Consider
 \[
   U:\R^3\to\R^2,\qquad U(x,y,z)=(y,z).
@@ -97,14 +98,14 @@ shows inputs differing in the \(x\)-direction sharing an output.
 \begin{figure}[htbp]
   \centering
   \input{figures/map-coordinate-projection}
-  \caption[Projection onto two coordinates.]{Schematic projection \(U:\R^3\to\R^2\). The marked inputs
+  \caption[Projection onto two coordinates]{Schematic projection \(U:\R^3\to\R^2\). The marked inputs
     lie on a line parallel to the \(x\)-axis and have the same \(y,z\)
     coordinates. They map to the same pair. Every pair in the codomain
     is attained.}
   \label{fig:recall:coordinate-projection}
 \end{figure}
 
-\paragraph{Bijective: swapping two coordinates.}
+\paragraph{A bijective coordinate swap.}
 Consider
 \[
   B:\R^2\to\R^2,\qquad B(x,y)=(y,x).
@@ -117,7 +118,7 @@ reflection across the line \(x=y\).
 \begin{figure}[htbp]
   \centering
   \input{figures/map-coordinate-swap}
-  \caption[Swapping two coordinates.]{Schematic coordinate swap in \(\R^2\). The dashed diagonal
+  \caption[Swapping two coordinates]{Schematic coordinate swap in \(\R^2\). The dashed diagonal
     in each coordinate system is \(x=y\). The marked point and its
     image have exchanged coordinates. Each output has exactly one input.}
   \label{fig:recall:coordinate-swap}

@@ -1,0 +1,41 @@
+% !TEX root = ../../main.tex
+\section{Set theory}
+\label{sec:appendix:set-theory}
+
+\subsection{Proving equality of sets}
+\label{sec:linear-algebra-i:set-equality-proofs}
+
+% Source: Lucas's supplied IMG_9457.heic, set-equality template and tree.
+% The cropped preceding independence argument is not part of this import.
+% Moved from Chapter 1 to Assumed knowledge at his request, November 11, 2026.
+\begin{pendingreview}
+To prove that sets \(S\) and \(T\) are equal, we show that they have
+exactly the same elements. This requires both inclusions,
+\[
+  S=T\quad\Longleftrightarrow\quad
+  S\subseteq T\ \text{and}\ T\subseteq S.
+\]
+
+\textbf{First inclusion, \(S\subseteq T\).}
+Let \(x\in S\) be arbitrary. Use the description of \(S\) to show
+that \(x\) also belongs to \(T\). Since \(x\) was arbitrary, this
+proves that every element of \(S\) belongs to \(T\).
+
+\textbf{Reverse inclusion, \(T\subseteq S\).}
+Now let \(x\in T\) be arbitrary, and show that \(x\in S\).
+This proves that every element of \(T\) belongs to \(S\). With both
+inclusions established, conclude that \(S=T\).
+
+Both branches in \autoref{fig:linear-algebra-i:set-equality-proof-tree}
+must be completed. Each starts with membership in one set and establishes
+membership in the other.
+\end{pendingreview}
+
+\begin{figure}[htbp]
+  \centering
+  \input{figures/set-equality-proof-tree}
+  \caption[Proving equality by two inclusions]{A proof tree for set
+    equality. Both inclusions are required, and each is proved by
+    considering an arbitrary element of the set on the left.}
+  \label{fig:linear-algebra-i:set-equality-proof-tree}
+\end{figure}

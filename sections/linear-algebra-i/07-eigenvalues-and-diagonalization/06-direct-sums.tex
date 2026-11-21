@@ -6,6 +6,11 @@
 % The October 15 PDF does not contain this material.
 \subsection{Transversal subspaces}
 
+To assemble an eigenbasis, we must combine vectors from several
+eigenspaces without introducing a dependence. Direct sums express the
+corresponding idea for subspaces, requiring every vector to have a unique
+decomposition into components from the summands.
+
 Suppose \(S,T\) are subspaces of \(V\) and \(S\cap T=\{0\}\).
 If \(s\in S\), \(t\in T\), and \(s-t=0\), then
 \(s=t\in S\cap T\), so both vectors are zero.
@@ -41,7 +46,7 @@ through zero in a plane are not transversal, as illustrated in
   \label{fig:linear-algebra-i:three-lines-not-transversal}
 \end{marginfigure}
 
-\begin{proposition}
+\begin{proposition}[Uniqueness of components]
   \label{thm:linear-algebra-i:transversal-unique-components}
   Let \(S_1,\ldots,S_k\) be transversal, with \(s_j\in S_j\).
   If \(s_1+\cdots+s_k=0\), then every \(s_j=0\).
@@ -71,6 +76,12 @@ through zero in a plane are not transversal, as illustrated in
   \]
 \end{definition}
 
+The spanning condition guarantees that each vector has a decomposition,
+and transversality guarantees that its components are unique. These are
+the existence and uniqueness roles played by spanning and independence
+for basis coordinates in
+\autoref{sec:linear-algebra-i:linear-combinations-and-bases}.
+
 \subsection{Combining bases}
 
 For two complementary lines in \(\R^2\), each vector has one component
@@ -84,7 +95,7 @@ on each line, as in \autoref{fig:linear-algebra-i:direct-sum-components}.
   \label{fig:linear-algebra-i:direct-sum-components}
 \end{marginfigure}
 
-\begin{proposition}
+\begin{proposition}[Bases of a direct sum]
   \label{thm:linear-algebra-i:direct-sum-bases}
   If \(V=S_1\oplus\cdots\oplus S_k\), concatenating a basis of each
   \(S_j\) gives a basis of \(V\). In particular,
@@ -173,15 +184,49 @@ on each line, as in \autoref{fig:linear-algebra-i:direct-sum-components}.
 
 The converse also holds. An endomorphism is diagonalizable exactly when
 its eigenspaces span \(V\).
-% October 22 p. 3 asserts the converse without writing a separate proof.
+% October 22 p.3 supplies the converse statement. Lucas authorized this
+% explicit argument on November 10, 2026.
+\begin{pendingreview}
+\begin{proof}[Proof of the converse]
+  Suppose \(L\) is diagonalizable, and choose an eigenbasis
+  \((e_1,\ldots,e_n)\) of \(V\). Each \(e_j\) belongs to the
+  eigenspace of its eigenvalue. Every vector in \(V\) is a linear
+  combination of these basis vectors, so every vector belongs to the sum
+  of those eigenspaces. The eigenspaces therefore span \(V\).
+\end{proof}
+\end{pendingreview}
 
-\begin{corollary}
+\begin{corollary}[Distinct eigenvalues and diagonalization]
   \label{thm:linear-algebra-i:distinct-eigenvalues-diagonalizable}
   If \(\dim V=n\) and \(L:V\to V\) has \(n\) distinct eigenvalues
   in \(\mathbb F\), then \(L\) is diagonalizable over \(\mathbb F\).
   In particular, a two-by-two matrix with two distinct eigenvalues in
   \(\mathbb F\) is diagonalizable over \(\mathbb F\).
 \end{corollary}
+
+% Proof authorized by Lucas on November 10, 2026.
+\begin{pendingreview}
+\begin{proof}
+  If \(n=0\), the empty basis is already an eigenbasis. Suppose
+  \(n\ge1\), and let \(\lambda_1,\ldots,\lambda_n\) be the distinct
+  eigenvalues. Choose \(v_j\ne0\) in each \(E_{\lambda_j}(L)\).
+  If
+  \[
+    a_1v_1+\cdots+a_nv_n=0,
+  \]
+  then \(a_jv_j\in E_{\lambda_j}(L)\) for every \(j\).
+  By \autoref{thm:linear-algebra-i:distinct-eigenspaces-transversal}
+  and \autoref{thm:linear-algebra-i:transversal-unique-components},
+  every \(a_jv_j=0\). Since \(v_j\ne0\), every \(a_j=0\).
+  Thus \((v_1,\ldots,v_n)\) is independent.
+
+  By \autoref{thm:linear-algebra-i:basis-extension}, this list extends
+  to a basis of \(V\). A basis of the \(n\)-dimensional space has
+  \(n\) vectors, so no additional vectors are needed. The chosen list
+  is an eigenbasis, and \(L\) is diagonalizable over \(\mathbb F\).
+  Taking \(n=2\) gives the two-by-two conclusion.
+\end{proof}
+\end{pendingreview}
 
 The criterion does not require computing the dimensions of the individual
 eigenspaces. When the eigenspaces do not span the whole space, there is
@@ -190,7 +235,7 @@ no eigenbasis. The nonzero nilpotent matrix in
 
 \subsection{Approximation by diagonalizable matrices}
 
-\begin{proposition}
+\begin{proposition}[Density of diagonalizable complex matrices]
   \label{thm:linear-algebra-i:density-of-diagonalizable-complex-matrices}
   The matrices diagonalizable over \(\C\) are dense in
   \(\mathrm M_{n\times n}(\C)\).
@@ -201,4 +246,82 @@ arbitrarily closely, entry by entry, by matrices diagonalizable over
 \(\C\).
 % October 22 p. 3 describes density in every matrix neighbourhood.
 % On October 28 Lucas clarified that this is a statement over C.
-% No proof is supplied; do not identify density with a full-measure claim.
+% The source supplies no proof. Lucas authorized the following proof on
+% November 10, 2026. Density is not identified with a full-measure claim.
+\begin{pendingreview}
+\begin{proof}
+  The case \(n=0\) has only the empty matrix, which is already diagonal.
+  Suppose \(n\ge1\). We first show by induction that every complex
+  \(n\)-by-\(n\) matrix is similar to an upper triangular matrix.
+  The claim holds for \(n=1\). For \(n>1\), the characteristic
+  polynomial has a root by
+  \autoref{thm:linear-algebra-i:fundamental-theorem-of-algebra}, so
+  \(M\) has an eigenvalue \(\lambda\) and a nonzero eigenvector
+  \(v_1\). Extend \(v_1\) to a basis by
+  \autoref{thm:linear-algebra-i:basis-extension}, and let \(P\) be
+  its basis matrix. The first column of \(P^{-1}MP\) is
+  \((\lambda,0,\ldots,0)^T\), giving
+  \[
+    P^{-1}MP=\begin{bmatrix}\lambda&b\\0&C\end{bmatrix}.
+  \]
+  The induction hypothesis gives an invertible \(Q\) such that
+  \(Q^{-1}CQ=U\) is upper triangular. Set
+  \[
+    H=P\begin{bmatrix}1&0\\0&Q\end{bmatrix}.
+  \]
+  Both factors are invertible, and block multiplication gives
+  \[
+    T=H^{-1}MH=\begin{bmatrix}\lambda&bQ\\0&U\end{bmatrix}.
+  \]
+  This matrix is upper triangular, completing the induction.
+
+  Fix \(M=HTH^{-1}\) in this form, and let \(\varepsilon>0\)
+  be an arbitrary prescribed error in each entry. The number
+  \[
+    K=\max_{1\le i,j\le n}
+      \sum_{k=1}^n |H^i_k|\,|(H^{-1})^k_j|
+  \]
+  is finite and nonnegative. Put \(\delta=\varepsilon/(K+1)>0\).
+  Write the diagonal entries of \(T\) as \(\mu_1,\ldots,\mu_n\).
+  Choose real numbers \(\eta_1,\ldots,\eta_n\), each with
+  \(0<\eta_j<\delta\), so that the numbers \(\mu_j+\eta_j\)
+  are all distinct. This can be done successively. At step \(j\),
+  equality with one of the previous \(j-1\) values forbids at most
+  \(j-1\) choices for \(\eta_j\). The \(n\) candidates
+  \[
+    \frac{\delta}{n+1},\frac{2\delta}{n+1},\ldots,
+      \frac{n\delta}{n+1}
+  \]
+  all lie in \((0,\delta)\), so at least one candidate is permitted.
+
+  Define
+  \[
+    \Delta=\operatorname{diag}(\eta_1,\ldots,\eta_n),
+    \qquad T_\delta=T+\Delta.
+  \]
+  This is upper triangular with distinct diagonal entries. In the
+  permutation expansion of \(\det(T_\delta-xI)\), a nonzero term
+  requires \(\sigma(j)\le j\) for every column \(j\). This forces
+  \(\sigma(1)=1\), then \(\sigma(2)=2\), and successively
+  \(\sigma(j)=j\) for all \(j\). Thus only the identity permutation
+  contributes, and the characteristic polynomial is
+  \(\prod_{j=1}^n(\mu_j+\eta_j-x)\). Thus \(T_\delta\) has
+  \(n\) distinct eigenvalues. By
+  \autoref{thm:linear-algebra-i:distinct-eigenvalues-diagonalizable},
+  \(T_\delta\) is diagonalizable. Therefore \(N=HT_\delta H^{-1}\) is also
+  diagonalizable. Indeed, if \(T_\delta=SDS^{-1}\), then
+  \(N=(HS)D(HS)^{-1}\).
+
+  Finally, \(N-M=H\Delta H^{-1}\). For every pair of indices,
+  \[
+    \begin{aligned}
+      |(N-M)^i_j|
+        &=\left|\sum_{k=1}^n H^i_k\eta_k(H^{-1})^k_j\right|\\
+        &\le\sum_{k=1}^n |H^i_k|\,|\eta_k|\,|(H^{-1})^k_j|\\
+        &\le\delta K<\varepsilon.
+    \end{aligned}
+  \]
+  Thus a diagonalizable complex matrix lies within every prescribed
+  entrywise error of \(M\). This proves density.
+\end{proof}
+\end{pendingreview}

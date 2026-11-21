@@ -2,6 +2,11 @@
 \section{Matrix multiplication}
 \label{sec:linear-algebra-i:matrix-multiplication}
 
+In \autoref{sec:linear-algebra-i:linear-combinations-and-bases}, a basis
+described a vector by its coefficients. A matrix uses such coefficients
+to form a new linear combination of its columns. This interpretation will
+explain both matrix multiplication and the representation of linear maps.
+
 A matrix with \(r\) rows and \(c\) columns has size \(r\times c\). Write
 \(\mathrm M_{r\times c}(\mathbb F)\) for the space of \(r\)-by-\(c\)
 matrices with entries in \(\mathbb F\). More generally,
@@ -27,6 +32,41 @@ define its product with \(A\) column by column,
 Thus the number of columns of \(A\) must equal the number of rows of
 \(B\). We write \(I_{r\times r}\) for the identity matrix and \(0\)
 for a zero matrix of the required size.
+
+\subsection{Reading a transformation from its columns}
+
+% Source: images/primitives/IMG_9446--9447.jpeg.
+Consider the shear from
+\autoref{sec:linear-algebra-i:bases-to-transformations}. In standard
+coordinates its matrix and its action are
+\[
+  S=\begin{bmatrix}1&1\\0&1\end{bmatrix},
+  \qquad
+  S\begin{bmatrix}x\\y\end{bmatrix}
+    =x\begin{bmatrix}1\\0\end{bmatrix}
+      +y\begin{bmatrix}1\\1\end{bmatrix}
+    =\begin{bmatrix}x+y\\y\end{bmatrix}.
+\]
+The first column is the image of \(e_1=(1,0)^T\), and the second is
+the image of \(e_2=(0,1)^T\). In particular, \(S(e_1)=e_1\), so
+the first basis vector is fixed. For a general input, the first output
+coordinate is \(x+y\), while the second is \(y\).
+Multiplication by \((x,y)^T\) takes
+\(x\) copies of the first image and \(y\) copies of the second.
+This is precisely the rule
+\[
+  S(xe_1+ye_2)=xS(e_1)+yS(e_2).
+\]
+Thus the matrix records the action on the basis, and the product recovers
+the action on every vector. The grid in
+\autoref{fig:linear-algebra-i:shear-grid-overview} visualizes this same
+calculation at many input points at once.
+
+The identity matrix provides the corresponding unchanged grid. Its columns
+are \(e_1,e_2\), so \(I_2(x,y)^T=(x,y)^T\). The distinction between
+applying a matrix to move a vector and using a matrix to change the
+coordinates of a fixed vector is developed in
+\autoref{sec:linear-algebra-i:change-of-basis-for-vectors}.
 
 \subsection{Exercises on matrix multiplication}
 

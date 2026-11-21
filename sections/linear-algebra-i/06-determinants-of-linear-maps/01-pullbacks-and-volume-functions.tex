@@ -34,7 +34,10 @@ of an input from the direction in which a function is pulled back.
 For a vector space \(V\), its linear dual \(V^*\) consists of the linear
 functions \(V\to\mathbb F\). More generally, write \(\Lambda^k V^*\) for
 the vector space of antisymmetric \(k\)-linear functions on \(V\).
-Here \(k\) is the number of inputs; it need not equal \(\dim V\).
+Here \(k\) is the number of inputs. It need not equal \(\dim V\).
+The linear functionals of
+\autoref{sec:linear-algebra-i:linear-functions-and-maps} are the
+one-input case.
 
 \begin{definition}
   Let \(L:V\to W\) be linear and let \(A\in\Lambda^k W^*\).
@@ -56,10 +59,10 @@ is linear in \(A\).
 \subsection{The space of top-degree forms}
 
 Suppose \(\dim V=n\). The functions in \(\Lambda^n V^*\) are the
-top-degree forms on \(V\); over \(\R\), a nonzero such function gives
+top-degree forms on \(V\). Over \(\R\), a nonzero such function gives
 an oriented volume function.
 
-\begin{proposition}
+\begin{proposition}[The space of top-degree forms]
   \label{thm:linear-algebra-i:top-degree-forms}
   The space \(\Lambda^n V^*\) has dimension one. If
   \(A\in\Lambda^n V^*\setminus\{0\}\), then every
@@ -71,11 +74,13 @@ an oriented volume function.
 \end{proposition}
 
 \begin{proof}
+  The normalized-volume construction supplies a nonzero top-degree form.
   The coordinate expansion in
   \autoref{eq:linear-algebra-i:antisymmetric-basis-expansion}
   determines each top-degree form by its value on the ordered basis.
   Since \(A\ne0\), its basis value cannot be zero. The displayed choice
   of \(b\) makes \(B\) and \(bA\) agree on that basis, so the same
   expansion gives \(B=bA\). Thus the single nonzero vector \(A\)
-  is a basis of \(\Lambda^n V^*\).
+  spans \(\Lambda^n V^*\). Since it is nonzero, it is also independent,
+  so \(\{A\}\) is a basis and the dimension is one.
 \end{proof}

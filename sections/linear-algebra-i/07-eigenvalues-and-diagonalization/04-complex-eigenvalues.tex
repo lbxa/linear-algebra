@@ -5,6 +5,10 @@
 % Sources: IMG_9326--IMG_9327; October 15 PDF, pp. 17--21.
 \subsection{Complex arithmetic}
 
+The quarter-turn has no eigenvalue over \(\R\), but its characteristic
+polynomial has roots over \(\C\). We recall the arithmetic needed to
+solve its kernel equations with complex coordinates.
+
 A complex number has the form \(z=x+iy\), with \(x,y\in\R\) and
 \(i^2=-1\). Its real and imaginary parts are \(x\) and \(y\), respectively.
 \begin{marginfigure}
@@ -58,6 +62,7 @@ In each case, the eigenvectors are obtained by taking \(t\ne0\).
 \subsection{Roots and multiplicities}
 
 \begin{theorem}[Fundamental theorem of algebra]
+  \label{thm:linear-algebra-i:fundamental-theorem-of-algebra}
   Every complex polynomial of degree \(n\ge1\),
   \[
     p(z)=a_nz^n+\cdots+a_0,\qquad a_n\ne0,
@@ -68,7 +73,92 @@ In each case, the eigenvectors are obtained by taking \(t\ne0\).
   \]
   where \(\lambda_1,\ldots,\lambda_n\in\C\), with repetitions allowed.
 \end{theorem}
-% PDF p.19 states this theorem without a proof.
+% PDF p.19 supplies the statement. Lucas authorized the following proof
+% with the request for proofs of all theorems on November 10, 2026.
+\begin{pendingreview}
+The proof uses elementary real-analysis facts. Polynomials and their moduli
+are continuous, and a continuous real-valued function on a closed bounded
+disc in \(\R^2\) attains its minimum. We also use the polar description
+of a nonzero complex number and the trigonometric angle-addition formulas.
+
+\begin{proof}
+  We first prove that every nonconstant complex polynomial has a root.
+  Write \(C=\sum_{j=0}^{n-1}|a_j|\). For \(|z|\ge1\), the triangle
+  inequality gives
+  \[
+    |p(z)|\ge |a_n||z|^n-C|z|^{n-1}.
+  \]
+  If also \(|z|\ge 2C/|a_n|\), then
+  \[
+    |p(z)|\ge \tfrac12|a_n||z|^n.
+  \]
+  Consequently, \(|p(z)|\) tends to infinity as \(|z|\) tends to
+  infinity. Choose \(R\) large enough that
+  \(|p(z)|>|p(0)|\) whenever \(|z|>R\). On the closed disc
+  \(|z|\le R\), continuity gives a point \(z_0\) where \(|p|\)
+  attains its minimum. This minimum is at most \(|p(0)|\), so no point
+  outside the disc has a smaller value. Thus \(z_0\) is a global
+  minimum of \(|p|\).
+
+  Suppose \(c=p(z_0)\ne0\). Expanding the polynomial around \(z_0\)
+  and dividing by \(c\), write
+  \[
+    \frac{p(z_0+w)}{c}
+      =1+d_kw^k+d_{k+1}w^{k+1}+\cdots+d_nw^n,
+  \]
+  where \(k\ge1\) is the first index with \(d_k\ne0\).
+  Such an index exists because \(p\) is not constant. Set
+  \(\alpha=|d_k|>0\), and write
+  \(d_k=\alpha(\cos\theta+i\sin\theta)\). The unit complex number
+  \[
+    u=\cos\frac{\pi-\theta}{k}
+        +i\sin\frac{\pi-\theta}{k}
+  \]
+  satisfies \(d_ku^k=-\alpha\). Indeed, repeated multiplication and
+  the angle-addition formulas give
+  \(u^k=\cos(\pi-\theta)+i\sin(\pi-\theta)\).
+
+  Put \(K=\sum_{j=k+1}^n|d_j|\), taking \(K=0\) if the sum is
+  empty. For \(0<t\le1\), the remaining terms satisfy
+  \[
+    \left|\sum_{j=k+1}^n d_j(tu)^j\right|
+      \le Kt^{k+1}.
+  \]
+  Choose \(t>0\) so small that \(t\le1\),
+  \(\alpha t^k<1\), and \(Kt\le\alpha/2\).
+  These conditions can be met because \(\alpha>0\) and \(K\) is a
+  fixed nonnegative number. The first nonconstant term is now a negative
+  real number, and the remainder is too small to cancel its decrease.
+  More precisely,
+  \[
+    \begin{aligned}
+      \left|\frac{p(z_0+tu)}{c}\right|
+        &\le |1-\alpha t^k|+Kt^{k+1}\\
+        &=1-\alpha t^k+Kt^{k+1}\\
+        &\le1-\tfrac12\alpha t^k<1.
+    \end{aligned}
+  \]
+  Hence \(|p(z_0+tu)|<|c|=|p(z_0)|\), contradicting the global
+  minimality of \(z_0\). Therefore \(p(z_0)=0\), proving that a root
+  exists.
+
+  Let \(\lambda_1\) be a root. The identity
+  \[
+    z^j-\lambda_1^j
+      =(z-\lambda_1)
+        (z^{j-1}+z^{j-2}\lambda_1+\cdots+\lambda_1^{j-1})
+  \]
+  shows that \(p(z)=p(z)-p(\lambda_1)\) is divisible by
+  \(z-\lambda_1\). The quotient has degree \(n-1\) and leading
+  coefficient \(a_n\). If it is nonconstant, apply the root argument
+  to the quotient and factor again. Repeating reduces the degree by one
+  at each step and leaves the constant \(a_n\). This gives
+  \[
+    p(z)=a_n(z-\lambda_1)\cdots(z-\lambda_n).
+  \]
+  The same root may occur at more than one step, so repetitions are allowed.
+\end{proof}
+\end{pendingreview}
 
 The characteristic polynomial of an \(n\)-by-\(n\) complex matrix
 therefore has \(n\) roots counted with multiplicity. The multiplicity
@@ -105,6 +195,10 @@ The \(n\) eigenvalues need not be distinct. Since the convention here is
 
 The different actions of \(I\) and \(J\) over \(\R\) are pictured in
 \autoref{fig:linear-algebra-i:identity-and-shear-eigenspaces}.
+The matrix \(J\) is the shear studied in
+\autoref{sec:linear-algebra-i:matrix-multiplication}. Its columns describe
+the whole grid transformation, while its eigenspace identifies the
+vectors that the shear fixes.
 \begin{figure}[htbp]
   \centering
   \input{figures/identity-and-shear-eigenspaces}
@@ -112,17 +206,57 @@ The different actions of \(I\) and \(J\) over \(\R\) are pictured in
     fixes every vector. The shear \(J\) fixes only the horizontal axis,
     although both characteristic polynomials are \((1-x)^2\).
     The dashed unit square on the right shows the shape before applying
-    \(J\); the shaded parallelogram is its image.}
+    \(J\). The shaded parallelogram is its image.}
   \label{fig:linear-algebra-i:identity-and-shear-eigenspaces}
 \end{figure}
 
-\begin{proposition}
+\begin{proposition}[Eigenspace dimension and root multiplicity]
+  \label{thm:linear-algebra-i:eigenspace-multiplicity}
   If \(\lambda\) is an eigenvalue of a complex matrix and has
   multiplicity \(m_\lambda\) in its characteristic polynomial, then
   \[
     1\le\dim E_\lambda\le m_\lambda.
   \]
 \end{proposition}
-% PDF p.21 states the upper bound without supplying a proof.
+% PDF p.21 supplies the statement. The proof was authorized by Lucas
+% on November 10, 2026, as part of the theorem-proof completion.
+\begin{pendingreview}
+\begin{proof}
+  Let \(M\) be the given \(n\)-by-\(n\) matrix, and write
+  \(r=\dim E_\lambda(M)\). Since \(\lambda\) is an eigenvalue,
+  its eigenspace contains a nonzero vector, so \(r\ge1\).
+  Choose a basis \((v_1,\ldots,v_r)\) of this eigenspace and extend it
+  to a basis of \(\C^n\), using
+  \autoref{thm:linear-algebra-i:basis-extension}.
+  The matrix in this new basis has the same characteristic polynomial
+  as \(M\), since similarity preserves characteristic polynomials.
+
+  If \(r=n\), every vector of this basis is multiplied by \(\lambda\).
+  The representing matrix is \(\lambda I_n\), so its characteristic
+  polynomial is \((\lambda-x)^n\). Thus \(m_\lambda=n=r\).
+
+  Suppose \(r<n\). Since \(Mv_j=\lambda v_j\) for \(j\le r\),
+  the matrix in the extended basis has the form
+  \[
+    T=\begin{bmatrix}\lambda I_r&B\\0&C\end{bmatrix},
+    \qquad C\in\mathrm M_{(n-r)\times(n-r)}(\C).
+  \]
+  In the permutation expansion of \(\det(T-xI)\) from
+  \autoref{eq:linear-algebra-i:determinant-permutation-formula},
+  column \(j\le r\) has only one
+  possibly nonzero entry, in row \(j\). Every contributing permutation
+  must therefore fix those first \(r\) indices. The remaining factors
+  select one entry from each row and column of \(C-xI\). Their
+  permutation has the same sign as the full permutation, since a
+  decomposition into transpositions of the last \(n-r\) indices also
+  decomposes the full permutation. Consequently,
+  \[
+    p_M(x)=p_T(x)=(\lambda-x)^r\det(C-xI).
+  \]
+  The factor \((\lambda-x)^r=(-1)^r(x-\lambda)^r\) shows that
+  \(\lambda\) has root multiplicity at least \(r\). Hence
+  \(1\le\dim E_\lambda(M)\le m_\lambda\), as claimed.
+\end{proof}
+\end{pendingreview}
 
 \input{problems/hw06/03-eigenvalue-true-or-false/problem}

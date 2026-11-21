@@ -6,7 +6,7 @@
 An inner product allows us to recognize a vector by its pairings with all
 other vectors.
 
-\begin{proposition}
+\begin{proposition}[Nondegeneracy of an inner product]
   \label{thm:linear-algebra-i:inner-product-nondegeneracy}
   For \(v\in V\),
   \[
@@ -21,7 +21,7 @@ other vectors.
   \((0,w)=0\) for every \(w\).
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}[A vector is determined by its pairings]
   \label{thm:linear-algebra-i:inner-product-determines-vector}
   If \(v_1,v_2\in V\) satisfy
   \[
@@ -36,7 +36,8 @@ other vectors.
   \(v_1-v_2=0\), hence \(v_1=v_2\).
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}[Maps determined by their pairings]
+  \label{thm:linear-algebra-i:maps-determined-by-pairings}
   Let \(W\) be a real inner-product space, and let \(L_1,L_2:V\to W\)
   be maps. If
   \[
@@ -45,7 +46,18 @@ other vectors.
   \]
   then \(L_1=L_2\).
 \end{corollary}
-% This consequence is stated on p. 5 without a separate proof.
+% The supplied p. 5 states the consequence. Lucas authorized its proof
+% in the book-wide proof-completion request on November 10, 2026.
+\begin{pendingreview}
+\begin{proof}
+  Fix an arbitrary \(v\in V\). The hypothesis says that the two vectors
+  \(L_1(v),L_2(v)\in W\) have equal inner products with every
+  \(w\in W\). By
+  \autoref{thm:linear-algebra-i:inner-product-determines-vector}, they
+  are equal. This holds for every input \(v\), so the maps agree
+  everywhere and \(L_1=L_2\).
+\end{proof}
+\end{pendingreview}
 
 Such comparisons are useful in the calculus of variations, where an
 identity can be tested by pairing with arbitrary vectors or functions.
